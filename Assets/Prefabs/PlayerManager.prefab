@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1635338908992136701}
   - component: {fileID: 4276543016406236667}
   - component: {fileID: 439905183626305628}
+  - component: {fileID: 8221120025603944524}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -60,6 +61,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultCharacter: {fileID: 4850610673639980936, guid: 01ed844deb3072047853c6f4efee15ac, type: 3}
   VirtualCamera: {fileID: 0}
+--- !u!114 &8221120025603944524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400660009688148151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea617ff7d1b60648b0ee125d566bf2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CrosshairPrefab: {fileID: 4589661170562956870, guid: 65c436853deb387459ff59756b06e650, type: 3}
 --- !u!1 &9036257263795612584
 GameObject:
   m_ObjectHideFlags: 0

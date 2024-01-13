@@ -78,8 +78,8 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
-    generateModelPrefab: 0
-    generateAnimationClips: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
@@ -90,12 +90,12 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
-    generateModelPrefab: 0
-    generateAnimationClips: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638407621418006915
+  platformSettingsDirtyTick: 638407627266603092
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,16 +121,16 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Crosshair
     originalName: 
-    pivot: {x: 0.6666667, y: -5}
+    pivot: {x: 0.5, y: -0.3888889}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 6
-      height: 6
-    spriteID: 3430db3be7a43e24684612cd0f40f5df
+      width: 18
+      height: 18
+    spriteID: fa423c58629c3ce44b129d9014a453f9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -149,9 +149,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 0
-      height: 0
-    spriteID: 69fc2d419760ab34ab484b93403c206e
+      width: 32
+      height: 32
+    spriteID: f37448222fe2be94d9f566cf91944785
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -171,14 +171,14 @@ ScriptedImporter:
     - name: Crosshair
       frameIndex: 0
       cellRect:
-        x: 8
-        y: 8
-        width: 16
-        height: 16
-      spriteId: d896ed705730c8642a04e187165322d6
+        x: 16
+        y: 16
+        width: 32
+        height: 32
+      spriteId: 00000000000000000000000000000000
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
+  canvasSize: {x: 64, y: 64}
