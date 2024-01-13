@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7589792163851996744}
   - component: {fileID: 9221944435334462658}
   - component: {fileID: 5783022177602838375}
+  - component: {fileID: -3270578593806217871}
   m_Layer: 6
   m_Name: Character
   m_TagString: Untagged
@@ -134,6 +135,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MoveSpeed>k__BackingField: 5
+--- !u!114 &-3270578593806217871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2539884451687759693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efafc07ec366bc4b998c9e9308d411b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DashSpeed: 18
+  DashDuration: 0.2
+  DashCooldown: 0.2
 --- !u!1 &8792061822197781996
 GameObject:
   m_ObjectHideFlags: 0
