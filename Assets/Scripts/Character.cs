@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Quinn
+namespace Game
 {
 	[RequireComponent(typeof(Movement))]
 	public abstract class Character : MonoBehaviour

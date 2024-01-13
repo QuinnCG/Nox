@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace Quinn
+namespace Game
 {
 	public class Movement : Locomotion
 	{

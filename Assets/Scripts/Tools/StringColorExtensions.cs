@@ -1,4 +1,4 @@
-﻿namespace Quinn
+﻿namespace Game
 {
 	public static class StringColorExtensions
 	{

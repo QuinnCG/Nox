@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Quinn
+namespace Game
 {
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class Locomotion : MonoBehaviour

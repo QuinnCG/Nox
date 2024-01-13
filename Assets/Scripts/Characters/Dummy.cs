@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Quinn.Characters
+namespace Game.Characters
 {
 	public class Dummy : Character
 	{

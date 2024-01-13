@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Quinn
+namespace Game
 {
 	public class GameManager : MonoBehaviour
 	{

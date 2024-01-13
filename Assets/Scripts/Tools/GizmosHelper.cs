@@ -2,7 +2,7 @@ using FMOD;
 using UnityEditor;
 using UnityEngine;
 
-namespace Quinn
+namespace Game
 {
 	public class GizmosHelper : MonoBehaviour
 	{

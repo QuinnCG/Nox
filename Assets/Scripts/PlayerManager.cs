@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
-namespace Quinn
+namespace Game
 {
 	public class PlayerManager : MonoBehaviour
 	{
