@@ -1,4 +1,5 @@
 using Cinemachine;
+using Game.DamageSystem;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
@@ -55,19 +56,33 @@ namespace Game
 			// While in possession mode.
 			if (InPossessionMode)
 			{
-				// Remove highlight from past character.
-				if (_selectedCharacter != null)
-				{
-					// TODO: Remove highlight.
-				}
-
+				var pastChar = _selectedCharacter;
 				FindCharacterNearestToCrosshair();
 
-				// Add highlight to new character.
-				if (_selectedCharacter != null)
+				if (pastChar != _selectedCharacter)
 				{
-					// TODO: Add highlight.
+					if (pastChar)
+					{
+						var sprite = pastChar.GetComponentInChildren<SpriteRenderer>();
+						sprite.material.SetInt("_Enabled", Convert.ToInt32(false));
+					}
+
+					if (_selectedCharacter)
+					{
+						var sprite = _selectedCharacter.GetComponentInChildren<SpriteRenderer>();
+						sprite.material.SetInt("_Enabled", Convert.ToInt32(true));
+					}
 				}
+			}
+
+			// TODO: Remove this tempo code when no longer needed.
+			if (Input.GetKeyDown(KeyCode.Tab))
+			{
+				EnterPossessionMode();
+			}
+			else if (Input.GetKeyUp(KeyCode.Tab))
+			{
+				ExitPossessionMode();
 			}
 		}
 
@@ -77,6 +92,7 @@ namespace Game
 			if (!InPossessionMode)
 			{
 				InPossessionMode = true;
+				Time.timeScale = 0.3f;
 			}
 		}
 
@@ -85,6 +101,7 @@ namespace Game
 			if (InPossessionMode)
 			{
 				InPossessionMode = false;
+				Time.timeScale = 1f;
 			}
 		}
 
@@ -117,20 +134,18 @@ namespace Game
 		{
 			const float radius = 10f;
 
-			Vector2 pos = CrosshairManager.Instance.CrosshairPosition;
-			Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, radius, LayerMask.GetMask("Character"));
-
-			Debug.Log($"Highlighting {colliders.Length}x characters!".Bold().Color(StringColor.White));
+			Vector2 crosshairPos = CrosshairManager.Instance.CrosshairPosition;
+			Collider2D[] colliders = Physics2D.OverlapCircleAll(crosshairPos, radius, LayerMask.GetMask("Character"));
 
 			float nearestDst = float.PositiveInfinity;
 			Character nearestChar = null;
 
 			foreach (var collider in colliders)
 			{
-				if (collider.gameObject == gameObject)
+				if (!DoesCharacterMeetPossessionCriteria(collider.GetComponent<Character>()))
 					continue;
 
-				float dst = Vector2.Distance(transform.position, collider.transform.position);
+				float dst = Vector2.Distance(crosshairPos, collider.transform.position);
 				if (dst < nearestDst)
 				{
 					nearestDst = dst;
@@ -141,7 +156,15 @@ namespace Game
 			// Null is possibile if no characters are within the defined radius.
 			// A possibile optimization would be to do a smaller circle. Failing that then you do the bigger one.
 			_selectedCharacter = nearestChar;
-        }
+		}
+
+		private bool DoesCharacterMeetPossessionCriteria(Character character)
+		{
+			if (character == PossessedCharacter) return false;
+			if (!character.GetComponent<Health>().IsCritical) return false;
+
+			return true;
+		}
 
 		private void PossessSelectedCharacter()
 		{
