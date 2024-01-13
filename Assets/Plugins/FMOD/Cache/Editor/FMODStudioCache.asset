@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: FMOD/BossRush2024/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638406092533441066
+  lastModified: 638407092043882503
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -35,7 +35,7 @@ MonoBehaviour:
   Path: FMOD/BossRush2024/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638406092533479669
+  lastModified: 638407092043882503
   FileSizes:
   - Name: Desktop
     Value: 844
@@ -64,7 +64,7 @@ MonoBehaviour:
   - {fileID: -8439972416319912983}
   StringsBanks:
   - {fileID: -185484807102277179}
-  cacheTime: 638406092533972110
+  cacheTime: 638407092043892374
   cacheVersion: 131616
 --- !u!114 &280539049810791365
 MonoBehaviour:
@@ -81,7 +81,7 @@ MonoBehaviour:
   Path: FMOD/BossRush2024/Build/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638406092533972110
+  lastModified: 638407092043872425
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -101,7 +101,7 @@ MonoBehaviour:
   Path: FMOD/BossRush2024/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638406092533866191
+  lastModified: 638407092043892374
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -121,7 +121,7 @@ MonoBehaviour:
   Path: FMOD/BossRush2024/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638406092533779459
+  lastModified: 638407092043892374
   FileSizes:
   - Name: Desktop
     Value: 494
