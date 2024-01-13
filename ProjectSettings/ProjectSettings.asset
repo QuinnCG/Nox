@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Quinn CG
+  companyName: Apollo
   productName: Boss Rush 2024
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
