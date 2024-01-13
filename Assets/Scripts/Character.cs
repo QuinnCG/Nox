@@ -27,7 +27,33 @@ namespace Game
 			Movement = GetComponent<Movement>();
 		}
 
+		protected virtual void Update()
+		{
+			// Any subclass that overrides this method (provided they make a call to base)
+			// will not have thier update method called if they're possessed.
+			if (IsPossessed)
+			{
+				return;
+			}
+		}
+
 		public bool IsPossessed { get; private set; }
+
+		public void Possess()
+		{
+			if (!IsPossessed)
+			{
+				IsPossessed = true;
+			}
+		}
+
+		public void UnPossess()
+		{
+			if (IsPossessed)
+			{
+				IsPossessed = false;
+			}
+		}
 
 		public virtual void Attack(Vector2 target) { }
 
@@ -38,6 +64,11 @@ namespace Game
 				Movement.Dash(DashSpeed, DashDuration);
 				_nextDashTime = Time.time + DashDuration + DashCooldown;
 			}
+		}
+
+		protected void CastDamageBox()
+		{
+
 		}
 	}
 }

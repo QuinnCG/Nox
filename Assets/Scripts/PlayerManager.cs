@@ -108,15 +108,9 @@ namespace Game
 		private void PossessCharacter(Character character)
 		{
 			PossessedCharacter = character;
+
 			_movement = character.GetComponent<Movement>();
-			character.GetComponent<AIController>().enabled = false;
-
 			VirtualCamera.Follow = character.transform;
-		}
-
-		private void UnPossessCharacter()
-		{
-			PossessedCharacter.GetComponent<AIController>().enabled = true;
 		}
 	}
 }
