@@ -2,6 +2,7 @@ using Cinemachine;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace Game
 {
@@ -106,19 +107,16 @@ namespace Game
 
 		private void PossessCharacter(Character character)
 		{
-			if (PossessedCharacter != null)
-				PossessedCharacter.UnPossess();
-
-			character.Possess();
 			PossessedCharacter = character;
-			OnPossessCharacter(character);
+			_movement = character.GetComponent<Movement>();
+			character.GetComponent<AIController>().enabled = false;
 
 			VirtualCamera.Follow = character.transform;
 		}
 
-		private void OnPossessCharacter(Character character)
+		private void UnPossessCharacter()
 		{
-			_movement = character.GetComponent<Movement>();
+			PossessedCharacter.GetComponent<AIController>().enabled = true;
 		}
 	}
 }

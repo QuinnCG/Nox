@@ -9,7 +9,7 @@ namespace Game
 	/// AI controllers will tell this class what to do.
 	/// </summary>
 	[RequireComponent(typeof(Movement))]
-	public abstract class Character : MonoBehaviour
+	public class Character : MonoBehaviour
 	{
 		[SerializeField, BoxGroup("Dash")]
 		private float DashSpeed = 18f;
@@ -28,22 +28,6 @@ namespace Game
 		}
 
 		public bool IsPossessed { get; private set; }
-
-		public void Possess()
-		{
-			if (!IsPossessed)
-			{
-				IsPossessed = true;
-			}
-		}
-
-		public void UnPossess()
-		{
-			if (IsPossessed)
-			{
-				IsPossessed = false;
-			}
-		}
 
 		public virtual void Attack(Vector2 target) { }
 
