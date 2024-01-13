@@ -63,14 +63,12 @@ namespace Game
 				{
 					if (pastChar)
 					{
-						var sprite = pastChar.GetComponentInChildren<SpriteRenderer>();
-						sprite.material.SetInt("_Enabled", Convert.ToInt32(false));
+						SetOutline(pastChar, false);
 					}
 
 					if (_selectedCharacter)
 					{
-						var sprite = _selectedCharacter.GetComponentInChildren<SpriteRenderer>();
-						sprite.material.SetInt("_Enabled", Convert.ToInt32(true));
+						SetOutline(_selectedCharacter, true);
 					}
 				}
 			}
@@ -102,6 +100,12 @@ namespace Game
 			{
 				InPossessionMode = false;
 				Time.timeScale = 1f;
+
+				if (_selectedCharacter)
+				{
+					SetOutline(_selectedCharacter, false);
+					_selectedCharacter = null;
+				}
 			}
 		}
 
@@ -127,6 +131,12 @@ namespace Game
 
 			Vector2 target = CrosshairManager.Instance.CrosshairPosition;
 			PossessedCharacter.Attack(target);
+		}
+
+		private void SetOutline(Character character, bool enabled)
+		{
+			var sprite = character.GetComponentInChildren<SpriteRenderer>();
+			sprite.material.SetInt("_Enabled", Convert.ToInt32(enabled));
 		}
 
 		// Store the character neartest to the crosshair.
