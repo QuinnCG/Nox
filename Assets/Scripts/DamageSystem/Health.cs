@@ -1,13 +1,24 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 
 namespace Game.DamageSystem
 {
 	public class Health : MonoBehaviour
 	{
+		[field: SerializeField, ReadOnly]
+		public float Current { get; private set; }
+
 		[field: SerializeField, Tooltip("Can be set via code to another value.")]
 		public float Max { get; private set; } = 100f;
-		public float Current { get; private set; }
+
+		[SerializeField, Unit(Units.Percent), Tooltip("How much HP (in percent) should be left for this character to be in critical health.")]
+		private float CriticalPercent = 0.3f;
+
+		[SerializeField]
+		private bool StartCritical;
+
+		public bool IsCritical => Current / Max <= CriticalPercent;
 
 		public event Action<float> OnMaxSet;
 
@@ -29,6 +40,17 @@ namespace Game.DamageSystem
 				// Note: look up "lambda functions".
 				damage.OnDamage += info => RemoveHealth(info.Damage, info.Source);
 			}
+
+			if (StartCritical)
+			{
+				MakeCritical();
+			}
+		}
+
+		[Button]
+		public void MakeCritical()
+		{
+			RemoveHealth(Current * 0.95f);
 		}
 
 		public void SetMax(float max)
