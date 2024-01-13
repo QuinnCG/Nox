@@ -1,48 +1,49 @@
-﻿using System;
+﻿using Game.InputSystem;
+using System;
 using UnityEngine;
 
 namespace Game
 {
 	public class InputReader : MonoBehaviour
 	{
-		// Expose some of the input keys we may want to change later.
-		[SerializeField]
-		private KeyCode DashKey = KeyCode.LeftAlt;
-
 		public event Action<Vector2> OnMove;
 		public event Action OnDash;
 		public event Action OnAttack;
 
-		public void Update()
+		private PlayerControls _input;
+
+		private void Awake()
 		{
-			// Create a vector2 where
-			// x = horizontal input (a = -1 && d = 1)
-			// y = vertical input (w = 1 && s = -1)
-			// then normalize the result to avoid diagonal movements from being faster (see https://unitycodemonkey.com/video.php?v=YMwwYO1naCg)
-			var dirInput = new Vector2()
-			{
-				x = Input.GetAxisRaw("Horizontal"),
-				y = Input.GetAxisRaw("Vertical")
-			}.normalized;
+			// This is required to be constructed in Awake or Start.
 
-			// Triggers anything subscribed to the event.
-			// Notice the '?' at the end of move,
-			// That does a check to make sure that something is subscribed before invoking
-			// to avoid a null reference exception.
-			OnMove?.Invoke(dirInput);
+			// The code for PlayerControls is dynamically generated
+			// to match what we place in the asset file.
+			_input = new PlayerControls();
 
-			// Every frame test if 'DashKey' has JUST been pressed.
-			if (Input.GetKeyDown(DashKey))
-			{
-				OnDash?.Invoke();
-			}
+			// Brackey's has a good video about the "New Input System".
+			_input.PlayerMap.Move.performed += ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>().normalized);
+			_input.PlayerMap.Dash.performed += _ => OnDash?.Invoke();
+			_input.PlayerMap.Attack.performed += _ => OnAttack?.Invoke();
+		}
 
-			// 0 = left mouse, 1 = right mouse, 2 = middle mouse.
-			// You find this stuff from Unity's docs.
-			if (Input.GetMouseButtonDown(0))
-			{
-				OnAttack?.Invoke();
-			}
+		private void OnEnable()
+		{
+			_input.Enable();
+		}
+
+		private void OnDisable()
+		{
+			_input.Disable();
+		}
+
+		private void Update()
+		{
+			Vector2 dir = _input.PlayerMap.Move.ReadValue<Vector2>();
+
+			// Required to normalize to avoid diagonal movement from being faster (see https://unitycodemonkey.com/video.php?v=YMwwYO1naCg).
+			dir.Normalize();
+			// Unlike the other events, OnMove is executed every frame which even when you aren't moving (input dir of (0, 0) * speed = zero).
+			OnMove?.Invoke(dir);
 		}
 	}
 }
