@@ -6,7 +6,7 @@
 	/// now anywhere in the project you can type ".Bold()" or one of the other methods
 	/// directly after a string to make that string bold or colored when using <c>Debug.Log</c>.
 	/// </summary>
-	public static class StringColorExtensions
+	public static class StringFormatExtensions
 	{
 		public static string Bold(this string str) => $"<b>{str}</b>";
 		public static string Italic(this string str) => $"<i>{str}</i>";
