@@ -1,0 +1,112 @@
+#room-count {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    background-color: rgba(51, 51, 51, 0.3);
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+#boss-title {
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    font-size: 30px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#boss-health .unity-progress-bar__container {
+    height: 50px;
+    max-width: none;
+    max-height: none;
+    min-width: auto;
+    min-height: auto;
+}
+
+#boss-health .unity-progress-bar__background {
+    background-color: rgba(51, 51, 51, 0.5);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+}
+
+#boss-health .unity-progress-bar__progress {
+    background-color: rgb(255, 255, 255);
+    padding-left: 0;
+    margin-left: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+#player-health .unity-progress-bar__container {
+    height: 30px;
+    max-width: none;
+    max-height: none;
+    min-width: auto;
+    min-height: auto;
+}
+
+#player-health .unity-progress-bar__background {
+    background-color: rgba(51, 51, 51, 0.5);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+}
+
+#player-health .unity-progress-bar__progress {
+    background-color: rgb(188, 46, 46);
+    padding-left: 0;
+    margin-left: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
