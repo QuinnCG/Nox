@@ -2,6 +2,11 @@ using UnityEngine;
 
 namespace Game
 {
+	/// <summary>
+	/// This class is meant to be inherited by other classes.
+	/// In this project that's really only the <c>Movement</c> class.
+	/// This provides a general system for controlling the velocity of a rigidbody.
+	/// </summary>
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class Locomotion : MonoBehaviour
 	{

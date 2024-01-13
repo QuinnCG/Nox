@@ -5,6 +5,11 @@ using UnityEngine;
 
 namespace Game
 {
+	/// <summary>
+	/// This class acts as the player's "controller" class.
+	/// It manages input from the player and feeds that to the possessed character.
+	/// It is also responsible for some other things unique to the player.
+	/// </summary>
 	public class PlayerManager : MonoBehaviour
 	{
 		[SerializeField, Required, AssetList(Path = "/Prefabs/Characters")]

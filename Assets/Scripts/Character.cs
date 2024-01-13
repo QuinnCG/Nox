@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace Game
 {
+	/// <summary>
+	/// This class is the main control for characters.
+	/// The player controller will tell this class what to do.
+	/// AI controllers will tell this class what to do.
+	/// </summary>
 	[RequireComponent(typeof(Movement))]
 	public abstract class Character : MonoBehaviour
 	{

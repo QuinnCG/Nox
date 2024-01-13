@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Game
 {
+	/// <summary>
+	/// This is the movement system used by characters in the game.
+	/// </summary>
 	public class Movement : Locomotion
 	{
 		[field: SerializeField]
