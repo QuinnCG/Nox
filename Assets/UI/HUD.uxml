@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Label text="Room: 1" name="room-count" style="position: absolute; left: 10px; top: 20px;" />
+    <ui:VisualElement style="flex-grow: 1; position: absolute; left: 0; justify-content: space-around; align-items: center; top: 20px; right: 0;">
+        <ui:Label text="Boss Title" name="boss-title" style="position: relative;" />
+        <ui:ProgressBar value="75" name="boss-health" style="position: relative; top: auto; left: auto; width: 750px;" />
+    </ui:VisualElement>
+    <ui:ProgressBar value="22" name="player-health" style="position: absolute; bottom: 10px; left: 10px; width: 350px;" />
+</ui:UXML>
