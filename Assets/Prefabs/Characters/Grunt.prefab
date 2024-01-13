@@ -8,14 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8276847003228853906, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -136610110571576063, guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c, type: 3}
     - target: {fileID: 2539884451687759693, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Name
-      value: Dummy
+      value: Grunt
       objectReference: {fileID: 0}
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+      objectReference: {fileID: -136610110571576063, guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c, type: 3}
     - target: {fileID: 5178283370000923340, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -56,6 +60,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5864658996164576626, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.4615385
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864658996164576626, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864658996164576626, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.125
+      objectReference: {fileID: 0}
     - target: {fileID: 6308343214167669137, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -87,3 +103,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DashSpeed: 18
   DashDuration: 0.2
+  DashCooldown: 0.2
