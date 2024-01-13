@@ -10,6 +10,7 @@ namespace Game
 	/// It manages input from the player and feeds that to the possessed character.
 	/// It is also responsible for some other things unique to the player.
 	/// </summary>
+	[RequireComponent(typeof(InputReader))]
 	public class PlayerManager : MonoBehaviour
 	{
 		[SerializeField, Required, AssetList(Path = "/Prefabs/Characters")]
@@ -20,7 +21,19 @@ namespace Game
 		public Character PossessedCharacter { get; private set; }
 		public bool InPossessionMode { get; private set; }
 
+		private InputReader _input;
 		private Movement _movement;
+
+		private void Awake()
+		{
+			_input = GetComponent<InputReader>();
+
+			// 'Subscribe' methods to specific events,
+			// so that they are executed when their host event is triggered.
+			_input.OnMove += OnMove;
+			_input.OnDash += OnDash;
+			_input.OnAttack += OnAttack;
+		}
 
 		private void Start()
 		{
@@ -30,13 +43,6 @@ namespace Game
 
 		private void Update()
 		{
-			// While possessing.
-			if (PossessedCharacter != null)
-			{
-				UpdateMoveInput();
-				UpdateDashInput();
-			}
-
 			// While in possession mode.
 			if (InPossessionMode)
 			{
@@ -44,6 +50,7 @@ namespace Game
 			}
 		}
 
+		/* PUBLIC METHODS */
 		public void EnterPossessionMode()
 		{
 			if (!InPossessionMode)
@@ -60,25 +67,21 @@ namespace Game
 			}
 		}
 
-		private void UpdateMoveInput()
+		/* PRIVATE METHODS */
+		private void OnMove(Vector2 dir)
 		{
-			var dirInput = new Vector2()
-			{
-				x = Input.GetAxisRaw("Horizontal"),
-				y = Input.GetAxisRaw("Vertical")
-			}.normalized;
-
-			_movement.Move(dirInput);
+			_movement.Move(dir);
 		}
 
-		private void UpdateDashInput()
+		private void OnDash()
 		{
-			if (Input.GetKeyDown(KeyCode.LeftAlt)
-				|| Input.GetKeyDown(KeyCode.LeftShift)
-				|| Input.GetMouseButtonDown(1))
-			{
-				PossessedCharacter.Dash();
-			}
+			PossessedCharacter.Dash();
+		}
+
+		private void OnAttack()
+		{
+			Debug.LogWarning("Attack is not supported yet!");
+			// TODO: Add attacking.
 		}
 
 		private void UpdatePossessionInput()
