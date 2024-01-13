@@ -215,7 +215,7 @@ namespace Game.InputSystem
                 {
                     ""name"": """",
                     ""id"": ""c99b89c8-1b26-4d12-8af0-7e6b0384ae43"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
