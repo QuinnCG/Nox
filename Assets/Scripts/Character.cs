@@ -18,9 +18,11 @@ namespace Game
 		[SerializeField, BoxGroup("Dash")]
 		private float DashCooldown = 0.2f;
 
-		private float _nextDashTime;
+		public bool IsPossessed { get; private set; }
 
 		protected Movement Movement { get; private set; }
+
+		private float _nextDashTime;
 
 		protected virtual void Awake()
 		{
@@ -36,8 +38,6 @@ namespace Game
 				return;
 			}
 		}
-
-		public bool IsPossessed { get; private set; }
 
 		public void Possess()
 		{
@@ -66,9 +66,9 @@ namespace Game
 			}
 		}
 
-		protected void CastDamageBox()
+		protected void CastDamageBox(Vector2 origin, Vector2 size, float damage, Vector2 direction, float knockback)
 		{
-
+			// TODO: Create hitbox.
 		}
 	}
 }

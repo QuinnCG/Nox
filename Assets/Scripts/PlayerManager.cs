@@ -17,6 +17,7 @@ namespace Game
 	{
 		[SerializeField, Required, AssetList(Path = "/Prefabs/Characters")]
 		private GameObject DefaultCharacter;
+
 		[SerializeField, Required]
 		private CinemachineVirtualCamera VirtualCamera;
 
@@ -63,12 +64,12 @@ namespace Game
 				{
 					if (pastChar)
 					{
-						SetOutline(pastChar, false);
+						SetCharacterOutline(pastChar, false);
 					}
 
 					if (_selectedCharacter)
 					{
-						SetOutline(_selectedCharacter, true);
+						SetCharacterOutline(_selectedCharacter, true);
 					}
 				}
 			}
@@ -103,7 +104,7 @@ namespace Game
 
 				if (_selectedCharacter)
 				{
-					SetOutline(_selectedCharacter, false);
+					SetCharacterOutline(_selectedCharacter, false);
 					_selectedCharacter = null;
 				}
 			}
@@ -133,7 +134,7 @@ namespace Game
 			PossessedCharacter.Attack(target);
 		}
 
-		private void SetOutline(Character character, bool enabled)
+		private void SetCharacterOutline(Character character, bool enabled)
 		{
 			var sprite = character.GetComponentInChildren<SpriteRenderer>();
 			sprite.material.SetInt("_Enabled", Convert.ToInt32(enabled));
@@ -178,7 +179,7 @@ namespace Game
 
 		private void PossessSelectedCharacter()
 		{
-			if (!_selectedCharacter)
+			if (_selectedCharacter)
 			{
 				PossessCharacter(_selectedCharacter);
 			}
