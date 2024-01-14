@@ -1,9 +1,7 @@
-using Cinemachine;
 using Game.DamageSystem;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 namespace Game
 {
@@ -15,6 +13,8 @@ namespace Game
 	[RequireComponent(typeof(InputReader))]
 	public class PlayerManager : MonoBehaviour
 	{
+		public static PlayerManager Instance { get; private set; }
+
 		[SerializeField, Required, AssetList(Path = "/Prefabs/Characters")]
 		private GameObject DefaultCharacter;
 
@@ -30,16 +30,20 @@ namespace Game
 		public Character PossessedCharacter { get; private set; }
 		public bool InPossessionMode { get; private set; }
 
-		private InputReader _input;
+		public event Action<Character> OnCharacterPossessed;
 
 		// Possessed components.
-		private Movement _movement;
+		public Movement Movement { get; private set; }
+		public Health Health { get; private set; }
+
+		private InputReader _input;
 
 		// The character closest to the crosshair while in possession mode.
 		private Character _selectedCharacter;
 
 		private void Awake()
 		{
+			Instance = this;
 			_input = GetComponent<InputReader>();
 
 			// 'Subscribe' methods to specific events,
@@ -126,7 +130,7 @@ namespace Game
 		/* PRIVATE METHODS */
 		private void OnMove(Vector2 dir)
 		{
-			_movement.Move(dir);
+			Movement.Move(dir);
 		}
 
 		private void OnDash()
@@ -158,6 +162,8 @@ namespace Game
 		{
 			Vector2 crosshairPos = CrosshairManager.Instance.CurrentPosition;
 			Collider2D[] colliders = Physics2D.OverlapCircleAll(crosshairPos, PossessionRadius, LayerMask.GetMask("Character"));
+
+			// TODO: Replace circle cast with box cast in shape of camera frustum.
 
 			float nearestDst = float.PositiveInfinity;
 			Character nearestChar = null;
@@ -199,7 +205,11 @@ namespace Game
 		private void PossessCharacter(Character character)
 		{
 			PossessedCharacter = character;
-			_movement = character.GetComponent<Movement>();
+
+			Movement = character.GetComponent<Movement>();
+			Health = character.GetComponent<Health>();
+
+			OnCharacterPossessed?.Invoke(character);
 		}
 	}
 }
