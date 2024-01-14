@@ -7,7 +7,11 @@ namespace Game.Characters
 		protected override void Update()
 		{
 			base.Update();
-			Movement.Move(Vector2.zero);
+
+			if (!IsPossessed)
+			{
+				Movement.Move(Vector2.zero);
+			}
 		}
 
 		public override void Attack(Vector2 target)

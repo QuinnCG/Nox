@@ -36,13 +36,6 @@ namespace Game
 		protected virtual void Update()
 		{
 			_animator.SetBool("IsMoving", Movement.IsMoving);
-
-			// Any subclass that overrides this method (provided they make a call to base)
-			// will not have thier update method called if they're possessed.
-			if (IsPossessed)
-			{
-				return;
-			}
 		}
 
 		public void Possess()
