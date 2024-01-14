@@ -13,8 +13,10 @@ namespace Game
 	{
 		[SerializeField, BoxGroup("Dash")]
 		private float DashSpeed = 18f;
+
 		[SerializeField, BoxGroup("Dash")]
 		private float DashDuration = 0.2f;
+
 		[SerializeField, BoxGroup("Dash")]
 		private float DashCooldown = 0.2f;
 

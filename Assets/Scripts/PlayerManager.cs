@@ -74,12 +74,12 @@ namespace Game
 				{
 					if (pastChar)
 					{
-						SetCharacterOutline(pastChar, false);
+						SetCharacterHighlightIndicator(pastChar, false);
 					}
 
 					if (_selectedCharacter)
 					{
-						SetCharacterOutline(_selectedCharacter, true);
+						SetCharacterHighlightIndicator(_selectedCharacter, true);
 					}
 				}
 			}
@@ -121,7 +121,7 @@ namespace Game
 
 				if (_selectedCharacter)
 				{
-					SetCharacterOutline(_selectedCharacter, false);
+					SetCharacterHighlightIndicator(_selectedCharacter, false);
 					_selectedCharacter = null;
 				}
 			}
@@ -151,10 +151,9 @@ namespace Game
 			PossessedCharacter.Attack(target);
 		}
 
-		private void SetCharacterOutline(Character character, bool enabled)
+		private void SetCharacterHighlightIndicator(Character character, bool enabled)
 		{
-			var sprite = character.GetComponentInChildren<SpriteRenderer>();
-			sprite.material.SetInt("_Enabled", Convert.ToInt32(enabled));
+			// TODO: Display indicator above head.
 		}
 
 		// Store the character neartest to the crosshair.
