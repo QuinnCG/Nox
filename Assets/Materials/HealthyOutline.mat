@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterOutline
+  m_Name: HealthyOutline
   m_Shader: {fileID: -6465566751694194690, guid: dd2b883ef90ed3a46a67601af7a8cf76, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

@@ -24,6 +24,8 @@ namespace Game.UI
 		private VisualElement _bossTitleContainer;
 		private ProgressBar _bossHealth;
 
+		private Health _health;
+
 		private void Awake()
 		{
 			_root = Document.rootVisualElement;
@@ -41,10 +43,21 @@ namespace Game.UI
 			PlayerManager.Instance.OnCharacterPossessed += character =>
 			{
 				var health = character.GetComponent<Health>();
+				_health = health;
 
 				health.OnDamaged += _ => ShowHealth();
 				health.OnReachMaxHealth += () => HideHealth();
+
+				if (health.IsCritical)
+				{
+					ShowHealth();
+				}
 			};
+		}
+
+		private void Update()
+		{
+			_playerHealth.value = _health.Current / _health.Max;
 		}
 
 		private void ShowHealth()

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{bbfdba8c-35d7-4eb7-86de-9dd6c17d4eb8}">
+		<property name="assetPath">
+			<value>Critical Health/CriticalHealth_01.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.96391666666666664</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{199058eb-45a1-46fb-bd35-0d8ea40a3f2d}</destination>
+		</relationship>
+	</object>
+</objects>

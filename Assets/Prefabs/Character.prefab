@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Current>k__BackingField: 0
   <Max>k__BackingField: 100
+  CriticalIndicatorOffset: {x: 0.2, y: 0.5}
   CriticalPercent: 0.3
   StartCritical: 0
 --- !u!1 &8792061822197781996
@@ -220,7 +221,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f319f812ecfa46e498079edc24dd3f60, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

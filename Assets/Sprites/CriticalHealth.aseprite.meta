@@ -1,38 +1,8 @@
 fileFormatVersion: 2
-guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c
+guid: 339e325a83a3c374da6b90fb01db79ce
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:AnimationClip
-      assembly: UnityEngine.AnimationModule
-      name: DemoChar1_Idle
-    second: {instanceID: 0}
-  - first:
-      type: UnityEngine:AnimationClip
-      assembly: UnityEngine.AnimationModule
-      name: DemoChar1_Move
-    second: {instanceID: 0}
-  - first:
-      type: UnityEngine:AnimationClip
-      assembly: UnityEngine.AnimationModule
-      name: Idle
-    second: {fileID: 7400000, guid: 666bb725587acc04a965b9aec0514beb, type: 2}
-  - first:
-      type: UnityEngine:AnimationClip
-      assembly: UnityEngine.AnimationModule
-      name: Move
-    second: {fileID: 7400000, guid: dc3e4b5b2717647458a75285fc2e3cc5, type: 2}
-  - first:
-      type: UnityEngine:AnimationClip
-      assembly: UnityEngine.AnimationModule
-      name: Wanderer_Idle
-    second: {fileID: 7400000, guid: dbb6473fe079e2b429e8a8978d6caff9, type: 2}
-  - first:
-      type: UnityEngine:AnimationClip
-      assembly: UnityEngine.AnimationModule
-      name: Wanderer_Move
-    second: {fileID: 7400000, guid: e512f5e9ebb512b4eb6887e1549d87aa, type: 2}
+  externalObjects: {}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -105,9 +75,9 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 9
-    customPivotPosition: {x: 0.503, y: 0.25}
-    spritePadding: 3
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -117,15 +87,15 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 9
-    customPivotPosition: {x: 0.503, y: 0.25}
-    spritePadding: 3
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638407935695678455
+  platformSettingsDirtyTick: 638407927026394992
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -149,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Wanderer_Frame_0
+  - name: CriticalHealth_Frame_0
     originalName: 
-    pivot: {x: 0.4763078, y: 0}
+    pivot: {x: 0.6, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 70
+      x: 19
       y: 4
-      width: 16
-      height: 34
-    spriteID: 74b1974a4257cf846aec304500b959d5
+      width: 5
+      height: 4
+    spriteID: 4c7638da28fa5a946afa55b5fb5cfa6a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -168,19 +138,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 70, y: 4}
-  - name: Wanderer_Frame_1
+    uvTransform: {x: 19, y: 4}
+  - name: CriticalHealth_Frame_1
     originalName: 
-    pivot: {x: 0.4763078, y: 0}
+    pivot: {x: 0.4, y: 0.75}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 70
-      y: 46
-      width: 16
-      height: 33
-    spriteID: e71c49ebbf9ff824dbb55bf9e9335f86
+      x: 19
+      y: 16
+      width: 5
+      height: 4
+    spriteID: d265ef8a3ea5d5642ace36ce2493435c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -188,19 +158,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 70, y: 46}
-  - name: Wanderer_Frame_2
+    uvTransform: {x: 19, y: 16}
+  - name: CriticalHealth_Frame_2
     originalName: 
-    pivot: {x: 0.4763078, y: 0}
+    pivot: {x: 0.6, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 94
-      y: 4
-      width: 16
-      height: 32
-    spriteID: 65b9983eb5dfebe4ba829875751edc91
+      x: 19
+      y: 28
+      width: 5
+      height: 4
+    spriteID: 3f750236c277bac479e57a659f8c1f15
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -208,19 +178,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 94, y: 4}
-  - name: Wanderer_Frame_3
+    uvTransform: {x: 19, y: 28}
+  - name: CriticalHealth_Frame_3
     originalName: 
-    pivot: {x: 0.4763078, y: 0}
+    pivot: {x: 0.4, y: 0.75}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 70
-      y: 87
-      width: 16
-      height: 33
-    spriteID: 7c96e817787c9774c982dff373d52be1
+      x: 19
+      y: 40
+      width: 5
+      height: 4
+    spriteID: dbfeddc73aa3bec419c000fb7bf7ac44
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -228,19 +198,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 70, y: 87}
-  - name: Wanderer_Frame_4
+    uvTransform: {x: 19, y: 40}
+  - name: CriticalHealth_Frame_4
     originalName: 
-    pivot: {x: 0.5541819, y: 0}
+    pivot: {x: 0.42857146, y: 0.6666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 25
-      height: 29
-    spriteID: 84cfb09c0605ef84ea965713ec68a11f
+      width: 7
+      height: 6
+    spriteID: ce69a59a96d399645be423cc9c54263c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -249,18 +219,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Wanderer_Frame_5
+  - name: CriticalHealth_Frame_5
     originalName: 
-    pivot: {x: 0.5541819, y: 0}
+    pivot: {x: 0.5, y: 0.6}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 41
-      width: 25
-      height: 27
-    spriteID: 526ff3b7c5bc7e144b9bf68a360cbf40
+      y: 18
+      width: 6
+      height: 5
+    spriteID: 07a5a92596949624a8f15976c263fed9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -268,19 +238,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 41}
-  - name: Wanderer_Frame_6
+    uvTransform: {x: 4, y: 18}
+  - name: CriticalHealth_Frame_6
     originalName: 
-    pivot: {x: 0.5541819, y: 0}
+    pivot: {x: 0.5, y: 0.6}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 76
-      width: 25
-      height: 27
-    spriteID: 822532a78a66fa34791cc5a6fce35875
+      y: 31
+      width: 6
+      height: 5
+    spriteID: 775540d7289d48d4aa6694564bcbbd07
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -288,19 +258,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 76}
-  - name: Wanderer_Frame_7
+    uvTransform: {x: 4, y: 31}
+  - name: CriticalHealth_Frame_7
     originalName: 
-    pivot: {x: 0.5329524, y: -0.125}
+    pivot: {x: 0.33333334, y: 0.8}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 37
-      y: 39
-      width: 24
-      height: 27
-    spriteID: 4f35d4fc46cf9104aa1acf37821470ee
+      x: 4
+      y: 44
+      width: 6
+      height: 5
+    spriteID: 3a88f09ac9ff06741af273dd4e3b276b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -308,136 +278,80 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 37, y: 39}
-  - name: Wanderer_Frame_8
-    originalName: 
-    pivot: {x: 0.5329524, y: -0.25}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 37
-      y: 74
-      width: 24
-      height: 27
-    spriteID: 4267b1b055a39cb428034b351c635615
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 37, y: 74}
-  - name: Wanderer_Frame_9
-    originalName: 
-    pivot: {x: 0.5541819, y: -0.16666667}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 37
-      y: 4
-      width: 25
-      height: 27
-    spriteID: 76662c74908deca4186a79d171dd8c98
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 37, y: 4}
+    uvTransform: {x: 4, y: 44}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1985033620
-    name: Wanderer
+    guid: 1805504735
+    name: CriticalHealth
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Wanderer_Frame_0
+    - name: CriticalHealth_Frame_0
       frameIndex: 0
       cellRect:
-        x: 26
-        y: 16
-        width: 13
-        height: 31
-      spriteId: 74b1974a4257cf846aec304500b959d5
-    - name: Wanderer_Frame_1
+        x: 5
+        y: 6
+        width: 5
+        height: 4
+      spriteId: 4c7638da28fa5a946afa55b5fb5cfa6a
+    - name: CriticalHealth_Frame_1
       frameIndex: 1
       cellRect:
-        x: 26
-        y: 16
-        width: 13
-        height: 30
-      spriteId: e71c49ebbf9ff824dbb55bf9e9335f86
-    - name: Wanderer_Frame_2
+        x: 6
+        y: 5
+        width: 5
+        height: 4
+      spriteId: d265ef8a3ea5d5642ace36ce2493435c
+    - name: CriticalHealth_Frame_2
       frameIndex: 2
       cellRect:
-        x: 26
-        y: 16
-        width: 13
-        height: 29
-      spriteId: 65b9983eb5dfebe4ba829875751edc91
-    - name: Wanderer_Frame_3
+        x: 5
+        y: 6
+        width: 5
+        height: 4
+      spriteId: 3f750236c277bac479e57a659f8c1f15
+    - name: CriticalHealth_Frame_3
       frameIndex: 3
       cellRect:
-        x: 26
-        y: 16
-        width: 13
-        height: 30
-      spriteId: 7c96e817787c9774c982dff373d52be1
-    - name: Wanderer_Frame_4
+        x: 6
+        y: 5
+        width: 5
+        height: 4
+      spriteId: dbfeddc73aa3bec419c000fb7bf7ac44
+    - name: CriticalHealth_Frame_4
       frameIndex: 4
       cellRect:
-        x: 20
-        y: 16
-        width: 22
-        height: 26
-      spriteId: 84cfb09c0605ef84ea965713ec68a11f
-    - name: Wanderer_Frame_5
+        x: 5
+        y: 4
+        width: 7
+        height: 6
+      spriteId: ce69a59a96d399645be423cc9c54263c
+    - name: CriticalHealth_Frame_5
       frameIndex: 5
       cellRect:
-        x: 20
-        y: 16
-        width: 22
-        height: 24
-      spriteId: 526ff3b7c5bc7e144b9bf68a360cbf40
-    - name: Wanderer_Frame_6
+        x: 5
+        y: 5
+        width: 6
+        height: 5
+      spriteId: 07a5a92596949624a8f15976c263fed9
+    - name: CriticalHealth_Frame_6
       frameIndex: 6
       cellRect:
-        x: 20
-        y: 16
-        width: 22
-        height: 24
-      spriteId: 822532a78a66fa34791cc5a6fce35875
-    - name: Wanderer_Frame_7
+        x: 5
+        y: 5
+        width: 6
+        height: 5
+      spriteId: 775540d7289d48d4aa6694564bcbbd07
+    - name: CriticalHealth_Frame_7
       frameIndex: 7
       cellRect:
-        x: 21
-        y: 19
-        width: 21
-        height: 24
-      spriteId: 4f35d4fc46cf9104aa1acf37821470ee
-    - name: Wanderer_Frame_8
-      frameIndex: 8
-      cellRect:
-        x: 21
-        y: 22
-        width: 21
-        height: 24
-      spriteId: 4267b1b055a39cb428034b351c635615
-    - name: Wanderer_Frame_9
-      frameIndex: 9
-      cellRect:
-        x: 20
-        y: 20
-        width: 22
-        height: 24
-      spriteId: 76662c74908deca4186a79d171dd8c98
+        x: 6
+        y: 4
+        width: 6
+        height: 5
+      spriteId: 3a88f09ac9ff06741af273dd4e3b276b
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -467,4 +381,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 64, y: 64}
+  canvasSize: {x: 16, y: 16}

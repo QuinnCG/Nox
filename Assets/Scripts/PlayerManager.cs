@@ -179,13 +179,18 @@ namespace Game
 		// Store the character nearest to the crosshair.
 		private void FindCharacterNearestToCrosshair()
 		{
-			Vector2 crosshairPos = CrosshairManager.Instance.CurrentPosition;
-			Collider2D[] colliders = Physics2D.OverlapCircleAll(crosshairPos, PossessionRadius, LayerMask.GetMask("Character"));
+			var cam = Camera.main;
+			Vector2 camPos = cam.transform.position;
+			var camSize = new Vector2(cam.orthographicSize * 2f * (Screen.width / Screen.height), cam.orthographicSize * 2f);
 
-			// TODO: Replace circle cast with box cast in shape of camera frustum.
+			Collider2D[] colliders = Physics2D.OverlapBoxAll(camPos, camSize, 0f, LayerMask.GetMask("Character"));
+
+			Debug.DrawLine(camPos - (camSize / 2f), camPos + (camSize / 2f), Color.yellow);
 
 			float nearestDst = float.PositiveInfinity;
 			Character nearestChar = null;
+
+			Vector2 crosshairPos = CrosshairManager.Instance.CurrentPosition;
 
 			foreach (var collider in colliders)
 			{
@@ -238,7 +243,7 @@ namespace Game
 			// TODO: Scale offset with bounds size.
 
 			var bounds = character.GetComponent<Collider2D>().bounds;
-			float offset = 0.2f;
+			float offset = 0.35f;
 			Vector2 position = bounds.center + (Vector3.up * (bounds.extents.y + offset));
 
 			return position;

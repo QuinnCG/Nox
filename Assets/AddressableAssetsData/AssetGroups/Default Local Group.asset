@@ -32,6 +32,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04bc7de15e63b0d45b994327e36c4f1b
+    m_Address: CriticalHealth.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f319f812ecfa46e498079edc24dd3f60
+    m_Address: HealthyOutline.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13304797fc3c36b4fab09a03ca250a73
+    m_Address: CriticalOutline.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 11b1c4a9f3ebb544ba4d9d5d60766970, type: 2}
   m_SchemaSet:
