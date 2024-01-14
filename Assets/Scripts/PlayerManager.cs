@@ -129,11 +129,7 @@ namespace Game
 				InPossessionMode = true;
 				Time.timeScale = 0.3f;
 
-				const string key = "PossessedIndicator.prefab";
-				Vector2 position = GetIndicatorPosition(PossessedCharacter);
-
-				_possessedIndicator = Addressables.InstantiateAsync(key, position, Quaternion.identity, PossessedCharacter.transform)
-					.WaitForCompletion();
+				ShowPossessedIndicator();
 			}
 		}
 
@@ -150,10 +146,7 @@ namespace Game
 					_selectedCharacter = null;
 				}
 
-				if (_possessedIndicator)
-				{
-					Destroy(_possessedIndicator);
-				}
+				HidePossessedIndicator();
 			}
 		}
 
@@ -181,11 +174,9 @@ namespace Game
 		{
 			var cam = Camera.main;
 			Vector2 camPos = cam.transform.position;
-			var camSize = new Vector2(cam.orthographicSize * 2f * (Screen.width / Screen.height), cam.orthographicSize * 2f);
+			var camSize = new Vector2(cam.orthographicSize * 2f * cam.aspect, cam.orthographicSize * 2f);
 
 			Collider2D[] colliders = Physics2D.OverlapBoxAll(camPos, camSize, 0f, LayerMask.GetMask("Character"));
-
-			Debug.DrawLine(camPos - (camSize / 2f), camPos + (camSize / 2f), Color.yellow);
 
 			float nearestDst = float.PositiveInfinity;
 			Character nearestChar = null;
@@ -232,6 +223,10 @@ namespace Game
 		{
 			PossessedCharacter = character;
 
+			// Update possessed indicator to appear over new possessed character.
+			HidePossessedIndicator();
+			ShowPossessedIndicator();
+
 			Movement = character.GetComponent<Movement>();
 			Health = character.GetComponent<Health>();
 
@@ -247,6 +242,23 @@ namespace Game
 			Vector2 position = bounds.center + (Vector3.up * (bounds.extents.y + offset));
 
 			return position;
+		}
+
+		private void ShowPossessedIndicator()
+		{
+			const string key = "PossessedIndicator.prefab";
+			Vector2 position = GetIndicatorPosition(PossessedCharacter);
+
+			_possessedIndicator = Addressables.InstantiateAsync(key, position, Quaternion.identity, PossessedCharacter.transform)
+				.WaitForCompletion();
+		}
+
+		private void HidePossessedIndicator()
+		{
+			if (_possessedIndicator)
+			{
+				Destroy(_possessedIndicator);
+			}
 		}
 	}
 }
