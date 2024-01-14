@@ -53,6 +53,9 @@ namespace Game
 			Instance = this;
 			_input = GetComponent<InputReader>();
 
+			Cursor.lockState = CursorLockMode.Confined;
+			Cursor.visible = false;
+
 			// 'Subscribe' methods to specific events,
 			// so that they are executed when their host event is triggered.
 			_input.OnMove += OnMove;
@@ -61,9 +64,6 @@ namespace Game
 
 			_input.OnEnterPossessionMode += OnEnterPossessionMode;
 			_input.OnExitPossessionMode += OnExitPossessionMode;
-
-			Cursor.lockState = CursorLockMode.Confined;
-			Cursor.visible = false;
 		}
 
 		private void Start()
@@ -148,7 +148,6 @@ namespace Game
 		}
 
 		/* POSSESSION MODE */
-
 		private void ShowPossessIndicator(Character character)
 		{
 			HidePossessIndicator();
@@ -185,7 +184,7 @@ namespace Game
 
 			foreach (var collider in colliders)
 			{
-				if (!TestPossessionCriteria(collider.GetComponent<Character>()))
+				if (!IsPossessable(collider.GetComponent<Character>()))
 					continue;
 
 				float dst = Vector2.Distance(crosshairPos, collider.transform.position);
@@ -199,7 +198,7 @@ namespace Game
 			return nearestChar;
 		}
 
-		private bool TestPossessionCriteria(Character character)
+		private bool IsPossessable(Character character)
 		{
 			if (character == PossessedCharacter) return false;
 			if (!character.GetComponent<Health>().IsCritical) return false;
@@ -257,8 +256,10 @@ namespace Game
 		{
 			const string key = "PossessedIndicator.prefab";
 			Vector2 position = GetIndicatorPosition(PossessedCharacter);
+			Transform parent = PossessedCharacter.transform;
 
-			_possessedIndicator = Addressables.InstantiateAsync(key, position, Quaternion.identity, PossessedCharacter.transform)
+			_possessedIndicator = Addressables
+				.InstantiateAsync(key, position, Quaternion.identity, parent)
 				.WaitForCompletion();
 		}
 

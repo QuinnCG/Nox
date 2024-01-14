@@ -46,7 +46,6 @@ namespace Game
 		public void Move(Vector2 direction)
 		{
 			IsMoving = direction != Vector2.zero;
-
 			Vector2 inputDir = direction.normalized;
 
 			if (direction != Vector2.zero)
@@ -56,6 +55,7 @@ namespace Game
 
 			AddVelocity(MoveSpeed * inputDir);
 
+			// Flip sprite.
 			if (direction.x > 0f)
 			{
 				transform.localScale = new Vector3(1f, 1f, 1f);
