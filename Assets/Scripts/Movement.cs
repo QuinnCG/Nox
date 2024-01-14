@@ -10,8 +10,8 @@ namespace Game
 	{
 		[field: SerializeField]
 		public float MoveSpeed { get; private set; } = 5f;
-		public bool IsDashing { get; private set; }
 
+		public bool IsDashing { get; private set; }
 		public bool IsMoving { get; private set; }
 
 		private float _knockbackSpeed;

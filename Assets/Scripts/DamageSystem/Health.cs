@@ -18,7 +18,7 @@ namespace Game.DamageSystem
 		[SerializeField]
 		private Vector2 CriticalIndicatorOffset = new(0.2f, 0.5f);
 
-		[SerializeField, Unit(Units.Percent), Tooltip("How much HP (in percent) should be left for this character to be in critical health.")]
+		[SerializeField, Tooltip("How much HP (in percent) should be left for this character to be in critical health.")]
 		private float CriticalPercent = 0.3f;
 
 		[Space, SerializeField, BoxGroup("Tools")]
