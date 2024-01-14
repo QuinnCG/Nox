@@ -22,15 +22,19 @@ namespace Game
 
 		protected Movement Movement { get; private set; }
 
+		private Animator _animator;
 		private float _nextDashTime;
 
 		protected virtual void Awake()
 		{
 			Movement = GetComponent<Movement>();
+			_animator = GetComponentInChildren<Animator>();
 		}
 
 		protected virtual void Update()
 		{
+			_animator.SetBool("IsMoving", Movement.IsMoving);
+
 			// Any subclass that overrides this method (provided they make a call to base)
 			// will not have thier update method called if they're possessed.
 			if (IsPossessed)

@@ -12,6 +12,8 @@ namespace Game
 		public float MoveSpeed { get; private set; } = 5f;
 		public bool IsDashing { get; private set; }
 
+		public bool IsMoving { get; private set; }
+
 		private float _knockbackSpeed;
 		private Vector2 _knockbackDirection;
 		private Tween _knockbackTween;
@@ -43,6 +45,8 @@ namespace Game
 
 		public void Move(Vector2 direction)
 		{
+			IsMoving = direction != Vector2.zero;
+
 			Vector2 inputDir = direction.normalized;
 
 			if (direction != Vector2.zero)

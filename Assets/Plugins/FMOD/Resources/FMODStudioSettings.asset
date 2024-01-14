@@ -456,8 +456,8 @@ MonoBehaviour:
   sourceProjectPath: FMOD/BossRush2024/BossRush2024.fspro
   sourceBankPath: FMOD/BossRush2024/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
-  ShowBankRefreshWindow: 1
+  BankRefreshCooldown: 1
+  ShowBankRefreshWindow: 0
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0

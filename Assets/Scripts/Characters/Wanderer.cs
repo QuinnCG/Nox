@@ -2,7 +2,7 @@
 
 namespace Game.Characters
 {
-	public class Grunt : Character
+	public class Wanderer : Character
 	{
 		public override void Attack(Vector2 target)
 		{
