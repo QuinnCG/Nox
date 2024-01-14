@@ -15,17 +15,17 @@ namespace Game.DamageSystem
 		[SerializeField, Unit(Units.Percent), Tooltip("How much HP (in percent) should be left for this character to be in critical health.")]
 		private float CriticalPercent = 0.3f;
 
-		[SerializeField]
+		[Space, SerializeField, BoxGroup("Tools")]
 		private bool StartCritical;
 
 		public bool IsCritical => Current / Max <= CriticalPercent;
 
 		public event Action<float> OnMaxSet;
 
-		public event Action<float> OnHealthRemoved;
+		public event Action<float> OnDamaged;
 		public event Action<DamageSource> OnDeath;
 
-		public event Action<float> OnHealAdded;
+		public event Action<float> OnHealed;
 		public event Action OnReachMaxHealth;
 
 		private void Awake()
@@ -47,7 +47,7 @@ namespace Game.DamageSystem
 			}
 		}
 
-		[Button]
+		[Button, BoxGroup("Tools")]
 		public void MakeCritical()
 		{
 			RemoveHealth(Current * 0.95f);
@@ -66,7 +66,7 @@ namespace Game.DamageSystem
 			// Remove HP.
 			Current = Mathf.Min(Max, Current + amount);
 
-			OnHealAdded?.Invoke(amount);
+			OnHealed?.Invoke(amount);
 
 			// If was less than max before but now max.
 			if (!isMax && Current == Max)
@@ -83,7 +83,7 @@ namespace Game.DamageSystem
 			// Remove HP.
 			Current = Mathf.Max(0f, Current - amount);
 
-			OnHealthRemoved?.Invoke(delta);
+			OnDamaged?.Invoke(delta);
 
 			if (Current == 0f)
 			{
