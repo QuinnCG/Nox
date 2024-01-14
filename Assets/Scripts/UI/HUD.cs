@@ -25,6 +25,7 @@ namespace Game.UI
 		private ProgressBar _bossHealth;
 
 		private Health _health;
+		private Tween _healthFadeInTween, _healthFadeOutTween;
 
 		private void Awake()
 		{
@@ -52,6 +53,9 @@ namespace Game.UI
 				{
 					ShowHealth();
 				}
+
+				_healthFadeInTween?.Kill();
+				_healthFadeOutTween?.Kill();
 			};
 		}
 
@@ -62,7 +66,7 @@ namespace Game.UI
 
 		private void ShowHealth()
 		{
-			DOTween.To(
+			_healthFadeInTween = DOTween.To(
 				() => _playerHealth.style.opacity.value,
 				x => _playerHealth.style.opacity = x,
 				1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
@@ -70,7 +74,7 @@ namespace Game.UI
 
 		private void HideHealth()
 		{
-			DOTween.To(
+			_healthFadeOutTween = DOTween.To(
 				() => _playerHealth.style.opacity.value,
 				x => _playerHealth.style.opacity = x,
 				0f, PlayerHealthFadeOut).SetEase(Ease.Linear);

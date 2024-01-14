@@ -45,6 +45,8 @@ namespace Game.DamageSystem
 		private Material _criticalMat;
 		private SpriteRenderer _characterRenderer;
 
+		private Tween _playCriticalSFXTween;
+
 		private void Awake()
 		{
 			Current = Max;
@@ -70,6 +72,15 @@ namespace Game.DamageSystem
 			{
 				MakeCritical();
 			}
+		}
+
+		private void Start()
+		{
+			PlayerManager.Instance.OnCharacterPossessed += character =>
+			{
+				if (character.gameObject == gameObject)
+					_playCriticalSFXTween?.Kill();
+			};
 		}
 
 		[Button, BoxGroup("Tools")]
@@ -158,7 +169,7 @@ namespace Game.DamageSystem
 			{
 				ShowCriticalIndicator();
 
-				DOVirtual.DelayedCall(0.38f, () =>
+				_playCriticalSFXTween = DOVirtual.DelayedCall(0.38f, () =>
 				{
 					RuntimeManager.PlayOneShotAttached("event:/EnterCritical", _criticalIndicator);
 				}, ignoreTimeScale: false);
