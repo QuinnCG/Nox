@@ -120,3 +120,7 @@
     padding-right: 0;
     margin-right: 3px;
 }
+
+Label {
+    -unity-font-definition: url('project://database/Assets/Retro%20Gaming.ttf?fileID=12800000&guid=ebe6396c3c55ff145bcff554f94641a3&type=3#Retro Gaming');
+}
