@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2539884451687759693, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Name
-      value: Grunt
+      value: LightingSamurai
       objectReference: {fileID: 0}
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Size.y
@@ -27,7 +27,7 @@ PrefabInstance:
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6261136675053056358, guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c, type: 3}
+      objectReference: {fileID: -7626144294115104274, guid: c1d64e924607f584686704c347f61069, type: 3}
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5864658996164576626, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Size.x
-      value: 0.55374604
+      value: 0.73245054
       objectReference: {fileID: 0}
     - target: {fileID: 5864658996164576626, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Size.y
@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5864658996164576626, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Offset.x
-      value: 0.023487061
+      value: -0.06586519
       objectReference: {fileID: 0}
     - target: {fileID: 5864658996164576626, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Offset.y
