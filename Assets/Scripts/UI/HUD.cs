@@ -33,6 +33,7 @@ namespace Game.UI
 			_bossHealth = _root.Q<ProgressBar>("boss-health");
 
 			HideHealth();
+			HideBoss();
 		}
 
 		private void Start()
@@ -60,6 +61,16 @@ namespace Game.UI
 				() => _playerHealth.style.opacity.value,
 				x => _playerHealth.style.opacity = x,
 				0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
+		}
+
+		private void ShowBoss()
+		{
+			_bossTitleContainer.style.opacity = 1f;
+		}
+
+		private void HideBoss()
+		{
+			_bossTitleContainer.style.opacity = 0f;
 		}
 	}
 }

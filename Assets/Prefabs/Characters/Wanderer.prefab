@@ -45,7 +45,7 @@ VisualEffect:
   m_InitialEventName: OnRightFootstep
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
-  m_ResetSeedOnPlay: 1
+  m_ResetSeedOnPlay: 0
   m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
@@ -55,10 +55,10 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0.18, y: 0.3, z: 0}
+      - m_Value: {x: 0.1, y: 0.25, z: 0}
         m_Name: LeftFoot_position
         m_Overridden: 1
-      - m_Value: {x: 0.42, y: 0.3, z: 0}
+      - m_Value: {x: 0.35, y: 0.25, z: 0}
         m_Name: RightFoot_position
         m_Overridden: 1
     m_Vector4f:

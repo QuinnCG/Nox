@@ -22,6 +22,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dce97b287dbf9e34e94d67a406f0d23b
+    m_Address: PossessedIndicator.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef119eef91f63b342bc1dcb33f35a4e5
+    m_Address: PossessionTargetIndicator.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 11b1c4a9f3ebb544ba4d9d5d60766970, type: 2}
   m_SchemaSet:

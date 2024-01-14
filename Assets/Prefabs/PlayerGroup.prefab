@@ -423,6 +423,10 @@ PrefabInstance:
       propertyPath: VirtualCamera
       value: 
       objectReference: {fileID: 5247301616659497474}
+    - target: {fileID: 439905183626305628, guid: c555241f727a5494ab22aa759285b507, type: 3}
+      propertyPath: PossessionRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1635338908992136701, guid: c555241f727a5494ab22aa759285b507, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -505,3 +509,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Document: {fileID: 6392389620465875316}
+  PlayerHealthFadeIn: 1
+  PlayerHealthFadeOut: 2

@@ -2,6 +2,8 @@ using Game.DamageSystem;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.TextCore.Text;
 
 namespace Game
 {
@@ -40,6 +42,8 @@ namespace Game
 
 		// The character closest to the crosshair while in possession mode.
 		private Character _selectedCharacter;
+		private GameObject _selectedIndicator;
+		private GameObject _possessedIndicator;
 
 		private void Awake()
 		{
@@ -67,20 +71,11 @@ namespace Game
 			// While in possession mode.
 			if (InPossessionMode)
 			{
-				var pastChar = _selectedCharacter;
 				FindCharacterNearestToCrosshair();
 
-				if (pastChar != _selectedCharacter)
+				if (_selectedCharacter)
 				{
-					if (pastChar)
-					{
-						SetCharacterHighlightIndicator(pastChar, false);
-					}
-
-					if (_selectedCharacter)
-					{
-						SetCharacterHighlightIndicator(_selectedCharacter, true);
-					}
+					ShowPossessTargetIndicator(_selectedCharacter);
 				}
 			}
 
@@ -102,32 +97,7 @@ namespace Game
 			CameraTarget.position = result;
 		}
 
-		/* PUBLIC METHODS */
-		public void EnterPossessionMode()
-		{
-			if (!InPossessionMode)
-			{
-				InPossessionMode = true;
-				Time.timeScale = 0.3f;
-			}
-		}
-
-		public void ExitPossessionMode()
-		{
-			if (InPossessionMode)
-			{
-				InPossessionMode = false;
-				Time.timeScale = 1f;
-
-				if (_selectedCharacter)
-				{
-					SetCharacterHighlightIndicator(_selectedCharacter, false);
-					_selectedCharacter = null;
-				}
-			}
-		}
-
-		/* PRIVATE METHODS */
+		/* INPUT */
 		private void OnMove(Vector2 dir)
 		{
 			Movement.Move(dir);
@@ -151,12 +121,62 @@ namespace Game
 			PossessedCharacter.Attack(target);
 		}
 
-		private void SetCharacterHighlightIndicator(Character character, bool enabled)
+		/* POSSESSION MODE */
+		private void EnterPossessionMode()
 		{
-			// TODO: Display indicator above head.
+			if (!InPossessionMode)
+			{
+				InPossessionMode = true;
+				Time.timeScale = 0.3f;
+
+				const string key = "PossessedIndicator.prefab";
+				Vector2 position = GetIndicatorPosition(PossessedCharacter);
+
+				_possessedIndicator = Addressables.InstantiateAsync(key, position, Quaternion.identity, PossessedCharacter.transform)
+					.WaitForCompletion();
+			}
 		}
 
-		// Store the character neartest to the crosshair.
+		private void ExitPossessionMode()
+		{
+			if (InPossessionMode)
+			{
+				InPossessionMode = false;
+				Time.timeScale = 1f;
+
+				if (_selectedCharacter)
+				{
+					HidePossessTargetIndicator();
+					_selectedCharacter = null;
+				}
+
+				if (_possessedIndicator)
+				{
+					Destroy(_possessedIndicator);
+				}
+			}
+		}
+
+		private void ShowPossessTargetIndicator(Character character)
+		{
+			HidePossessTargetIndicator();
+
+			const string key = "PossessionTargetIndicator.prefab";
+			Vector2 position = GetIndicatorPosition(character);
+
+			_selectedIndicator = Addressables.InstantiateAsync(key, position, Quaternion.identity, character.transform)
+				.WaitForCompletion();
+		}
+
+		private void HidePossessTargetIndicator()
+		{
+			if (_selectedIndicator != null)
+			{
+				Destroy(_selectedIndicator);
+			}
+		}
+
+		// Store the character nearest to the crosshair.
 		private void FindCharacterNearestToCrosshair()
 		{
 			Vector2 crosshairPos = CrosshairManager.Instance.CurrentPosition;
@@ -180,9 +200,11 @@ namespace Game
 				}
 			}
 
-			// Null is possibile if no characters are within the defined radius.
-			// A possibile optimization would be to do a smaller circle. Failing that then you do the bigger one.
-			_selectedCharacter = nearestChar;
+            if (nearestChar != _selectedCharacter)
+            {
+				HidePossessTargetIndicator();
+				_selectedCharacter = nearestChar;
+			}
 		}
 
 		private bool DoesCharacterMeetPossessionCriteria(Character character)
@@ -209,6 +231,17 @@ namespace Game
 			Health = character.GetComponent<Health>();
 
 			OnCharacterPossessed?.Invoke(character);
+		}
+
+		private Vector2 GetIndicatorPosition(Character character)
+		{
+			// TODO: Scale offset with bounds size.
+
+			var bounds = character.GetComponent<Collider2D>().bounds;
+			float offset = 0.2f;
+			Vector2 position = bounds.center + (Vector3.up * (bounds.extents.y + offset));
+
+			return position;
 		}
 	}
 }
