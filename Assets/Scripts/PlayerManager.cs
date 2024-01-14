@@ -19,10 +19,13 @@ namespace Game
 		private GameObject DefaultCharacter;
 
 		[SerializeField, Required]
-		private CinemachineVirtualCamera VirtualCamera;
+		private Transform CameraTarget;
 
 		[SerializeField]
 		private float PossessionRadius = 3f;
+
+		[SerializeField, Unit(Units.Percent), Tooltip("Higher values will make the camera lean more towards the crosshair.")]
+		private float CameraCrosshairBias = 0.3f;
 
 		public Character PossessedCharacter { get; private set; }
 		public bool InPossessionMode { get; private set; }
@@ -77,7 +80,7 @@ namespace Game
 				}
 			}
 
-			// TODO: Remove this tempo code when no longer needed.
+			// Possesion mode controls.
 			if (Input.GetKeyDown(KeyCode.Tab))
 			{
 				EnterPossessionMode();
@@ -86,6 +89,13 @@ namespace Game
 			{
 				ExitPossessionMode();
 			}
+
+			// Position camera target.
+			Vector2 start = PossessedCharacter.transform.position;
+			Vector2 end = CrosshairManager.Instance.CurrentPosition;
+
+			var result = Vector2.Lerp(start, end, CameraCrosshairBias);
+			CameraTarget.position = result;
 		}
 
 		/* PUBLIC METHODS */
@@ -133,7 +143,7 @@ namespace Game
 				return;
 			}
 
-			Vector2 target = CrosshairManager.Instance.CrosshairPosition;
+			Vector2 target = CrosshairManager.Instance.CurrentPosition;
 			PossessedCharacter.Attack(target);
 		}
 
@@ -146,7 +156,7 @@ namespace Game
 		// Store the character neartest to the crosshair.
 		private void FindCharacterNearestToCrosshair()
 		{
-			Vector2 crosshairPos = CrosshairManager.Instance.CrosshairPosition;
+			Vector2 crosshairPos = CrosshairManager.Instance.CurrentPosition;
 			Collider2D[] colliders = Physics2D.OverlapCircleAll(crosshairPos, PossessionRadius, LayerMask.GetMask("Character"));
 
 			float nearestDst = float.PositiveInfinity;
@@ -189,8 +199,6 @@ namespace Game
 		private void PossessCharacter(Character character)
 		{
 			PossessedCharacter = character;
-			VirtualCamera.Follow = character.transform;
-
 			_movement = character.GetComponent<Movement>();
 		}
 	}

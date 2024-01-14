@@ -10,7 +10,7 @@ namespace Game
 		[SerializeField, Required]
 		private GameObject CrosshairPrefab;
 
-		public Vector2 CrosshairPosition => _crosshair.position;
+		public Vector2 CurrentPosition => _crosshair.position;
 
 		private Camera _cam;
 		private Transform _crosshair;

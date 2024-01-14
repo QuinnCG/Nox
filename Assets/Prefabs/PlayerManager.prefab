@@ -60,7 +60,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultCharacter: {fileID: 4850610673639980936, guid: 01ed844deb3072047853c6f4efee15ac, type: 3}
-  VirtualCamera: {fileID: 0}
+  CameraTarget: {fileID: 0}
+  PossessionRadius: 3
+  CameraCrosshairBias: 0.15
 --- !u!114 &8221120025603944524
 MonoBehaviour:
   m_ObjectHideFlags: 0
