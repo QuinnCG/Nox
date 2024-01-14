@@ -24,9 +24,9 @@ namespace Game
 		private Transform CameraTarget;
 
 		[SerializeField]
-		private float PossessionRadius = 3f;
+		private float PossessionModeTimeScale = 0.3f;
 
-		[SerializeField, Unit(Units.Percent), Tooltip("Higher values will make the camera lean more towards the crosshair.")]
+		[SerializeField, Tooltip("Higher values will make the camera lean more towards the crosshair.")]
 		private float CameraCrosshairBias = 0.3f;
 
 		public Character PossessedCharacter { get; private set; }
@@ -56,6 +56,9 @@ namespace Game
 			_input.OnDash += OnDash;
 			_input.OnAttack += OnAttack;
 
+			_input.OnEnterPossessionMode += OnEnterPossessionMode;
+			_input.OnExitPossessionMode += OnExitPossessionMode;
+
 			Cursor.lockState = CursorLockMode.Confined;
 			Cursor.visible = false;
 		}
@@ -77,16 +80,6 @@ namespace Game
 				{
 					ShowPossessTargetIndicator(_selectedCharacter);
 				}
-			}
-
-			// Possesion mode controls.
-			if (Input.GetKeyDown(KeyCode.Tab))
-			{
-				EnterPossessionMode();
-			}
-			else if (Input.GetKeyUp(KeyCode.Tab))
-			{
-				ExitPossessionMode();
 			}
 
 			// Position camera target.
@@ -121,19 +114,18 @@ namespace Game
 			PossessedCharacter.Attack(target);
 		}
 
-		/* POSSESSION MODE */
-		private void EnterPossessionMode()
+		private void OnEnterPossessionMode()
 		{
 			if (!InPossessionMode)
 			{
 				InPossessionMode = true;
-				Time.timeScale = 0.3f;
+				Time.timeScale = PossessionModeTimeScale;
 
 				ShowPossessedIndicator();
 			}
 		}
 
-		private void ExitPossessionMode()
+		private void OnExitPossessionMode()
 		{
 			if (InPossessionMode)
 			{
@@ -149,6 +141,8 @@ namespace Game
 				HidePossessedIndicator();
 			}
 		}
+
+		/* POSSESSION MODE */
 
 		private void ShowPossessTargetIndicator(Character character)
 		{

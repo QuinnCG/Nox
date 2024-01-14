@@ -1,5 +1,6 @@
 ﻿using Game.InputSystem;
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Game
@@ -9,6 +10,8 @@ namespace Game
 		public event Action<Vector2> OnMove;
 		public event Action OnDash;
 		public event Action OnAttack;
+
+		public event Action OnEnterPossessionMode, OnExitPossessionMode;
 
 		private PlayerControls _input;
 
@@ -24,6 +27,9 @@ namespace Game
 			_input.PlayerMap.Move.performed += ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>().normalized);
 			_input.PlayerMap.Dash.performed += _ => OnDash?.Invoke();
 			_input.PlayerMap.Attack.performed += _ => OnAttack?.Invoke();
+
+			_input.PlayerMap.PossessionMode.performed += _ => OnEnterPossessionMode?.Invoke();
+			_input.PlayerMap.PossessionMode.canceled += _ => OnExitPossessionMode?.Invoke();
 		}
 
 		private void OnEnable()
