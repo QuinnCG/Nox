@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Characters
+namespace Game.AI.Characters
 {
 	public class Wanderer : Character
 	{
