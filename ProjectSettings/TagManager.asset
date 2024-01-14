@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Footsteps
+    uniqueID: 1109642217
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
