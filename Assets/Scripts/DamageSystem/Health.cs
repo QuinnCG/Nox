@@ -139,6 +139,16 @@ namespace Game.DamageSystem
 			if (DisplayCriticalIndicator != display)
 			{
 				DisplayCriticalIndicator = display;
+
+				if (display && IsCritical)
+				{
+					ShowCriticalIndicator();
+				}
+
+				if (!display && IsCritical)
+				{
+					HideCriticalIndicator();
+				}
 			}
 		}
 
@@ -146,14 +156,7 @@ namespace Game.DamageSystem
 		{
 			if (DisplayCriticalIndicator)
 			{
-				var bounds = GetComponent<Collider2D>().bounds;
-				Vector3 offset = CriticalIndicatorOffset;
-
-				const string key = "CriticalHealth.prefab";
-				Vector2 pos = bounds.center + (Vector3.up * bounds.extents.y) + offset;
-
-				_criticalIndicator = Addressables.InstantiateAsync(key, pos, Quaternion.identity, transform)
-					.WaitForCompletion();
+				ShowCriticalIndicator();
 
 				DOVirtual.DelayedCall(0.38f, () =>
 				{
@@ -168,9 +171,26 @@ namespace Game.DamageSystem
 		{
 			if (_criticalIndicator)
 			{
-				Destroy(_criticalIndicator);
+				HideCriticalIndicator();
 				_characterRenderer.material = _healthyMat;
 			}
+		}
+
+		private void ShowCriticalIndicator()
+		{
+			var bounds = GetComponent<Collider2D>().bounds;
+			Vector3 offset = CriticalIndicatorOffset;
+
+			const string key = "CriticalHealth.prefab";
+			Vector2 pos = bounds.center + (Vector3.up * bounds.extents.y) + offset;
+
+			_criticalIndicator = Addressables.InstantiateAsync(key, pos, Quaternion.identity, transform)
+				.WaitForCompletion();
+		}
+
+		private void HideCriticalIndicator()
+		{
+			Destroy(_criticalIndicator);
 		}
 	}
 }

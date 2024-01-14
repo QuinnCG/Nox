@@ -26,6 +26,9 @@ namespace Game
 		[SerializeField]
 		private float PossessionModeTimeScale = 0.3f;
 
+		[SerializeField]
+		private float IndicatorYOffset = 0.4f;
+
 		[SerializeField, Tooltip("Higher values will make the camera lean more towards the crosshair.")]
 		private float CameraCrosshairBias = 0.3f;
 
@@ -153,7 +156,8 @@ namespace Game
 			const string key = "PossessionTargetIndicator.prefab";
 			Vector2 position = GetIndicatorPosition(character);
 
-			_selectedIndicator = Addressables.InstantiateAsync(key, position, Quaternion.identity, character.transform)
+			_selectedIndicator = Addressables
+				.InstantiateAsync(key, position, Quaternion.identity, character.transform)
 				.WaitForCompletion();
 		}
 
@@ -228,23 +232,23 @@ namespace Game
 
 			Movement = character.GetComponent<Movement>();
 			Health = character.GetComponent<Health>();
+			Health.SetDisplayCriticalIndiactor(false);
 
 			OnCharacterPossessed?.Invoke(character);
 		}
 
 		private void UnPossessCharacter(Character character)
 		{
+			Health.SetDisplayCriticalIndiactor(true);
+
 			HideSelfIndicator();
 			character.UnPossess();
 		}
 
 		private Vector2 GetIndicatorPosition(Character character)
 		{
-			// TODO: Scale offset with bounds size.
-
 			var bounds = character.GetComponent<Collider2D>().bounds;
-			float offset = 0.35f;
-			Vector2 position = bounds.center + (Vector3.up * (bounds.extents.y + offset));
+			Vector2 position = bounds.center + (Vector3.up * (bounds.extents.y + IndicatorYOffset));
 
 			return position;
 		}
