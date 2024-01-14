@@ -78,7 +78,7 @@ ScriptedImporter:
     defaultPivotAlignment: 9
     customPivotPosition: {x: 0.5, y: 0.3}
     spritePadding: 0
-    generateModelPrefab: 0
+    generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
@@ -90,12 +90,12 @@ ScriptedImporter:
     defaultPivotAlignment: 9
     customPivotPosition: {x: 0.5, y: 0.3}
     spritePadding: 0
-    generateModelPrefab: 0
+    generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638407885302748014
+  platformSettingsDirtyTick: 638408428479246610
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 4
       width: 3
       height: 2
-    spriteID: 331a2428309037c4ab6964ff4634bde9
+    spriteID: b7a4f8bddafa54348bd6042f85a37006
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -150,7 +150,7 @@ ScriptedImporter:
       y: 4
       width: 3
       height: 2
-    spriteID: 013fde64fe18d824386a5f888f3cbd81
+    spriteID: 5a4b890a8d67f6e44a6aac90aad2d96e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -170,7 +170,7 @@ ScriptedImporter:
       y: 14
       width: 3
       height: 2
-    spriteID: 2ee3bcdd63b0d9947a7604da52b07532
+    spriteID: 468a3319206e0e44fb9f9ff2ada57dcf
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -190,7 +190,7 @@ ScriptedImporter:
       y: 14
       width: 3
       height: 2
-    spriteID: 2618c05e158054d40a26d5e67ab07004
+    spriteID: e1a2b880694a402469472d1d6228739d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -215,7 +215,7 @@ ScriptedImporter:
         y: 2
         width: 3
         height: 2
-      spriteId: 331a2428309037c4ab6964ff4634bde9
+      spriteId: b7a4f8bddafa54348bd6042f85a37006
     - name: PossessedIndicator_Frame_1
       frameIndex: 1
       cellRect:
@@ -223,7 +223,7 @@ ScriptedImporter:
         y: 1
         width: 3
         height: 2
-      spriteId: 013fde64fe18d824386a5f888f3cbd81
+      spriteId: 5a4b890a8d67f6e44a6aac90aad2d96e
     - name: PossessedIndicator_Frame_2
       frameIndex: 2
       cellRect:
@@ -231,7 +231,7 @@ ScriptedImporter:
         y: 0
         width: 3
         height: 2
-      spriteId: 2ee3bcdd63b0d9947a7604da52b07532
+      spriteId: 468a3319206e0e44fb9f9ff2ada57dcf
     - name: PossessedIndicator_Frame_3
       frameIndex: 3
       cellRect:
@@ -239,7 +239,7 @@ ScriptedImporter:
         y: 1
         width: 3
         height: 2
-      spriteId: 2618c05e158054d40a26d5e67ab07004
+      spriteId: e1a2b880694a402469472d1d6228739d
     linkedCells: []
     parentIndex: -1
   platformSettings:

@@ -74,11 +74,13 @@ namespace Game
 			// While in possession mode.
 			if (InPossessionMode)
 			{
-				FindCharacterNearestToCrosshair();
+				var nearest = FindNearestTarget();
 
-				if (_selectedCharacter)
+				if (nearest != _selectedCharacter)
 				{
-					ShowPossessTargetIndicator(_selectedCharacter);
+					HidePossessIndicator();
+					_selectedCharacter = nearest;
+					ShowPossessIndicator(nearest);
 				}
 			}
 
@@ -121,7 +123,7 @@ namespace Game
 				InPossessionMode = true;
 				Time.timeScale = PossessionModeTimeScale;
 
-				ShowPossessedIndicator();
+				ShowSelfIndicator();
 			}
 		}
 
@@ -134,19 +136,19 @@ namespace Game
 
 				if (_selectedCharacter)
 				{
-					HidePossessTargetIndicator();
+					HidePossessIndicator();
 					_selectedCharacter = null;
 				}
 
-				HidePossessedIndicator();
+				HideSelfIndicator();
 			}
 		}
 
 		/* POSSESSION MODE */
 
-		private void ShowPossessTargetIndicator(Character character)
+		private void ShowPossessIndicator(Character character)
 		{
-			HidePossessTargetIndicator();
+			HidePossessIndicator();
 
 			const string key = "PossessionTargetIndicator.prefab";
 			Vector2 position = GetIndicatorPosition(character);
@@ -155,7 +157,7 @@ namespace Game
 				.WaitForCompletion();
 		}
 
-		private void HidePossessTargetIndicator()
+		private void HidePossessIndicator()
 		{
 			if (_selectedIndicator != null)
 			{
@@ -164,7 +166,7 @@ namespace Game
 		}
 
 		// Store the character nearest to the crosshair.
-		private void FindCharacterNearestToCrosshair()
+		private Character FindNearestTarget()
 		{
 			var cam = Camera.main;
 			Vector2 camPos = cam.transform.position;
@@ -179,7 +181,7 @@ namespace Game
 
 			foreach (var collider in colliders)
 			{
-				if (!DoesCharacterMeetPossessionCriteria(collider.GetComponent<Character>()))
+				if (!TestPossessionCriteria(collider.GetComponent<Character>()))
 					continue;
 
 				float dst = Vector2.Distance(crosshairPos, collider.transform.position);
@@ -190,14 +192,10 @@ namespace Game
 				}
 			}
 
-            if (nearestChar != _selectedCharacter)
-            {
-				HidePossessTargetIndicator();
-				_selectedCharacter = nearestChar;
-			}
+			return nearestChar;
 		}
 
-		private bool DoesCharacterMeetPossessionCriteria(Character character)
+		private bool TestPossessionCriteria(Character character)
 		{
 			if (character == PossessedCharacter) return false;
 			if (!character.GetComponent<Health>().IsCritical) return false;
@@ -215,16 +213,29 @@ namespace Game
 
 		private void PossessCharacter(Character character)
 		{
-			PossessedCharacter = character;
+			if (PossessedCharacter != null)
+			{
+				UnPossessCharacter(PossessedCharacter);
+			}
 
-			// Update possessed indicator to appear over new possessed character.
-			HidePossessedIndicator();
-			ShowPossessedIndicator();
+			PossessedCharacter = character;
+			character.Possess();
+
+			if (InPossessionMode)
+			{
+				ShowSelfIndicator();
+			}
 
 			Movement = character.GetComponent<Movement>();
 			Health = character.GetComponent<Health>();
 
 			OnCharacterPossessed?.Invoke(character);
+		}
+
+		private void UnPossessCharacter(Character character)
+		{
+			HideSelfIndicator();
+			character.UnPossess();
 		}
 
 		private Vector2 GetIndicatorPosition(Character character)
@@ -238,7 +249,7 @@ namespace Game
 			return position;
 		}
 
-		private void ShowPossessedIndicator()
+		private void ShowSelfIndicator()
 		{
 			const string key = "PossessedIndicator.prefab";
 			Vector2 position = GetIndicatorPosition(PossessedCharacter);
@@ -247,7 +258,7 @@ namespace Game
 				.WaitForCompletion();
 		}
 
-		private void HidePossessedIndicator()
+		private void HideSelfIndicator()
 		{
 			if (_possessedIndicator)
 			{
