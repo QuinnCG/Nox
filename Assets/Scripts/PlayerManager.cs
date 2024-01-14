@@ -21,6 +21,9 @@ namespace Game
 		[SerializeField, Required]
 		private CinemachineVirtualCamera VirtualCamera;
 
+		[SerializeField]
+		private float PossessionRadius = 3f;
+
 		public Character PossessedCharacter { get; private set; }
 		public bool InPossessionMode { get; private set; }
 
@@ -143,10 +146,8 @@ namespace Game
 		// Store the character neartest to the crosshair.
 		private void FindCharacterNearestToCrosshair()
 		{
-			const float radius = 10f;
-
 			Vector2 crosshairPos = CrosshairManager.Instance.CrosshairPosition;
-			Collider2D[] colliders = Physics2D.OverlapCircleAll(crosshairPos, radius, LayerMask.GetMask("Character"));
+			Collider2D[] colliders = Physics2D.OverlapCircleAll(crosshairPos, PossessionRadius, LayerMask.GetMask("Character"));
 
 			float nearestDst = float.PositiveInfinity;
 			Character nearestChar = null;

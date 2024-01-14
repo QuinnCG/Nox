@@ -35,7 +35,7 @@ namespace Game
 			// will not have thier update method called if they're possessed.
 			if (IsPossessed)
 			{
-				return;
+				//return;
 			}
 		}
 

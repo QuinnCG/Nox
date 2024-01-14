@@ -121,7 +121,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: DemoChar 2
     originalName: 
-    pivot: {x: 0.3478261, y: 0}
+    pivot: {x: 0.39130434, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -151,7 +151,7 @@ ScriptedImporter:
     - name: DemoChar 2
       frameIndex: 0
       cellRect:
-        x: 24
+        x: 23
         y: 16
         width: 20
         height: 32
