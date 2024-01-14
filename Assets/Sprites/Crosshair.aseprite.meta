@@ -147,10 +147,10 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 2
-      y: 1
-      width: 20
-      height: 22
+      x: 4
+      y: 4
+      width: 32
+      height: 32
     spriteID: f37448222fe2be94d9f566cf91944785
     spriteBone: []
     spriteOutline: []
@@ -171,14 +171,14 @@ ScriptedImporter:
     - name: Crosshair
       frameIndex: 0
       cellRect:
-        x: 8
-        y: 8
-        width: 16
-        height: 16
+        x: 16
+        y: 16
+        width: 32
+        height: 32
       spriteId: 00000000000000000000000000000000
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
+  canvasSize: {x: 64, y: 64}

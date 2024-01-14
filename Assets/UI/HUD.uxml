@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/RuntimeStyleSheet.uss?fileID=7433441132597879392&amp;guid=4e6825eb91e080f4280e3147eba1152d&amp;type=3#RuntimeStyleSheet" />
-    <ui:Label text="Room: 1" name="room-count" picking-mode="Ignore" style="position: absolute; left: 10px; top: 50px;" />
-    <ui:VisualElement style="flex-grow: 1; position: absolute; left: 0; justify-content: center; align-items: center; top: 20px; right: 0; align-self: center;">
+    <ui:Label text="Room: 1" name="room-count" picking-mode="Ignore" style="position: absolute; left: 10px; top: 40px;" />
+    <ui:VisualElement style="flex-grow: 1; position: absolute; left: 0; justify-content: center; align-items: center; top: 10px; right: 0; align-self: center;">
         <ui:Label text="Boss Title" name="boss-title" style="position: relative;" />
         <ui:ProgressBar value="75" name="boss-health" style="position: relative; top: auto; left: auto; width: 750px;" />
     </ui:VisualElement>

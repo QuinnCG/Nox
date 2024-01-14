@@ -57,7 +57,7 @@ Material:
     - _Enabled: 0
     - _Thickness: 0.01
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.95686275, g: 0.9254902, b: 0.84705883, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
