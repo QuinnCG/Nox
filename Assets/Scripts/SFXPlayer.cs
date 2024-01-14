@@ -1,7 +1,7 @@
 using FMODUnity;
 using UnityEngine;
 
-namespace Quinn
+namespace Game
 {
 	public class SFXPlayer : MonoBehaviour
 	{
