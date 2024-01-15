@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using FMODUnity;
+using Game.Player;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
@@ -83,19 +84,6 @@ namespace Game.DamageSystem
 			};
 		}
 
-		[Button, BoxGroup("Tools")]
-		public void MakeCritical()
-		{
-			Current = (Max * CriticalPercent) - 0.1f;
-			RemoveHealth(1f);
-		}
-
-		[Button, BoxGroup("Tools")]
-		public void FullHeal()
-		{
-			AddHealth(Max - Current + 1f);
-		}
-
 		public void SetMax(float max)
 		{
 			Max = max;
@@ -143,6 +131,24 @@ namespace Game.DamageSystem
 			{
 				OnDeath?.Invoke(source);
 			}
+		}
+
+		[Button, BoxGroup("Tools")]
+		public void MakeCritical()
+		{
+			Current = (Max * CriticalPercent) - 0.1f;
+			RemoveHealth(1f);
+		}
+
+		[Button, BoxGroup("Tools")]
+		public void FullHeal()
+		{
+			AddHealth(Max - Current + 1f);
+		}
+
+		public void Kill(DamageSource source = DamageSource.Misc)
+		{
+			RemoveHealth(Current, source);
 		}
 
 		public void SetDisplayCriticalIndiactor(bool display)

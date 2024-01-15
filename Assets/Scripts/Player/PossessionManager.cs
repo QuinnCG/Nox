@@ -1,27 +1,16 @@
-using Game.DamageSystem;
+﻿using Game.DamageSystem;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.TextCore.Text;
 
-namespace Game
+namespace Game.Player
 {
-	/// <summary>
-	/// This class acts as the player's "controller" class.
-	/// It manages input from the player and feeds that to the possessed character.
-	/// It is also responsible for some other things unique to the player.
-	/// </summary>
-	[RequireComponent(typeof(InputReader))]
-	public class PlayerManager : MonoBehaviour
+	public class PossessionManager : MonoBehaviour
 	{
-		public static PlayerManager Instance { get; private set; }
-
 		[SerializeField, Required, AssetList(Path = "/Prefabs/Characters")]
 		private GameObject DefaultCharacter;
-
-		[SerializeField, Required]
-		private Transform CameraTarget;
 
 		[SerializeField]
 		private float PossessionModeTimeScale = 0.3f;
@@ -29,42 +18,17 @@ namespace Game
 		[SerializeField]
 		private float IndicatorYOffset = 0.4f;
 
-		[SerializeField, Tooltip("Higher values will make the camera lean more towards the crosshair.")]
-		private float CameraCrosshairBias = 0.3f;
-
 		public Character PossessedCharacter { get; private set; }
 		public bool InPossessionMode { get; private set; }
 
-		public event Action<Character> OnCharacterPossessed;
-
-		// Possessed components.
-		public Movement Movement { get; private set; }
-		public Health Health { get; private set; }
-
-		private InputReader _input;
+		public event Action<Character> OnCharacterPossessed, OnCharacterUnpossessed;
 
 		// The character closest to the crosshair while in possession mode.
 		private Character _selectedCharacter;
+		// The icon above the head of the selected character.
 		private GameObject _selectedIndicator;
+		// The icon above the head of the currently possessed character.
 		private GameObject _possessedIndicator;
-
-		private void Awake()
-		{
-			Instance = this;
-			_input = GetComponent<InputReader>();
-
-			Cursor.lockState = CursorLockMode.Confined;
-			Cursor.visible = false;
-
-			// 'Subscribe' methods to specific events,
-			// so that they are executed when their host event is triggered.
-			_input.OnMove += OnMove;
-			_input.OnDash += OnDash;
-			_input.OnAttack += OnAttack;
-
-			_input.OnEnterPossessionMode += OnEnterPossessionMode;
-			_input.OnExitPossessionMode += OnExitPossessionMode;
-		}
 
 		private void Start()
 		{
@@ -86,40 +50,10 @@ namespace Game
 					ShowPossessIndicator(nearest);
 				}
 			}
-
-			// Position camera target.
-			Vector2 start = PossessedCharacter.transform.position;
-			Vector2 end = CrosshairManager.Instance.CurrentPosition;
-
-			var result = Vector2.Lerp(start, end, CameraCrosshairBias);
-			CameraTarget.position = result;
 		}
 
-		/* INPUT */
-		private void OnMove(Vector2 dir)
-		{
-			Movement.Move(dir);
-		}
-
-		private void OnDash()
-		{
-			PossessedCharacter.Dash();
-		}
-
-		private void OnAttack()
-		{
-			if (InPossessionMode)
-			{
-				PossessSelectedCharacter();
-				// Exit method to avoid following code from being executed.
-				return;
-			}
-
-			Vector2 target = CrosshairManager.Instance.CurrentPosition;
-			PossessedCharacter.Attack(target);
-		}
-
-		private void OnEnterPossessionMode()
+		/* PUBLIC METHODS */
+		public void EnterPossessionMode()
 		{
 			if (!InPossessionMode)
 			{
@@ -130,7 +64,7 @@ namespace Game
 			}
 		}
 
-		private void OnExitPossessionMode()
+		public void ExitPossessionMode()
 		{
 			if (InPossessionMode)
 			{
@@ -147,28 +81,15 @@ namespace Game
 			}
 		}
 
-		/* POSSESSION MODE */
-		private void ShowPossessIndicator(Character character)
+		public void PossessSelected()
 		{
-			HidePossessIndicator();
-
-			const string key = "PossessionTargetIndicator.prefab";
-			Vector2 position = GetIndicatorPosition(character);
-
-			_selectedIndicator = Addressables
-				.InstantiateAsync(key, position, Quaternion.identity, character.transform)
-				.WaitForCompletion();
-		}
-
-		private void HidePossessIndicator()
-		{
-			if (_selectedIndicator != null)
+			if (_selectedCharacter)
 			{
-				Destroy(_selectedIndicator);
+				PossessCharacter(_selectedCharacter);
 			}
 		}
 
-		// Store the character nearest to the crosshair.
+		/* PRIVATE METHODS */
 		private Character FindNearestTarget()
 		{
 			var cam = Camera.main;
@@ -206,14 +127,6 @@ namespace Game
 			return true;
 		}
 
-		private void PossessSelectedCharacter()
-		{
-			if (_selectedCharacter)
-			{
-				PossessCharacter(_selectedCharacter);
-			}
-		}
-
 		private void PossessCharacter(Character character)
 		{
 			if (PossessedCharacter != null)
@@ -229,19 +142,15 @@ namespace Game
 				ShowSelfIndicator();
 			}
 
-			Movement = character.GetComponent<Movement>();
-			Health = character.GetComponent<Health>();
-			Health.SetDisplayCriticalIndiactor(false);
-
 			OnCharacterPossessed?.Invoke(character);
 		}
 
 		private void UnPossessCharacter(Character character)
 		{
-			Health.SetDisplayCriticalIndiactor(true);
-
 			HideSelfIndicator();
 			character.UnPossess();
+
+			OnCharacterUnpossessed?.Invoke(character);
 		}
 
 		private Vector2 GetIndicatorPosition(Character character)
@@ -252,6 +161,7 @@ namespace Game
 			return position;
 		}
 
+		/* INDICATORS */
 		private void ShowSelfIndicator()
 		{
 			const string key = "PossessedIndicator.prefab";
@@ -268,6 +178,26 @@ namespace Game
 			if (_possessedIndicator)
 			{
 				Destroy(_possessedIndicator);
+			}
+		}
+
+		private void ShowPossessIndicator(Character character)
+		{
+			HidePossessIndicator();
+
+			const string key = "PossessionTargetIndicator.prefab";
+			Vector2 position = GetIndicatorPosition(character);
+
+			_selectedIndicator = Addressables
+				.InstantiateAsync(key, position, Quaternion.identity, character.transform)
+				.WaitForCompletion();
+		}
+
+		private void HidePossessIndicator()
+		{
+			if (_selectedIndicator != null)
+			{
+				Destroy(_selectedIndicator);
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Game.DamageSystem;
+using Game.Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -24,6 +25,7 @@ namespace Game.UI
 		private VisualElement _bossTitleContainer;
 		private ProgressBar _bossHealth;
 
+		private Character _lastCharacter;
 		private Health _health;
 		private Tween _healthFadeInTween, _healthFadeOutTween;
 
@@ -41,22 +43,8 @@ namespace Game.UI
 
 		private void Start()
 		{
-			PlayerManager.Instance.OnCharacterPossessed += character =>
-			{
-				var health = character.GetComponent<Health>();
-				_health = health;
-
-				health.OnDamaged += _ => ShowHealth();
-				health.OnReachMaxHealth += () => HideHealth();
-
-				if (health.IsCritical)
-				{
-					ShowHealth();
-				}
-
-				_healthFadeInTween?.Kill();
-				_healthFadeOutTween?.Kill();
-			};
+			PlayerManager.Instance.OnCharacterPossessed += OnCharacterPossessed;
+			OnCharacterPossessed(PlayerManager.Instance.PossessedCharacter);
 		}
 
 		private void Update()
@@ -64,8 +52,38 @@ namespace Game.UI
 			_playerHealth.value = _health.Current / _health.Max;
 		}
 
+		private void OnCharacterPossessed(Character character)
+		{
+			if (_lastCharacter)
+			{
+				var lastHealth = _lastCharacter.GetComponent<Health>();
+				lastHealth.OnDamaged -= OnDamaged;
+				lastHealth.OnReachMaxHealth -= HideHealth;
+			}
+
+			var health = character.gameObject.GetComponent<Health>();
+			_health = health;
+
+			health.OnDamaged += OnDamaged;
+			health.OnReachMaxHealth += HideHealth;
+
+			if (health.IsCritical)
+			{
+				ShowHealth();
+			}
+
+			_lastCharacter = character;
+		}
+
+		private void OnDamaged(float damage)
+		{
+			ShowHealth();
+		}
+
 		private void ShowHealth()
 		{
+			_healthFadeInTween?.Kill();
+
 			_healthFadeInTween = DOTween.To(
 				() => _playerHealth.style.opacity.value,
 				x => _playerHealth.style.opacity = x,
@@ -74,6 +92,8 @@ namespace Game.UI
 
 		private void HideHealth()
 		{
+			_healthFadeOutTween?.Kill();
+
 			_healthFadeOutTween = DOTween.To(
 				() => _playerHealth.style.opacity.value,
 				x => _playerHealth.style.opacity = x,
