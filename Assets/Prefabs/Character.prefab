@@ -123,6 +123,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MoveSpeed>k__BackingField: 5
+  DashSound:
+    Guid:
+      Data1: -296041373
+      Data2: 1334406352
+      Data3: -614909771
+      Data4: 1717129820
+    Path: event:/Dash
 --- !u!114 &2297846897128600392
 MonoBehaviour:
   m_ObjectHideFlags: 0

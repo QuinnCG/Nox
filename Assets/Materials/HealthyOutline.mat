@@ -56,7 +56,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _Enabled: 1
     - _GlowFactor: 1.5
-    - _Thickness: 0.005
+    - _Thickness: 0.0039
     m_Colors:
     - _Color: {r: 0.95686275, g: 0.9254902, b: 0.84705883, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

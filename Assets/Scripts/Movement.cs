@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using FMODUnity;
 using UnityEngine;
 
 namespace Game
@@ -10,6 +11,9 @@ namespace Game
 	{
 		[field: SerializeField]
 		public float MoveSpeed { get; private set; } = 5f;
+
+		[Space, SerializeField]
+		private EventReference DashSound;
 
 		public bool IsDashing { get; private set; }
 		public bool IsMoving { get; private set; }
@@ -45,6 +49,8 @@ namespace Game
 
 		public void Move(Vector2 direction)
 		{
+			if (IsDashing) return;
+
 			IsMoving = direction != Vector2.zero;
 			Vector2 inputDir = direction.normalized;
 
@@ -75,6 +81,11 @@ namespace Game
 				_dashEndTime = Time.time + duration;
 				_dashSpeed = speed;
 				_dashDirection = _lastMoveDir;
+
+				if (!DashSound.IsNull)
+				{
+					RuntimeManager.PlayOneShot(DashSound, transform.position);
+				}
 			}
 		}
 

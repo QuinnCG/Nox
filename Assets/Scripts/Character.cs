@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Game
 {
@@ -20,6 +21,9 @@ namespace Game
 		[SerializeField, BoxGroup("Dash")]
 		private float DashCooldown = 0.2f;
 
+		[SerializeField]
+		private VisualEffect DashTrail;
+
 		public bool IsPossessed { get; private set; }
 
 		protected Movement Movement { get; private set; }
@@ -36,6 +40,14 @@ namespace Game
 		protected virtual void Update()
 		{
 			_animator.SetBool("IsMoving", Movement.IsMoving);
+
+			if (DashTrail)
+			{
+				if (Movement.IsDashing)
+					DashTrail.SetVector3("Direction", Movement.Velocity.normalized * -1f);
+
+				DashTrail.SetBool("Spawn", Movement.IsDashing);
+			}
 		}
 
 		public void Possess()
@@ -62,6 +74,8 @@ namespace Game
 			{
 				Movement.Dash(DashSpeed, DashDuration);
 				_nextDashTime = Time.time + DashDuration + DashCooldown;
+
+				_animator.SetTrigger("Dash");
 			}
 		}
 

@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000013FEABD5F48 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000016F9C8F7198 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -17,19 +17,50 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[ERR] FMOD_OS_File_Open                        : CreateFileW failed, GetLastError = 32 (name = FMOD/BossRush2024/Build/Desktop/Ambience.bank)
-[ERR] RuntimeBankModel::openFile               : Failed to open file 'FMOD/BossRush2024/Build/Desktop/Ambience.bank'
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SoundI::release                          : AmbientWinter_02 (0000016F26806488)
+[LOG] SoundI::release                          :     AmbientWinter_02 (0000016F6AEDA548)
+[LOG] SoundI::release                          :     AmbientWinter_02 (0000016F9C6068F8)
+[LOG] SoundI::release                          : AmbientWind (0000016F26806638)
+[LOG] SoundI::release                          :     AmbientWind (0000016F26F68408)
+[LOG] SoundI::release                          :     AmbientWind (0000016F9C606088)
+[LOG] SoundI::release                          :  (0000016F6DB6BC68)
+[LOG] SoundI::release                          :     CriticalHealth_01 (0000016F6D69E738)
+[LOG] SoundI::release                          :  (0000016F6DB6B0E8)
+[LOG] SoundI::release                          :     CriticalHealth_02 (0000016F6D69FDF8)
+[LOG] SoundI::release                          :  (0000016F6DB6BDD8)
+[LOG] SoundI::release                          :     CriticalHealth_03 (0000016F6D69E3F8)
+[LOG] SoundI::release                          :  (0000016F6DB6B818)
+[LOG] SoundI::release                          :     Dash_01 (0000016F6D6A0958)
+[LOG] SoundI::release                          :  (0000016F6DB6B3C8)
+[LOG] SoundI::release                          :     Dash_02 (0000016F6D69D218)
+[LOG] SoundI::release                          :  (0000016F6DB6BAF8)
+[LOG] SoundI::release                          :     Dash_03 (0000016F6D69D078)
+[LOG] SoundI::release                          :  (0000016F6DB6B988)
+[LOG] SoundI::release                          :     Dash_04 (0000016F65B3AD58)
+[LOG] SoundI::release                          :  (0000016F758B6828)
+[LOG] SoundI::release                          :     Footstep_01 (0000016DD662E0C8)
+[LOG] SoundI::release                          :  (0000016DD7364C58)
+[LOG] SoundI::release                          :     Footstep_02 (0000016DD662E268)
+[LOG] SoundI::release                          :  (0000016F758B66B8)
+[LOG] SoundI::release                          :     Footstep_03 (0000016DD662EA88)
+[LOG] SoundI::release                          :  (0000016F758B60F8)
+[LOG] SoundI::release                          :     Footstep_04 (0000016DB30C5BF8)
+[LOG] SoundI::release                          :  (0000016F758B63D8)
+[LOG] SoundI::release                          :     Footstep_05 (0000016DB30C58B8)
+[LOG] SoundI::release                          :  (0000016F758B6268)
+[LOG] SoundI::release                          :     Footstep_06 (0000016DB30C60D8)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -37,3 +68,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
