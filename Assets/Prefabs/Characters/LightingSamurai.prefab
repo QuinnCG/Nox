@@ -21,13 +21,17 @@ PrefabInstance:
       value: LightingSamurai
       objectReference: {fileID: 0}
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      propertyPath: m_Size.x
+      value: 1.4375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Size.y
-      value: 2.125
+      value: 2.1875
       objectReference: {fileID: 0}
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7626144294115104274, guid: c1d64e924607f584686704c347f61069, type: 3}
+      objectReference: {fileID: -2675833639758970470, guid: c1d64e924607f584686704c347f61069, type: 3}
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -129,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a57ecd436657614f8797138ed0fc11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FootstepVFX: {fileID: 0}
   DashSpeed: 18
   DashDuration: 0.2
   DashCooldown: 0.2

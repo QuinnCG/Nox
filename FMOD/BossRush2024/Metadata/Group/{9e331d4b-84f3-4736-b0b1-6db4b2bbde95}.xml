@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{9e331d4b-84f3-4736-b0b1-6db4b2bbde95}">
+		<property name="color">
+			<value>Yellow</value>
+		</property>
+		<property name="name">
+			<value>SFX</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{efe3a45d-1bf2-45d3-95ee-156c56551cd1}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{c59093e9-655e-4104-8bf0-865609f3846b}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{938e3df5-c3fa-4729-90d2-217866536f71}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{efe3a45d-1bf2-45d3-95ee-156c56551cd1}">
+		<relationship name="effects">
+			<destination>{56f16804-39de-4d37-9324-76d6bbba56d3}</destination>
+			<destination>{db8c5563-0cbd-4a35-9ca1-55f7cfa0e103}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{c59093e9-655e-4104-8bf0-865609f3846b}" />
+	<object class="MixerBusFader" id="{56f16804-39de-4d37-9324-76d6bbba56d3}" />
+	<object class="SFXReverbEffect" id="{db8c5563-0cbd-4a35-9ca1-55f7cfa0e103}">
+		<property name="decayTime">
+			<value>260</value>
+		</property>
+	</object>
+</objects>

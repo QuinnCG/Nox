@@ -38,8 +38,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Footsteps
+    uniqueID: 1109642217
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ghost
+    uniqueID: 2624705491
+    locked: 0
+  - name: UI
+    uniqueID: 1958244519
     locked: 0
   - name: Crosshair
     uniqueID: 1915220261

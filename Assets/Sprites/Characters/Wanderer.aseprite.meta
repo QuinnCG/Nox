@@ -1,0 +1,946 @@
+fileFormatVersion: 2
+guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: DemoChar1_Idle
+    second: {instanceID: 0}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: DemoChar1_Move
+    second: {instanceID: 0}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Idle
+    second: {fileID: 7400000, guid: 666bb725587acc04a965b9aec0514beb, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Move
+    second: {fileID: 7400000, guid: dc3e4b5b2717647458a75285fc2e3cc5, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Wanderer_Idle
+    second: {fileID: 7400000, guid: dbb6473fe079e2b429e8a8978d6caff9, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Wanderer_Move
+    second: {fileID: 7400000, guid: e512f5e9ebb512b4eb6887e1549d87aa, type: 2}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 16
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 9
+    customPivotPosition: {x: 0.503, y: 0.25}
+    spritePadding: 2
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 9
+    customPivotPosition: {x: 0.503, y: 0.25}
+    spritePadding: 2
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638409352708106850
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Wanderer_Frame_0
+    originalName: 
+    pivot: {x: 0.4763078, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 139
+      width: 15
+      height: 33
+    spriteID: 74b1974a4257cf846aec304500b959d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 139}
+  - name: Wanderer_Frame_1
+    originalName: 
+    pivot: {x: 0.4763078, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 27
+      y: 139
+      width: 15
+      height: 32
+    spriteID: e71c49ebbf9ff824dbb55bf9e9335f86
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 27, y: 139}
+  - name: Wanderer_Frame_2
+    originalName: 
+    pivot: {x: 0.4763078, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 73
+      y: 139
+      width: 15
+      height: 31
+    spriteID: 65b9983eb5dfebe4ba829875751edc91
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 73, y: 139}
+  - name: Wanderer_Frame_3
+    originalName: 
+    pivot: {x: 0.4763078, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 139
+      width: 15
+      height: 32
+    spriteID: 7c96e817787c9774c982dff373d52be1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 50, y: 139}
+  - name: Wanderer_Frame_4
+    originalName: 
+    pivot: {x: 0.48768005, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 39
+      width: 24
+      height: 28
+    spriteID: 84cfb09c0605ef84ea965713ec68a11f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 39}
+  - name: Wanderer_Frame_5
+    originalName: 
+    pivot: {x: 0.48768005, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 39
+      width: 24
+      height: 26
+    spriteID: 526ff3b7c5bc7e144b9bf68a360cbf40
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 39}
+  - name: Wanderer_Frame_6
+    originalName: 
+    pivot: {x: 0.48768005, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 39
+      width: 24
+      height: 26
+    spriteID: 822532a78a66fa34791cc5a6fce35875
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 39}
+  - name: Wanderer_Frame_7
+    originalName: 
+    pivot: {x: 0.4663334, y: -0.11111111}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 105
+      width: 23
+      height: 26
+    spriteID: 4f35d4fc46cf9104aa1acf37821470ee
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 105}
+  - name: Wanderer_Frame_8
+    originalName: 
+    pivot: {x: 0.5329524, y: -0.25}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 35
+      y: 105
+      width: 23
+      height: 26
+    spriteID: 4267b1b055a39cb428034b351c635615
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 35, y: 105}
+  - name: Wanderer_Frame_9
+    originalName: 
+    pivot: {x: 0.48768005, y: -0.14814815}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 39
+      width: 24
+      height: 26
+    spriteID: 76662c74908deca4186a79d171dd8c98
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 39}
+  - name: Wanderer_Frame_10
+    originalName: 
+    pivot: {x: 0.42041385, y: -0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 28
+      height: 27
+    spriteID: 19fe9fe004a8a444a8f809048011efd3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Wanderer_Frame_11
+    originalName: 
+    pivot: {x: 0.42041385, y: -0.074074075}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 4
+      width: 28
+      height: 26
+    spriteID: 6f424031c4d1a3b43b56b8869afa42e1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 4}
+  - name: Wanderer_Frame_12
+    originalName: 
+    pivot: {x: 0.38593107, y: -0.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 111
+      y: 4
+      width: 28
+      height: 23
+    spriteID: 1c181294ce9aa3f47a7580129da75997
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 111, y: 4}
+  - name: Wanderer_Frame_13
+    originalName: 
+    pivot: {x: 0.38593107, y: -0.17391305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 39
+      width: 28
+      height: 22
+    spriteID: e1b5ea06276fbf44e9c2e72e596b4795
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 39}
+  - name: Wanderer_Frame_14
+    originalName: 
+    pivot: {x: 0.38593107, y: -0.041666668}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 147
+      y: 4
+      width: 28
+      height: 23
+    spriteID: e9c8de384ba9b0b48903f5d999d6395d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 147, y: 4}
+  - name: Wanderer_Frame_15
+    originalName: 
+    pivot: {x: 0.36400005, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 76
+      y: 4
+      width: 27
+      height: 24
+    spriteID: 7da5e1c77cae49b49a737c0436c3d988
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 76, y: 4}
+  - name: Wanderer_Frame_16
+    originalName: 
+    pivot: {x: 0.35144833, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 168
+      y: 39
+      width: 28
+      height: 22
+    spriteID: 1f1f5a04a2100444a897248875579117
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 168, y: 39}
+  - name: Wanderer_Frame_17
+    originalName: 
+    pivot: {x: 0.35144833, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 204
+      y: 39
+      width: 28
+      height: 22
+    spriteID: 99a08a038c0c5294e9f04afc487109e6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 204, y: 39}
+  - name: Wanderer_Frame_18
+    originalName: 
+    pivot: {x: 0.35144833, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 75
+      width: 28
+      height: 22
+    spriteID: d23ec3685f6a6b34ba80e225f9cdab0f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 75}
+  - name: Wanderer_Frame_19
+    originalName: 
+    pivot: {x: 0.32828578, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 66
+      y: 105
+      width: 27
+      height: 22
+    spriteID: 69af9c10d20f8dd4e83bb757b54fa40a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 66, y: 105}
+  - name: Wanderer_Frame_20
+    originalName: 
+    pivot: {x: 0.30340746, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 172
+      y: 105
+      width: 26
+      height: 21
+    spriteID: 7868be65789a5cd41822da463a1c7c93
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 172, y: 105}
+  - name: Wanderer_Frame_21
+    originalName: 
+    pivot: {x: 0.30340746, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 138
+      y: 105
+      width: 26
+      height: 22
+    spriteID: cdb316e3cf44852499a646b3a248a9d0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 138, y: 105}
+  - name: Wanderer_Frame_22
+    originalName: 
+    pivot: {x: 0.36768004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 4
+      width: 25
+      height: 25
+    spriteID: b02857d236336954090bc38cade2442d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 4}
+  - name: Wanderer_Frame_23
+    originalName: 
+    pivot: {x: 0.48937935, y: -0.22727273}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 183
+      y: 4
+      width: 29
+      height: 22
+    spriteID: 5a647cce9d7f2a348afbb1a0ce2047f2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 183, y: 4}
+  - name: Wanderer_Frame_24
+    originalName: 
+    pivot: {x: 0.48937935, y: -0.6875}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 139
+      width: 29
+      height: 16
+    spriteID: c679da6c8bf252a4796f339503af7bb9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 139}
+  - name: Wanderer_Frame_25
+    originalName: 
+    pivot: {x: 0.48937935, y: -0.5882353}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 206
+      y: 105
+      width: 29
+      height: 17
+    spriteID: 66ab1efc85543b34bb52d5d32cacd179
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 206, y: 105}
+  - name: Wanderer_Frame_26
+    originalName: 
+    pivot: {x: 0.48937935, y: -0.35}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 101
+      y: 105
+      width: 29
+      height: 20
+    spriteID: 9aed12e13c1d7df43adb69624905366b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 101, y: 105}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -1985033620
+    name: Wanderer
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Wanderer_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 26
+        y: 16
+        width: 13
+        height: 31
+      spriteId: 74b1974a4257cf846aec304500b959d5
+    - name: Wanderer_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 26
+        y: 16
+        width: 13
+        height: 30
+      spriteId: e71c49ebbf9ff824dbb55bf9e9335f86
+    - name: Wanderer_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 26
+        y: 16
+        width: 13
+        height: 29
+      spriteId: 65b9983eb5dfebe4ba829875751edc91
+    - name: Wanderer_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 26
+        y: 16
+        width: 13
+        height: 30
+      spriteId: 7c96e817787c9774c982dff373d52be1
+    - name: Wanderer_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 20
+        y: 16
+        width: 22
+        height: 26
+      spriteId: 84cfb09c0605ef84ea965713ec68a11f
+    - name: Wanderer_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 20
+        y: 16
+        width: 22
+        height: 24
+      spriteId: 526ff3b7c5bc7e144b9bf68a360cbf40
+    - name: Wanderer_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 20
+        y: 16
+        width: 22
+        height: 24
+      spriteId: 822532a78a66fa34791cc5a6fce35875
+    - name: Wanderer_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 21
+        y: 19
+        width: 21
+        height: 24
+      spriteId: 4f35d4fc46cf9104aa1acf37821470ee
+    - name: Wanderer_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 21
+        y: 22
+        width: 21
+        height: 24
+      spriteId: 4267b1b055a39cb428034b351c635615
+    - name: Wanderer_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 20
+        y: 20
+        width: 22
+        height: 24
+      spriteId: 76662c74908deca4186a79d171dd8c98
+    - name: Wanderer_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 20
+        y: 17
+        width: 26
+        height: 25
+      spriteId: 19fe9fe004a8a444a8f809048011efd3
+    - name: Wanderer_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 20
+        y: 18
+        width: 26
+        height: 24
+      spriteId: 6f424031c4d1a3b43b56b8869afa42e1
+    - name: Wanderer_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 21
+        y: 19
+        width: 26
+        height: 21
+      spriteId: 1c181294ce9aa3f47a7580129da75997
+    - name: Wanderer_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 21
+        y: 20
+        width: 26
+        height: 20
+      spriteId: e1b5ea06276fbf44e9c2e72e596b4795
+    - name: Wanderer_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 21
+        y: 17
+        width: 26
+        height: 21
+      spriteId: e9c8de384ba9b0b48903f5d999d6395d
+    - name: Wanderer_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 22
+        y: 16
+        width: 25
+        height: 22
+      spriteId: 7da5e1c77cae49b49a737c0436c3d988
+    - name: Wanderer_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 22
+        y: 16
+        width: 26
+        height: 20
+      spriteId: 1f1f5a04a2100444a897248875579117
+    - name: Wanderer_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 22
+        y: 16
+        width: 26
+        height: 20
+      spriteId: 99a08a038c0c5294e9f04afc487109e6
+    - name: Wanderer_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 22
+        y: 16
+        width: 26
+        height: 20
+      spriteId: d23ec3685f6a6b34ba80e225f9cdab0f
+    - name: Wanderer_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 23
+        y: 16
+        width: 25
+        height: 20
+      spriteId: 69af9c10d20f8dd4e83bb757b54fa40a
+    - name: Wanderer_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 24
+        y: 16
+        width: 24
+        height: 19
+      spriteId: 7868be65789a5cd41822da463a1c7c93
+    - name: Wanderer_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 24
+        y: 16
+        width: 24
+        height: 20
+      spriteId: cdb316e3cf44852499a646b3a248a9d0
+    - name: Wanderer_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 23
+        y: 16
+        width: 23
+        height: 23
+      spriteId: b02857d236336954090bc38cade2442d
+    - name: Wanderer_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 18
+        y: 21
+        width: 27
+        height: 20
+      spriteId: 5a647cce9d7f2a348afbb1a0ce2047f2
+    - name: Wanderer_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 18
+        y: 27
+        width: 27
+        height: 14
+      spriteId: c679da6c8bf252a4796f339503af7bb9
+    - name: Wanderer_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 18
+        y: 26
+        width: 27
+        height: 15
+      spriteId: 66ab1efc85543b34bb52d5d32cacd179
+    - name: Wanderer_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 18
+        y: 23
+        width: 27
+        height: 18
+      spriteId: 9aed12e13c1d7df43adb69624905366b
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 64, y: 64}

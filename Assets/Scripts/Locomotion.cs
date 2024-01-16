@@ -8,7 +8,7 @@ namespace Game
 	/// This provides a general system for controlling the velocity of a rigidbody.
 	/// </summary>
 	[RequireComponent(typeof(Rigidbody2D))]
-	public class Locomotion : MonoBehaviour
+	public abstract class Locomotion : MonoBehaviour
 	{
 		public Vector2 Velocity => _rb.velocity;
 

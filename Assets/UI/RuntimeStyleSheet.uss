@@ -1,29 +1,8 @@
-#room-count {
-    color: rgb(244, 236, 216);
-    font-size: 30px;
-    border-top-width: 5px;
-    border-right-width: 5px;
-    border-bottom-width: 5px;
-    border-left-width: 5px;
-    border-left-color: rgb(244, 236, 216);
-    border-right-color: rgb(244, 236, 216);
-    border-top-color: rgb(244, 236, 216);
-    border-bottom-color: rgb(244, 236, 216);
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 2px;
-    padding-top: 5px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-}
-
 #boss-title {
     color: rgb(244, 236, 216);
     -unity-font-style: bold;
     -unity-text-align: middle-center;
-    font-size: 30px;
+    font-size: 25px;
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
@@ -35,7 +14,7 @@
 }
 
 #boss-health .unity-progress-bar__container {
-    height: 40px;
+    height: 30px;
     max-width: none;
     max-height: none;
     min-width: auto;
@@ -122,5 +101,15 @@
 }
 
 Label {
-    -unity-font-definition: url('project://database/Assets/Retro%20Gaming.ttf?fileID=12800000&guid=ebe6396c3c55ff145bcff554f94641a3&type=3#Retro Gaming');
+    -unity-font-definition: url('project://database/Assets/UI/Retro%20Gaming.ttf?fileID=12800000&guid=ebe6396c3c55ff145bcff554f94641a3&type=3#Retro Gaming');
+    color: rgb(244, 236, 216);
+    -unity-font-style: bold;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }

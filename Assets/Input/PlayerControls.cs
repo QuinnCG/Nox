@@ -55,6 +55,15 @@ namespace Game.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PossessionMode"",
+                    ""type"": ""Value"",
+                    ""id"": ""9a17674e-95af-40e4-b58a-b1a903bdf67d"",
+                    ""expectedControlType"": ""Integer"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -255,6 +264,28 @@ namespace Game.InputSystem
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d45dcacb-787b-4e6d-bb1e-14dc560c3e18"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PossessionMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2de63b31-fd04-4d70-b911-38a460c8983d"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PossessionMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -294,6 +325,7 @@ namespace Game.InputSystem
             m_PlayerMap_Move = m_PlayerMap.FindAction("Move", throwIfNotFound: true);
             m_PlayerMap_Dash = m_PlayerMap.FindAction("Dash", throwIfNotFound: true);
             m_PlayerMap_Attack = m_PlayerMap.FindAction("Attack", throwIfNotFound: true);
+            m_PlayerMap_PossessionMode = m_PlayerMap.FindAction("PossessionMode", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -358,6 +390,7 @@ namespace Game.InputSystem
         private readonly InputAction m_PlayerMap_Move;
         private readonly InputAction m_PlayerMap_Dash;
         private readonly InputAction m_PlayerMap_Attack;
+        private readonly InputAction m_PlayerMap_PossessionMode;
         public struct PlayerMapActions
         {
             private @PlayerControls m_Wrapper;
@@ -365,6 +398,7 @@ namespace Game.InputSystem
             public InputAction @Move => m_Wrapper.m_PlayerMap_Move;
             public InputAction @Dash => m_Wrapper.m_PlayerMap_Dash;
             public InputAction @Attack => m_Wrapper.m_PlayerMap_Attack;
+            public InputAction @PossessionMode => m_Wrapper.m_PlayerMap_PossessionMode;
             public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -383,6 +417,9 @@ namespace Game.InputSystem
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @PossessionMode.started += instance.OnPossessionMode;
+                @PossessionMode.performed += instance.OnPossessionMode;
+                @PossessionMode.canceled += instance.OnPossessionMode;
             }
 
             private void UnregisterCallbacks(IPlayerMapActions instance)
@@ -396,6 +433,9 @@ namespace Game.InputSystem
                 @Attack.started -= instance.OnAttack;
                 @Attack.performed -= instance.OnAttack;
                 @Attack.canceled -= instance.OnAttack;
+                @PossessionMode.started -= instance.OnPossessionMode;
+                @PossessionMode.performed -= instance.OnPossessionMode;
+                @PossessionMode.canceled -= instance.OnPossessionMode;
             }
 
             public void RemoveCallbacks(IPlayerMapActions instance)
@@ -436,6 +476,7 @@ namespace Game.InputSystem
             void OnMove(InputAction.CallbackContext context);
             void OnDash(InputAction.CallbackContext context);
             void OnAttack(InputAction.CallbackContext context);
+            void OnPossessionMode(InputAction.CallbackContext context);
         }
     }
 }

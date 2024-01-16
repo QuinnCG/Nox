@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Game
 {
@@ -13,10 +14,15 @@ namespace Game
 	{
 		[SerializeField, BoxGroup("Dash")]
 		private float DashSpeed = 18f;
+
 		[SerializeField, BoxGroup("Dash")]
 		private float DashDuration = 0.2f;
+
 		[SerializeField, BoxGroup("Dash")]
 		private float DashCooldown = 0.2f;
+
+		[SerializeField]
+		private VisualEffect DashTrail;
 
 		public bool IsPossessed { get; private set; }
 
@@ -35,11 +41,12 @@ namespace Game
 		{
 			_animator.SetBool("IsMoving", Movement.IsMoving);
 
-			// Any subclass that overrides this method (provided they make a call to base)
-			// will not have thier update method called if they're possessed.
-			if (IsPossessed)
+			if (DashTrail)
 			{
-				//return;
+				if (Movement.IsDashing)
+					DashTrail.SetVector3("Direction", Movement.Velocity.normalized * -1f);
+
+				DashTrail.SetBool("Spawn", Movement.IsDashing);
 			}
 		}
 
@@ -67,6 +74,8 @@ namespace Game
 			{
 				Movement.Dash(DashSpeed, DashDuration);
 				_nextDashTime = Time.time + DashDuration + DashCooldown;
+
+				_animator.SetTrigger("Dash");
 			}
 		}
 
