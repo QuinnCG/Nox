@@ -67,12 +67,6 @@ namespace Game.Player
 			_input.OnMove += OnMove;
 			_input.OnDash += OnDash;
 			_input.OnAttack += OnAttack;
-
-			//_input.OnEnterPossessionMode += OnEnterPossessionMode;
-			//_input.OnExitPossessionMode += OnExitPossessionMode;
-
-			_input.OnEnterPossessionMode += _possession.EnterPossessionMode;
-			_input.OnExitPossessionMode += _possession.ExitPossessionMode;
 		}
 
 		private void Update()
@@ -83,6 +77,15 @@ namespace Game.Player
 
 			var result = Vector2.Lerp(start, end, CameraCrosshairBias);
 			CameraTarget.position = result;
+
+			if (_input.IsPossessionModeActive && !_possession.InPossessionMode)
+			{
+				_possession.EnterPossessionMode();
+			}
+			else if (!_input.IsPossessionModeActive && _possession.InPossessionMode)
+			{
+				_possession.ExitPossessionMode();
+			}
 		}
 
 		/* INPUT */
@@ -98,7 +101,7 @@ namespace Game.Player
 
 		private void OnAttack()
 		{
-			if (InPossessionMode)
+			if (InPossessionMode && !_possession.PossessingNewTarget)
 			{
 				_possession.PossessSelected();
 				return;

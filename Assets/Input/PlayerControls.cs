@@ -58,12 +58,12 @@ namespace Game.InputSystem
                 },
                 {
                     ""name"": ""PossessionMode"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""9a17674e-95af-40e4-b58a-b1a903bdf67d"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Integer"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [

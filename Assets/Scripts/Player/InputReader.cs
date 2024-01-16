@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-namespace Game
+namespace Game.Player
 {
 	public class InputReader : MonoBehaviour
 	{
@@ -11,7 +11,7 @@ namespace Game
 		public event Action OnDash;
 		public event Action OnAttack;
 
-		public event Action OnEnterPossessionMode, OnExitPossessionMode;
+		public bool IsPossessionModeActive { get; private set; }
 
 		private PlayerControls _input;
 
@@ -27,9 +27,6 @@ namespace Game
 			_input.PlayerMap.Move.performed += ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>().normalized);
 			_input.PlayerMap.Dash.performed += _ => OnDash?.Invoke();
 			_input.PlayerMap.Attack.performed += _ => OnAttack?.Invoke();
-
-			_input.PlayerMap.PossessionMode.performed += _ => OnEnterPossessionMode?.Invoke();
-			_input.PlayerMap.PossessionMode.canceled += _ => OnExitPossessionMode?.Invoke();
 		}
 
 		private void OnEnable()
@@ -50,6 +47,8 @@ namespace Game
 			dir.Normalize();
 			// Unlike the other events, OnMove is executed every frame which even when you aren't moving (input dir of (0, 0) * speed = zero).
 			OnMove?.Invoke(dir);
+
+			IsPossessionModeActive = _input.PlayerMap.PossessionMode.ReadValue<float>() > 0f;
 		}
 	}
 }

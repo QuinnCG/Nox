@@ -1,9 +1,12 @@
-﻿using Game.DamageSystem;
+﻿using DG.Tweening;
+using Game.DamageSystem;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.VFX;
 
 namespace Game.Player
 {
@@ -11,6 +14,15 @@ namespace Game.Player
 	{
 		[SerializeField, Required, AssetList(Path = "/Prefabs/Characters")]
 		private GameObject DefaultCharacter;
+
+		[Space, SerializeField, Required]
+		private GameObject PossessionGhost;
+
+		[SerializeField]
+		private GameObject PossessVFX;
+
+		[SerializeField]
+		private float CastingTime = 0.35f;
 
 		[SerializeField]
 		private float PossessionModeTimeScale = 0.3f;
@@ -20,6 +32,7 @@ namespace Game.Player
 
 		public Character PossessedCharacter { get; private set; }
 		public bool InPossessionMode { get; private set; }
+		public bool PossessingNewTarget { get; private set; }
 
 		public event Action<Character> OnCharacterPossessed, OnCharacterUnpossessed;
 
@@ -30,10 +43,17 @@ namespace Game.Player
 		// The icon above the head of the currently possessed character.
 		private GameObject _possessedIndicator;
 
+		private InputReader _input;
+
+		private void Awake()
+		{
+			_input = GetComponent<InputReader>();
+		}
+
 		private void Start()
 		{
 			var instance = Instantiate(DefaultCharacter, transform.position, Quaternion.identity);
-			PossessCharacter(instance.GetComponent<Character>());
+			Possess(instance.GetComponent<Character>(), skip: true);
 		}
 
 		private void Update()
@@ -66,7 +86,7 @@ namespace Game.Player
 
 		public void ExitPossessionMode()
 		{
-			if (InPossessionMode)
+			if (InPossessionMode && !PossessingNewTarget)
 			{
 				InPossessionMode = false;
 				Time.timeScale = 1f;
@@ -85,7 +105,7 @@ namespace Game.Player
 		{
 			if (_selectedCharacter)
 			{
-				PossessCharacter(_selectedCharacter);
+				Possess(_selectedCharacter);
 			}
 		}
 
@@ -127,25 +147,12 @@ namespace Game.Player
 			return true;
 		}
 
-		private void PossessCharacter(Character character)
+		private void Possess(Character character, bool skip = false)
 		{
-			if (PossessedCharacter != null)
-			{
-				UnPossessCharacter(PossessedCharacter);
-			}
-
-			PossessedCharacter = character;
-			character.Possess();
-
-			if (InPossessionMode)
-			{
-				ShowSelfIndicator();
-			}
-
-			OnCharacterPossessed?.Invoke(character);
+			StartCoroutine(PossessSequence(character, skip));
 		}
 
-		private void UnPossessCharacter(Character character)
+		private void Unpossess(Character character)
 		{
 			HideSelfIndicator();
 			character.UnPossess();
@@ -199,6 +206,69 @@ namespace Game.Player
 			{
 				Destroy(_selectedIndicator);
 			}
+		}
+
+		private IEnumerator PossessSequence(Character character, bool skip)
+		{
+			PossessingNewTarget = true;
+
+			if (!skip)
+			{
+				_input.enabled = false;
+
+				Vector2 pos = PossessedCharacter.transform.position;
+				GameObject ghost = Instantiate(PossessionGhost, pos, Quaternion.identity);
+
+				Vector2 toTarget = character.transform.position - PossessedCharacter.transform.position;
+				float xDir = Mathf.Sign(toTarget.x);
+				ghost.transform.localScale = new Vector3(xDir, 1f, 1f);
+
+				yield return ghost.transform
+					.DOMove(character.transform.position, CastingTime)
+					.SetEase(Ease.Linear)
+					.WaitForCompletion();
+
+				Destroy(ghost);
+
+				pos = character.GetComponent<Collider2D>().bounds.center;
+				var vfx =
+					Instantiate(PossessVFX, pos, Quaternion.identity)
+					.GetComponent<VisualEffect>();
+
+				vfx.SetVector3("Direction", toTarget.normalized);
+
+				Task.Run(() =>
+				{
+					while (vfx.aliveParticleCount != 0)
+					{
+						if (vfx.gameObject == null)
+						{
+							return;
+						}
+					}
+
+					if (vfx.gameObject)
+						Destroy(vfx.gameObject);
+				});
+			}
+
+			if (PossessedCharacter != null)
+			{
+				Unpossess(PossessedCharacter);
+			}
+
+			PossessedCharacter = character;
+			character.Possess();
+
+			if (InPossessionMode)
+			{
+				ShowSelfIndicator();
+			}
+
+			OnCharacterPossessed?.Invoke(character);
+			_input.enabled = true;
+
+			PossessingNewTarget = false;
 		}
 	}
 }
