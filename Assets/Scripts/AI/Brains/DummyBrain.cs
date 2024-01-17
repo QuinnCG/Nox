@@ -2,7 +2,7 @@
 
 namespace Game.AI.Brains
 {
-	public class DummyAI : EnemyBrain
+	public class DummyBrain : EnemyBrain
 	{
 		protected override void Awake()
 		{
