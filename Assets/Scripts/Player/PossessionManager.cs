@@ -62,7 +62,6 @@ namespace Game.Player
 			if (InPossessionMode)
 			{
 				var nearest = FindNearestTarget();
-
 				if (nearest != _selectedCharacter)
 				{
 					HidePossessIndicator();

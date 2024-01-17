@@ -61,8 +61,6 @@ namespace Game.UI
 				lastHealth.OnReachMaxHealth -= HideHealth;
 			}
 
-			Debug.Log(character);
-
 			_health = character.GetComponent<Health>();
 			_health.OnDamaged += OnDamaged;
 			_health.OnReachMaxHealth += HideHealth;
