@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.AI.BossSystem
 {
-	public abstract class Boss : EnemyBrain
+	public abstract class BossBrain : EnemyBrain
 	{
 		[SerializeField]
 		private int PhaseCount = 2;

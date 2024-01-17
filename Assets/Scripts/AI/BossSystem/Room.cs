@@ -1,3 +1,4 @@
+using Game.DamageSystem;
 using UnityEngine;
 
 namespace Game.AI.BossSystem
@@ -5,7 +6,7 @@ namespace Game.AI.BossSystem
 	public class Room : MonoBehaviour
 	{
 		[SerializeField]
-		private Door[] _doors;
+		private Door[] Doors;
 
 		[SerializeField]
 		private GameObject BossPrefab;
@@ -16,11 +17,17 @@ namespace Game.AI.BossSystem
 		[SerializeField]
 		private Trigger Trigger;
 
-		private Boss _boss;
+		private BossBrain _boss;
 
 		private void Awake()
 		{
-			Trigger.OnTrigger += _ => SpawnBoss();
+			Trigger.OnTrigger += _ =>
+			{
+				if (!_boss)
+				{
+					SpawnBoss();
+				}
+			};
 		}
 
 		private void Start()
@@ -31,9 +38,9 @@ namespace Game.AI.BossSystem
 		private void SpawnBoss()
 		{
 			var instance = Instantiate(BossPrefab, SpawnPoint.position, Quaternion.identity, transform);
-			_boss = instance.GetComponent<Boss>();
+			_boss = instance.GetComponent<BossBrain>();
+			_boss.GetComponent<Health>().OnDeath += _ => OnBossDeath();
 
-			_boss.Health.OnDeath += _ => OnBossDeath();
 			CloseAllDoors();
 		}
 
@@ -44,7 +51,7 @@ namespace Game.AI.BossSystem
 
 		private void OpenAllDoors()
 		{
-			foreach (var door in _doors)
+			foreach (var door in Doors)
 			{
 				door.Open();
 			}
@@ -52,7 +59,7 @@ namespace Game.AI.BossSystem
 
 		private void CloseAllDoors()
 		{
-			foreach (var door in _doors)
+			foreach (var door in Doors)
 			{
 				door.Close();
 			}

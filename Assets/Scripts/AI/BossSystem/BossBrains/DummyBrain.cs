@@ -1,8 +1,8 @@
 ﻿using Game.AI.States;
 
-namespace Game.AI.Brains
+namespace Game.AI.BossSystem.BossBrains
 {
-	public class DummyBrain : EnemyBrain
+	public class DummyBrain : BossBrain
 	{
 		protected override void Awake()
 		{

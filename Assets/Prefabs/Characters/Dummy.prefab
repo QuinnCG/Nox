@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1215566544104443256}
   - component: {fileID: 6582310395344392321}
   - component: {fileID: 8583185244823732247}
+  - component: {fileID: 4835373450585456761}
   - component: {fileID: 3809621954784934393}
   - component: {fileID: 6068143130265781743}
   - component: {fileID: 744944438677852231}
-  - component: {fileID: 4835373450585456761}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Untagged
@@ -118,6 +118,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &4835373450585456761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960479896017489875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9feed1f2ddcc35549b6f1f8bf6f1dba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimatorType: 1
+  DefaultAnimation: {fileID: 7400000, guid: dbb6473fe079e2b429e8a8978d6caff9, type: 2}
+  AnimationSequence: []
 --- !u!114 &3809621954784934393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,18 +182,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b49ecf46dbc1bb49873e29a9ed50e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4835373450585456761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3960479896017489875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9feed1f2ddcc35549b6f1f8bf6f1dba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AnimatorType: 1
-  DefaultAnimation: {fileID: 7400000, guid: dbb6473fe079e2b429e8a8978d6caff9, type: 2}
-  AnimationSequence: []
