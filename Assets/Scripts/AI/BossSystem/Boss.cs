@@ -1,60 +1,33 @@
-using Game.DamageSystem;
 using UnityEngine;
 
 namespace Game.AI.BossSystem
 {
-	[RequireComponent(typeof(BossStateMachine))]
-	[RequireComponent(typeof(Health))]
-	public abstract class Boss : MonoBehaviour
+	public abstract class Boss : EnemyBrain
 	{
-		public bool IsDead => Health.IsDead;
+		[SerializeField]
+		private int PhaseCount = 2;
 
-		protected float MaxHP => Health.Max;
-		protected float CurrentHP => Health.Current;
+		// Most data required by a boss already exists in the parent class.
+		protected int CurrentPhase { get; private set; } = 1;
 
-		public Health Health { get; set; }
+		private float _phaseSegment;
 
-		// Boss state machine
-		private BossStateMachine stateMachine;
 
-		void Awake()
+		protected override void Start()
 		{
-			Health = GetComponent<Health>();
+			base.Start();
 
-			// Initialize health and state machine
-			stateMachine = GetComponent<BossStateMachine>();
-
-			if (stateMachine == null)
-			{
-				Debug.LogError("BossBase: BossStateMachine component not found!");
-			}
+			_phaseSegment = Health.Max / PhaseCount;
+			Health.OnDamaged += _ => OnDamaged();
 		}
 
-		void Update()
+		private void OnDamaged()
 		{
-			// Check if the boss is defeated
-			if (CurrentHP <= 0)
-			{
-				stateMachine.TransitionToState(BossState.Defeated);
-			}
-		}
+			float current = Health.Current;
+			int phases = Mathf.FloorToInt(current / _phaseSegment);
 
-		public void Attack()
-		{
-			// Perform the attack based on the current state
-			switch (stateMachine.CurrentState)
-			{
-				case BossState.Idle:
-					// Implement logic for attack during Idle state
-					break;
-
-				case BossState.Attack:
-					// Implement logic for attack during Attack state, would this be AOE and projectile attacks only now?
-					break;
-
-				default:
-					break;
-			}
+			// Start counting from 1 instead of 0.
+			CurrentPhase = phases + 1;
 		}
 	}
 }

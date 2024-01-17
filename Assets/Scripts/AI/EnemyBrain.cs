@@ -19,6 +19,7 @@ namespace Game.AI
 
 		public float HP => Health.Current;
 		public float MaxHP => Health.Max;
+		public bool IsDead => Health.IsDead;
 
 		public Movement Movement { get; private set; }
 		public Health Health { get; private set; }
