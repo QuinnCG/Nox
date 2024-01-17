@@ -7,7 +7,8 @@ namespace Game.AI.BossSystem
 	[RequireComponent(typeof(Health))]
 	public abstract class Boss : MonoBehaviour
 	{
-		// Health-related variables
+		public bool IsDead => Health.IsDead;
+
 		protected float MaxHP => Health.Max;
 		protected float CurrentHP => Health.Current;
 
