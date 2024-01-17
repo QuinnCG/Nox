@@ -29,6 +29,7 @@ namespace Game
 			var animator = gameObject.AddComponent<Animator>();
 
 			_graph = PlayableGraph.Create("Animation Graph");
+			_graph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);
 			_output = AnimationPlayableOutput.Create(_graph, "Animation Output", animator);
 
 			if (AnimatorType == PlayableAnimatorType.PlayDefault)

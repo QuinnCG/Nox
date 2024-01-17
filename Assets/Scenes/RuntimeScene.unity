@@ -616,7 +616,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9feed1f2ddcc35549b6f1f8bf6f1dba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnimatorType: 1
   DefaultAnimation: {fileID: 7400000, guid: dbb6473fe079e2b429e8a8978d6caff9, type: 2}
+  AnimationSequence: []
 --- !u!1001 &2051100297
 PrefabInstance:
   m_ObjectHideFlags: 0
