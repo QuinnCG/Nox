@@ -195,12 +195,16 @@ namespace Game.Player
 		{
 			HidePossessIndicator();
 
-			const string key = "PossessionTargetIndicator.prefab";
-			Vector2 position = GetIndicatorPosition(character);
 
-			_selectedIndicator = Addressables
-				.InstantiateAsync(key, position, Quaternion.identity, character.transform)
-				.WaitForCompletion();
+			if (character != null)
+			{
+				const string key = "PossessionTargetIndicator.prefab";
+				Vector2 position = GetIndicatorPosition(character);
+
+				_selectedIndicator = Addressables
+						.InstantiateAsync(key, position, Quaternion.identity, character.transform)
+						.WaitForCompletion();
+			}
 		}
 
 		private void HidePossessIndicator()

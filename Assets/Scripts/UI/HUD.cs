@@ -54,6 +54,12 @@ namespace Game.UI
 
 		private void OnCharacterPossessed(Character character)
 		{
+			if (character == null)
+			{
+				// Handle the case when the character is null
+				return;
+			}
+
 			if (_lastCharacter != null)
 			{
 				var lastHealth = _lastCharacter.GetComponent<Health>();
@@ -78,6 +84,7 @@ namespace Game.UI
 
 			_lastCharacter = character;
 		}
+
 
 		private void OnDamaged(float damage)
 		{
