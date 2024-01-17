@@ -5,11 +5,11 @@ public class RoomManager : MonoBehaviour
 {
     public DoorController doorController { get; private set; }
     public BossSpawner bossSpawner { get; private set; }
-	public Boss boss { get; private set; }
+    public Boss boss { get; private set; }
 
-	void Update()
+    void Update()
     {
-        if (boss.Health.IsDead)
+        if (boss != null && boss.Health != null && boss.Health.IsDead)
         {
             doorController.OpenAllDoors();
         }

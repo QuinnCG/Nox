@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class BossSpawner : MonoBehaviour
 {
-    public GameObject bossPrefab;
-	public Transform SpawnPoint;
+    public GameObject boss;
+    public Transform SpawnPoint;
 
-    void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == PlayerManager.Instance.PossessedCharacter)
         {
@@ -17,6 +17,6 @@ public class BossSpawner : MonoBehaviour
 
     public void SpawnBoss()
     {
-        Instantiate(bossPrefab, SpawnPoint.position, Quaternion.identity);
+        Instantiate(boss, SpawnPoint.position, Quaternion.identity);
     }
 }
