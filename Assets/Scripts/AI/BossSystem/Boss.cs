@@ -12,7 +12,7 @@ namespace Game.AI.BossSystem
 		protected float MaxHP => Health.Max;
 		protected float CurrentHP => Health.Current;
 
-		protected Health Health { get; private set; }
+		public Health Health { get; set; }
 
 		// Boss state machine
 		private BossStateMachine stateMachine;
