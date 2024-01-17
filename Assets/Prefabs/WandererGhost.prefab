@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6263281225093242249}
   - component: {fileID: 1789721467869941536}
-  - component: {fileID: 6381489905517291471}
+  - component: {fileID: 8753261581428283266}
   m_Layer: 0
   m_Name: WandererGhost
   m_TagString: Untagged
@@ -219,25 +219,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6381489905517291471
-Animator:
-  serializedVersion: 7
+--- !u!114 &8753261581428283266
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7165127209510289491}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9d1b583a96bed764e9bdc7330dd51f0a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9feed1f2ddcc35549b6f1f8bf6f1dba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimatorType: 1
+  DefaultAnimation: {fileID: -8863155357993509816, guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c, type: 3}
+  AnimationSequence: []

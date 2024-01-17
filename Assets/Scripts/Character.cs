@@ -21,26 +21,24 @@ namespace Game
 		[SerializeField, BoxGroup("Dash")]
 		private float DashCooldown = 0.2f;
 
-		[SerializeField]
+		[Space, SerializeField]
 		private VisualEffect DashTrail;
 
 		public bool IsPossessed { get; private set; }
 
 		protected Movement Movement { get; private set; }
+		protected PlayableAnimator Animator { get; private set; }
 
-		private Animator _animator;
 		private float _nextDashTime;
 
 		protected virtual void Awake()
 		{
 			Movement = GetComponent<Movement>();
-			_animator = GetComponentInChildren<Animator>();
+			Animator = GetComponentInChildren<PlayableAnimator>();
 		}
 
 		protected virtual void Update()
 		{
-			_animator.SetBool("IsMoving", Movement.IsMoving);
-
 			if (DashTrail)
 			{
 				if (Movement.IsDashing)
@@ -74,8 +72,6 @@ namespace Game
 			{
 				Movement.Dash(DashSpeed, DashDuration);
 				_nextDashTime = Time.time + DashDuration + DashCooldown;
-
-				_animator.SetTrigger("Dash");
 			}
 		}
 
