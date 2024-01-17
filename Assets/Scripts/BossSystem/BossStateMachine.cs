@@ -26,7 +26,7 @@ public class BossStateMachine : MonoBehaviour
         {
             case BossState.Idle:
                 // Idle state logic with a transition condition placeholder
-                if (/* Condition to transition to Attack state */)
+                if(true)
                 {
                     TransitionToState(BossState.Attack);
                 }
@@ -34,7 +34,7 @@ public class BossStateMachine : MonoBehaviour
 
             case BossState.Attack:
                 // Attack state logic with a transition condition placeholder
-                if (/* Condition to transition to Defeated state */)
+                if(true)
                 {
                     TransitionToState(BossState.Defeated);
                 }

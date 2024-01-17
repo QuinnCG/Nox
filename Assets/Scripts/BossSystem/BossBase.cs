@@ -32,8 +32,8 @@ public class BossBase : MonoBehaviour
         }
     }
     
-    /* I referenced these forms: https://medium.com/@tylerleehenry/creating-a-boss-in-unity-5c7d5ff30b4a
-    */                          https://unitycodemonkey.com/video.php?v=qZC1VYWnHZ8
+    // I referenced these forms: https://medium.com/@tylerleehenry/creating-a-boss-in-unity-5c7d5ff30b4a
+    //                          https://unitycodemonkey.com/video.php?v=qZC1VYWnHZ8
 
     // Method to take damage
     public void TakeDamage(int damage)
