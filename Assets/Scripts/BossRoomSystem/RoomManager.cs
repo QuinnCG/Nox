@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    public DoorController doorController;
-    public BossSpawner bossSpawner;
-    public Boss isdead;
+    public DoorController doorController { get; private set; }
+    public BossSpawner bossSpawner { get; private set; }
+	public Boss boss { get; private set; }
 
-    void Update()
+	void Update()
     {
-        if (Boss.Health.IsDead())
+        if (boss.Health.IsDead)
         {
             doorController.OpenAllDoors();
         }
