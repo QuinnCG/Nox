@@ -429,3 +429,6 @@ MonoBehaviour:
   DashDuration: 0.25
   DashCooldown: 0.2
   DashTrail: {fileID: 6513513715175669271}
+  IdleAnim: {fileID: 7400000, guid: dbb6473fe079e2b429e8a8978d6caff9, type: 2}
+  MoveAnim: {fileID: 7400000, guid: e512f5e9ebb512b4eb6887e1549d87aa, type: 2}
+  DashAnim: {fileID: -8863155357993509816, guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c, type: 3}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6970841934003950002}
   - component: {fileID: 1953829685672046402}
-  - component: {fileID: 5012772847559214361}
+  - component: {fileID: 7995100448441831199}
   m_Layer: 0
   m_Name: CriticalHealth
   m_TagString: Untagged
@@ -87,25 +87,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5012772847559214361
-Animator:
-  serializedVersion: 7
+--- !u!114 &7995100448441831199
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5751999964470997335}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7c69eaeb7ba340245a89b99fe7792598, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9feed1f2ddcc35549b6f1f8bf6f1dba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimatorType: 2
+  DefaultAnimation: {fileID: 0}
+  AnimationSequence:
+  - {fileID: -6739901608540338337, guid: 339e325a83a3c374da6b90fb01db79ce, type: 3}
+  - {fileID: -1394380028033222937, guid: 339e325a83a3c374da6b90fb01db79ce, type: 3}
