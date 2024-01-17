@@ -61,13 +61,13 @@ namespace Game.UI
 				lastHealth.OnReachMaxHealth -= HideHealth;
 			}
 
-			var health = character.gameObject.GetComponent<Health>();
-			_health = health;
+			Debug.Log(character);
 
-			health.OnDamaged += OnDamaged;
-			health.OnReachMaxHealth += HideHealth;
+			_health = character.GetComponent<Health>();
+			_health.OnDamaged += OnDamaged;
+			_health.OnReachMaxHealth += HideHealth;
 
-			if (health.IsCritical)
+			if (_health.IsCritical)
 			{
 				ShowHealth();
 			}

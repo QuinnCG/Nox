@@ -28,6 +28,7 @@ namespace Game.DamageSystem
 		public bool DisplayCriticalIndicator { get; private set; } = true;
 
 		public bool IsCritical => Current / Max <= CriticalPercent;
+		public bool IsDead => Current == 0f;
 
 		public event Action<float> OnMaxSet;
 
@@ -57,7 +58,6 @@ namespace Game.DamageSystem
 			// then it will interface with it.
 			if (TryGetComponent(out Damage damage))
 			{
-				// Note: look up "lambda functions".
 				damage.OnDamage += info => RemoveHealth(info.Damage, info.Source);
 			}
 
@@ -68,6 +68,10 @@ namespace Game.DamageSystem
 
 			OnCritical += OnEnterCritical;
 			OnHealFromCritical += OnLeaveCritical;
+			OnDeath += _ =>
+			{
+				SetDisplayCriticalIndiactor(false);
+			};
 
 			if (StartCritical)
 			{
@@ -92,6 +96,8 @@ namespace Game.DamageSystem
 
 		public void AddHealth(float amount)
 		{
+			if (IsDead) return;
+
 			bool isMax = Current == Max;
 			bool wasCritical = IsCritical;
 
@@ -114,6 +120,8 @@ namespace Game.DamageSystem
 
 		public void RemoveHealth (float amount, DamageSource source = DamageSource.Misc)
 		{
+			if (IsDead) return;
+
 			// The actual amount removed (capped at 0).
 			float delta = Mathf.Min(Current, amount);
 

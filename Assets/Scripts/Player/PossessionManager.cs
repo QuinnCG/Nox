@@ -141,8 +141,11 @@ namespace Game.Player
 
 		private bool IsPossessable(Character character)
 		{
+			var health = character.GetComponent<Health>();
+
 			if (character == PossessedCharacter) return false;
-			if (!character.GetComponent<Health>().IsCritical) return false;
+			if (!health.IsCritical) return false;
+			if (health.IsDead) return false;
 
 			return true;
 		}
@@ -156,6 +159,7 @@ namespace Game.Player
 		{
 			HideSelfIndicator();
 			character.UnPossess();
+			character.GetComponent<Health>().Kill();
 
 			OnCharacterUnpossessed?.Invoke(character);
 		}
