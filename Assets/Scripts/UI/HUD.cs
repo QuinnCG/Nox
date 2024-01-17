@@ -49,25 +49,31 @@ namespace Game.UI
 
 		private void Update()
 		{
-			_playerHealth.value = _health.Current / _health.Max;
+			_playerHealth.value = _health != null ? _health.Current / _health.Max : 0f;
 		}
 
 		private void OnCharacterPossessed(Character character)
 		{
-			if (_lastCharacter)
+			if (_lastCharacter != null)
 			{
 				var lastHealth = _lastCharacter.GetComponent<Health>();
-				lastHealth.OnDamaged -= OnDamaged;
-				lastHealth.OnReachMaxHealth -= HideHealth;
+				if (lastHealth != null)
+				{
+					lastHealth.OnDamaged -= OnDamaged;
+					lastHealth.OnReachMaxHealth -= HideHealth;
+				}
 			}
 
 			_health = character.GetComponent<Health>();
-			_health.OnDamaged += OnDamaged;
-			_health.OnReachMaxHealth += HideHealth;
-
-			if (_health.IsCritical)
+			if (_health != null)
 			{
-				ShowHealth();
+				_health.OnDamaged += OnDamaged;
+				_health.OnReachMaxHealth += HideHealth;
+
+				if (_health.IsCritical)
+				{
+					ShowHealth();
+				}
 			}
 
 			_lastCharacter = character;
@@ -83,9 +89,9 @@ namespace Game.UI
 			_healthFadeInTween?.Kill();
 
 			_healthFadeInTween = DOTween.To(
-				() => _playerHealth.style.opacity.value,
-				x => _playerHealth.style.opacity = x,
-				1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
+					() => _playerHealth.style.opacity.value,
+					x => _playerHealth.style.opacity = x,
+					1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
 		}
 
 		private void HideHealth()
@@ -93,9 +99,9 @@ namespace Game.UI
 			_healthFadeOutTween?.Kill();
 
 			_healthFadeOutTween = DOTween.To(
-				() => _playerHealth.style.opacity.value,
-				x => _playerHealth.style.opacity = x,
-				0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
+					() => _playerHealth.style.opacity.value,
+					x => _playerHealth.style.opacity = x,
+					0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
 		}
 
 		private void ShowBoss()
