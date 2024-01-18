@@ -58,6 +58,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultMasterVolume: 1
-  DefaultSFXVolume: 1
-  DefaultMusicVolume: 1
-  DefaultAmbienceVolume: 1
+  DefaultSFXVolume: 0.8
+  DefaultMusicVolume: 0.8
+  DefaultAmbienceVolume: 0.8
