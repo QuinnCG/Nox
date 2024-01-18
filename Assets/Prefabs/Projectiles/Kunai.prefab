@@ -105,6 +105,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1791f311825b545ad9050544762b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 12
+  <Speed>k__BackingField: 14
+  RotateToFace: 1
+  RotationalOffset: -45
   Damage: 22
-  SpawnOnDeath: {fileID: 0}
+  ThrowSound:
+    Guid:
+      Data1: 1075035248
+      Data2: 1260950069
+      Data3: 2110849204
+      Data4: 2041636170
+    Path: event:/KunaiThrow
+  HitSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  SpawnOnHit: {fileID: 0}

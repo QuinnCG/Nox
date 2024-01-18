@@ -20,6 +20,9 @@ namespace Game.ProjectileSystem
 		private float Damage = 25f;
 
 		[SerializeField, BoxGroup("On Hit")]
+		private EventReference ThrowSound;
+
+		[SerializeField, BoxGroup("On Hit")]
 		private EventReference HitSound;
 
 		[SerializeField, BoxGroup("On Hit")]
@@ -35,6 +38,11 @@ namespace Game.ProjectileSystem
 		protected override void OnSpawn(Vector2 direction)
 		{
 			_direction = direction;
+
+			if (!ThrowSound.IsNull)
+			{
+				RuntimeManager.PlayOneShotAttached(ThrowSound, gameObject);
+			}
 		}
 
 		protected override void OnCollide(Health health)
@@ -42,6 +50,11 @@ namespace Game.ProjectileSystem
 			if (SpawnOnHit)
 			{
 				Instantiate(SpawnOnHit);
+			}
+
+			if (!HitSound.IsNull)
+			{
+				RuntimeManager.PlayOneShot(HitSound, transform.position);
 			}
 
 			health.TakeDamage(Damage, DamageSource.Enemy);
