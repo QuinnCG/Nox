@@ -121,15 +121,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Kunai
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.25, y: 0.25}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 12
-      height: 12
+      width: 16
+      height: 16
     spriteID: 57259a83dcea56d40873660e19736960
     spriteBone: []
     spriteOutline: []
@@ -151,10 +151,10 @@ ScriptedImporter:
     - name: Kunai
       frameIndex: 0
       cellRect:
-        x: 2
-        y: 2
-        width: 4
-        height: 4
+        x: 0
+        y: 0
+        width: 8
+        height: 8
       spriteId: 57259a83dcea56d40873660e19736960
     linkedCells: []
     parentIndex: -1
