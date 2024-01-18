@@ -47,6 +47,9 @@ TagManager:
   - name: Ghost
     uniqueID: 2624705491
     locked: 0
+  - name: Projectile
+    uniqueID: 3315051479
+    locked: 0
   - name: UI
     uniqueID: 1958244519
     locked: 0

@@ -244,6 +244,37 @@ VFXRenderer:
   m_SortingLayerID: 1109642217
   m_SortingLayer: -1
   m_SortingOrder: 0
+--- !u!1 &9163438009557024805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1145682899863993212}
+  m_Layer: 6
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1145682899863993212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9163438009557024805}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.23, y: 0.98, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4665405494393309968}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6948966019077865669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -381,6 +412,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2364801377548209109, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7394039629823458784}
+    - targetCorrespondingSourceObject: {fileID: 2364801377548209109, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1145682899863993212}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2539884451687759693, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       insertIndex: 1
@@ -476,3 +510,5 @@ MonoBehaviour:
   IdleAnim: {fileID: 7400000, guid: dbb6473fe079e2b429e8a8978d6caff9, type: 2}
   MoveAnim: {fileID: 7400000, guid: e512f5e9ebb512b4eb6887e1549d87aa, type: 2}
   DashAnim: {fileID: -8863155357993509816, guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c, type: 3}
+  ProjectilePrefab: {fileID: 8550588314174644299, guid: b652bd102e1e98649beba201e890d3de, type: 3}
+  ProjectileSpawn: {fileID: 1145682899863993212}

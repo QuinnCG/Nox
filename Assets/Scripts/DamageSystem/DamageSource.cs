@@ -5,7 +5,7 @@
 		Misc,
 		Environment,
 		Boss,
-		Minion,
+		Enemy,
 		Possession
 	}
 }

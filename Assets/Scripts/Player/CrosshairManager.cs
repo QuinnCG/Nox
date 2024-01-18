@@ -42,5 +42,11 @@ namespace Game.Player
 
 			_crosshair.position = worldPos;
 		}
+
+		public Vector2 GetDirectionToCrosshair()
+		{
+			Vector2 pos = PlayerManager.Instance.PossessedCharacter.transform.position;
+			return (CurrentPosition - pos).normalized;
+		}
 	}
 }

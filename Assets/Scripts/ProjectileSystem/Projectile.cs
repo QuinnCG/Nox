@@ -1,6 +1,8 @@
 using Game.DamageSystem;
 using Game.Player;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Game.ProjectileSystem
 {
@@ -13,13 +15,25 @@ namespace Game.ProjectileSystem
 		private Rigidbody2D _rb;
 		private Vector2 _vel;
 
-		public static void Spawn(GameObject prefab)
+		public static Projectile Spawn(GameObject prefab, Vector2 origin, Vector2 direction)
 		{
+			var instance = Instantiate(prefab, origin, Quaternion.identity);
+			var proj = instance.GetComponent<Projectile>();
+			proj.OnSpawn(direction);
 
+			return proj;
 		}
-		public static void Spawn(string key)
+		public static AsyncOperationHandle Spawn(string key, Vector2 origin, Vector2 direction)
 		{
+			var handle = Addressables.InstantiateAsync(key, origin, Quaternion.identity);
+			handle.Completed += opHandle =>
+			{
+				var instance = opHandle.Result;
+				var proj = instance.GetComponent<Projectile>();
+				proj.OnSpawn(direction);
+			};
 
+			return handle;
 		}
 
 		protected virtual void Awake()
@@ -45,9 +59,16 @@ namespace Game.ProjectileSystem
 			}
 		}
 
-		public void Move(Vector2 velocity)
+		public void Move(Vector2 velocity, bool rotateToFace = true, float rotationOffset = -45f)
 		{
 			_vel = velocity;
+
+			if (rotateToFace)
+			{
+				Vector2 dir = velocity.normalized;
+				float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + rotationOffset;
+				transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			}
 		}
 
 		protected virtual void OnSpawn(Vector2 direction) { }

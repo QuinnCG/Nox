@@ -1,4 +1,5 @@
-﻿using Game.AnimationSystem;
+﻿using Game.Player;
+using Game.ProjectileSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -14,6 +15,12 @@ namespace Game.Characters
 
 		[SerializeField, BoxGroup("Animation"), Required]
 		private AnimationClip DashAnim;
+
+		[Space, SerializeField, BoxGroup("Attack"), Required]
+		private GameObject ProjectilePrefab;
+
+		[SerializeField, BoxGroup("Attack"), Required]
+		private Transform ProjectileSpawn;
 
 		protected override void Update()
 		{
@@ -32,7 +39,10 @@ namespace Game.Characters
 
 		public override void Attack(Vector2 target)
 		{
-			// TODO: Add attack.
+			Vector2 origin = ProjectileSpawn.position;
+			Vector2 dir = CrosshairManager.Instance.GetDirectionToCrosshair();
+
+			Projectile.Spawn(ProjectilePrefab, origin, dir);
 		}
 
 		public override void Dash()

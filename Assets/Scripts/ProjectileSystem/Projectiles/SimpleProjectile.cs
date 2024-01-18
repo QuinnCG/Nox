@@ -1,4 +1,5 @@
-﻿using Game.DamageSystem;
+﻿using FMODUnity;
+using Game.DamageSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -6,20 +7,29 @@ namespace Game.ProjectileSystem
 {
 	public class SimpleProjectile : Projectile
 	{
-		[SerializeField, Unit(Units.MetersPerSecond)]
-		private float Speed = 14f;
+		[field: SerializeField, Unit(Units.MetersPerSecond), BoxGroup("Core")]
+		public float Speed { get; set; } = 14f;
 
-		[SerializeField]
+		[SerializeField, BoxGroup("Core")]
+		private bool RotateToFace = true;
+
+		[SerializeField, Unit(Units.Degree), ShowIf(nameof(RotateToFace)), BoxGroup("Core")]
+		private float RotationalOffset = -45f;
+
+		[SerializeField, BoxGroup("Core")]
 		private float Damage = 25f;
 
-		[Space, SerializeField]
-		private GameObject SpawnOnDeath;
+		[SerializeField, BoxGroup("On Hit")]
+		private EventReference HitSound;
+
+		[SerializeField, BoxGroup("On Hit")]
+		private GameObject SpawnOnHit;
 
 		private Vector2 _direction;
 
 		private void Update()
 		{
-			Move(_direction * Speed);
+			Move(_direction * Speed, RotateToFace, RotationalOffset);
 		}
 
 		protected override void OnSpawn(Vector2 direction)
@@ -29,12 +39,12 @@ namespace Game.ProjectileSystem
 
 		protected override void OnCollide(Health health)
 		{
-			if (SpawnOnDeath)
+			if (SpawnOnHit)
 			{
-				Instantiate(SpawnOnDeath);
+				Instantiate(SpawnOnHit);
 			}
 
-			health.TakeDamage(Damage, DamageSource.Minion);
+			health.TakeDamage(Damage, DamageSource.Enemy);
 			Destroy(gameObject);
 		}
 	}
