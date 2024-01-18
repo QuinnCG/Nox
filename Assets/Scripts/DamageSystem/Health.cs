@@ -53,14 +53,6 @@ namespace Game.DamageSystem
 		{
 			Current = Max;
 
-			// The health component doesn't require a damage component,
-			// but if one is present on the same game object,
-			// then it will interface with it.
-			if (TryGetComponent(out Damage damage))
-			{
-				damage.OnDamage += info => RemoveHealth(info.Damage, info.Source);
-			}
-
 			_characterRenderer = GetComponentInChildren<SpriteRenderer>();
 
 			_healthyMat = Addressables.LoadAssetAsync<Material>("HealthyOutline.mat").WaitForCompletion();
@@ -118,15 +110,15 @@ namespace Game.DamageSystem
 			}
 		}
 
-		public void RemoveHealth (float amount, DamageSource source = DamageSource.Misc)
+		public void TakeDamage(DamageInfo info)
 		{
 			if (IsDead) return;
 
 			// The actual amount removed (capped at 0).
-			float delta = Mathf.Min(Current, amount);
+			float delta = Mathf.Min(Current, info.Damage);
 
 			// Remove HP.
-			Current = Mathf.Max(0f, Current - amount);
+			Current = Mathf.Max(0f, Current - info.Damage);
 
 			OnDamaged?.Invoke(delta);
 
@@ -137,15 +129,31 @@ namespace Game.DamageSystem
 
 			if (Current == 0f)
 			{
-				OnDeath?.Invoke(source);
+				OnDeath?.Invoke(info.Source);
 			}
+		}
+		public void TakeDamage(float damage)
+		{
+			TakeDamage(new DamageInfo(damage));
+		}
+		public void TakeDamage(float damage, Vector2 direction)
+		{
+			TakeDamage(new DamageInfo(damage, direction));
+		}
+		public void TakeDamage(float damage, Vector2 direction, DamageSource source)
+		{
+			TakeDamage(new DamageInfo(damage, direction, source));
+		}
+		public void TakeDamage(float damage, DamageSource source)
+		{
+			TakeDamage(new DamageInfo(damage, source));
 		}
 
 		[Button, BoxGroup("Tools")]
 		public void MakeCritical()
 		{
 			Current = (Max * CriticalPercent) - 0.1f;
-			RemoveHealth(1f);
+			TakeDamage(1f);
 		}
 
 		[Button, BoxGroup("Tools")]
@@ -156,7 +164,7 @@ namespace Game.DamageSystem
 
 		public void Kill(DamageSource source = DamageSource.Misc)
 		{
-			RemoveHealth(Current, source);
+			TakeDamage(Current, source);
 		}
 
 		public void SetDisplayCriticalIndiactor(bool display)

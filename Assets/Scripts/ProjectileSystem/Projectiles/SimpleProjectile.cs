@@ -34,7 +34,7 @@ namespace Game.ProjectileSystem
 				Instantiate(SpawnOnDeath);
 			}
 
-			health.RemoveHealth(Damage, DamageSource.Minion);
+			health.TakeDamage(Damage, DamageSource.Minion);
 			Destroy(gameObject);
 		}
 	}
