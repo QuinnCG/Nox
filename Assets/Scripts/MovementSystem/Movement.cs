@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using FMODUnity;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game.MovementSystem
@@ -9,8 +10,8 @@ namespace Game.MovementSystem
 	/// </summary>
 	public class Movement : Locomotion
 	{
-		[field: SerializeField]
-		public float MoveSpeed { get; private set; } = 5f;
+		[field: SerializeField, Unit(Units.MetersPerSecond)]
+		public float MoveSpeed { get; private set; } = 7f;
 
 		[Space, SerializeField]
 		private EventReference DashSound;

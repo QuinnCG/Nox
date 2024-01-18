@@ -91,7 +91,7 @@ MonoBehaviour:
   DefaultCharacter: {fileID: 4850610673639980936, guid: 01ed844deb3072047853c6f4efee15ac, type: 3}
   PossessionGhost: {fileID: 7165127209510289491, guid: b976423054d6cd244919061fdbe11180, type: 3}
   PossessVFX: {fileID: 5418447348155154577, guid: c7910e5849c6a6e409d5fad43c62b385, type: 3}
-  CastingTime: 0.2
+  GhostSpeed: 60
   PossessionModeTimeScale: 0.3
   IndicatorYOffset: 0.4
 --- !u!1 &9036257263795612584
