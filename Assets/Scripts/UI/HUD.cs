@@ -37,7 +37,8 @@ namespace Game.UI
 
 		private Character _lastCharacter;
 		private Health _health;
-		private Tween _healthFadeInTween, _healthFadeOutTween, _redOverlayTween;
+		private Tween _healthFadeInTween, _healthFadeOutTween;
+		private Tween _redOverlayTween;
 
 		private void Awake()
 		{
@@ -49,7 +50,7 @@ namespace Game.UI
 
 			HideHealth();
 			HideBoss();
-			HideRedOverlay();
+			HideCriticalOverlay();
 		}
 
 		private void Start()
@@ -61,16 +62,6 @@ namespace Game.UI
 		private void Update()
 		{
 			_playerHealth.value = _health != null ? _health.Current / _health.Max : 0f;
-
-			// Check for critical health to show red overlay with pulsating effect
-			if (_health != null && _health.IsCritical)
-			{
-				ShowRedOverlay();
-			}
-			else
-			{
-				HideRedOverlay();
-			}
 		}
 
 		private void OnCharacterPossessed(Character character)
@@ -96,6 +87,9 @@ namespace Game.UI
 			{
 				_health.OnDamaged += OnDamaged;
 				_health.OnReachMaxHealth += HideHealth;
+
+				_health.OnCritical += () => ShowCriticalOverlay();
+				_health.OnHealFromCritical+= () => HideCriticalOverlay();
 
 				if (_health.IsCritical)
 				{
@@ -141,7 +135,7 @@ namespace Game.UI
 			_bossTitleContainer.style.opacity = 0f;
 		}
 
-		private void ShowRedOverlay()
+		private void ShowCriticalOverlay()
 		{
 			_redOverlayTween?.Kill();
 
@@ -157,7 +151,7 @@ namespace Game.UI
 							new Color(initialColor.r, initialColor.g, initialColor.b, 0f), RedOverlayFadeOut).SetEase(Ease.Linear));
 		}
 
-		private void HideRedOverlay()
+		private void HideCriticalOverlay()
 		{
 			_redOverlayTween?.Kill();
 
