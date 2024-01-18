@@ -80,7 +80,7 @@ namespace Game.AI
 #if UNITY_EDITOR
 			if (state == null)
 				Debug.LogError("Enemy brain has been given a null state to transition to!");
-			#endif
+#endif
 
 			ActiveState?.OnFinish(this);
 			ActiveState = state;
