@@ -89,7 +89,7 @@ namespace Game.UI
 				_health.OnReachMaxHealth += HideHealth;
 
 				_health.OnCritical += () => ShowCriticalOverlay();
-				_health.OnHealFromCritical+= () => HideCriticalOverlay();
+				_health.OnHealFromCritical += () => HideCriticalOverlay();
 
 				if (_health.IsCritical)
 				{
@@ -110,9 +110,9 @@ namespace Game.UI
 			_healthFadeInTween?.Kill();
 
 			_healthFadeInTween = DOTween.To(
-					() => _playerHealth.style.opacity.value,
-					x => _playerHealth.style.opacity = x,
-					1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
+							() => _playerHealth.style.opacity.value,
+							x => _playerHealth.style.opacity = x,
+							1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
 		}
 
 		private void HideHealth()
@@ -120,9 +120,9 @@ namespace Game.UI
 			_healthFadeOutTween?.Kill();
 
 			_healthFadeOutTween = DOTween.To(
-					() => _playerHealth.style.opacity.value,
-					x => _playerHealth.style.opacity = x,
-					0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
+							() => _playerHealth.style.opacity.value,
+							x => _playerHealth.style.opacity = x,
+							0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
 		}
 
 		private void ShowBoss()
@@ -141,14 +141,15 @@ namespace Game.UI
 
 			var initialColor = _root.style.backgroundColor.value;
 
-			_redOverlayTween = DOTween.Sequence()
-					.Append(DOTween.To(() => _root.style.backgroundColor.value,
+			// Define the pulsating color
+			Color pulsatingColor = new Color(1f, 0f, 0f, initialColor.a);
+
+			// Set up a loop for pulsating effect
+			_redOverlayTween = DOTween.To(() => _root.style.backgroundColor.value,
 							color => _root.style.backgroundColor = new StyleColor(color),
-							new Color(1f, 0f, 0f, initialColor.a), RedOverlayFadeIn).SetEase(Ease.Linear))
-					.AppendInterval(PulsateInterval)
-					.Append(DOTween.To(() => _root.style.backgroundColor.value,
-							color => _root.style.backgroundColor = new StyleColor(color),
-							new Color(initialColor.r, initialColor.g, initialColor.b, 0f), RedOverlayFadeOut).SetEase(Ease.Linear));
+							pulsatingColor, PulsateInterval)
+					.SetEase(Ease.InOutQuad)
+					.SetLoops(-1, LoopType.Yoyo); // Infinite loop for pulsating effect
 		}
 
 		private void HideCriticalOverlay()
@@ -161,3 +162,4 @@ namespace Game.UI
 		}
 	}
 }
+
