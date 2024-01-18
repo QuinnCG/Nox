@@ -163,11 +163,11 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 5
   DashSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -296041373
+      Data2: 1334406352
+      Data3: -614909771
+      Data4: 1717129820
+    Path: event:/Dash
 --- !u!114 &4969659154595712352
 MonoBehaviour:
   m_ObjectHideFlags: 0
