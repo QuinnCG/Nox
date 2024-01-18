@@ -31,6 +31,7 @@ namespace Game.Player
 		[SerializeField]
 		private float IndicatorYOffset = 0.4f;
 
+
 		public Character PossessedCharacter { get; private set; }
 		public bool InPossessionMode { get; private set; }
 		public bool PossessingNewTarget { get; private set; }
@@ -232,15 +233,18 @@ namespace Game.Player
 				GameObject ghost = Instantiate(PossessionGhost, pos, Quaternion.identity);
 
 				Vector2 toTarget = character.transform.position - PossessedCharacter.transform.position;
+				float distance = toTarget.magnitude;
+
+				float speed = distance / CastingTime;
+
 				float xDir = Mathf.Sign(toTarget.x);
 				ghost.transform.localScale = new Vector3(xDir, 1f, 1f);
 
 				yield return ghost.transform
 						.DOMove(character.transform.position, CastingTime)
 						.SetEase(Ease.Linear)
-						.WaitForCompletion();
-
-				Destroy(ghost);
+						.SetSpeedBased(true)
+						.OnComplete(() => Destroy(ghost));
 
 				pos = character.GetComponent<Collider2D>().bounds.center;
 				var vfx =
