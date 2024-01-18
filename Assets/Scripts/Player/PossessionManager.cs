@@ -250,20 +250,7 @@ namespace Game.Player
 						.GetComponent<VisualEffect>();
 
 				vfx.SetVector3("Direction", toTarget.normalized);
-
-				Task.Run(() =>
-				{
-					while (vfx.aliveParticleCount != 0)
-					{
-						if (vfx.gameObject == null)
-						{
-							return;
-						}
-					}
-
-					if (vfx.gameObject)
-						Destroy(vfx.gameObject);
-				});
+				Destroy(vfx.gameObject, 0.6f);
 			}
 
 			if (PossessedCharacter != null)
