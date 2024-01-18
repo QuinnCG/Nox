@@ -58,7 +58,6 @@ namespace Game.Player
 
 		private void Update()
 		{
-			// While in possession mode.
 			if (InPossessionMode)
 			{
 				var nearest = FindNearestTarget();
@@ -179,8 +178,8 @@ namespace Game.Player
 			Transform parent = PossessedCharacter.transform;
 
 			_possessedIndicator = Addressables
-				.InstantiateAsync(key, position, Quaternion.identity, parent)
-				.WaitForCompletion();
+					.InstantiateAsync(key, position, Quaternion.identity, parent)
+					.WaitForCompletion();
 		}
 
 		private void HideSelfIndicator()
@@ -195,15 +194,14 @@ namespace Game.Player
 		{
 			HidePossessIndicator();
 
-
 			if (character != null)
 			{
 				const string key = "PossessionTargetIndicator.prefab";
 				Vector2 position = GetIndicatorPosition(character);
 
 				_selectedIndicator = Addressables
-						.InstantiateAsync(key, position, Quaternion.identity, character.transform)
-						.WaitForCompletion();
+								.InstantiateAsync(key, position, Quaternion.identity, character.transform)
+								.WaitForCompletion();
 			}
 		}
 
@@ -231,16 +229,16 @@ namespace Game.Player
 				ghost.transform.localScale = new Vector3(xDir, 1f, 1f);
 
 				yield return ghost.transform
-					.DOMove(character.transform.position, CastingTime)
-					.SetEase(Ease.Linear)
-					.WaitForCompletion();
+						.DOMove(character.transform.position, CastingTime)
+						.SetEase(Ease.Linear)
+						.WaitForCompletion();
 
 				Destroy(ghost);
 
 				pos = character.GetComponent<Collider2D>().bounds.center;
 				var vfx =
-					Instantiate(PossessVFX, pos, Quaternion.identity)
-					.GetComponent<VisualEffect>();
+						Instantiate(PossessVFX, pos, Quaternion.identity)
+						.GetComponent<VisualEffect>();
 
 				vfx.SetVector3("Direction", toTarget.normalized);
 
