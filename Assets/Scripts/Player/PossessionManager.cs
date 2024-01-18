@@ -145,6 +145,12 @@ namespace Game.Player
 			if (!health.IsCritical) return false;
 			if (health.IsDead) return false;
 
+			// Line of sight test.
+			var start = PossessedCharacter.GetComponent<Collider2D>().bounds.center;
+			var end = character.GetComponent<Collider2D>().bounds.center;
+			var hit = Physics2D.Linecast(start, end, LayerMask.GetMask("Obstacle"));
+			if (hit.collider != null) return false;
+
 			return true;
 		}
 
