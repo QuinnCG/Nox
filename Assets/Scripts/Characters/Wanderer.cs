@@ -42,7 +42,7 @@ namespace Game.Characters
 			Vector2 origin = ProjectileSpawn.position;
 			Vector2 dir = CrosshairManager.Instance.GetDirectionToCrosshair();
 
-			Projectile.Spawn(ProjectilePrefab, origin, dir);
+			Projectile.Spawn(ProjectilePrefab, origin, dir, gameObject);
 		}
 
 		public override void Dash()

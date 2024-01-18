@@ -191,6 +191,7 @@ namespace Game.DamageSystem
 			{
 				ShowCriticalIndicator();
 
+				_playCriticalSFXTween.Kill();
 				_playCriticalSFXTween = DOVirtual.DelayedCall(0.38f, () =>
 				{
 					RuntimeManager.PlayOneShotAttached("event:/EnterCritical", _criticalIndicator);

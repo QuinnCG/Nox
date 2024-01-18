@@ -52,6 +52,7 @@ namespace Game
 			helper._text = text;
 		}
 
+#if UNITY_EDITOR
 		private void OnDrawGizmos()
 		{
 			Gizmos.color = _color;
@@ -69,5 +70,6 @@ namespace Game
 				Handles.Label(transform.position, _text);
 			}
 		}
+#endif
 	}
 }
