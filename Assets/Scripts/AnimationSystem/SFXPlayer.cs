@@ -1,7 +1,7 @@
 using FMODUnity;
 using UnityEngine;
 
-namespace Game
+namespace Game.AnimationSystem
 {
 	public class SFXPlayer : MonoBehaviour
 	{

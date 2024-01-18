@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2401559183475090538}
   - component: {fileID: 2671091823690428660}
-  - component: {fileID: 1205629081389045834}
+  - component: {fileID: 3718984459638766415}
   m_Layer: 0
   m_Name: SpawnTrigger
   m_TagString: Untagged
@@ -243,7 +243,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1205629081389045834
+--- !u!114 &3718984459638766415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7423791592079694352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3abfbc84e4abb28409e6ba3be0e8b543, type: 3}
+  m_Script: {fileID: 11500000, guid: 7019dcd1a006e41438bbeb1196fa424a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Filter: 1
@@ -308,11 +308,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d555a27ecb48e42bdfa7d748bfa91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _doors:
+  Doors:
   - {fileID: 2453938584929200013}
   BossPrefab: {fileID: 3960479896017489875, guid: c535efe424edda644b63d171ca07c493, type: 3}
   SpawnPoint: {fileID: 7205716507883102904}
-  Trigger: {fileID: 1205629081389045834}
+  Trigger: {fileID: 3718984459638766415}
 --- !u!1 &8757293922284431875
 GameObject:
   m_ObjectHideFlags: 0

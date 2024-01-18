@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.VFX;
 
-namespace Game
+namespace Game.AnimationSystem
 {
 	public class FootstepVFXPlayer : MonoBehaviour
 	{

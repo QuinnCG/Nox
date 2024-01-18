@@ -390,14 +390,14 @@ PrefabInstance:
       addedObject: {fileID: 8568196138999638762}
     - targetCorrespondingSourceObject: {fileID: 8792061822197781996, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8766925869463167378}
+      addedObject: {fileID: 5250239442375608085}
   m_SourcePrefab: {fileID: 100100000, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
 --- !u!1 &1903899370592064809 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8792061822197781996, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
   m_PrefabInstance: {fileID: 6948966019077865669}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8766925869463167378
+--- !u!114 &5250239442375608085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1903899370592064809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6815c54f41f66e24db6929a626e5f526, type: 3}
+  m_Script: {fileID: 11500000, guid: b2f1725cb8dc0464fa8ae777b583181b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FootstepVFX: {fileID: 7599581468262960170}

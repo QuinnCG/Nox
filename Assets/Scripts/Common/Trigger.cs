@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Game
+namespace Game.Common
 {
 	public class Trigger : MonoBehaviour
 	{

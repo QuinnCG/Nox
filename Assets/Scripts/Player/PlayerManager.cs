@@ -1,9 +1,8 @@
 using Game.DamageSystem;
+using Game.MovementSystem;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.TextCore.Text;
 
 namespace Game.Player
 {
@@ -12,7 +11,8 @@ namespace Game.Player
 	/// It manages input from the player and feeds that to the possessed character.
 	/// It is also responsible for some other things unique to the player.
 	/// </summary>
-	[RequireComponent(typeof(InputReader), typeof(PossessionManager))]
+	[RequireComponent(typeof(InputReader))]
+	[RequireComponent(typeof(PossessionManager))]
 	public class PlayerManager : MonoBehaviour
 	{
 		public static PlayerManager Instance { get; private set; }

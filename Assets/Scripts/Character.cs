@@ -1,4 +1,6 @@
-﻿using Sirenix.OdinInspector;
+﻿using Game.AnimationSystem;
+using Game.MovementSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.VFX;
 

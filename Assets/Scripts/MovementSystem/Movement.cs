@@ -2,7 +2,7 @@
 using FMODUnity;
 using UnityEngine;
 
-namespace Game
+namespace Game.MovementSystem
 {
 	/// <summary>
 	/// This is the movement system used by characters in the game.

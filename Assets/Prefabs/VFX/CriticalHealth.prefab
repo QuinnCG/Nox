@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6970841934003950002}
   - component: {fileID: 1953829685672046402}
-  - component: {fileID: 7995100448441831199}
+  - component: {fileID: 4956408207793359504}
   m_Layer: 0
   m_Name: CriticalHealth
   m_TagString: Untagged
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7995100448441831199
+--- !u!114 &4956408207793359504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5751999964470997335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9feed1f2ddcc35549b6f1f8bf6f1dba4, type: 3}
+  m_Script: {fileID: 11500000, guid: eca0737a8ab11844183be2631cae7a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AnimatorType: 2

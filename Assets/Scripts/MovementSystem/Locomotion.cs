@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game
+namespace Game.MovementSystem
 {
 	/// <summary>
 	/// This class is meant to be inherited by other classes.

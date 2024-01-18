@@ -3,7 +3,7 @@ using FMODUnity;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Game
+namespace Game.GeneralManagers
 {
 	public class AudioManager : MonoBehaviour
 	{

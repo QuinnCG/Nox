@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Game
+namespace Game.Player
 {
 	public class CrosshairManager : MonoBehaviour
 	{

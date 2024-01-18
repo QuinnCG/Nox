@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Game
+namespace Game.GeneralManagers
 {
 	/// <summary>
 	/// <para>This is a general manager class.

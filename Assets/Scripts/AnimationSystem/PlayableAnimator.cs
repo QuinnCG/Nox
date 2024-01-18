@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
 
-namespace Game
+namespace Game.AnimationSystem
 {
 	[RequireComponent(typeof(SpriteRenderer))]
 	public class PlayableAnimator : MonoBehaviour

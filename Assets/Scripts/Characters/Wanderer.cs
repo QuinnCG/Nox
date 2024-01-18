@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Game.AnimationSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game.Characters
