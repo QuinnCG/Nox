@@ -450,6 +450,10 @@ PrefabInstance:
       propertyPath: StartCritical
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7503644483418859822, guid: 01ed844deb3072047853c6f4efee15ac, type: 3}
+      propertyPath: <Current>k__BackingField
+      value: 13.900001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

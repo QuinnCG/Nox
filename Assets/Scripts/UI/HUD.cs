@@ -19,6 +19,15 @@ namespace Game.UI
 		[SerializeField, BoxGroup("Animation Settings")]
 		private float PlayerHealthFadeOut = 2f;
 
+		[SerializeField, BoxGroup("Animation Settings")]
+		private float RedOverlayFadeIn = 0.5f;
+
+		[SerializeField, BoxGroup("Animation Settings")]
+		private float RedOverlayFadeOut = 0.5f;
+
+		[SerializeField, BoxGroup("Animation Settings")]
+		private float PulsateInterval = 1f; // Adjusts the interval between pulsations
+
 		private VisualElement _root;
 
 		private ProgressBar _playerHealth;
@@ -28,7 +37,7 @@ namespace Game.UI
 
 		private Character _lastCharacter;
 		private Health _health;
-		private Tween _healthFadeInTween, _healthFadeOutTween;
+		private Tween _healthFadeInTween, _healthFadeOutTween, _redOverlayTween;
 
 		private void Awake()
 		{
@@ -40,6 +49,7 @@ namespace Game.UI
 
 			HideHealth();
 			HideBoss();
+			HideRedOverlay();
 		}
 
 		private void Start()
@@ -51,6 +61,16 @@ namespace Game.UI
 		private void Update()
 		{
 			_playerHealth.value = _health != null ? _health.Current / _health.Max : 0f;
+
+			// Check for critical health to show red overlay with pulsating effect
+			if (_health != null && _health.IsCritical)
+			{
+				ShowRedOverlay();
+			}
+			else
+			{
+				HideRedOverlay();
+			}
 		}
 
 		private void OnCharacterPossessed(Character character)
@@ -86,7 +106,6 @@ namespace Game.UI
 			_lastCharacter = character;
 		}
 
-
 		private void OnDamaged(float damage)
 		{
 			ShowHealth();
@@ -120,6 +139,31 @@ namespace Game.UI
 		private void HideBoss()
 		{
 			_bossTitleContainer.style.opacity = 0f;
+		}
+
+		private void ShowRedOverlay()
+		{
+			_redOverlayTween?.Kill();
+
+			var initialColor = _root.style.backgroundColor.value;
+
+			_redOverlayTween = DOTween.Sequence()
+					.Append(DOTween.To(() => _root.style.backgroundColor.value,
+							color => _root.style.backgroundColor = new StyleColor(color),
+							new Color(1f, 0f, 0f, initialColor.a), RedOverlayFadeIn).SetEase(Ease.Linear))
+					.AppendInterval(PulsateInterval)
+					.Append(DOTween.To(() => _root.style.backgroundColor.value,
+							color => _root.style.backgroundColor = new StyleColor(color),
+							new Color(initialColor.r, initialColor.g, initialColor.b, 0f), RedOverlayFadeOut).SetEase(Ease.Linear));
+		}
+
+		private void HideRedOverlay()
+		{
+			_redOverlayTween?.Kill();
+
+			var initialColor = _root.style.backgroundColor.value;
+
+			_root.style.backgroundColor = new StyleColor(new Color(initialColor.r, initialColor.g, initialColor.b, 0f));
 		}
 	}
 }
