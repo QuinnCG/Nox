@@ -18,9 +18,9 @@ MonoBehaviour:
   uiBounds:
     serializedVersion: 2
     x: -567
-    y: -421
+    y: -422
     width: 3635
-    height: 2105
+    height: 2106
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,7 +83,11 @@ MonoBehaviour:
   - name: Radius
     path: Radius
     tooltip: 
+<<<<<<< HEAD
     space: 0
+=======
+    space: -1
+>>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
     spaceable: 0
     sheetType: m_Float
     realType: Single
@@ -112,7 +116,11 @@ VisualEffectResource:
   m_Infos:
     m_RendererSettings:
       motionVectorGenerationMode: 0
+<<<<<<< HEAD
       shadowCastingMode: 0
+=======
+      shadowCastingMode: 1
+>>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
       rayTracingMode: 0
       receiveShadows: 0
       reflectionProbeUsage: 0
@@ -692,7 +700,11 @@ MonoBehaviour:
   raytracedScaleMode: 0
   needsOwnSort: 0
   needsOwnAabbBuffer: 0
+<<<<<<< HEAD
   shaderGraph: {fileID: 4333940904281232215, guid: d165d56e4a90f694d8ee4f7083f279c7, type: 3}
+=======
+  shaderGraph: {fileID: 4333940904281232215, guid: e4534e18cb8c7e644b8b0efeea27e7da, type: 3}
+>>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
   materialSettings:
     m_PropertyNames: []
     m_PropertyValues: []
@@ -7834,7 +7846,11 @@ MonoBehaviour:
   raytracedScaleMode: 0
   needsOwnSort: 0
   needsOwnAabbBuffer: 0
+<<<<<<< HEAD
   shaderGraph: {fileID: 4333940904281232215, guid: d165d56e4a90f694d8ee4f7083f279c7, type: 3}
+=======
+  shaderGraph: {fileID: 4333940904281232215, guid: e4534e18cb8c7e644b8b0efeea27e7da, type: 3}
+>>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
   materialSettings:
     m_PropertyNames: []
     m_PropertyValues: []

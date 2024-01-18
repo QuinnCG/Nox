@@ -20,7 +20,7 @@ MonoBehaviour:
     x: -662
     y: 185
     width: 2018
-    height: 1871
+    height: 1873
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -60,8 +60,13 @@ MonoBehaviour:
   - name: Line
     path: 
     tooltip: 
+<<<<<<< HEAD
     space: 0
     spaceable: 0
+=======
+    space: 1
+    spaceable: 1
+>>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
     sheetType: 
     realType: Line
     defaultValue:
@@ -75,7 +80,11 @@ MonoBehaviour:
   - name: start
     path: Line_start
     tooltip: Sets the start position of the line.
+<<<<<<< HEAD
     space: 0
+=======
+    space: -1
+>>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
     spaceable: 0
     sheetType: m_Vector3f
     realType: Vector3
@@ -91,7 +100,11 @@ MonoBehaviour:
   - name: end
     path: Line_end
     tooltip: Sets the end position of the line.
+<<<<<<< HEAD
     space: 0
+=======
+    space: -1
+>>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
     spaceable: 0
     sheetType: m_Vector3f
     realType: Vector3
@@ -120,7 +133,11 @@ VisualEffectResource:
   m_Infos:
     m_RendererSettings:
       motionVectorGenerationMode: 0
+<<<<<<< HEAD
       shadowCastingMode: 0
+=======
+      shadowCastingMode: 1
+>>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
       rayTracingMode: 0
       receiveShadows: 0
       reflectionProbeUsage: 0
@@ -750,7 +767,11 @@ MonoBehaviour:
   raytracedScaleMode: 0
   needsOwnSort: 0
   needsOwnAabbBuffer: 0
+<<<<<<< HEAD
   shaderGraph: {fileID: 4333940904281232215, guid: 72a9f73edc664b341b7ee2fdde4b17ae, type: 3}
+=======
+  shaderGraph: {fileID: 4333940904281232215, guid: 8750f35a9c4eeda4188ff9aa78412e2d, type: 3}
+>>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
   materialSettings:
     m_PropertyNames: []
     m_PropertyValues: []
