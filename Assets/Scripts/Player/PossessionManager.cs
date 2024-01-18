@@ -235,7 +235,7 @@ namespace Game.Player
 				Vector2 toTarget = character.transform.position - PossessedCharacter.transform.position;
 				float distance = toTarget.magnitude;
 
-				float speed = distance / CastingTime;
+				float speed = distance / CastingTime; // Calculate speed dynamically
 
 				float xDir = Mathf.Sign(toTarget.x);
 				ghost.transform.localScale = new Vector3(xDir, 1f, 1f);
@@ -243,7 +243,7 @@ namespace Game.Player
 				yield return ghost.transform
 						.DOMove(character.transform.position, CastingTime)
 						.SetEase(Ease.Linear)
-						.SetSpeedBased(true)
+						.SetSpeedBased(true) // Set the tween to be speed-based
 						.OnComplete(() => Destroy(ghost));
 
 				pos = character.GetComponent<Collider2D>().bounds.center;
