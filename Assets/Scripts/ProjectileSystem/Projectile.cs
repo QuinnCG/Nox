@@ -12,24 +12,28 @@ namespace Game.ProjectileSystem
 	{
 		public Vector2 CrosshairPos => CrosshairManager.Instance.CurrentPosition;
 
+		protected GameObject Owner { get; private set; }
+
 		private Rigidbody2D _rb;
 		private Vector2 _vel;
 
-		public static Projectile Spawn(GameObject prefab, Vector2 origin, Vector2 direction)
+		public static Projectile Spawn(GameObject prefab, Vector2 origin, Vector2 direction, GameObject owner)
 		{
 			var instance = Instantiate(prefab, origin, Quaternion.identity);
 			var proj = instance.GetComponent<Projectile>();
+			proj.Owner = owner;
 			proj.OnSpawn(direction);
 
 			return proj;
 		}
-		public static AsyncOperationHandle Spawn(string key, Vector2 origin, Vector2 direction)
+		public static AsyncOperationHandle Spawn(string key, Vector2 origin, Vector2 direction, GameObject owner)
 		{
 			var handle = Addressables.InstantiateAsync(key, origin, Quaternion.identity);
 			handle.Completed += opHandle =>
 			{
 				var instance = opHandle.Result;
 				var proj = instance.GetComponent<Projectile>();
+				proj.Owner = owner;
 				proj.OnSpawn(direction);
 			};
 
@@ -49,13 +53,9 @@ namespace Game.ProjectileSystem
 
 		protected virtual void OnTriggerEnter2D(Collider2D collider)
 		{
-			if (collider.TryGetComponent(out Health health))
+			if (CanCollide(collider))
 			{
-				var possessed = PlayerManager.Instance.PossessedCharacter;
-				if (health.gameObject != possessed.gameObject)
-				{
-					OnCollide(health);
-				}
+				OnCollide(collider.GetComponent<Health>());
 			}
 		}
 
@@ -69,6 +69,17 @@ namespace Game.ProjectileSystem
 				float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + rotationOffset;
 				transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 			}
+		}
+
+		protected virtual bool CanCollide(Collider2D collider)
+		{
+			if (!collider.TryGetComponent(out Health health))
+				return false;
+
+			if (health.gameObject == Owner)
+				return false;
+
+			return false;
 		}
 
 		protected virtual void OnSpawn(Vector2 direction) { }

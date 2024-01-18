@@ -76,10 +76,5 @@ namespace Game
 				_nextDashTime = Time.time + DashDuration + DashCooldown;
 			}
 		}
-
-		protected void CastDamageBox(Vector2 origin, Vector2 size, float damage, Vector2 direction, float knockback)
-		{
-			// TODO: Create hitbox.
-		}
 	}
 }
