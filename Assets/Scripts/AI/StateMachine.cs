@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.AI
 {
 	public class StateMachine
 	{
 		public State ActiveState { get; private set; }
+		public bool ShowDebug { get; set; }
 
 		private readonly Dictionary<State, List<(Func<bool> condition, State next)>> _states = new();
 		private readonly Dictionary<State, StateMachine> _subSystems = new();
@@ -33,13 +35,24 @@ namespace Game.AI
 					stateMachine.Update();
 				}
 
-				var connections = _states[ActiveState];
-				foreach (var (condition, next) in connections)
+#if UNITY_EDITOR
+				if (ShowDebug)
 				{
-					if (condition())
+					Debug.Log(
+						$"State Machine ({_agent.gameObject.name}): ".Bold().Color(StringColor.White)
+						+ "active: " + ActiveState.Name.Bold().Color(StringColor.White));
+				}
+#endif
+
+				if (_states.TryGetValue(ActiveState, out var conditions))
+				{
+					foreach (var (condition, next) in conditions)
 					{
-						TransitionTo(next);
-						break;
+						if (condition())
+						{
+							TransitionTo(next);
+							break;
+						}
 					}
 				}
 			}

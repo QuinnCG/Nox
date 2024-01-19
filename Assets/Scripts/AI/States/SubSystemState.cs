@@ -2,11 +2,15 @@
 {
 	public class SubSystemState : State
 	{
-		private readonly StateMachine _stateMachine;
+		public override string Name => _name ?? base.Name;
 
-		public SubSystemState(StateMachine subSystem)
+		private readonly StateMachine _stateMachine;
+		private readonly string _name;
+
+		public SubSystemState(StateMachine subSystem, string name = null)
 		{
 			_stateMachine = subSystem;
+			_name = name;
 		}
 
 		public override void OnStart(EnemyBrain agent)

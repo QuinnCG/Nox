@@ -13,6 +13,9 @@ namespace Game.AI
 	{
 		public PlayerManager PlayerManager { get; private set; }
 
+		[SerializeField]
+		private bool ShowDebug;
+
 		public float HP => Health.Current;
 		public float MaxHP => Health.Max;
 		public bool IsDead => Health.IsDead;
@@ -41,6 +44,7 @@ namespace Game.AI
 
 		protected virtual void Update()
 		{
+			_stateMachine.ShowDebug = ShowDebug;
 			_stateMachine.Update();
 		}
 

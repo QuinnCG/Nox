@@ -53,9 +53,9 @@ namespace Game.ProjectileSystem
 
 		protected virtual void OnTriggerEnter2D(Collider2D collider)
 		{
-			if (CanCollide(collider))
+			if (CanCollide(collider) && collider.TryGetComponent(out Health health))
 			{
-				OnCollide(collider.GetComponent<Health>());
+				OnCollide(health);
 			}
 		}
 

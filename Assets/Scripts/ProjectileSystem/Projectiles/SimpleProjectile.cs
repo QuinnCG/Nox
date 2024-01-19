@@ -19,6 +19,9 @@ namespace Game.ProjectileSystem
 		[SerializeField, BoxGroup("Core")]
 		private float Damage = 25f;
 
+		[SerializeField, BoxGroup("Core"), Tooltip("Values left than 0 will be treated as infinite.")]
+		private float Lifespan = 5f;
+
 		[SerializeField, BoxGroup("On Hit")]
 		private EventReference ThrowSound;
 
@@ -42,6 +45,11 @@ namespace Game.ProjectileSystem
 			if (!ThrowSound.IsNull)
 			{
 				RuntimeManager.PlayOneShotAttached(ThrowSound, gameObject);
+			}
+
+			if (Lifespan > 0f)
+			{
+				Destroy(gameObject, Lifespan);
 			}
 		}
 
