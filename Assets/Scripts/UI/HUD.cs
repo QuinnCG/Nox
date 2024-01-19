@@ -142,7 +142,7 @@ namespace Game.UI
 			var initialColor = _root.style.backgroundColor.value;
 
 			// Define the pulsating color
-			Color pulsatingColor = new Color(1f, 0f, 0f, initialColor.a);
+			Color pulsatingColor = new(1f, 0f, 0f, initialColor.a);
 
 			// Set up a loop for pulsating effect
 			_redOverlayTween = DOTween.To(() => _root.style.backgroundColor.value,
@@ -157,9 +157,7 @@ namespace Game.UI
 			_redOverlayTween?.Kill();
 
 			var initialColor = _root.style.backgroundColor.value;
-
 			_root.style.backgroundColor = new StyleColor(new Color(initialColor.r, initialColor.g, initialColor.b, 0f));
 		}
 	}
 }
-

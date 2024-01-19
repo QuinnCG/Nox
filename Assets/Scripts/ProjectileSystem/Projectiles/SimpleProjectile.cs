@@ -60,5 +60,10 @@ namespace Game.ProjectileSystem
 			health.TakeDamage(Damage, DamageSource.Enemy);
 			Destroy(gameObject);
 		}
+
+		protected override bool CanCollide(Collider2D collider)
+		{
+			return base.CanCollide(collider) || collider.gameObject.layer == LayerMask.NameToLayer("Obstacle");
+		}
 	}
 }
