@@ -29,6 +29,7 @@ namespace Game.DamageSystem
 
 		public bool IsCritical => Current / Max <= CriticalPercent;
 		public bool IsDead => Current == 0f;
+		public float Percent => Current / Max;
 
 		public event Action<float> OnMaxSet;
 
