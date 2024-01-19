@@ -11,11 +11,6 @@ namespace Game.AI
 	[RequireComponent(typeof(Health))]
 	public abstract class EnemyBrain : MonoBehaviour
 	{
-		public State ActiveState { get; private set; }
-
-		private State _startState;
-		private readonly Dictionary<State, List<(Func<bool> condition, State next)>> _states = new();
-
 		public PlayerManager PlayerManager { get; private set; }
 
 		public float HP => Health.Current;
@@ -27,64 +22,45 @@ namespace Game.AI
 		public Collider2D Collider { get; private set; }
 		public Bounds Bounds => Collider.bounds;
 
+		private StateMachine _stateMachine;
+
 		protected virtual void Awake()
 		{
 			Movement = GetComponent<Movement>();
 			Health = GetComponent<Health>();
 			Collider = GetComponent<Collider2D>();
+
+			_stateMachine = new StateMachine(this);
 		}
 
 		protected virtual void Start()
 		{
 			PlayerManager = PlayerManager.Instance;
-			TransitionTo(_startState);
+			_stateMachine.Start();
 		}
 
 		protected virtual void Update()
 		{
-			if (ActiveState != null)
-			{
-				ActiveState.OnUpdate(this);
-
-				var connections = _states[ActiveState];
-				foreach (var (condition, next) in connections)
-				{
-					if (condition())
-					{
-						TransitionTo(next);
-						break;
-					}
-				}
-			}
+			_stateMachine.Update();
 		}
 
+		/// <summary>
+		/// Connect states as if they are part of the state machine. If they aren't they will be added.
+		/// </summary>
+		/// <param name="origin">The state to transition from.</param>
+		/// <param name="next">The state to transition to.</param>
+		/// <param name="condition">The method to be polled every frame that decides whether or not to transition.</param>
 		protected void Connect(State origin, State next, Func<bool> condition)
 		{
-			if (_states.TryGetValue(origin, out var connections))
-			{
-				connections.Add((condition, next));
-				return;
-			}
-
-			_states.Add(origin, new() { (condition, next) });
+			_stateMachine.Connect(origin, next, condition);
 		}
 
+		/// <summary>
+		/// Sets the first state the state-machine transitions to.
+		/// </summary>
 		protected void SetStartingState(State state)
 		{
-			_startState = state;
-			_states.Add(state, new());
-		}
-
-		private void TransitionTo(State state)
-		{
-#if UNITY_EDITOR
-			if (state == null)
-				Debug.LogError("Enemy brain has been given a null state to transition to!");
-#endif
-
-			ActiveState?.OnFinish(this);
-			ActiveState = state;
-			ActiveState.OnStart(this);
+			_stateMachine.SetStartingState(state);
 		}
 	}
 }
