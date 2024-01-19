@@ -20,7 +20,7 @@ MonoBehaviour:
     x: -843
     y: -190
     width: 2210
-    height: 2461
+    height: 2462
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,11 +72,7 @@ MonoBehaviour:
   - name: Target
     path: Target
     tooltip: 
-<<<<<<< HEAD
     space: 0
-=======
-    space: -1
->>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
     spaceable: 0
     sheetType: m_Vector2f
     realType: Vector2
@@ -105,11 +101,7 @@ VisualEffectResource:
   m_Infos:
     m_RendererSettings:
       motionVectorGenerationMode: 0
-<<<<<<< HEAD
       shadowCastingMode: 0
-=======
-      shadowCastingMode: 1
->>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
       rayTracingMode: 0
       receiveShadows: 0
       reflectionProbeUsage: 0
@@ -654,11 +646,7 @@ MonoBehaviour:
   raytracedScaleMode: 0
   needsOwnSort: 0
   needsOwnAabbBuffer: 0
-<<<<<<< HEAD
   shaderGraph: {fileID: 4333940904281232215, guid: 805027f238c3509429088c0d5db413ac, type: 3}
-=======
-  shaderGraph: {fileID: 4333940904281232215, guid: 3d363da5e74a06b44bd9ab184cb678ef, type: 3}
->>>>>>> 88539be8ad1c47a62d289b2fb46af7d0f77b26ef
   materialSettings:
     m_PropertyNames: []
     m_PropertyValues: []
