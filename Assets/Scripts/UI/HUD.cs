@@ -1,74 +1,54 @@
 ﻿using DG.Tweening;
-using Game.AnimationSystem;
 using Game.DamageSystem;
 using Game.Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace Game.UI
 {
 	public class HUD : MonoBehaviour
 	{
-		[SerializeField, Required]
-		private UIDocument Document;
-
 		[SerializeField, BoxGroup("Animation Settings")]
 		private float PlayerHealthFadeIn = 1f;
 
 		[SerializeField, BoxGroup("Animation Settings")]
 		private float PlayerHealthFadeOut = 2f;
 
-		[SerializeField, BoxGroup("Animation Settings")]
-		private float RedOverlayFadeIn = 0.5f;
+		[SerializeField, BoxGroup("References"), Required]
+		private Slider PlayerHealth;
 
-		[SerializeField, BoxGroup("Animation Settings")]
-		private float RedOverlayFadeOut = 0.5f;
+		[SerializeField, BoxGroup("References"), Required]
+		private GameObject BossContainer;
 
-		[SerializeField, BoxGroup("Animation Settings")]
-		private float PulsateInterval = 1f; // Adjusts the interval between pulsations
-
-		private VisualElement _root;
-
-		private ProgressBar _playerHealth;
-
-		private VisualElement _bossTitleContainer;
-		private ProgressBar _bossHealth;
+		[SerializeField, BoxGroup("References"), Required]
+		private Slider BossHealth;
 
 		private Character _lastCharacter;
 		private Health _health;
-		private Tween _healthFadeInTween, _healthFadeOutTween;
-		private Tween _redOverlayTween;
-
-		private void Awake()
-		{
-			_root = Document.rootVisualElement;
-
-			_playerHealth = _root.Q<ProgressBar>("player-health");
-			_bossTitleContainer = _root.Q<VisualElement>("boss-title-container");
-			_bossHealth = _root.Q<ProgressBar>("boss-health");
-
-			HideHealth();
-			HideBoss();
-			HideCriticalOverlay();
-		}
 
 		private void Start()
 		{
 			PlayerManager.Instance.OnCharacterPossessed += OnCharacterPossessed;
 			OnCharacterPossessed(PlayerManager.Instance.PossessedCharacter);
+
+			HidePlayerHealth();
+			HideBoss();
 		}
 
 		private void Update()
 		{
-			_playerHealth.value = _health != null ? _health.Current / _health.Max : 0f;
+			if (_health)
+			{
+				PlayerHealth.value = _health.Current / _health.Max;
+			}
 		}
 
 		private void OnCharacterPossessed(Character character)
 		{
 			if (character == null)
 			{
-				// Handle the case when the character is null
+				// Handle the case when the character is null.
 				return;
 			}
 
@@ -78,22 +58,19 @@ namespace Game.UI
 				if (lastHealth != null)
 				{
 					lastHealth.OnDamaged -= OnDamaged;
-					lastHealth.OnReachMaxHealth -= HideHealth;
+					lastHealth.OnReachMaxHealth -= FadeOutPlayerHealth;
 				}
 			}
 
-			_health = character.GetComponent<Health>();
+			character.TryGetComponent(out _health);
 			if (_health != null)
 			{
 				_health.OnDamaged += OnDamaged;
-				_health.OnReachMaxHealth += HideHealth;
-
-				_health.OnCritical += () => ShowCriticalOverlay();
-				_health.OnHealFromCritical += () => HideCriticalOverlay();
+				_health.OnReachMaxHealth += FadeOutPlayerHealth;
 
 				if (_health.IsCritical)
 				{
-					ShowHealth();
+					FadeInPlayerHealth();
 				}
 			}
 
@@ -102,62 +79,52 @@ namespace Game.UI
 
 		private void OnDamaged(float damage)
 		{
-			ShowHealth();
+			FadeInPlayerHealth();
 		}
 
-		private void ShowHealth()
+		private void FadeInPlayerHealth()
 		{
-			_healthFadeInTween?.Kill();
+			var renderers = PlayerHealth.GetComponentsInChildren<Image>();
 
-			_healthFadeInTween = DOTween.To(
-							() => _playerHealth.style.opacity.value,
-							x => _playerHealth.style.opacity = x,
-							1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
+			renderers[0].DOKill();
+			renderers[1].DOKill();
+
+			renderers[0].DOFade(1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
+			renderers[1].DOFade(1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
 		}
 
-		private void HideHealth()
+		private void FadeOutPlayerHealth()
 		{
-			_healthFadeOutTween?.Kill();
+			var renderers = PlayerHealth.GetComponentsInChildren<Image>();
 
-			_healthFadeOutTween = DOTween.To(
-							() => _playerHealth.style.opacity.value,
-							x => _playerHealth.style.opacity = x,
-							0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
+			renderers[0].DOKill();
+			renderers[1].DOKill();
+
+			renderers[0].DOFade(0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
+			renderers[1].DOFade(0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
+		}
+
+		private void HidePlayerHealth()
+		{
+			var renderers = PlayerHealth.GetComponentsInChildren<Image>();
+
+			var color = renderers[0].color;
+			color.a = 0f;
+			renderers[0].color = color;
+
+			color = renderers[1].color;
+			color.a = 0f;
+			renderers[1].color = color;
 		}
 
 		private void ShowBoss()
 		{
-			_bossTitleContainer.style.opacity = 1f;
+			
 		}
 
 		private void HideBoss()
 		{
-			_bossTitleContainer.style.opacity = 0f;
-		}
-
-		private void ShowCriticalOverlay()
-		{
-			_redOverlayTween?.Kill();
-
-			var initialColor = _root.style.backgroundColor.value;
-
-			// Define the pulsating color
-			Color pulsatingColor = new(1f, 0f, 0f, initialColor.a);
-
-			// Set up a loop for pulsating effect
-			_redOverlayTween = DOTween.To(() => _root.style.backgroundColor.value,
-							color => _root.style.backgroundColor = new StyleColor(color),
-							pulsatingColor, PulsateInterval)
-					.SetEase(Ease.InOutQuad)
-					.SetLoops(-1, LoopType.Yoyo); // Infinite loop for pulsating effect
-		}
-
-		private void HideCriticalOverlay()
-		{
-			_redOverlayTween?.Kill();
-
-			var initialColor = _root.style.backgroundColor.value;
-			_root.style.backgroundColor = new StyleColor(new Color(initialColor.r, initialColor.g, initialColor.b, 0f));
+			
 		}
 	}
 }
