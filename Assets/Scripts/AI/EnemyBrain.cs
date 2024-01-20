@@ -13,9 +13,6 @@ namespace Game.AI
 	{
 		public PlayerManager PlayerManager { get; private set; }
 
-		[SerializeField]
-		private bool ShowDebug;
-
 		public float HP => Health.Current;
 		public float MaxHP => Health.Max;
 		public bool IsDead => Health.IsDead;
@@ -25,46 +22,16 @@ namespace Game.AI
 		public Collider2D Collider { get; private set; }
 		public Bounds Bounds => Collider.bounds;
 
-		private StateMachine _stateMachine;
-
 		protected virtual void Awake()
 		{
 			Movement = GetComponent<Movement>();
 			Health = GetComponent<Health>();
 			Collider = GetComponent<Collider2D>();
-
-			_stateMachine = new StateMachine(this);
 		}
 
 		protected virtual void Start()
 		{
 			PlayerManager = PlayerManager.Instance;
-			_stateMachine.Start();
-		}
-
-		protected virtual void Update()
-		{
-			_stateMachine.ShowDebug = ShowDebug;
-			_stateMachine.Update();
-		}
-
-		/// <summary>
-		/// Connect states as if they are part of the state machine. If they aren't they will be added.
-		/// </summary>
-		/// <param name="origin">The state to transition from.</param>
-		/// <param name="next">The state to transition to.</param>
-		/// <param name="condition">The method to be polled every frame that decides whether or not to transition.</param>
-		protected void Connect(State origin, State next, Func<bool> condition)
-		{
-			_stateMachine.Connect(origin, next, condition);
-		}
-
-		/// <summary>
-		/// Sets the first state the state-machine transitions to.
-		/// </summary>
-		protected void SetStartingState(State state)
-		{
-			_stateMachine.SetStartingState(state);
 		}
 	}
 }
