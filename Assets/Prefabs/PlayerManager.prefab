@@ -93,3 +93,6 @@ MonoBehaviour:
   GhostSpeed: 60
   PossessionModeTimeScale: 0.3
   IndicatorYOffset: 0.4
+  <MaxPossessionMeter>k__BackingField: 100
+  DefaultPossessionMeter: 65
+  PossessionMeterMultiplier: 0.5

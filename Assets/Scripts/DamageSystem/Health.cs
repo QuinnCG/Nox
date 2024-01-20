@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.TextCore.Text;
 
 namespace Game.DamageSystem
 {
@@ -34,7 +35,7 @@ namespace Game.DamageSystem
 		public event Action<float> OnMaxSet;
 
 		public event Action<float> OnDamaged;
-		public event Action<DamageSource> OnDeath;
+		public event Action<DamageType> OnDeath;
 
 		public event Action<float> OnHealed;
 		public event Action OnReachMaxHealth;
@@ -70,15 +71,6 @@ namespace Game.DamageSystem
 			{
 				MakeCritical();
 			}
-		}
-
-		private void Start()
-		{
-			PlayerManager.Instance.OnCharacterPossessed += character =>
-			{
-				if (character.gameObject == gameObject)
-					_playCriticalSFXTween?.Kill();
-			};
 		}
 
 		public void SetMax(float max)
@@ -130,7 +122,7 @@ namespace Game.DamageSystem
 
 			if (Current == 0f)
 			{
-				OnDeath?.Invoke(info.Source);
+				OnDeath?.Invoke(info.Type);
 			}
 		}
 		public void TakeDamage(float damage)
@@ -141,11 +133,11 @@ namespace Game.DamageSystem
 		{
 			TakeDamage(new DamageInfo(damage, direction));
 		}
-		public void TakeDamage(float damage, Vector2 direction, DamageSource source)
+		public void TakeDamage(float damage, Vector2 direction, DamageType source)
 		{
 			TakeDamage(new DamageInfo(damage, direction, source));
 		}
-		public void TakeDamage(float damage, DamageSource source)
+		public void TakeDamage(float damage, DamageType source)
 		{
 			TakeDamage(new DamageInfo(damage, source));
 		}
@@ -163,7 +155,7 @@ namespace Game.DamageSystem
 			AddHealth(Max - Current + 1f);
 		}
 
-		public void Kill(DamageSource source = DamageSource.Misc)
+		public void Kill(DamageType source = DamageType.Misc)
 		{
 			TakeDamage(Current, source);
 		}
@@ -184,6 +176,11 @@ namespace Game.DamageSystem
 					HideCriticalIndicator();
 				}
 			}
+		}
+
+		public void OnPossessed()
+		{
+			_playCriticalSFXTween?.Kill();
 		}
 
 		private void OnEnterCritical()

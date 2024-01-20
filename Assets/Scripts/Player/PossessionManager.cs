@@ -31,6 +31,19 @@ namespace Game.Player
 		[SerializeField]
 		private float IndicatorYOffset = 0.4f;
 
+		[field: SerializeField]
+		public float MaxPossessionMeter { get; set; } = 100f;
+
+		[SerializeField]
+		private float DefaultPossessionMeter = 65f;
+
+		[SerializeField]
+		private float PossessionMeterMultiplier = 0.3f;
+
+		public static PossessionManager Instance { get; private set; }
+
+		public float CurrentPossessionMeter { get; private set; }
+
 		public Character PossessedCharacter { get; private set; }
 		public bool InPossessionMode { get; private set; }
 		public bool PossessingNewTarget { get; private set; }
@@ -48,13 +61,18 @@ namespace Game.Player
 
 		private void Awake()
 		{
+			Instance = this;
+
 			_input = GetComponent<InputReader>();
+			CurrentPossessionMeter = DefaultPossessionMeter;
 		}
 
 		private void Start()
 		{
 			var instance = Instantiate(DefaultCharacter, transform.position, Quaternion.identity);
 			Possess(instance.GetComponent<Character>(), skip: true);
+
+			PlayerManager.Instance.OnDamageEnemy += OnEnemyDamaged;
 		}
 
 		private void Update()
@@ -108,6 +126,16 @@ namespace Game.Player
 			}
 		}
 
+		public void ReplenishPossessionMeter(float amount)
+		{
+			CurrentPossessionMeter = Mathf.Min(CurrentPossessionMeter + amount, MaxPossessionMeter);
+		}
+
+		public void ConsumePossessionMeter(float amount)
+		{
+			CurrentPossessionMeter = Mathf.Max(0f, CurrentPossessionMeter - amount);
+		}
+
 		/* PRIVATE METHODS */
 		private Character FindNearestTarget()
 		{
@@ -140,6 +168,9 @@ namespace Game.Player
 
 		private bool IsPossessable(Character character)
 		{
+			if (CurrentPossessionMeter < character.PossessionMeterConsumption)
+				return false;
+
 			var health = character.GetComponent<Health>();
 
 			if (character == PossessedCharacter) return false;
@@ -157,14 +188,17 @@ namespace Game.Player
 
 		private void Possess(Character character, bool skip = false)
 		{
+			ConsumePossessionMeter(character.PossessionMeterConsumption);
+			PossessingNewTarget = true;
 			StartCoroutine(PossessSequence(character, skip));
 		}
 
 		private void Unpossess(Character character)
 		{
 			HideSelfIndicator();
+
 			character.UnPossess();
-			character.GetComponent<Health>().Kill();
+			character.GetComponent<Health>()?.Kill();
 
 			OnCharacterUnpossessed?.Invoke(character);
 		}
@@ -222,8 +256,6 @@ namespace Game.Player
 
 		private IEnumerator PossessSequence(Character character, bool skip)
 		{
-			PossessingNewTarget = true;
-
 			if (!skip)
 			{
 				_input.enabled = false;
@@ -258,18 +290,29 @@ namespace Game.Player
 				Unpossess(PossessedCharacter);
 			}
 
+			// Actual possession.
+
 			PossessedCharacter = character;
-			character.Possess();
+			PossessedCharacter.Possess();
+
+			var health = PossessedCharacter.GetComponent<Health>();
+			health.FullHeal();
+			health.OnPossessed();
 
 			if (InPossessionMode)
 			{
 				ShowSelfIndicator();
 			}
 
-			OnCharacterPossessed?.Invoke(character);
 			_input.enabled = true;
+			OnCharacterPossessed?.Invoke(PossessedCharacter);
 
 			PossessingNewTarget = false;
+		}
+
+		private void OnEnemyDamaged(DamageInfo info)
+		{
+			ReplenishPossessionMeter(info.Damage * PossessionMeterMultiplier);
 		}
 	}
 }

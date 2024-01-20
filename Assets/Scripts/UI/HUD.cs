@@ -19,6 +19,9 @@ namespace Game.UI
 		private Slider PlayerHealth;
 
 		[SerializeField, BoxGroup("References"), Required]
+		private Slider PossessionMeter;
+
+		[SerializeField, BoxGroup("References"), Required]
 		private GameObject BossContainer;
 
 		[SerializeField, BoxGroup("References"), Required]
@@ -29,8 +32,8 @@ namespace Game.UI
 
 		private void Start()
 		{
-			PlayerManager.Instance.OnCharacterPossessed += OnCharacterPossessed;
-			OnCharacterPossessed(PlayerManager.Instance.PossessedCharacter);
+			PossessionManager.Instance.OnCharacterPossessed += OnCharacterPossessed;
+			OnCharacterPossessed(PossessionManager.Instance.PossessedCharacter);
 
 			HidePlayerHealth();
 			HideBoss();
@@ -42,6 +45,9 @@ namespace Game.UI
 			{
 				PlayerHealth.value = _health.Current / _health.Max;
 			}
+
+			var p = PossessionManager.Instance;
+			PossessionMeter.value = p.CurrentPossessionMeter / p.MaxPossessionMeter;
 		}
 
 		private void OnCharacterPossessed(Character character)

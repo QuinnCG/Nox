@@ -1,6 +1,6 @@
 ﻿namespace Game.DamageSystem
 {
-	public enum DamageSource
+	public enum DamageType
 	{
 		Misc,
 		Environment,

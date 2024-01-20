@@ -18,7 +18,7 @@ namespace Game.Common
 
 		public void OnTriggerEnter2D(Collider2D collider)
 		{
-			bool isPlayer = collider.gameObject == PlayerManager.Instance.PossessedCharacter.gameObject;
+			bool isPlayer = collider.gameObject == PossessionManager.Instance.PossessedCharacter.gameObject;
 			bool isCharacter = collider.TryGetComponent(out Character _);
 
 			if (Filter == TriggerFilter.Any && !isCharacter)

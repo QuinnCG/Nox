@@ -1,4 +1,5 @@
 ﻿using FMODUnity;
+using Game.AI.BossSystem;
 using Game.DamageSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -40,6 +41,8 @@ namespace Game.ProjectileSystem
 
 		protected override void OnSpawn(Vector2 direction)
 		{
+			base.OnSpawn(direction);
+
 			_direction = direction;
 
 			if (!ThrowSound.IsNull)
@@ -53,7 +56,7 @@ namespace Game.ProjectileSystem
 			}
 		}
 
-		protected override void OnCollide(Health health)
+		protected override void OnHitDamageable(Health health)
 		{
 			if (SpawnOnHit)
 			{
@@ -65,7 +68,17 @@ namespace Game.ProjectileSystem
 				RuntimeManager.PlayOneShot(HitSound, transform.position);
 			}
 
-			health.TakeDamage(Damage, DamageSource.Enemy);
+			var dmgInfo = new DamageInfo()
+			{
+				Type = Owner.TryGetComponent(out BossBrain _)
+				? DamageType.Boss : DamageType.Enemy,
+				Damage = Damage,
+				Direction = Direction
+			};
+
+			OnDamage?.Invoke(dmgInfo);
+			health.TakeDamage(dmgInfo);
+
 			Destroy(gameObject);
 		}
 

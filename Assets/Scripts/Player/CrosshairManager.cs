@@ -45,7 +45,7 @@ namespace Game.Player
 
 		public Vector2 GetDirectionToCrosshair()
 		{
-			Vector2 pos = PlayerManager.Instance.PossessedCharacter.transform.position;
+			Vector2 pos = PossessionManager.Instance.PossessedCharacter.transform.position;
 			return (CurrentPosition - pos).normalized;
 		}
 	}

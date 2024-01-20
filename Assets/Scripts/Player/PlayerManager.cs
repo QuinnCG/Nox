@@ -1,5 +1,6 @@
 using Game.DamageSystem;
 using Game.MovementSystem;
+using Game.ProjectileSystem;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
@@ -26,10 +27,7 @@ namespace Game.Player
 		[SerializeField, Tooltip("Higher values will make the camera lean more towards the crosshair.")]
 		private float CameraCrosshairBias = 0.3f;
 
-		public Character PossessedCharacter => _possession.PossessedCharacter;
-		public bool InPossessionMode => _possession.InPossessionMode;
-
-		public event Action<Character> OnCharacterPossessed, OnCharacterUnpossessed;
+		public event Action<DamageInfo> OnDamageEnemy;
 
 		private InputReader _input;
 		private PossessionManager _possession;
@@ -49,8 +47,6 @@ namespace Game.Player
 
 			_possession.OnCharacterPossessed += character =>
 			{
-				OnCharacterPossessed?.Invoke(character);
-
 				_movement = character.GetComponent<Movement>();
 				_health = character.GetComponent<Health>();
 				_health.SetDisplayCriticalIndiactor(false);
@@ -59,7 +55,6 @@ namespace Game.Player
 			_possession.OnCharacterUnpossessed += character =>
 			{
 				_health.SetDisplayCriticalIndiactor(true);
-				OnCharacterUnpossessed?.Invoke(character);
 			};
 
 			// 'Subscribe' methods to specific events,
@@ -88,6 +83,11 @@ namespace Game.Player
 			}
 		}
 
+		public void OnSpawnProjectile(Projectile projectile)
+		{
+			projectile.OnDamage += OnDamageEnemy;
+		}
+
 		/* INPUT */
 		private void OnMove(Vector2 dir)
 		{
@@ -96,19 +96,19 @@ namespace Game.Player
 
 		private void OnDash()
 		{
-			PossessedCharacter.Dash();
+			PossessionManager.Instance.PossessedCharacter.Dash();
 		}
 
 		private void OnAttack()
 		{
-			if (InPossessionMode && !_possession.PossessingNewTarget)
+			if (PossessionManager.Instance.InPossessionMode && !_possession.PossessingNewTarget)
 			{
 				_possession.PossessSelected();
 				return;
 			}
 
 			Vector2 target = CrosshairManager.Instance.CurrentPosition;
-			PossessedCharacter.Attack(target);
+			PossessionManager.Instance.PossessedCharacter.Attack(target);
 		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using Game.AnimationSystem;
+using Game.DamageSystem;
 using Game.MovementSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -26,6 +27,9 @@ namespace Game
 		[Space, SerializeField]
 		private VisualEffect DashTrail;
 
+		[field: SerializeField]
+		public float PossessionMeterConsumption { get; private set; } = 60f;
+
 		public bool IsPossessed { get; private set; }
 
 		protected Movement Movement { get; private set; }
@@ -37,6 +41,8 @@ namespace Game
 		{
 			Movement = GetComponent<Movement>();
 			Animator = GetComponentInChildren<PlayableAnimator>();
+
+			GetComponent<Health>().OnDeath += _ => OnDeath();
 		}
 
 		protected virtual void Update()
@@ -75,6 +81,11 @@ namespace Game
 				Movement.Dash(DashSpeed, DashDuration);
 				_nextDashTime = Time.time + DashDuration + DashCooldown;
 			}
+		}
+
+		protected virtual void OnDeath()
+		{
+			Destroy(gameObject);
 		}
 	}
 }

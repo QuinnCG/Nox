@@ -7,7 +7,8 @@ namespace Game.DamageSystem
 	{
 		public float Damage;
 		public Vector2 Direction;
-		public DamageSource Source;
+		public DamageType Type;
+		public Character Source;
 
 		public DamageInfo() { }
 		public DamageInfo(float damage)
@@ -19,16 +20,16 @@ namespace Game.DamageSystem
 			Damage = damage;
 			Direction = direction;
 		}
-		public DamageInfo(float damage, DamageSource source)
+		public DamageInfo(float damage, DamageType type)
 		{
 			Damage = damage;
-			Source = source;
+			Type = type;
 		}
-		public DamageInfo(float damage, Vector2 direction, DamageSource source)
+		public DamageInfo(float damage, Vector2 direction, DamageType type)
 		{
 			Damage = damage;
 			Direction = direction;
-			Source = source;
+			Type = type;
 		}
 	}
 }

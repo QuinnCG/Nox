@@ -1,5 +1,6 @@
 using Game.DamageSystem;
 using Game.Player;
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -12,7 +13,11 @@ namespace Game.ProjectileSystem
 	{
 		public Vector2 CrosshairPos => CrosshairManager.Instance.CurrentPosition;
 
+		public Action<DamageInfo> OnDamage { get; set; }
+
 		protected GameObject Owner { get; private set; }
+		protected Vector2 Velocity => _rb.velocity;
+		protected Vector2 Direction => _rb.velocity.normalized;
 
 		private Rigidbody2D _rb;
 		private Vector2 _vel;
@@ -55,7 +60,11 @@ namespace Game.ProjectileSystem
 		{
 			if (CanCollide(collider) && collider.TryGetComponent(out Health health))
 			{
-				OnCollide(health);
+				OnHitDamageable(health);
+			}
+			else if (collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+			{
+				OnHitObstacle(collider);
 			}
 		}
 
@@ -73,17 +82,25 @@ namespace Game.ProjectileSystem
 
 		protected virtual bool CanCollide(Collider2D collider)
 		{
-			if (!collider.TryGetComponent(out Health health))
+			if (collider.gameObject == Owner)
 				return false;
 
-			if (health.gameObject == Owner)
-				return false;
-
-			return false;
+			return true;
 		}
 
-		protected virtual void OnSpawn(Vector2 direction) { }
+		protected virtual void OnSpawn(Vector2 direction)
+		{
+			if (PossessionManager.Instance.PossessedCharacter.gameObject == Owner)
+			{
+				PlayerManager.Instance.OnSpawnProjectile(this);
+			}
+		}
 
-		protected virtual void OnCollide(Health health) { }
+		protected virtual void OnHitDamageable(Health health) { }
+
+		protected virtual void OnHitObstacle(Collider2D collider)
+		{
+			Destroy(gameObject);
+		}
 	}
 }
