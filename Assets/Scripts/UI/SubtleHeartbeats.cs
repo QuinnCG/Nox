@@ -2,12 +2,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-public class SubtleHeartbeats : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class SubtleHeartbeats : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public AnimationCurve curve;
-    public float minScale = 0.06f;
-    public float maxScale = 0.09f;
-    public float pulseDuration = 0.5f;
+    public float minScale = 0.9f;
+    public float maxScale = 1.1f;
+    public float pulseDuration = 1f;
 
     private Vector3 originalScale;
 
@@ -18,12 +18,30 @@ public class SubtleHeartbeats : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        StartSubtlePulsating();
+        EnlargeOnHover();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        StopPulsating();
+        ShrinkOnHoverEnd();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Clicked!");
+        StartSubtlePulsating();
+    }
+
+    void EnlargeOnHover()
+    {
+        transform.DOScale(maxScale, 0.2f);
+    }
+
+    void ShrinkOnHoverEnd()
+    {
+        transform.DOKill();
+        Debug.Log("DOKill");
+        transform.DOScale(originalScale, 0.2f);
     }
 
     void StartSubtlePulsating()
@@ -31,11 +49,5 @@ public class SubtleHeartbeats : MonoBehaviour, IPointerEnterHandler, IPointerExi
         transform.DOScale(maxScale, pulseDuration)
             .SetEase(curve)
             .SetLoops(-1);
-    }
-
-    void StopPulsating()
-    {
-		transform.DOKill();
-        transform.DOScale(originalScale, 0.2f);
     }
 }
