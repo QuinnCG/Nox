@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 6847607189198467895}
   - component: {fileID: 6906566916258279065}
   m_Layer: 5
-  m_Name: Options
+  m_Name: OptionsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -548,8 +548,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6270837129744542205}
-  - {fileID: 2142053046914588334}
   - {fileID: 2462314300064226460}
+  - {fileID: 2142053046914588334}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
