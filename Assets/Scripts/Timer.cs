@@ -11,7 +11,7 @@ namespace Game
 		public float Duration { get; private set; }
 		public float Elapsed => Time.time - Start;
 		public float Remaining => End - Time.time;
-		public bool IsComplete => Remaining > 0f;
+		public bool IsComplete => Remaining <= 0f;
 
 		public event Action OnFinish;
 
