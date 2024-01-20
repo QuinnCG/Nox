@@ -24,6 +24,9 @@ namespace Game
 		[SerializeField, BoxGroup("Dash")]
 		private float DashCooldown = 0.2f;
 
+		[SerializeField, BoxGroup("Dash")]
+		private bool IsDashControllable;
+
 		[Space, SerializeField]
 		private VisualEffect DashTrail;
 
@@ -78,7 +81,7 @@ namespace Game
 		{
 			if (Time.time > _nextDashTime)
 			{
-				Movement.Dash(DashSpeed, DashDuration);
+				Movement.Dash(DashSpeed, DashDuration, IsDashControllable);
 				_nextDashTime = Time.time + DashDuration + DashCooldown;
 			}
 		}

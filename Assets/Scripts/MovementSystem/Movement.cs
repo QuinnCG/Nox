@@ -28,6 +28,7 @@ namespace Game.MovementSystem
 		private float _dashEndTime;
 
 		private Vector2 _lastMoveDir = Vector2.down;
+		private bool _isDashControllable;
 
 		private void Update()
 		{
@@ -44,7 +45,14 @@ namespace Game.MovementSystem
 					return;
 				}
 
-				SetVelocity(_dashDirection * _dashSpeed);
+				if (_isDashControllable)
+				{
+					AddVelocity(_dashDirection * _dashSpeed);
+				}
+				else
+				{
+					SetVelocity(_dashDirection * _dashSpeed);
+				}
 			}
 		}
 
@@ -73,11 +81,12 @@ namespace Game.MovementSystem
 			}
 		}
 
-		public void Dash(float speed, float duration)
+		public void Dash(float speed, float duration, bool controllable = false)
 		{
 			if (!IsDashing)
 			{
 				IsDashing = true;
+				_isDashControllable = controllable;
 
 				_dashEndTime = Time.time + duration;
 				_dashSpeed = speed;
