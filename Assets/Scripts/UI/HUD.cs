@@ -15,6 +15,12 @@ namespace Game.UI
 		[SerializeField, BoxGroup("Animation Settings")]
 		private float PlayerHealthFadeOut = 2f;
 
+		[SerializeField, BoxGroup("Animation Settings")]
+		private float PlayerHealthCriticalPulseDuration = 0.5f;
+
+		[SerializeField, BoxGroup("Animation Settings")]
+		private float PlayerHealthCriticalPulseScale = 1.2f;
+
 		[SerializeField, BoxGroup("References"), Required]
 		private Slider PlayerHealth;
 
@@ -27,8 +33,12 @@ namespace Game.UI
 		[SerializeField, BoxGroup("References"), Required]
 		private Slider BossHealth;
 
+		[SerializeField, BoxGroup("References"), Required]
+		private CriticalHealthOverlay criticalHealthOverlay;
+
 		private Character _lastCharacter;
 		private Health _health;
+
 
 		private void Start()
 		{
@@ -44,6 +54,16 @@ namespace Game.UI
 			if (_health)
 			{
 				PlayerHealth.value = _health.Current / _health.Max;
+
+				// Check for critical health to show the overlay
+				if (_health.IsCritical && criticalHealthOverlay != null)
+				{
+					criticalHealthOverlay.ShowCriticalOverlay();
+				}
+				else
+				{
+					criticalHealthOverlay.HideCriticalOverlay();
+				}
 			}
 
 			var p = PossessionManager.Instance;
@@ -97,6 +117,21 @@ namespace Game.UI
 
 			renderers[0].DOFade(1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
 			renderers[1].DOFade(1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
+
+			// Optional: Pulse animation for critical health
+			if (_health.IsCritical)
+			{
+				var handleRectTransform = PlayerHealth.GetComponentInChildren<RectTransform>();
+
+				handleRectTransform.DOScale(PlayerHealthCriticalPulseScale, PlayerHealthCriticalPulseDuration / 2)
+						.SetEase(Ease.InOutSine)
+						.OnComplete(() =>
+						{
+							handleRectTransform.DOScale(1f, PlayerHealthCriticalPulseDuration / 2)
+							.SetEase(Ease.InOutSine);
+						});
+			}
+
 		}
 
 		private void FadeOutPlayerHealth()
@@ -125,12 +160,13 @@ namespace Game.UI
 
 		private void ShowBoss()
 		{
-			
+
 		}
 
 		private void HideBoss()
 		{
-			
+
 		}
 	}
 }
+
