@@ -1,4 +1,4 @@
-﻿namespace Game.AI
+﻿namespace Game.AI.States
 {
 	public class WaitState : State
 	{
