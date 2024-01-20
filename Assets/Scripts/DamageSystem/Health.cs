@@ -52,6 +52,8 @@ namespace Game.DamageSystem
 
 		private Tween _playCriticalSFXTween;
 
+		private bool isCriticalIndicatorVisible = false;
+
 		private void Awake()
 		{
 			Current = Max;
@@ -72,6 +74,12 @@ namespace Game.DamageSystem
 			{
 				MakeCritical();
 			}
+		}
+
+		private void OnDestroy()
+		{
+			// This Ensures that the critical indicator is destroyed when the Health component is destroyed.
+			HideCriticalIndicator();
 		}
 
 		public void SetMax(float max)
@@ -211,19 +219,28 @@ namespace Game.DamageSystem
 
 		private void ShowCriticalIndicator()
 		{
-			var bounds = GetComponent<Collider2D>().bounds;
-			Vector3 offset = CriticalIndicatorOffset;
+			if (!isCriticalIndicatorVisible)
+			{
+				var bounds = GetComponent<Collider2D>().bounds;
+				Vector3 offset = CriticalIndicatorOffset;
 
-			const string key = "CriticalHealth.prefab";
-			Vector2 pos = bounds.center + (Vector3.up * bounds.extents.y) + offset;
+				const string key = "CriticalHealth.prefab";
+				Vector2 pos = bounds.center + (Vector3.up * bounds.extents.y) + offset;
 
-			_criticalIndicator = Addressables.InstantiateAsync(key, pos, Quaternion.identity, transform)
-				.WaitForCompletion();
+				_criticalIndicator = Addressables.InstantiateAsync(key, pos, Quaternion.identity, transform)
+						.WaitForCompletion();
+
+				isCriticalIndicatorVisible = true;
+			}
 		}
 
 		private void HideCriticalIndicator()
 		{
-			Destroy(_criticalIndicator);
+			if (_criticalIndicator != null)
+			{
+				Destroy(_criticalIndicator);
+				isCriticalIndicatorVisible = false;
+			}
 		}
 	}
 }
