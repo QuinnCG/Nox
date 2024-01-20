@@ -27,6 +27,7 @@ namespace Game.DamageSystem
 		private bool StartCritical;
 
 		public bool DisplayCriticalIndicator { get; private set; } = true;
+		public bool DisableDamage { get; set; } = false;
 
 		public bool IsCritical => Current / Max <= CriticalPercent;
 		public bool IsDead => Current == 0f;
@@ -105,7 +106,7 @@ namespace Game.DamageSystem
 
 		public void TakeDamage(DamageInfo info)
 		{
-			if (IsDead) return;
+			if (IsDead || DisableDamage) return;
 
 			// The actual amount removed (capped at 0).
 			float delta = Mathf.Min(Current, info.Damage);

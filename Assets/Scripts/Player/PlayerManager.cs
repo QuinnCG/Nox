@@ -1,3 +1,5 @@
+using DG.Tweening;
+using FMODUnity;
 using Game.DamageSystem;
 using Game.MovementSystem;
 using Game.ProjectileSystem;
@@ -27,6 +29,12 @@ namespace Game.Player
 		[SerializeField, Tooltip("Higher values will make the camera lean more towards the crosshair.")]
 		private float CameraCrosshairBias = 0.3f;
 
+		[SerializeField]
+		private float DamageImmunityDuration = 2.5f;
+
+		[SerializeField]
+		private EventReference DamagedSound;
+
 		public event Action<DamageInfo> OnDamageEnemy;
 
 		private InputReader _input;
@@ -50,6 +58,8 @@ namespace Game.Player
 				_movement = character.GetComponent<Movement>();
 				_health = character.GetComponent<Health>();
 				_health.SetDisplayCriticalIndiactor(false);
+
+				_health.OnDamaged += OnDamaged;
 			};
 
 			_possession.OnCharacterUnpossessed += character =>
@@ -109,6 +119,35 @@ namespace Game.Player
 
 			Vector2 target = CrosshairManager.Instance.CurrentPosition;
 			PossessionManager.Instance.PossessedCharacter.Attack(target);
+		}
+
+		/* OTHER */
+
+		private void OnDamaged(float amount)
+		{
+			if (!DamagedSound.IsNull)
+			{
+				RuntimeManager.PlayOneShotAttached(DamagedSound, Camera.main.gameObject);
+			}
+
+			_health.DisableDamage = true;
+			OnImmunityStart();
+
+			DOVirtual.DelayedCall(DamageImmunityDuration, () =>
+			{
+				_health.DisableDamage = false;
+				OnImmunityEnd();
+			});
+		}
+
+		private void OnImmunityStart()
+		{
+
+		}
+
+		private void OnImmunityEnd()
+		{
+
 		}
 	}
 }
