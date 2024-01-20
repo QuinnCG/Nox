@@ -75,11 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049e3b06148b79347b16869dd6d1c54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Current>k__BackingField: 0
+  <Current>k__BackingField: 28.900002
   <Max>k__BackingField: 100
   CriticalIndicatorOffset: {x: 0.2, y: 0.5}
   CriticalPercent: 0.3
-  StartCritical: 0
+  StartCritical: 1
 --- !u!114 &4281035935892752222
 MonoBehaviour:
   m_ObjectHideFlags: 0
