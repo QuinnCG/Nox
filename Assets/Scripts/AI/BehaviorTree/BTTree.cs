@@ -7,12 +7,15 @@ namespace Game.AI.BehaviorTree
 	{
 		public bool EnableDebug { get; set; }
 
+		public EnemyBrain Agent { get; private set; }
+
 		private readonly Selector _root = new();
 		private BTNode _activeNode;
 
-		public BTTree()
+		public BTTree(EnemyBrain agent)
 		{
 			_root.SetTree(this);
+			Agent = agent;
 		}
 
 		public void Update()

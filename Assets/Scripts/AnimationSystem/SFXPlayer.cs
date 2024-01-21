@@ -7,7 +7,7 @@ namespace Game.AnimationSystem
 	{
 		public void PlaySound(string name)
 		{
-			RuntimeManager.PlayOneShot($"event:/{name}", transform.position);
+			RuntimeManager.PlayOneShot($"event:/SFX/{name}", transform.position);
 		}
 	}
 }
