@@ -23,13 +23,15 @@ namespace Game.AI
 		public Collider2D Collider { get; private set; }
 		public Bounds Bounds => Collider.bounds;
 
-		private readonly BTTree _tree = new();
+		private BTTree _tree;
 
 		protected virtual void Awake()
 		{
 			Movement = GetComponent<Movement>();
 			Health = GetComponent<Health>();
 			Collider = GetComponent<Collider2D>();
+
+			_tree = new(this);
 		}
 
 		protected virtual void Start()

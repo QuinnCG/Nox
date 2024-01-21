@@ -5,7 +5,7 @@ namespace Game.AI.BossSystem.BossBrains
 {
 	public class Hatamoto : BossBrain
 	{
-		protected override void Awake()
+		protected override void Start()
 		{
 			base.Awake();
 
@@ -16,14 +16,13 @@ namespace Game.AI.BossSystem.BossBrains
 			var secondPhaseCondition = new CustomCondition(() => Phase == 2);
 			secondPhase.Condition(secondPhaseCondition);
 
-			AddNode(firstPhase);
-			AddNode(secondPhase);
+			AddNode(firstPhase, secondPhase);
 
 			// Phase 1.
-
+			// TODO:
 
 			// Phase 2.
-
+			// TODO:
 		}
 	}
 }
