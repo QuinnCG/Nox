@@ -1,3 +1,4 @@
+using Game.AI.BehaviorTree;
 using Game.DamageSystem;
 using Game.MovementSystem;
 using Game.Player;
@@ -22,6 +23,8 @@ namespace Game.AI
 		public Collider2D Collider { get; private set; }
 		public Bounds Bounds => Collider.bounds;
 
+		private readonly BTTree _tree = new();
+
 		protected virtual void Awake()
 		{
 			Movement = GetComponent<Movement>();
@@ -32,6 +35,16 @@ namespace Game.AI
 		protected virtual void Start()
 		{
 			PlayerManager = PlayerManager.Instance;
+		}
+
+		protected virtual void Update()
+		{
+			_tree.Update();
+		}
+
+		protected void AddNode(params BTNode[] nodes)
+		{
+			_tree.Add(nodes);
 		}
 	}
 }

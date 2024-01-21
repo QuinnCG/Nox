@@ -7,6 +7,8 @@ namespace Game.AI.BehaviorTree
 		public BTComposite Parent { get; private set; }
 		public BTTree Tree => Parent != null ? Parent.Tree : _tree;
 
+		protected EnemyBrain Agent => Tree.Agent;
+
 		private readonly List<BTConditional> _conditionals = new();
 
 		private bool _started;
