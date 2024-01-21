@@ -28,7 +28,6 @@ public class SubtleHeartbeats : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Clicked!");
         StartSubtlePulsating();
     }
 
@@ -40,7 +39,6 @@ public class SubtleHeartbeats : MonoBehaviour, IPointerEnterHandler, IPointerExi
     void ShrinkOnHoverEnd()
     {
         transform.DOKill();
-        Debug.Log("DOKill");
         transform.DOScale(originalScale, 0.2f);
     }
 
