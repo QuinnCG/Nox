@@ -14,5 +14,10 @@ namespace Game.AI.BehaviorTree
 				Children.Add(child);
 			}
 		}
+
+		public sealed override BTNode[] GetChildren()
+		{
+			return Children.ToArray();
+		}
 	}
 }

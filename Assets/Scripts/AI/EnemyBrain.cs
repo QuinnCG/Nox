@@ -23,7 +23,7 @@ namespace Game.AI
 		public Collider2D Collider { get; private set; }
 		public Bounds Bounds => Collider.bounds;
 
-		private BTTree _tree;
+		public BTTree Tree { get; private set; }
 
 		protected virtual void Awake()
 		{
@@ -31,7 +31,7 @@ namespace Game.AI
 			Health = GetComponent<Health>();
 			Collider = GetComponent<Collider2D>();
 
-			_tree = new(this);
+			Tree = new(this);
 		}
 
 		protected virtual void Start()
@@ -41,12 +41,12 @@ namespace Game.AI
 
 		protected virtual void Update()
 		{
-			_tree.Update();
+			Tree.Update();
 		}
 
 		protected void AddNode(params BTNode[] nodes)
 		{
-			_tree.Add(nodes);
+			Tree.Add(nodes);
 		}
 	}
 }

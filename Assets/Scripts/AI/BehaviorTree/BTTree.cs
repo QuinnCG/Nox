@@ -40,5 +40,10 @@ namespace Game.AI.BehaviorTree
 		{
 			_activeNode = node;
 		}
+
+		public BTNode GetRoot()
+		{
+			return _root;
+		}
 	}
 }

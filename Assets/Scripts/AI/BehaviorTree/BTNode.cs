@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Game.AI.BehaviorTree
 {
@@ -66,6 +67,8 @@ namespace Game.AI.BehaviorTree
 		{
 			_tree = tree;
 		}
+
+		public virtual BTNode[] GetChildren() => Array.Empty<BTNode>();
 
 		protected virtual void OnStart() { }
 		protected virtual BTStatus OnUpdate() => BTStatus.Success;

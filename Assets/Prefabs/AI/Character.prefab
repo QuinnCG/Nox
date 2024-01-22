@@ -99,7 +99,7 @@ MonoBehaviour:
       Data2: 1334406352
       Data3: -614909771
       Data4: 1717129820
-    Path: event:/Dash
+    Path: event:/SFX/Dash
 --- !u!114 &6594416687102187604
 MonoBehaviour:
   m_ObjectHideFlags: 0
