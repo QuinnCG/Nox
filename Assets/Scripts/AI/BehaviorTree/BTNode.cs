@@ -53,7 +53,7 @@ namespace Game.AI.BehaviorTree
 			return true;
 		}
 
-		public void Condition(params BTConditional[] conditionals)
+		public void AddCondition(params BTConditional[] conditionals)
 		{
 			_conditionals.AddRange(conditionals);
 		}
@@ -66,6 +66,11 @@ namespace Game.AI.BehaviorTree
 		public void SetTree(BTTree tree)
 		{
 			_tree = tree;
+
+			foreach (var condition in _conditionals)
+			{
+				condition.Tree = tree;
+			}
 		}
 
 		public virtual BTNode[] GetChildren() => Array.Empty<BTNode>();

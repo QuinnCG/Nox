@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4969659154595712352}
   - component: {fileID: 8933609617382186843}
   m_Layer: 0
-  m_Name: DummyBoss
+  m_Name: Hatamoto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3960479896017489875}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eca0737a8ab11844183be2631cae7a29, type: 3}
   m_Name: 
@@ -229,3 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098cd2ee827d7f1449c1182877434b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnableDebug: 1
+  <Title>k__BackingField: Disgraced Hatamoto
+  SecondPhaseHP: 0.5
+  IdealFleeDistance: 2

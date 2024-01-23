@@ -22,13 +22,15 @@ namespace Game.AI.BehaviorTree
 		{
 			_root.Update();
 
-            if (EnableDebug)
+#if UNITY_EDITOR
+			if (EnableDebug)
 			{
 				Debug.Log(
-					"Behavior Tree: "
+					$"Behavior Tree ({Agent.gameObject.name}): "
 					+ "[Active] ".Color(StringColor.Yellow)
 					+ _activeNode?.GetType().Name.Bold().Color(StringColor.White));
 			}
+#endif
 		}
 
 		public void Add(params BTNode[] children)
