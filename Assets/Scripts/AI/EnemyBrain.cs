@@ -1,7 +1,9 @@
 using Game.AI.BehaviorTree;
 using Game.DamageSystem;
+using Game.EditorWindows;
 using Game.MovementSystem;
 using Game.Player;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +14,11 @@ namespace Game.AI
 	[RequireComponent(typeof(Health))]
 	public abstract class EnemyBrain : MonoBehaviour
 	{
-		[SerializeField, Tooltip("Log behavior tree information.")]
-		private bool EnableDebug;
+		[Button("Show Tree")]
+		public void ShowTree()
+		{
+			EnemyBrainWindow.DisplayBrain(this);
+		}
 
 		public PlayerManager PlayerManager { get; private set; }
 
@@ -61,10 +66,7 @@ namespace Game.AI
 			Health = GetComponent<Health>();
 			Collider = GetComponent<Collider2D>();
 
-			Tree = new(this)
-			{
-				EnableDebug = EnableDebug
-			};
+			Tree = new(this);
 		}
 
 		protected virtual void Start()

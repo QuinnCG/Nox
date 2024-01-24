@@ -3,11 +3,15 @@ using Game.AI.BehaviorTree.Composites;
 using Game.AI.BehaviorTree.Conditionals;
 using Sirenix.OdinInspector;
 using Game.AI.BehaviorTree.Tasks;
+using Game.EditorWindows;
 
 namespace Game.AI.BossSystem.BossBrains
 {
 	public class Hatamoto : BossBrain
 	{
+		[BlackBoard]
+		public float Field = 35f;
+
 		[SerializeField, MinValue(0f), MaxValue(1f)]
 		private float SecondPhaseHP = 0.5f;
 

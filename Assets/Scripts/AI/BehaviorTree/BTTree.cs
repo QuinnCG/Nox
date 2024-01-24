@@ -1,16 +1,20 @@
 using Game.AI.BehaviorTree.Composites;
+using System;
 using UnityEngine;
 
 namespace Game.AI.BehaviorTree
 {
 	public class BTTree
 	{
-		public bool EnableDebug { get; set; }
+		public event Action<BTNode> OnNodeUpdate;
+		public event Action<BTTask> OnTaskStart;
 
 		public EnemyBrain Agent { get; private set; }
 
+		public BTTask ActiveTask { get; private set; }
+		public BTNode ActiveNode { get; private set; }
+
 		private readonly Selector _root = new();
-		private BTNode _activeNode;
 
 		public BTTree(EnemyBrain agent)
 		{
@@ -21,16 +25,6 @@ namespace Game.AI.BehaviorTree
 		public void Update()
 		{
 			_root.Update();
-
-#if UNITY_EDITOR
-			if (EnableDebug)
-			{
-				Debug.Log(
-					$"Behavior Tree ({Agent.gameObject.name}): "
-					+ "[Active] ".Color(StringColor.Yellow)
-					+ _activeNode?.GetType().Name.Bold().Color(StringColor.White));
-			}
-#endif
 		}
 
 		public void Add(params BTNode[] children)
@@ -38,14 +32,21 @@ namespace Game.AI.BehaviorTree
 			_root.Add(children);
 		}
 
-		public void SetActiveNode(BTNode node)
-		{
-			_activeNode = node;
-		}
-
 		public BTNode GetRoot()
 		{
 			return _root;
+		}
+
+		public void SetActiveNode(BTNode node)
+		{
+			ActiveNode = node;
+			OnNodeUpdate?.Invoke(ActiveNode);
+		}
+
+		public void SetActiveTask(BTTask task)
+		{
+			ActiveTask = task;
+			OnTaskStart?.Invoke(ActiveTask);
 		}
 	}
 }

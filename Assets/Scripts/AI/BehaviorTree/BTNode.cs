@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.AI.BehaviorTree
 {
@@ -21,6 +22,11 @@ namespace Game.AI.BehaviorTree
 			{
 				_started = true;
 				OnStart();
+
+				if (this is BTTask task)
+				{
+					Tree.SetActiveTask(task);
+				}
 			}
 
 			BTStatus status = OnUpdate();
