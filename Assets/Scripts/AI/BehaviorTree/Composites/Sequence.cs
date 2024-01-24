@@ -1,7 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
-
-namespace Game.AI.BehaviorTree.Composites
+﻿namespace Game.AI.BehaviorTree.Composites
 {
 	public class Sequence : BTComposite
 	{
@@ -16,6 +13,9 @@ namespace Game.AI.BehaviorTree.Composites
 
 		protected override BTStatus OnUpdate()
 		{
+			if (Children.Count == 0)
+				return BTStatus.Failure;
+
 			BTNode child = Children[_index];
 			BTStatus status = child.Update();
 

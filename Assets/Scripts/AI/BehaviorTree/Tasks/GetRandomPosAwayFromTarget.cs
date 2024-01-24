@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.AI.BehaviorTree.Tasks
 {
@@ -7,13 +6,13 @@ namespace Game.AI.BehaviorTree.Tasks
 	{
 		private const float ObstacleBuffer = 0.5f;
 
-		private readonly Action<Vector2> _setTarget;
-		private readonly Func<Vector2> _getOrigin;
+		private readonly BTProperty<Vector2> _setTarget;
+		private readonly BTProperty<Vector2> _getOrigin;
 
 		private readonly float _idealDistance;
 		private readonly float _maxAngle;
 
-		public GetRandomPosAwayFromTarget(Action<Vector2> setTarget, Func<Vector2> getOrigin, float idealDst, float maxAngle = 90f)
+		public GetRandomPosAwayFromTarget(BTProperty<Vector2> setTarget, BTProperty<Vector2> getOrigin, float idealDst, float maxAngle = 90f)
 		{
 			_setTarget = setTarget;
 			_getOrigin = getOrigin;
@@ -24,13 +23,13 @@ namespace Game.AI.BehaviorTree.Tasks
 
 		protected override BTStatus OnUpdate()
 		{
-			Vector2 start = _getOrigin();
+			Vector2 start = _getOrigin.Value;
 			Vector2 end = Agent.transform.position;
 
 			Vector2 dir = GetDirection(end - start);
 			Vector2 pos = GetActualDistance(dir);
 
-			_setTarget?.Invoke(pos);
+			_setTarget.Value = pos;
 			return BTStatus.Success;
 		}
 
