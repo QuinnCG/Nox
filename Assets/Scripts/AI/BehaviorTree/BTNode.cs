@@ -9,14 +9,7 @@ namespace Game.AI.BehaviorTree
 		public BTComposite Parent { get; private set; }
 		public BTTree Tree {get; private set; }
 
-		protected EnemyBrain Agent
-		{
-			get
-			{
-				Debug.Log(Tree);
-				return Tree.Agent;
-			}
-		}
+		protected EnemyBrain Agent { get; private set; }
 
 		private readonly List<BTConditional> _conditionals = new();
 		private readonly List<BTDecorator> _decorators = new();
@@ -48,7 +41,7 @@ namespace Game.AI.BehaviorTree
 			}
 
 			BTStatus status = OnUpdate();
-			Tree.SetActiveNode(this);
+			Tree?.SetActiveNode(this);
 
 			if (status is BTStatus.Success or BTStatus.Failure)
 			{
@@ -105,6 +98,7 @@ namespace Game.AI.BehaviorTree
 		public virtual void SetTree(BTTree tree)
 		{
 			_tree = tree;
+			Agent = tree.Agent;
 
 			foreach (var decorator in _decorators)
 			{

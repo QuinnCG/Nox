@@ -262,4 +262,6 @@ namespace Game.EditorWindows
 			return members.ToArray();
 		}
 	}
+
+	// TODO: Highlighting is not working.
 }

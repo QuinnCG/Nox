@@ -50,6 +50,8 @@ namespace Game.AI.BossSystem.BossBrains
 			// TODO:
 		}
 
+		// TODO: Distance to player keeps growing.
+
 		private void OnDamaged(float damage)
 		{
 			if (Health.Current <= Health.Max * SecondPhaseHP)
