@@ -19,5 +19,16 @@ namespace Game.AI.BehaviorTree
 		{
 			return Children.ToArray();
 		}
+
+		public override void SetTree(BTTree tree)
+		{
+			base.SetTree(tree);
+			_tree = tree;
+
+			foreach (var child in Children)
+			{
+				child.SetTree(tree);
+			}
+		}
 	}
 }

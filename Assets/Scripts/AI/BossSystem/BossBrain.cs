@@ -1,3 +1,4 @@
+using Game.AI.BehaviorTree;
 using UnityEngine;
 
 namespace Game.AI.BossSystem
@@ -12,6 +13,7 @@ namespace Game.AI.BossSystem
 		/// <summary>
 		/// Counts from 1.
 		/// </summary>
-		public int Phase { get; protected set; } = 1;
+		[Expose]
+		public BTProperty<int> Phase { get; protected set; } = 1;
 	}
 }

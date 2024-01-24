@@ -3,6 +3,7 @@ using Game.DamageSystem;
 using Game.EditorWindows;
 using Game.MovementSystem;
 using Game.Player;
+using NUnit.Framework.Constraints;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -50,15 +51,20 @@ namespace Game.AI
 		/// <summary>
 		/// The position of this enemy.
 		/// </summary>
-		public Vector2 Position => transform.position;
+		[Expose]
+		public BTProperty<Vector2> Position => (Vector2)transform.position;
 		/// <summary>
 		/// The percent (0 - 1) of health remaining on this enemy.
 		/// </summary>
-		public float HealthPercent => Health.Percent;
+		[Expose]
+		public BTProperty<float> HealthPercent => Health.Percent;
 		/// <summary>
 		/// The position of the currently possessed character (e.g. the player).
 		/// </summary>
-		public Vector2 PlayerPos => PossessionManager.Instance.Position;
+		[Expose]
+		public BTProperty<Vector2> PlayerPos { get; private set; } = new();
+
+		private bool _treeStarted;
 
 		protected virtual void Awake()
 		{
@@ -76,6 +82,13 @@ namespace Game.AI
 
 		protected virtual void Update()
 		{
+			if (!_treeStarted)
+			{
+				_treeStarted = true;
+				Tree.Start();
+			}
+
+			PlayerPos = PossessionManager.Instance.Position;
 			Tree.Update();
 		}
 

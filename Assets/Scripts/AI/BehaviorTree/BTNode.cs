@@ -7,11 +7,19 @@ namespace Game.AI.BehaviorTree
 	public abstract class BTNode
 	{
 		public BTComposite Parent { get; private set; }
-		public BTTree Tree => Parent != null ? Parent.Tree : _tree;
+		public BTTree Tree {get; private set; }
 
-		protected EnemyBrain Agent => Tree.Agent;
+		protected EnemyBrain Agent
+		{
+			get
+			{
+				Debug.Log(Tree);
+				return Tree.Agent;
+			}
+		}
 
 		private readonly List<BTConditional> _conditionals = new();
+		private readonly List<BTDecorator> _decorators = new();
 
 		private bool _started;
 		protected BTTree _tree;
@@ -20,13 +28,23 @@ namespace Game.AI.BehaviorTree
 		{
 			if (!_started)
 			{
+				foreach (var decorator in _decorators)
+				{
+					decorator.Start();
+				}
+
 				_started = true;
 				OnStart();
 
 				if (this is BTTask task)
 				{
-					Tree.SetActiveTask(task);
+					Tree?.SetActiveTask(task);
 				}
+			}
+
+			foreach (var decorator in _decorators)
+			{
+				decorator.Update();
 			}
 
 			BTStatus status = OnUpdate();
@@ -34,6 +52,11 @@ namespace Game.AI.BehaviorTree
 
 			if (status is BTStatus.Success or BTStatus.Failure)
 			{
+				foreach (var decorator in _decorators)
+				{
+					decorator.Finish();
+				}
+
 				_started = false;
 				OnFinish();
 			}
@@ -44,6 +67,11 @@ namespace Game.AI.BehaviorTree
 		public void Interrupt()
 		{
 			OnFinish(true);
+
+			foreach (var decorator in _decorators)
+			{
+				decorator.Finish();
+			}
 		}
 
 		public bool Evaluate()
@@ -64,18 +92,28 @@ namespace Game.AI.BehaviorTree
 			_conditionals.AddRange(conditionals);
 		}
 
+		public void AddDecorator(params BTDecorator[] decorators)
+		{
+			_decorators.AddRange(decorators);
+		}
+
 		public void SetParent(BTComposite parent)
 		{
 			Parent = parent;
 		}
 
-		public void SetTree(BTTree tree)
+		public virtual void SetTree(BTTree tree)
 		{
 			_tree = tree;
 
-			foreach (var condition in _conditionals)
+			foreach (var decorator in _decorators)
 			{
-				condition.Tree = tree;
+				decorator.Tree = tree;
+			}
+
+			foreach (var conditional in _conditionals)
+			{
+				conditional.Tree = tree;
 			}
 		}
 

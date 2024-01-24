@@ -18,8 +18,12 @@ namespace Game.AI.BehaviorTree
 
 		public BTTree(EnemyBrain agent)
 		{
-			_root.SetTree(this);
 			Agent = agent;
+		}
+
+		public void Start()
+		{
+			_root.SetTree(this);
 		}
 
 		public void Update()

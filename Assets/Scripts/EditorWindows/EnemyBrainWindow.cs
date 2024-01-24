@@ -3,6 +3,7 @@ using Game.AI.BehaviorTree;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -20,6 +21,7 @@ namespace Game.EditorWindows
 
 		private EnemyBrain _brain;
 		private TreeView _tree;
+		private VisualElement _blackboard;
 
 		private readonly Dictionary<BTNode, VisualElement> _nodesToItems = new();
 		private BTTask _lastActiveTask;
@@ -52,6 +54,44 @@ namespace Game.EditorWindows
 				}
 
 				_lastActiveTask = active;
+			}
+
+			_blackboard.Clear();
+			var members = GetBlackBoardMembers();
+
+			foreach (var member in members)
+			{
+				string name;
+				string value = "NO VALUE SET";
+
+				if (member is FieldInfo field)
+				{
+					name = field.Name;
+
+					var instance = field.GetValue(_brain);
+					if (instance is IBTProperty bt)
+					{
+						value = bt.Value?.ToString();
+					}
+				}
+				else if (member is PropertyInfo property)
+				{
+					name = property.Name;
+
+					var instance = property.GetValue(_brain);
+					if (instance is IBTProperty bt)
+					{
+						value = bt.Value?.ToString();
+					}
+				}
+				else
+				{
+					throw new System.Exception();
+				}
+
+				var label = new Label($"{name}: {value}");
+				label.style.color = Color.white;
+				_blackboard.Add(label);
 			}
 		}
 
@@ -103,7 +143,7 @@ namespace Game.EditorWindows
 			inspector.style.borderRightColor = LightColor;
 			inspector.style.borderRightWidth = 1f;
 
-			var title = new Label("Inspector");
+			var title = new Label("Black Board");
 			title.name = "Title";
 			title.style.color = Color.white;
 			title.style.width = Length.Percent(100f);
@@ -111,12 +151,9 @@ namespace Game.EditorWindows
 			title.style.unityTextAlign = TextAnchor.MiddleCenter;
 			inspector.Add(title);
 
-			var members = GetBlackBoardMembers();
-			foreach (var member in members)
-			{
-				var label = new Label(member.Name);
-				inspector.Add(label);
-			}
+			_blackboard = new VisualElement();
+			_blackboard.style.flexGrow = 1f;
+			inspector.Add(_blackboard);
 
 			return inspector;
 		}
@@ -206,7 +243,7 @@ namespace Game.EditorWindows
 
 			foreach (var property in properties)
 			{
-				var attribute = property.GetCustomAttribute<BlackBoardAttribute>();
+				var attribute = property.GetCustomAttribute<ExposeAttribute>();
 				if (attribute != null)
 				{
 					members.Add(property);
@@ -215,7 +252,7 @@ namespace Game.EditorWindows
 
 			foreach (var field in fields)
 			{
-				var attribute = field.GetCustomAttribute<BlackBoardAttribute>();
+				var attribute = field.GetCustomAttribute<ExposeAttribute>();
 				if (attribute != null)
 				{
 					members.Add(field);
@@ -225,6 +262,4 @@ namespace Game.EditorWindows
 			return members.ToArray();
 		}
 	}
-
-	// TODO: BlackBoard generic variables? To avoid lambdas that can be shown easily?
 }
