@@ -14,7 +14,7 @@
 		protected override BTStatus OnUpdate()
 		{
 			if (Children.Count == 0)
-				return BTStatus.Failure;
+				return BTStatus.Success;
 
 			BTNode child = Children[_index];
 

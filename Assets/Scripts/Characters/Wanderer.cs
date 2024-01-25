@@ -40,9 +40,9 @@ namespace Game.Characters
 		public override void Attack(Vector2 target)
 		{
 			Vector2 origin = ProjectileSpawn.position;
-			Vector2 dir = CrosshairManager.Instance.GetDirectionToCrosshair();
+			Vector2 pos = CrosshairManager.Instance.CurrentPosition;
 
-			Projectile.Spawn(ProjectilePrefab, origin, dir, gameObject);
+			Projectile.Spawn(ProjectilePrefab, origin, pos, gameObject);
 		}
 
 		public override void Dash()
