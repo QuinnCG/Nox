@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using Game.AI.BehaviorTree.Tasks;
 using Game.AI.BehaviorTree;
 using Game.AI.BehaviorTree.Decorators;
+using Game.ProjectileSystem;
 
 namespace Game.AI.BossSystem.BossBrains
 {
@@ -14,7 +15,10 @@ namespace Game.AI.BossSystem.BossBrains
 		private float SecondPhaseHP = 0.5f;
 
 		[SerializeField, BoxGroup("Phase 1")]
-		private float IdealFleeDistance = 3f;
+		private float IdealFleeDistance = 5f;
+
+		[SerializeField, Required]
+		private GameObject ShurikenPrefab;
 
 		protected override void Awake()
 		{
@@ -37,9 +41,19 @@ namespace Game.AI.BossSystem.BossBrains
 			// Phase 1.
 			var fleeFrom = new FleeFrom(PlayerPos);
 			firstPhase.Add(fleeFrom);
-
 			var nearPlayer = new IsNearTarget(PlayerPos, IdealFleeDistance);
 			fleeFrom.AddCondition(nearPlayer);
+
+			var shootSeq = new Sequence();
+			firstPhase.Add(shootSeq);
+			var shoot = new ShootAtTarget(ShurikenPrefab, transform, PlayerPos, new ShootSpawnInfo()
+			{
+				Count = 3,
+				Method = ShootMethod.EvenSpread,
+				SpreadAngle = 45f
+			});
+			var wait = new Wait(2f);
+			shootSeq.Add(shoot, wait);
 
 			// Phase 2.
 			// TODO:

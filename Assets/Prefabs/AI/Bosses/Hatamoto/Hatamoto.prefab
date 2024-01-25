@@ -232,3 +232,4 @@ MonoBehaviour:
   <Title>k__BackingField: Disgraced Hatamoto
   SecondPhaseHP: 0.5
   IdealFleeDistance: 4
+  ShurikenPrefab: {fileID: 8550588314174644299, guid: b652bd102e1e98649beba201e890d3de, type: 3}
