@@ -40,20 +40,29 @@ namespace Game.EditorWindows
 
 		private void OnInspectorUpdate()
 		{
+			if (!Application.isPlaying)
+			{
+				Close();
+				return;
+			}
+
 			var active = _brain.Tree.ActiveTask;
 			if (active != _lastActiveTask)
 			{
 				if (_lastActiveTask != null)
 				{
-					SetBranchActive(_nodesToItems[_lastActiveTask], false);
-				}
-
-				if (_nodesToItems.TryGetValue(active, out VisualElement element))
-				{
-					SetBranchActive(element, true);
+					HighlightBranch(_nodesToItems[_lastActiveTask], false);
 				}
 
 				_lastActiveTask = active;
+
+				if (active != null)
+				{
+					if (_nodesToItems.TryGetValue(active, out VisualElement element))
+					{
+						HighlightBranch(element, true);
+					}
+				}
 			}
 
 			_blackboard.Clear();
@@ -221,15 +230,14 @@ namespace Game.EditorWindows
 			}
 		}
 
-		private void SetBranchActive(VisualElement element, bool highlight)
+		private void HighlightBranch(VisualElement element, bool highlight)
 		{
-			VisualElement current = element;
 			var color = highlight ? HighlightColor : Color.white;
-
-			while (current != null)
+			element.style.color = color;
+			
+			if (element.parent != null)
 			{
-				current.style.color = color;
-				current = current.parent;
+				HighlightBranch(element.parent, highlight);
 			}
 		}
 
@@ -262,6 +270,4 @@ namespace Game.EditorWindows
 			return members.ToArray();
 		}
 	}
-
-	// TODO: Highlighting is not working.
 }

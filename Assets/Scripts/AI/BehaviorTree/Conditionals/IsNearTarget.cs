@@ -20,6 +20,7 @@ namespace Game.AI.BehaviorTree.Conditionals
 		protected override bool OnEvaluate()
 		{
 			float dst = Vector2.Distance(Agent.Position.Value, _target.Value);
+
 			if (_invert)
 			{
 				return dst > _distance;

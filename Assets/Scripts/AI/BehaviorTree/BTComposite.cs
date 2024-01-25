@@ -23,7 +23,6 @@ namespace Game.AI.BehaviorTree
 		public override void SetTree(BTTree tree)
 		{
 			base.SetTree(tree);
-			_tree = tree;
 
 			foreach (var child in Children)
 			{

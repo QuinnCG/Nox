@@ -7,7 +7,7 @@ namespace Game.AI.BehaviorTree
 	public class BTTree
 	{
 		public event Action<BTNode> OnNodeUpdate;
-		public event Action<BTTask> OnTaskStart;
+		public event Action<BTTask> OnTaskUpdate;
 
 		public EnemyBrain Agent { get; private set; }
 
@@ -28,6 +28,9 @@ namespace Game.AI.BehaviorTree
 
 		public void Update()
 		{
+			ActiveTask = null;
+			ActiveNode = null;
+
 			_root.Update();
 		}
 
@@ -50,7 +53,7 @@ namespace Game.AI.BehaviorTree
 		public void SetActiveTask(BTTask task)
 		{
 			ActiveTask = task;
-			OnTaskStart?.Invoke(ActiveTask);
+			OnTaskUpdate?.Invoke(ActiveTask);
 		}
 	}
 }

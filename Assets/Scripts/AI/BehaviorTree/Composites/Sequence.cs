@@ -17,6 +17,12 @@
 				return BTStatus.Failure;
 
 			BTNode child = Children[_index];
+
+			if (!child.Evaluate())
+			{
+				return BTStatus.Failure;
+			}
+
 			BTStatus status = child.Update();
 
 			if (status == BTStatus.Success)

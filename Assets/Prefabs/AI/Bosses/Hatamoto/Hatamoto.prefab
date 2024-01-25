@@ -229,7 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098cd2ee827d7f1449c1182877434b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnableDebug: 1
   <Title>k__BackingField: Disgraced Hatamoto
   SecondPhaseHP: 0.5
-  IdealFleeDistance: 2
+  IdealFleeDistance: 4

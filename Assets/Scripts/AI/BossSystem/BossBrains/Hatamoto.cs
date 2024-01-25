@@ -10,14 +10,11 @@ namespace Game.AI.BossSystem.BossBrains
 {
 	public class Hatamoto : BossBrain
 	{
-		[SerializeField, MinValue(0f), MaxValue(1f)]
+		[SerializeField, MinValue(0f), MaxValue(1f), Tooltip("0f = 0% and 1f = 100%")]
 		private float SecondPhaseHP = 0.5f;
 
 		[SerializeField, BoxGroup("Phase 1")]
 		private float IdealFleeDistance = 3f;
-
-		[Expose]
-		public BTProperty<float> DistanceToPlayer = new();
 
 		protected override void Awake()
 		{
@@ -32,31 +29,27 @@ namespace Game.AI.BossSystem.BossBrains
 			// Phases.
 			var firstPhase = new Sequence();
 			var secondPhase = new Sequence();
-
-			var secondPhaseCondition = new IsEqual<int>(Phase, 2);
-			secondPhase.AddCondition(secondPhaseCondition);
-
 			AddNode(firstPhase, secondPhase);
 
+			var isSecondPhase = new IsEqual<int>(Phase, 2);
+			secondPhase.AddCondition(isSecondPhase);
+
 			// Phase 1.
-			var nearPlayer = new IsNearTarget(PlayerPos, IdealFleeDistance);
 			var fleeFrom = new FleeFrom(PlayerPos);
-			var getDst = new GetDistanceFromTarget(PlayerPos, DistanceToPlayer);
-			fleeFrom.AddCondition(nearPlayer);
-			fleeFrom.AddDecorator(getDst);
 			firstPhase.Add(fleeFrom);
+
+			var nearPlayer = new IsNearTarget(PlayerPos, IdealFleeDistance);
+			fleeFrom.AddCondition(nearPlayer);
 
 			// Phase 2.
 			// TODO:
 		}
 
-		// TODO: Distance to player keeps growing.
-
 		private void OnDamaged(float damage)
 		{
 			if (Health.Current <= Health.Max * SecondPhaseHP)
 			{
-				Phase = 2;
+				Phase.Value = 2;
 			}
 		}
 	}

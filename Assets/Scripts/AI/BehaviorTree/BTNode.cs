@@ -7,7 +7,7 @@ namespace Game.AI.BehaviorTree
 	public abstract class BTNode
 	{
 		public BTComposite Parent { get; private set; }
-		public BTTree Tree {get; private set; }
+		public BTTree Tree { get; private set; }
 
 		protected EnemyBrain Agent { get; private set; }
 
@@ -15,7 +15,6 @@ namespace Game.AI.BehaviorTree
 		private readonly List<BTDecorator> _decorators = new();
 
 		private bool _started;
-		protected BTTree _tree;
 
 		public BTStatus Update()
 		{
@@ -28,11 +27,6 @@ namespace Game.AI.BehaviorTree
 
 				_started = true;
 				OnStart();
-
-				if (this is BTTask task)
-				{
-					Tree?.SetActiveTask(task);
-				}
 			}
 
 			foreach (var decorator in _decorators)
@@ -42,6 +36,13 @@ namespace Game.AI.BehaviorTree
 
 			BTStatus status = OnUpdate();
 			Tree?.SetActiveNode(this);
+
+#if UNITY_EDITOR
+			if (this is BTTask task)
+			{
+				Tree.SetActiveTask(task);
+			}
+#endif
 
 			if (status is BTStatus.Success or BTStatus.Failure)
 			{
@@ -97,7 +98,7 @@ namespace Game.AI.BehaviorTree
 
 		public virtual void SetTree(BTTree tree)
 		{
-			_tree = tree;
+			Tree = tree;
 			Agent = tree.Agent;
 
 			foreach (var decorator in _decorators)

@@ -14,6 +14,6 @@ namespace Game.AI.BossSystem
 		/// Counts from 1.
 		/// </summary>
 		[Expose]
-		public BTProperty<int> Phase { get; protected set; } = 1;
+		public BTProperty<int> Phase { get; protected set; } = new(1);
 	}
 }

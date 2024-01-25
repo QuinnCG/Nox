@@ -52,12 +52,12 @@ namespace Game.AI
 		/// The position of this enemy.
 		/// </summary>
 		[Expose]
-		public BTProperty<Vector2> Position => (Vector2)transform.position;
+		public BTProperty<Vector2> Position { get; private set; } = new();
 		/// <summary>
 		/// The percent (0 - 1) of health remaining on this enemy.
 		/// </summary>
 		[Expose]
-		public BTProperty<float> HealthPercent => Health.Percent;
+		public BTProperty<float> HealthPercent { get; private set; } = new();
 		/// <summary>
 		/// The position of the currently possessed character (e.g. the player).
 		/// </summary>
@@ -88,7 +88,10 @@ namespace Game.AI
 				Tree.Start();
 			}
 
-			PlayerPos = PossessionManager.Instance.Position;
+			Position.Value = (Vector2)transform.position;
+			HealthPercent.Value = Health.Percent;
+			PlayerPos.Value = PossessionManager.Instance.Position;
+
 			Tree.Update();
 		}
 

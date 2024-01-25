@@ -37,7 +37,5 @@ namespace Game.AI.BehaviorTree
 		{
 			_value = defaultValue;
 		}
-
-		public static implicit operator BTProperty<T>(T value) => new(value);
 	}
 }

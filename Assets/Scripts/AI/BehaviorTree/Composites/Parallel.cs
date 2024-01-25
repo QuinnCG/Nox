@@ -8,7 +8,13 @@
 
 			foreach (var child in Children)
 			{
+				if (!child.Evaluate())
+				{
+					return BTStatus.Failure;
+				}
+
 				BTStatus status = child.Update();
+
 				if (status == BTStatus.Failure)
 				{
 					return BTStatus.Failure;

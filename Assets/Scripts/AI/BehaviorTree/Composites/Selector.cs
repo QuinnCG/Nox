@@ -1,4 +1,6 @@
-﻿namespace Game.AI.BehaviorTree.Composites
+﻿using UnityEngine;
+
+namespace Game.AI.BehaviorTree.Composites
 {
 	public class Selector : Sequence
 	{
@@ -38,6 +40,14 @@
 						{
 							return BTStatus.Failure;
 						}
+					}
+				}
+				else
+				{
+					_index++;
+					if (_index > _last)
+					{
+						return BTStatus.Failure;
 					}
 				}
 			}
