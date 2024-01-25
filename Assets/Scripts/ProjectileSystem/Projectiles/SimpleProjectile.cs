@@ -39,11 +39,12 @@ namespace Game.ProjectileSystem
 			Move(_direction * Speed, RotateToFace, RotationalOffset);
 		}
 
-		protected override void OnSpawn(Vector2 direction)
+		protected override void OnSpawn(Vector2 target)
 		{
-			base.OnSpawn(direction);
+			base.OnSpawn(target);
 
-			_direction = direction;
+			_direction = target - (Vector2)transform.position;
+			_direction.Normalize();
 
 			if (!ThrowSound.IsNull)
 			{

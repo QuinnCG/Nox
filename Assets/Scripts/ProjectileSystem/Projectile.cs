@@ -1,9 +1,7 @@
+using Game.AI.BehaviorTree.Tasks;
 using Game.DamageSystem;
 using Game.Player;
-using System;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Game.ProjectileSystem
 {
@@ -13,7 +11,7 @@ namespace Game.ProjectileSystem
 	{
 		public Vector2 CrosshairPos => CrosshairManager.Instance.CurrentPosition;
 
-		public Action<DamageInfo> OnDamage { get; set; }
+		public System.Action<DamageInfo> OnDamage { get; set; }
 
 		protected GameObject Owner { get; private set; }
 		protected Vector2 Velocity => _rb.velocity;
@@ -22,27 +20,75 @@ namespace Game.ProjectileSystem
 		private Rigidbody2D _rb;
 		private Vector2 _vel;
 
-		public static Projectile Spawn(GameObject prefab, Vector2 origin, Vector2 direction, GameObject owner)
+		public static Projectile Spawn(GameObject prefab, Vector2 origin, Vector2 target, GameObject owner)
 		{
 			var instance = Instantiate(prefab, origin, Quaternion.identity);
 			var proj = instance.GetComponent<Projectile>();
 			proj.Owner = owner;
-			proj.OnSpawn(direction);
+			proj.OnSpawn(target);
 
 			return proj;
 		}
-		public static AsyncOperationHandle Spawn(string key, Vector2 origin, Vector2 direction, GameObject owner)
+		public static void Spawn(GameObject prefab, Vector2 origin, Vector2 target, GameObject owner, ShootSpawnInfo spawnInfo = default)
 		{
-			var handle = Addressables.InstantiateAsync(key, origin, Quaternion.identity);
-			handle.Completed += opHandle =>
+			Projectile Shoot(Vector2 tar) => Spawn(prefab, origin, tar, owner);
+			Vector2 RotateTarget(float angle, float maxAngle)
 			{
-				var instance = opHandle.Result;
-				var proj = instance.GetComponent<Projectile>();
-				proj.Owner = owner;
-				proj.OnSpawn(direction);
-			};
+				Vector2 diff = target - origin;
+				Vector2 dir = diff.normalized;
+				float dst = diff.magnitude;
 
-			return handle;
+				Vector2 newDir = Quaternion.AngleAxis(angle - (maxAngle / 2f), Vector3.forward) * dir;
+				return origin + (newDir * dst);
+			}
+
+			Vector2 direction = target - origin;
+			direction.Normalize();
+
+			if (spawnInfo.Method == ShootMethod.Straight)
+			{
+				for (int i = 0; i < spawnInfo.Count; i++)
+				{
+					Shoot(target);
+				}
+			}
+			else if (spawnInfo.Method == ShootMethod.EvenSpread)
+			{
+				float angle = spawnInfo.SpreadAngle / spawnInfo.Count;
+
+				if (spawnInfo.Count % 2 == 0)
+					angle += angle / 2f;
+
+				for (int i = 0; i < spawnInfo.Count; i++)
+				{
+					Shoot(RotateTarget(angle * i, spawnInfo.SpreadAngle));
+				}
+			}
+			else if (spawnInfo.Method == ShootMethod.RandomSpread)
+			{
+				for (int i = 0; i < spawnInfo.Count; i++)
+				{
+					float angle = Random.Range(0f, spawnInfo.SpreadAngle);
+					Shoot(RotateTarget(angle, spawnInfo.SpreadAngle));
+				}
+			}
+			else if (spawnInfo.Method == ShootMethod.EvenCircle)
+			{
+				float angle = 360f / spawnInfo.Count;
+
+				for (int i = 0; i < spawnInfo.Count; i++)
+				{
+					Shoot(RotateTarget(angle * i, 360f));
+				}
+			}
+			else if (spawnInfo.Method == ShootMethod.RandomCircle)
+			{
+				for (int i = 0; i < spawnInfo.Count; i++)
+				{
+					float angle = Random.Range(0f, 360f);
+					Shoot(RotateTarget(angle, 360f));
+				}
+			}
 		}
 
 		protected virtual void Awake()
@@ -88,8 +134,9 @@ namespace Game.ProjectileSystem
 			return true;
 		}
 
-		protected virtual void OnSpawn(Vector2 direction)
+		protected virtual void OnSpawn(Vector2 target)
 		{
+			// If the player shot this projectile, notify PossessionManager.
 			if (PossessionManager.Instance.PossessedCharacter.gameObject == Owner)
 			{
 				PlayerManager.Instance.OnSpawnProjectile(this);
