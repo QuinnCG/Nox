@@ -1,4 +1,7 @@
-﻿using Sirenix.OdinInspector;
+﻿using Game.Player;
+using Game.RoomSystem;
+using Game.UI;
+using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,11 +16,10 @@ namespace Game
 		[SerializeField]
 		private int RuntimeBuildIndex;
 
-		[Space, SerializeField, Required]
-		private Image Blackout;
-
 		[SerializeField]
 		private float FadeOutDuration = 1.5f, FadeInDuration = 1f;
+
+		private Image _blackout;
 
 		private void Awake()
 		{
@@ -31,21 +33,57 @@ namespace Game
 
 		private IEnumerator LoadSequence()
 		{
-			yield return StartCoroutine(FadeOut());
+			bool isPlayerSpawned =
+				PossessionManager.Instance != null 
+				&& PossessionManager.Instance.PossessedCharacter != null;
 
+			InputReader input = null;
+			GameObject playerGroup = null;
+
+			if (isPlayerSpawned)
+			{
+				// Prevent the player, camera, and UI from being unloaded.
+				playerGroup = PossessionManager.Instance.PossessedCharacter.transform.root.gameObject;
+				DontDestroyOnLoad(playerGroup);
+
+				_blackout = HUD.Instance.Blackout;
+
+				// Disable player input.
+				input = PlayerManager.Instance.GetComponent<InputReader>();
+				input.enabled = false;
+
+				// Fade to black.
+				yield return StartCoroutine(FadeOut());
+			}
+
+			// Load/reload scene.
 			var opHandle = USceneManager.LoadSceneAsync(RuntimeBuildIndex);
 			yield return new WaitUntil(() => opHandle.isDone);
 
-			yield return StartCoroutine(FadeIn());
+			if (isPlayerSpawned)
+			{
+				// Move player, camera, and UI back to normal scene.
+				USceneManager.MoveGameObjectToScene(playerGroup, USceneManager.GetActiveScene());
+
+				// Position player to correct location.
+				Transform possessed = PossessionManager.Instance.PossessedCharacter.transform;
+				possessed.position = Room.Current.PlayerSpawnPoint.position;
+
+				// Enable player input.
+				input.enabled = true;
+
+				// Fade from black.
+				yield return StartCoroutine(FadeIn());
+			}
 		}
 
 		private IEnumerator FadeOut()
 		{
-			while (Blackout.color.a > 0f)
+			while (_blackout.color.a > 0f)
 			{
-				var color = Blackout.color;
+				var color = _blackout.color;
 				color.a -= Time.deltaTime * FadeOutDuration;
-				Blackout.color = color;
+				_blackout.color = color;
 
 				yield return null;
 			}
@@ -53,11 +91,11 @@ namespace Game
 
 		private IEnumerator FadeIn()
 		{
-			while (Blackout.color.a < 1f)
+			while (_blackout.color.a < 1f)
 			{
-				var color = Blackout.color;
+				var color = _blackout.color;
 				color.a += Time.deltaTime * FadeInDuration;
-				Blackout.color = color;
+				_blackout.color = color;
 
 				yield return null;
 			}

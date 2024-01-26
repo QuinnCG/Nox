@@ -8,6 +8,8 @@ namespace Game.RoomSystem
 {
 	public class Room : MonoBehaviour
 	{
+		public static Room Current { get; private set; }
+
 		[SerializeField]
 		private Door[] Doors;
 
@@ -15,32 +17,21 @@ namespace Game.RoomSystem
 		private GameObject BossPrefab;
 
 		[SerializeField, Required]
-		private Transform SpawnPoint;
+		private Transform BossSpawnPoint;
 
-		[SerializeField, Required]
-		private Trigger Trigger;
+		[field: SerializeField, Required]
+		public Transform PlayerSpawnPoint { get; private set; }
 
 		private BossBrain _boss;
 
 		private void Awake()
 		{
-			Trigger.OnTrigger += _ =>
-			{
-				if (!_boss)
-				{
-					SpawnBoss();
-				}
-			};
-		}
-
-		private void Start()
-		{
-			OpenAllDoors();
+			Current = this;
 		}
 
 		private void SpawnBoss()
 		{
-			var instance = Instantiate(BossPrefab, SpawnPoint.position, Quaternion.identity, transform);
+			var instance = Instantiate(BossPrefab, BossSpawnPoint.position, Quaternion.identity, transform);
 			_boss = instance.GetComponent<BossBrain>();
 			_boss.GetComponent<Health>().OnDeath += _ => OnBossDeath();
 			_boss.Room = this;

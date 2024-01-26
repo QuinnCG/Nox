@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 420898692828291775}
   - component: {fileID: 7837541159190421251}
   - component: {fileID: 770067264541098553}
+  - component: {fileID: -486718709300677696}
+  - component: {fileID: 7784034925925047976}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -61,3 +63,33 @@ MonoBehaviour:
   DefaultSFXVolume: 0.7
   DefaultMusicVolume: 0.7
   DefaultAmbienceVolume: 0.7
+--- !u!114 &-486718709300677696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4666027857514356075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6077e3597972a5f498571a7e06051836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RuntimeBuildIndex: 1
+  Blackout: {fileID: 0}
+  FadeOutDuration: 1.5
+  FadeInDuration: 1
+--- !u!114 &7784034925925047976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4666027857514356075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d02ebaad672354e91762f77619b2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rooms:
+  - {fileID: 549997748927306544, guid: 18ffea8cf51c04d439d82fc716b867dd, type: 3}

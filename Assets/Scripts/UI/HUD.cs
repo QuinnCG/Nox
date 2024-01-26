@@ -9,6 +9,8 @@ namespace Game.UI
 {
 	public class HUD : MonoBehaviour
 	{
+		public static HUD Instance { get; private set; }
+
 		[SerializeField, BoxGroup("Animation Settings")]
 		private float PlayerHealthFadeIn = 1f;
 
@@ -36,9 +38,16 @@ namespace Game.UI
 		[SerializeField, BoxGroup("References"), Required]
 		private CriticalHealthOverlay criticalHealthOverlay;
 
+		[field: SerializeField, BoxGroup("References"), Required]
+		public Image Blackout { get; private set; }
+
 		private Character _lastCharacter;
 		private Health _health;
 
+		private void Awake()
+		{
+			Instance = this;
+		}
 
 		private void Start()
 		{
@@ -160,12 +169,12 @@ namespace Game.UI
 
 		private void ShowBoss()
 		{
-
+			BossContainer.SetActive(true);
 		}
 
 		private void HideBoss()
 		{
-
+			BossContainer.SetActive(false);
 		}
 	}
 }
