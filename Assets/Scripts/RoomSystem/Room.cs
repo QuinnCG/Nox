@@ -1,10 +1,10 @@
+using Game.AI.BossSystem;
 using Game.Common;
 using Game.DamageSystem;
 using Sirenix.OdinInspector;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
-namespace Game.AI.BossSystem
+namespace Game.RoomSystem
 {
 	public class Room : MonoBehaviour
 	{

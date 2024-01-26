@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.AI.BossSystem
+namespace Game.RoomSystem
 {
 	public class Door : MonoBehaviour
 	{
