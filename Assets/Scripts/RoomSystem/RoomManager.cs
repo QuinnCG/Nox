@@ -17,7 +17,7 @@ namespace Game.RoomSystem
 		{
 			if (!Application.isPlaying)
 			{
-				Debug.LogWarning("How do you expect me to load a level when the game isn't running?! Load you're own damn level.");
+				Debug.LogWarning("How do you expect me to load a level when the game isn't running?! Load your own damn level.");
 				return;
 			}
 
