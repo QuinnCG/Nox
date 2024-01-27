@@ -1127,91 +1127,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7343911001589575414, guid: f825c9517b779f444b444d33a9222383, type: 3}
   m_PrefabInstance: {fileID: 3248356557406324456}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &789624132
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4953572872432001954, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      propertyPath: m_Name
-      value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103405065914563901, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.5546925
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103405065914563901, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.1174722
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103405065914563901, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.028787073
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103405065914563901, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103405065914563901, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103405065914563901, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103405065914563901, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103405065914563901, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103405065914563901, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103405065914563901, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4953572872432001954, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 789624135}
-  m_SourcePrefab: {fileID: 100100000, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
---- !u!1 &789624133 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4953572872432001954, guid: c5869ec3cd2bd7a4bbf90f0cd273ac75, type: 3}
-  m_PrefabInstance: {fileID: 789624132}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &789624135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789624133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 701361b5a7bcbb04da6a4cbfe9a1a267, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DefaultMasterVolume: 1
-  DefaultSFXVolume: 1
-  DefaultMusicVolume: 1
-  DefaultAmbienceVolume: 1
-  masterVolumeSlider: {fileID: 2124103423}
-  sfxVolumeSlider: {fileID: 914344081}
-  musicVolumeSlider: {fileID: 2037393033}
-  ambienceVolumeSlider: {fileID: 855261736}
 --- !u!1 &836373737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,6 +1141,7 @@ GameObject:
   - component: {fileID: 836373738}
   - component: {fileID: 836373742}
   - component: {fileID: 836373743}
+  - component: {fileID: 836373744}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -1362,6 +1278,22 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &836373744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836373737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97734711f3d08604293b8a64dabd3da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolumeSlider: {fileID: 2124103423}
+  sfxVolumeSlider: {fileID: 914344081}
+  musicVolumeSlider: {fileID: 2037393033}
+  ambienceVolumeSlider: {fileID: 855261736}
 --- !u!1 &852634066
 GameObject:
   m_ObjectHideFlags: 0
@@ -3522,4 +3454,3 @@ SceneRoots:
   - {fileID: 1334626407}
   - {fileID: 433675778}
   - {fileID: 235752300}
-  - {fileID: 789624132}

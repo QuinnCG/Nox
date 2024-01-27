@@ -6,7 +6,7 @@ namespace Game.UI
     {
         public void PlayGame()
         {
-			SceneManager.Instance.LoadRuntimeScene();
+            SceneManager.Instance.LoadRuntimeScene();
         }
 
         public void QuitGame()
