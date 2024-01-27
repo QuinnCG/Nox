@@ -63,6 +63,10 @@ MonoBehaviour:
   DefaultSFXVolume: 0.7
   DefaultMusicVolume: 0.7
   DefaultAmbienceVolume: 0.7
+  masterVolumeSlider: {fileID: 0}
+  sfxVolumeSlider: {fileID: 0}
+  musicVolumeSlider: {fileID: 0}
+  ambienceVolumeSlider: {fileID: 0}
 --- !u!114 &-486718709300677696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +80,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeBuildIndex: 1
-  Blackout: {fileID: 0}
   FadeOutDuration: 1.5
   FadeInDuration: 1
 --- !u!114 &7784034925925047976
@@ -93,3 +96,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rooms:
   - {fileID: 549997748927306544, guid: 18ffea8cf51c04d439d82fc716b867dd, type: 3}
+  - {fileID: 549997748927306544, guid: 18ffea8cf51c04d439d82fc716b867dd, type: 3}
+  <CurrentRoom>k__BackingField: 1

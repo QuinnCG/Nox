@@ -33,19 +33,17 @@ namespace Game
 
 		private IEnumerator LoadSequence()
 		{
-			bool isPlayerSpawned =
-				PossessionManager.Instance != null 
-				&& PossessionManager.Instance.PossessedCharacter != null;
-
 			InputReader input = null;
 			GameObject playerGroup = null;
 
-			if (isPlayerSpawned)
+			if (PossessionManager.Instance != null
+				&& PossessionManager.Instance.PossessedCharacter != null)
 			{
 				// Prevent the player, camera, and UI from being unloaded.
 				playerGroup = PossessionManager.Instance.PossessedCharacter.transform.root.gameObject;
 				DontDestroyOnLoad(playerGroup);
 
+				// Get reference to the fade-to-black UI.
 				_blackout = HUD.Instance.Blackout;
 
 				// Disable player input.
@@ -58,23 +56,23 @@ namespace Game
 
 			// Load/reload scene.
 			var opHandle = USceneManager.LoadSceneAsync(RuntimeBuildIndex);
-			yield return new WaitUntil(() => opHandle.isDone);
+			yield return new WaitUntil(() => 
+			opHandle.isDone
+			&& PossessionManager.Instance != null
+			&& PossessionManager.Instance.PossessedCharacter != null);
 
-			if (isPlayerSpawned)
-			{
-				// Move player, camera, and UI back to normal scene.
-				USceneManager.MoveGameObjectToScene(playerGroup, USceneManager.GetActiveScene());
+			// Move player, camera, and UI back to normal scene.
+			USceneManager.MoveGameObjectToScene(playerGroup, USceneManager.GetActiveScene());
 
-				// Position player to correct location.
-				Transform possessed = PossessionManager.Instance.PossessedCharacter.transform;
-				possessed.position = Room.Current.PlayerSpawnPoint.position;
+			// Position player to correct location.
+			Transform possessed = PossessionManager.Instance.PossessedCharacter.transform;
+			possessed.position = Room.Current.PlayerSpawnPoint.position;
 
-				// Enable player input.
-				input.enabled = true;
+			// Enable player input.
+			input.enabled = true;
 
-				// Fade from black.
-				yield return StartCoroutine(FadeIn());
-			}
+			// Fade from black.
+			yield return StartCoroutine(FadeIn());
 		}
 
 		private IEnumerator FadeOut()

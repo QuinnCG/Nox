@@ -10,9 +10,10 @@ namespace Game.RoomSystem
 		[SerializeField, RequiredListLength(MinLength = 1)]
 		private GameObject[] Rooms;
 
+		[field: SerializeField, ReadOnly]
 		public int CurrentRoom { get; private set; }
 
-		[Button("Load Room"), BoxGroup("Debug")]
+		[Button("Load Room"), BoxGroup("Tools")]
 		public void LoadRoom(int index)
 		{
 			if (!Application.isPlaying)
@@ -38,6 +39,12 @@ namespace Game.RoomSystem
 
 		public void Next()
 		{
+			if (CurrentRoom + 1 >= Rooms.Length)
+			{
+				Debug.LogWarning($"Cannot load next room, {CurrentRoom + 1}, as there isn't one to load!");
+				return;
+			}
+
 			CurrentRoom++;
 			SceneManager.Instance.LoadRuntimeScene();
 		}
