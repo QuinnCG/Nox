@@ -1,7 +1,10 @@
 ﻿using DG.Tweening;
 using Game.DamageSystem;
 using Game.Player;
+using Game.RoomSystem;
 using Sirenix.OdinInspector;
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,6 +37,9 @@ namespace Game.UI
 
 		[SerializeField, BoxGroup("References"), Required]
 		private Slider BossHealth;
+
+		[SerializeField, BoxGroup("References"), Required]
+		private TextMeshProUGUI BossTitle;
 
 		[SerializeField, BoxGroup("References"), Required]
 		private CriticalHealthOverlay criticalHealthOverlay;
@@ -77,6 +83,17 @@ namespace Game.UI
 
 			var p = PossessionManager.Instance;
 			PossessionMeter.value = p.CurrentPossessionMeter / p.MaxPossessionMeter;
+		}
+
+		public void OnBossRoomStart(Room room)
+		{
+			BossTitle.text = room.Boss.Title;
+			ShowBoss();
+
+			room.OnBossDeath += () =>
+			{
+				HideBoss();
+			};
 		}
 
 		private void OnCharacterPossessed(Character character)
@@ -178,4 +195,3 @@ namespace Game.UI
 		}
 	}
 }
-

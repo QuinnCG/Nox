@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 using USceneManager = UnityEngine.SceneManagement.SceneManager;
 using System.Linq;
 using System;
+using Cinemachine;
 
 namespace Game
 {
@@ -59,6 +60,18 @@ namespace Game
 				yield return StartCoroutine(FadeOut());
 			}
 
+			// Enable loading screen.
+			var scene = USceneManager.GetActiveScene();
+			var root = scene.GetRootGameObjects();
+			foreach (var go in root)
+			{
+				if (go.CompareTag("Loading"))
+				{
+					go.SetActive(true);
+					break;
+				}
+			}
+
 			// Unload additives scenes (excluding "PersistentScene").
 			yield return StartCoroutine(UnloadAllAdditiveScenes());
 
@@ -70,7 +83,7 @@ namespace Game
 			OnSceneLoaded?.Invoke(USceneManager.GetSceneByName(RuntimeSceneName));
 
 			// Enable "PlayerGroup".
-			var scene = USceneManager.GetActiveScene();
+			scene = USceneManager.GetActiveScene();
 			GameObject[] gameObjects = scene.GetRootGameObjects();
 			foreach (var gameObject in gameObjects)
 			{
@@ -84,21 +97,34 @@ namespace Game
 			// Wait until player's possessed character is loaded.
 			yield return new WaitUntil(() => PossessionManager.Instance.PossessedCharacter != null);
 
+			// Get player's possessed character.
+			Transform possessed = PossessionManager.Instance.PossessedCharacter.transform;
+
 			// Set player position.
-			if (Room.Current != null)
-			{
-				Transform possessed = PossessionManager.Instance.PossessedCharacter.transform;
-				possessed.position = Room.Current.PlayerSpawnPoint.position;
-			}
+			possessed.position = Room.Current.PlayerSpawnPoint.position;
+
+			// Update HUD.
+			HUD.Instance.OnBossRoomStart(Room.Current);
+
+			var vcam = CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera as CinemachineVirtualCamera;
+			vcam.transform.position = possessed.position;
 
 			// Enable player input.
 			input = PlayerManager.Instance.GetComponent<InputReader>();
 			input.enabled = true;
 
-			// Get reference to the fade-to-black UI.
-			_blackout = HUD.Instance.Blackout;
+			// Disable loading screen.
+			foreach (var gameObject in gameObjects)
+			{
+				if (gameObject.CompareTag("Loading"))
+				{
+					gameObject.SetActive(false);
+					break;
+				}
+			}
 
 			// Fade from black.
+			_blackout = HUD.Instance.Blackout;
 			yield return StartCoroutine(FadeIn());
 		}
 

@@ -23,6 +23,18 @@ namespace Game
 		{
 			Instance = this;
 			await USceneManager.LoadSceneAsync(SceneManager.Instance.MainMenuSceneName, LoadSceneMode.Additive);
+
+			// Disable loading screen.
+			var scene = USceneManager.GetActiveScene();
+			GameObject[] gameObjects = scene.GetRootGameObjects();
+			foreach (var gameObject in gameObjects)
+			{
+				if (gameObject.CompareTag("Loading"))
+				{
+					gameObject.SetActive(false);
+					break;
+				}
+			}
 		}
 	}
 }

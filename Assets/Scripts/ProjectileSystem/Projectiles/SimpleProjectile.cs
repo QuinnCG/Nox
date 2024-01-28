@@ -11,7 +11,10 @@ namespace Game.ProjectileSystem
 		[field: SerializeField, Unit(Units.MetersPerSecond), BoxGroup("Core")]
 		public float Speed { get; set; } = 14f;
 
-		[SerializeField, BoxGroup("Core")]
+		[SerializeField, BoxGroup("Core"), Unit(Units.DegreesPerSecond)]
+		private float RotationRate = 0f;
+
+		[SerializeField, BoxGroup("Core"), EnableIf(nameof(RotationRate), 0f), Tooltip("RotationRate must equal 0f for RotateToFace to be allowable.")]
 		private bool RotateToFace = true;
 
 		[SerializeField, Unit(Units.Degree), ShowIf(nameof(RotateToFace)), BoxGroup("Core")]
@@ -36,7 +39,11 @@ namespace Game.ProjectileSystem
 
 		private void Update()
 		{
-			Move(_direction * Speed, RotateToFace, RotationalOffset);
+			bool rotateToFace = RotationRate == 0f && RotateToFace;
+			Move(_direction * Speed, rotateToFace, RotationalOffset);
+
+			float angle = transform.rotation.eulerAngles.z;
+			transform.rotation = Quaternion.AngleAxis(angle + (RotationRate * Time.deltaTime), Vector3.forward);
 		}
 
 		protected override void OnSpawn(Vector2 target)

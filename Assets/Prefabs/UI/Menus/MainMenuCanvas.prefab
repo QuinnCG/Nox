@@ -139,7 +139,7 @@ MonoBehaviour:
       Data2: 1221503725
       Data3: -1752974160
       Data4: -1583064725
-    Path: event:/Music/MainMenuMusic
+    Path: event:/Music/MainTheme
   Event: 
   PlayEvent: 1
   StopEvent: 2
