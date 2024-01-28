@@ -8,7 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Game.EditorWindows
+namespace Game.Editor
 {
 	public class EnemyBrainWindow : EditorWindow
 	{
@@ -26,15 +26,13 @@ namespace Game.EditorWindows
 		private readonly Dictionary<BTNode, VisualElement> _nodesToItems = new();
 		private BTTask _lastActiveTask;
 
-		public static void DisplayBrain(EnemyBrain brain)
+		[MenuItem("Window/Behavior Tree Debug")]
+		public static void DisplayBrain()
 		{
 			if (Application.isPlaying)
 			{
 				var window = GetWindow<EnemyBrainWindow>();
 				window.titleContent = new GUIContent("Enemy Brain");
-
-				window._brain = brain;
-				window.UpdateUI();
 			}
 		}
 
@@ -43,6 +41,22 @@ namespace Game.EditorWindows
 			if (!Application.isPlaying)
 			{
 				Close();
+				return;
+			}
+
+			var brains = Selection.GetFiltered<EnemyBrain>(SelectionMode.ExcludePrefab);
+			if (brains.Length > 0)
+			{
+				var selectedBrain = brains[0];
+				if (selectedBrain != _brain)
+				{
+					_brain = selectedBrain;
+					UpdateUI();
+				}
+			}
+
+			if (_brain == null)
+			{
 				return;
 			}
 

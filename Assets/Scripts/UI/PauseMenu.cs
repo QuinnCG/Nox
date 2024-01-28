@@ -64,7 +64,7 @@ namespace Game.UI
             }
         }
 
-        // Call this method when UI opens (e.g., Options Menu is activated)
+        // Call this method when UI opens (e.g. Options Menu is activated)
         public void OnUIOpened()
         {
             // Notify AudioManager that UI is open
@@ -74,7 +74,7 @@ namespace Game.UI
             }
         }
 
-        // Call this method when UI closes (e.g., Options Menu is deactivated)
+        // Call this method when UI closes (e.g. Options Menu is deactivated)
         public void OnUIClosed()
         {
             // Notify AudioManager that UI is closed

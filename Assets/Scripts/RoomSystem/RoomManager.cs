@@ -31,6 +31,18 @@ namespace Game.RoomSystem
 			Instance = this;
 		}
 
+		private void Start()
+		{
+			SceneManager.Instance.OnSceneLoaded += scene =>
+			{
+				if (CurrentRoom < Rooms.Length)
+				{
+					var room = Instantiate(Rooms[CurrentRoom]);
+					UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(room, scene);
+				}
+			};
+		}
+
 		public void Reload()
 		{
 			CurrentRoom--;

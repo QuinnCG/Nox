@@ -63,10 +63,6 @@ MonoBehaviour:
   DefaultSFXVolume: 0.7
   DefaultMusicVolume: 0.7
   DefaultAmbienceVolume: 0.7
-  masterVolumeSlider: {fileID: 0}
-  sfxVolumeSlider: {fileID: 0}
-  musicVolumeSlider: {fileID: 0}
-  ambienceVolumeSlider: {fileID: 0}
 --- !u!114 &-486718709300677696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,9 +75,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6077e3597972a5f498571a7e06051836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RuntimeBuildIndex: 1
-  FadeOutDuration: 1.5
-  FadeInDuration: 1
+  <MainMenuSceneName>k__BackingField: MainMenu
+  <RuntimeSceneName>k__BackingField: RuntimeScene
+  FadeOutDuration: 0.5
+  FadeInDuration: 0.5
 --- !u!114 &7784034925925047976
 MonoBehaviour:
   m_ObjectHideFlags: 0

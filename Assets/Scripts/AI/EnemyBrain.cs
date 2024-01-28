@@ -1,12 +1,7 @@
 using Game.AI.BehaviorTree;
 using Game.DamageSystem;
-using Game.EditorWindows;
 using Game.MovementSystem;
 using Game.Player;
-using NUnit.Framework.Constraints;
-using Sirenix.OdinInspector;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.AI
@@ -15,12 +10,6 @@ namespace Game.AI
 	[RequireComponent(typeof(Health))]
 	public abstract class EnemyBrain : MonoBehaviour
 	{
-		[Button("Show Tree")]
-		public void ShowTree()
-		{
-			EnemyBrainWindow.DisplayBrain(this);
-		}
-
 		public PlayerManager PlayerManager { get; private set; }
 
 		public float HP => Health.Current;

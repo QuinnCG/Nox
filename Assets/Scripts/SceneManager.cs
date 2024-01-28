@@ -3,9 +3,13 @@ using Game.RoomSystem;
 using Game.UI;
 using Sirenix.OdinInspector;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using USceneManager = UnityEngine.SceneManagement.SceneManager;
+using System.Linq;
+using System;
 
 namespace Game
 {
@@ -13,11 +17,16 @@ namespace Game
 	{
 		public static SceneManager Instance { get; private set; }
 
-		[SerializeField]
-		private int RuntimeBuildIndex;
+		[field: SerializeField, BoxGroup("Scene Names")]
+		public string MainMenuSceneName { get; private set; } = "MainMenu";
+
+		[field: SerializeField, BoxGroup("Scene Names")]
+		public string RuntimeSceneName { get; private set; } = "RuntimeScene";
 
 		[SerializeField]
 		private float FadeOutDuration = 1.5f, FadeInDuration = 1f;
+
+		public event Action<Scene> OnSceneLoaded;
 
 		private Image _blackout;
 
@@ -34,15 +43,11 @@ namespace Game
 		private IEnumerator LoadSequence()
 		{
 			InputReader input = null;
-			GameObject playerGroup = null;
 
 			if (PossessionManager.Instance != null
-				&& PossessionManager.Instance.PossessedCharacter != null)
+				&& PossessionManager.Instance.PossessedCharacter != null
+				&& HUD.Instance != null)
 			{
-				// Prevent the player, camera, and UI from being unloaded.
-				playerGroup = PossessionManager.Instance.PossessedCharacter.transform.root.gameObject;
-				DontDestroyOnLoad(playerGroup);
-
 				// Get reference to the fade-to-black UI.
 				_blackout = HUD.Instance.Blackout;
 
@@ -54,33 +59,79 @@ namespace Game
 				yield return StartCoroutine(FadeOut());
 			}
 
+			// Unload additives scenes (excluding "PersistentScene").
+			yield return StartCoroutine(UnloadAllAdditiveScenes());
+
 			// Load/reload scene.
-			var opHandle = USceneManager.LoadSceneAsync(RuntimeBuildIndex);
-			yield return new WaitUntil(() => 
-			opHandle.isDone
-			&& PossessionManager.Instance != null
-			&& PossessionManager.Instance.PossessedCharacter != null);
+			var opHandle = USceneManager.LoadSceneAsync(RuntimeSceneName, LoadSceneMode.Additive);
 
-			// Move player, camera, and UI back to normal scene.
-			USceneManager.MoveGameObjectToScene(playerGroup, USceneManager.GetActiveScene());
+			// Wait for scene to finish loading.
+			yield return new WaitUntil(() => opHandle.isDone);
+			OnSceneLoaded?.Invoke(USceneManager.GetSceneByName(RuntimeSceneName));
 
-			// Position player to correct location.
-			Transform possessed = PossessionManager.Instance.PossessedCharacter.transform;
-			possessed.position = Room.Current.PlayerSpawnPoint.position;
+			// Enable "PlayerGroup".
+			var scene = USceneManager.GetActiveScene();
+			GameObject[] gameObjects = scene.GetRootGameObjects();
+			foreach (var gameObject in gameObjects)
+			{
+				if (gameObject.GetComponentInChildren<PlayerManager>() != null)
+				{
+					gameObject.transform.root.gameObject.SetActive(true);
+					break;
+				}
+			}
+
+			// Wait until player's possessed character is loaded.
+			yield return new WaitUntil(() => PossessionManager.Instance.PossessedCharacter != null);
+
+			// Set player position.
+			if (Room.Current != null)
+			{
+				Transform possessed = PossessionManager.Instance.PossessedCharacter.transform;
+				possessed.position = Room.Current.PlayerSpawnPoint.position;
+			}
 
 			// Enable player input.
+			input = PlayerManager.Instance.GetComponent<InputReader>();
 			input.enabled = true;
+
+			// Get reference to the fade-to-black UI.
+			_blackout = HUD.Instance.Blackout;
 
 			// Fade from black.
 			yield return StartCoroutine(FadeIn());
 		}
 
+		private IEnumerator UnloadAllAdditiveScenes()
+		{
+			var ops = new List<AsyncOperation>();
+
+			// Starts from index '1' to avoid unloading "PersistentScene".
+			for (int i = 1; i < USceneManager.sceneCount; i++)
+			{
+				var scene = USceneManager.GetSceneAt(i);
+				var op = USceneManager.UnloadSceneAsync(scene);
+				ops.Add(op);
+			}
+
+			// Wait until all scenes are unloaded.
+			while (ops.Count > 0)
+			{
+				yield return new WaitUntil(() => ops[0].isDone);
+				ops.RemoveAt(0);
+			}
+		}
+
 		private IEnumerator FadeOut()
 		{
-			while (_blackout.color.a > 0f)
+			var color = _blackout.color;
+			color.a = 0f;
+			_blackout.color = color;
+
+			while (_blackout.color.a < 1f)
 			{
-				var color = _blackout.color;
-				color.a -= Time.deltaTime * FadeOutDuration;
+				color = _blackout.color;
+				color.a += Time.deltaTime * FadeOutDuration;
 				_blackout.color = color;
 
 				yield return null;
@@ -89,10 +140,14 @@ namespace Game
 
 		private IEnumerator FadeIn()
 		{
-			while (_blackout.color.a < 1f)
+			var color = _blackout.color;
+			color.a = 1f;
+			_blackout.color = color;
+
+			while (_blackout.color.a > 0f)
 			{
-				var color = _blackout.color;
-				color.a += Time.deltaTime * FadeInDuration;
+				color = _blackout.color;
+				color.a -= Time.deltaTime * FadeInDuration;
 				_blackout.color = color;
 
 				yield return null;

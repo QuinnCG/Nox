@@ -48,9 +48,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
+      propertyPath: BossPrefab
+      value: 
+      objectReference: {fileID: 3960479896017489875, guid: c535efe424edda644b63d171ca07c493, type: 3}
     - target: {fileID: 8581421864096779009, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: m_Name
-      value: Room
+      value: HatamotoRoom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
