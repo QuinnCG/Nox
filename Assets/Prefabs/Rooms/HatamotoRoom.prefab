@@ -51,7 +51,27 @@ PrefabInstance:
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossPrefab
       value: 
-      objectReference: {fileID: 3960479896017489875, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      objectReference: {fileID: 2082508010768727106, guid: ff9b7bca0c7abde438f95fc8b829d5c1, type: 3}
+    - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
+      propertyPath: BossMusic.Path
+      value: event:/Music/DisgracedHatamoto
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
+      propertyPath: BossMusic.Guid.Data1
+      value: 1047568949
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
+      propertyPath: BossMusic.Guid.Data2
+      value: 1152608133
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
+      propertyPath: BossMusic.Guid.Data3
+      value: -2114752103
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
+      propertyPath: BossMusic.Guid.Data4
+      value: 748456729
+      objectReference: {fileID: 0}
     - target: {fileID: 8581421864096779009, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: m_Name
       value: HatamotoRoom

@@ -1,4 +1,5 @@
 ﻿using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 
 namespace Game.RoomSystem
@@ -26,6 +27,8 @@ namespace Game.RoomSystem
 			Next();
 		}
 
+		public event Action<Room> OnBossRoomStart;
+
 		private void Awake()
 		{
 			Instance = this;
@@ -33,12 +36,16 @@ namespace Game.RoomSystem
 
 		private void Start()
 		{
+			CurrentRoom = 0;
+
 			SceneManager.Instance.OnSceneLoaded += scene =>
 			{
 				if (CurrentRoom < Rooms.Length)
 				{
 					var room = Instantiate(Rooms[CurrentRoom]);
 					UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(room, scene);
+
+					OnBossRoomStart?.Invoke(room.GetComponentInChildren<Room>());
 				}
 			};
 		}
@@ -53,11 +60,13 @@ namespace Game.RoomSystem
 		{
 			if (CurrentRoom + 1 >= Rooms.Length)
 			{
-				Debug.LogWarning($"Cannot load next room, {CurrentRoom + 1}, as there isn't one to load!");
+				Debug.LogWarning($"Cannot load next room ({CurrentRoom + 1}) as it doesn't exist!\n" +
+					$"Go to 'RoomManager', attached to the 'GameManager' prefab, to configure available rooms.\n" +
+					$"Current room: {CurrentRoom}. Next room: {CurrentRoom + 1}.");
 				return;
 			}
 
-			CurrentRoom++;
+			//CurrentRoom++;
 			SceneManager.Instance.LoadRuntimeScene();
 		}
 	}

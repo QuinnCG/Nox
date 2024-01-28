@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 14
+  RotationRate: 0
   RotateToFace: 1
   RotationalOffset: -45
   Damage: 12
@@ -116,7 +117,7 @@ MonoBehaviour:
       Data2: 1260950069
       Data3: 2110849204
       Data4: 2041636170
-    Path: event:/KunaiThrow
+    Path: event:/SFX/KunaiThrow
   HitSound:
     Guid:
       Data1: 0

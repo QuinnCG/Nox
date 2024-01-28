@@ -1,7 +1,11 @@
+using FMOD.Studio;
+using FMODUnity;
 using Game.AI.BossSystem;
-using Game.Common;
 using Game.DamageSystem;
+using Game.Player;
 using Sirenix.OdinInspector;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.RoomSystem
@@ -10,8 +14,8 @@ namespace Game.RoomSystem
 	{
 		public static Room Current { get; private set; }
 
-		[SerializeField]
-		private Door[] Doors;
+		[SerializeField, Required]
+		private Door ExitDoor;
 
 		[SerializeField, Required]
 		private GameObject BossPrefab;
@@ -22,42 +26,73 @@ namespace Game.RoomSystem
 		[field: SerializeField, Required]
 		public Transform PlayerSpawnPoint { get; private set; }
 
-		private BossBrain _boss;
+		[SerializeField, Required]
+		private Collider2D _collider;
+
+		[SerializeField]
+		private EventReference BossMusic;
+
+		public event Action OnBossDeath;
+
+		public BossBrain Boss { get; private set; }
+
+		private EventInstance _bossMusic;
+		private bool _exiting;
 
 		private void Awake()
 		{
 			Current = this;
 		}
 
+		private void Start()
+		{
+			if (!BossMusic.IsNull)
+			{
+				_bossMusic = RuntimeManager.CreateInstance(BossMusic);
+				_bossMusic.start();
+			}
+
+			SpawnBoss();
+		}
+
+		private void FixedUpdate()
+		{
+			if (_exiting) return;
+
+			var collisions = new List<Collider2D>();
+			_collider.Overlap(collisions);
+
+			foreach (var collision in collisions)
+			{
+				if (collision.gameObject == PossessionManager.Instance.PossessedCharacter.gameObject)
+				{
+					_exiting = true;
+					RoomManager.Instance.Next();
+
+					break;
+				}
+			}
+		}
+
 		private void SpawnBoss()
 		{
 			var instance = Instantiate(BossPrefab, BossSpawnPoint.position, Quaternion.identity, transform);
-			_boss = instance.GetComponent<BossBrain>();
-			_boss.GetComponent<Health>().OnDeath += _ => OnBossDeath();
-			_boss.Room = this;
+			Boss = instance.GetComponent<BossBrain>();
+			Boss.GetComponent<Health>().OnDeath += _ => BossDeath();
+			Boss.Room = this;
 
-			CloseAllDoors();
+			ExitDoor.Close();
 		}
 
-		private void OnBossDeath()
+		private void BossDeath()
 		{
-			OpenAllDoors();
-		}
-
-		private void OpenAllDoors()
-		{
-			foreach (var door in Doors)
+			if (_bossMusic.isValid())
 			{
-				door.Open();
+				_bossMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			}
-		}
 
-		private void CloseAllDoors()
-		{
-			foreach (var door in Doors)
-			{
-				door.Close();
-			}
+			ExitDoor.Open();
+			OnBossDeath?.Invoke();
 		}
 	}
 }
