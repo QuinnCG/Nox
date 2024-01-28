@@ -68,15 +68,8 @@ namespace Game.UI
 
 		private void StopAnimations()
 		{
-			if (pulsateTween != null && pulsateTween.IsActive())
-			{
-				pulsateTween.Kill();
-			}
-
-			if (fadeInOutTween != null && fadeInOutTween.IsActive())
-			{
-				fadeInOutTween.Kill();
-			}
+			pulsateTween?.Kill();
+			fadeInOutTween?.Kill();
 		}
 	}
 }
