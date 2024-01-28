@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Game.AI.BossSystem;
 using Game.AnimationSystem;
 using Game.DamageSystem;
 using Sirenix.OdinInspector;
@@ -170,6 +171,9 @@ namespace Game.Player
 		private bool IsPossessable(Character character)
 		{
 			if (CurrentPossessionMeter < character.PossessionMeterConsumption)
+				return false;
+
+			if (character.TryGetComponent(out BossBrain _))
 				return false;
 
 			var health = character.GetComponent<Health>();
