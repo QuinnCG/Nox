@@ -127,5 +127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Title>k__BackingField: Disgraced Hatamoto
   SecondPhaseHP: 0.5
-  IdealFleeDistance: 10
+  DistanceBeforeFlee: 6
+  FleeDistance: 12
   ShurikenPrefab: {fileID: 8550588314174644299, guid: 2130487ead2c8c44abf9813d06a3833e, type: 3}

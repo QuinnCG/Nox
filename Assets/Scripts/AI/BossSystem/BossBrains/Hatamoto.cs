@@ -15,9 +15,12 @@ namespace Game.AI.BossSystem.BossBrains
 		private float SecondPhaseHP = 0.5f;
 
 		[SerializeField, BoxGroup("Phase 1")]
-		private float IdealFleeDistance = 5f;
+		private float DistanceBeforeFlee = 4f;
 
-		[SerializeField, Required]
+		[SerializeField, BoxGroup("Phase 1")]
+		private float FleeDistance = 5f;
+
+		[SerializeField, Required, BoxGroup("References")]
 		private GameObject ShurikenPrefab;
 
 		protected override void Awake()
@@ -39,10 +42,13 @@ namespace Game.AI.BossSystem.BossBrains
 			secondPhase.AddCondition(isSecondPhase);
 
 			// Phase 1.
-			var fleeFrom = new FleeFrom(PlayerPos);
+			var fleeFrom = new FleeFrom(PlayerPos, FleeDistance);
 			firstPhase.Add(fleeFrom);
-			var nearPlayer = new IsNearTarget(PlayerPos, IdealFleeDistance);
+			var nearPlayer = new IsNearTarget(PlayerPos, DistanceBeforeFlee);
 			fleeFrom.AddCondition(nearPlayer);
+
+			// As soon as the player is not near, the task self aborts.
+			// Either tasks should not abort themselves (or can opt out) or things must update every frame.
 
 			var shootSeq = new Sequence();
 			firstPhase.Add(shootSeq);
@@ -52,8 +58,7 @@ namespace Game.AI.BossSystem.BossBrains
 				Method = ShootMethod.EvenSpread,
 				SpreadAngle = 45f
 			});
-			var wait = new Wait(2f);
-			shootSeq.Add(shoot, wait);
+			shootSeq.Add(shoot, new Wait(2f));
 
 			// Phase 2.
 			// TODO:
