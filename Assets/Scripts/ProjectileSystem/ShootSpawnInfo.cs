@@ -1,6 +1,4 @@
-﻿using Game.AI.BehaviorTree.Tasks;
-
-namespace Game.ProjectileSystem
+﻿namespace Game.ProjectileSystem
 {
 	[System.Serializable]
 	public class ShootSpawnInfo

@@ -1,4 +1,3 @@
-using Game.AI.BehaviorTree;
 using Game.DamageSystem;
 using Game.MovementSystem;
 using Game.Player;
@@ -33,35 +32,11 @@ namespace Game.AI
 		/// </summary>
 		public Bounds Bounds => Collider.bounds;
 
-		/// <summary>
-		/// The tree running this enemy.
-		/// </summary>
-		public BTTree Tree { get; private set; }
-		/// <summary>
-		/// The position of this enemy.
-		/// </summary>
-		[Expose]
-		public BTProperty<Vector2> Position { get; private set; } = new();
-		/// <summary>
-		/// The percent (0 - 1) of health remaining on this enemy.
-		/// </summary>
-		[Expose]
-		public BTProperty<float> HealthPercent { get; private set; } = new();
-		/// <summary>
-		/// The position of the currently possessed character (e.g. the player).
-		/// </summary>
-		[Expose]
-		public BTProperty<Vector2> PlayerPos { get; private set; } = new();
-
-		private bool _treeStarted;
-
 		protected virtual void Awake()
 		{
 			Movement = GetComponent<Movement>();
 			Health = GetComponent<Health>();
 			Collider = GetComponent<Collider2D>();
-
-			Tree = new(this);
 		}
 
 		protected virtual void Start()
@@ -75,23 +50,6 @@ namespace Game.AI
 			{
 				return;
 			}
-
-			if (!_treeStarted)
-			{
-				_treeStarted = true;
-				Tree.Start();
-			}
-
-			Position.Value = (Vector2)transform.position;
-			HealthPercent.Value = Health.Percent;
-			PlayerPos.Value = PossessionManager.Instance.Position;
-
-			Tree.Update();
-		}
-
-		protected void AddNode(params BTNode[] nodes)
-		{
-			Tree.Add(nodes);
 		}
 	}
 }

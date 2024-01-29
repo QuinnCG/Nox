@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Game.MovementSystem;
+using System.Collections;
 using UnityEngine;
 
 namespace Game.Experimental
@@ -10,6 +11,9 @@ namespace Game.Experimental
 
 		private void Update()
 		{
+			CanSeePlayer = true;
+			InAttackRange = true;
+
 			if (CanSeePlayer)
 			{
 				TransitionTo(Engage());
@@ -44,8 +48,14 @@ namespace Game.Experimental
 			}
 		}
 
-		public void MoveTo() { }
+		public void MoveTo()
+		{
+			GetComponent<Movement>().Move(Vector2.right);
+		}
 
-		public void Attack() { }
+		public void Attack()
+		{
+			Debug.Log("Attack!");
+		}
 	}
 }
