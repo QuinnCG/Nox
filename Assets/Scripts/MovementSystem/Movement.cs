@@ -11,7 +11,7 @@ namespace Game.MovementSystem
 	public class Movement : Locomotion
 	{
 		[field: SerializeField, Unit(Units.MetersPerSecond)]
-		public float MoveSpeed { get; private set; } = 7f;
+		public float MoveSpeed { get; set; } = 7f;
 
 		[Space, SerializeField]
 		private EventReference DashSound;

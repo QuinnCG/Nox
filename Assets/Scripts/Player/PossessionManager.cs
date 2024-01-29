@@ -51,6 +51,8 @@ namespace Game.Player
 		public bool InPossessionMode { get; private set; }
 		public bool PossessingNewTarget { get; private set; }
 
+		public Health PossessedHealth { get; private set; }
+
 		public event Action<Character> OnCharacterPossessed, OnCharacterUnpossessed;
 
 		// The character closest to the crosshair while in possession mode.
@@ -318,6 +320,7 @@ namespace Game.Player
 			health.FullHeal();
 			health.OnPossessed();
 
+			PossessedHealth = health;
 			health.OnDeath += OnDeath;
 
 			if (InPossessionMode)
