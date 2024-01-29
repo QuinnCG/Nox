@@ -40,6 +40,11 @@ namespace Game.RoomSystem
 
 			SceneManager.Instance.OnSceneLoaded += scene =>
 			{
+				if (scene.name == SceneManager.Instance.MainMenuSceneName)
+				{
+					return;
+				}
+
 				if (CurrentRoom < Rooms.Length)
 				{
 					var room = Instantiate(Rooms[CurrentRoom]);
@@ -58,15 +63,18 @@ namespace Game.RoomSystem
 
 		public void Next()
 		{
-			if (CurrentRoom + 1 >= Rooms.Length)
+			CurrentRoom++;
+
+			if (CurrentRoom >= Rooms.Length)
 			{
-				Debug.LogWarning($"Cannot load next room ({CurrentRoom + 1}) as it doesn't exist!\n" +
+				Debug.LogWarning($"Cannot load next room ({CurrentRoom}) as it doesn't exist!\n" +
 					$"Go to 'RoomManager', attached to the 'GameManager' prefab, to configure available rooms.\n" +
-					$"Current room: {CurrentRoom}. Next room: {CurrentRoom + 1}.");
+					$"Current room: {CurrentRoom - 1}. Next room: {CurrentRoom}.");
+
+				CurrentRoom--;
 				return;
 			}
 
-			//CurrentRoom++;
 			SceneManager.Instance.LoadRuntimeScene();
 		}
 	}

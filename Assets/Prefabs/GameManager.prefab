@@ -77,8 +77,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MainMenuSceneName>k__BackingField: MainMenu
   <RuntimeSceneName>k__BackingField: RuntimeScene
-  FadeOutDuration: 0.5
-  FadeInDuration: 0.5
+  FadeOutDuration: 0.2
+  FadeInDuration: 0.3
 --- !u!114 &7784034925925047976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rooms:
+  - {fileID: 549997748927306544, guid: 18ffea8cf51c04d439d82fc716b867dd, type: 3}
   - {fileID: 549997748927306544, guid: 18ffea8cf51c04d439d82fc716b867dd, type: 3}
   - {fileID: 549997748927306544, guid: 18ffea8cf51c04d439d82fc716b867dd, type: 3}
   <CurrentRoom>k__BackingField: 1

@@ -11,6 +11,7 @@ using USceneManager = UnityEngine.SceneManagement.SceneManager;
 using System.Linq;
 using System;
 using Cinemachine;
+using Game.MovementSystem;
 
 namespace Game
 {
@@ -150,6 +151,8 @@ namespace Game
 
 		private IEnumerator FadeOut()
 		{
+			var movement = PossessionManager.Instance.PossessedCharacter.GetComponent<Movement>();
+
 			var color = _blackout.color;
 			color.a = 0f;
 			_blackout.color = color;
@@ -157,8 +160,11 @@ namespace Game
 			while (_blackout.color.a < 1f)
 			{
 				color = _blackout.color;
-				color.a += Time.deltaTime * FadeOutDuration;
+				color.a += Time.deltaTime * FadeOutDuration * 10f;
 				_blackout.color = color;
+
+				if (movement != null)
+					movement.Move(Vector2.right);
 
 				yield return null;
 			}
@@ -173,7 +179,7 @@ namespace Game
 			while (_blackout.color.a > 0f)
 			{
 				color = _blackout.color;
-				color.a -= Time.deltaTime * FadeInDuration;
+				color.a -= Time.deltaTime * FadeInDuration * 10f;
 				_blackout.color = color;
 
 				yield return null;
