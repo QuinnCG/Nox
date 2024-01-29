@@ -29,18 +29,14 @@ namespace Game.Editor
 		[MenuItem("Window/Behavior Tree Debug")]
 		public static void DisplayBrain()
 		{
-			if (Application.isPlaying)
-			{
-				var window = GetWindow<EnemyBrainWindow>();
-				window.titleContent = new GUIContent("Enemy Brain");
-			}
+			var window = GetWindow<EnemyBrainWindow>();
+			window.titleContent = new GUIContent("Enemy Brain");
 		}
 
 		private void OnInspectorUpdate()
 		{
 			if (!Application.isPlaying)
 			{
-				Close();
 				return;
 			}
 
@@ -152,6 +148,9 @@ namespace Game.Editor
 			toolbar.style.borderBottomColor = LightColor;
 			toolbar.style.borderBottomWidth = 1f;
 
+			var title = new Label(_brain.gameObject.name);
+			toolbar.Add(title);
+
 			return toolbar;
 		}
 
@@ -166,11 +165,11 @@ namespace Game.Editor
 			inspector.style.borderRightColor = LightColor;
 			inspector.style.borderRightWidth = 1f;
 
-			var title = new Label("Black Board");
+			var title = new Label("Blackboard");
 			title.name = "Title";
 			title.style.color = Color.white;
 			title.style.width = Length.Percent(100f);
-			title.style.fontSize = 18f;
+			title.style.fontSize = 14f;
 			title.style.unityTextAlign = TextAnchor.MiddleCenter;
 			inspector.Add(title);
 
