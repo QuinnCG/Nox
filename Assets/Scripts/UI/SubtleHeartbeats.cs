@@ -18,6 +18,11 @@ namespace Game.UI
 			originalScale = transform.localScale;
 		}
 
+		private void OnDestroy()
+		{
+			transform.DOKill();
+		}
+
 		public void OnPointerEnter(PointerEventData eventData)
 		{
 			EnlargeOnHover();
