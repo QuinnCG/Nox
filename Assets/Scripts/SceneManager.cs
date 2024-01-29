@@ -37,12 +37,12 @@ namespace Game
 			Instance = this;
 		}
 
-		public void LoadRuntimeScene()
+		public void LoadRuntimeScene(bool skipFadeOut = false)
 		{
-			StartCoroutine(LoadSequence());
+			StartCoroutine(LoadSequence(skipFadeOut));
 		}
 
-		private IEnumerator LoadSequence()
+		private IEnumerator LoadSequence(bool skipFadeOut)
 		{
 			InputReader input = null;
 
@@ -58,7 +58,10 @@ namespace Game
 				input.enabled = false;
 
 				// Fade to black.
-				yield return StartCoroutine(FadeOut());
+				if (!skipFadeOut)
+				{
+					yield return StartCoroutine(FadeOut());
+				}
 			}
 
 			// Enable loading screen.

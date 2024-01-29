@@ -2,6 +2,7 @@
 using Game.AI.BossSystem;
 using Game.AnimationSystem;
 using Game.DamageSystem;
+using Game.UI;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -60,6 +61,7 @@ namespace Game.Player
 		private GameObject _possessedIndicator;
 
 		private InputReader _input;
+		private bool _possessingOriginal;
 
 		private void Awake()
 		{
@@ -71,9 +73,7 @@ namespace Game.Player
 
 		private void Start()
 		{
-			var instance = Instantiate(DefaultCharacter, transform.position, Quaternion.identity);
-			Possess(instance.GetComponent<Character>(), skip: true);
-
+			SpawnOriginalBody();
 			PlayerManager.Instance.OnDamageEnemy += OnEnemyDamaged;
 		}
 
@@ -89,6 +89,13 @@ namespace Game.Player
 					ShowPossessIndicator(nearest);
 				}
 			}
+
+#if UNITY_EDITOR
+			if (Input.GetKeyDown(KeyCode.K))
+			{
+				PossessedCharacter.GetComponent<Health>().Kill();
+			}
+#endif
 		}
 
 		/* PUBLIC METHODS */
@@ -136,6 +143,11 @@ namespace Game.Player
 		public void ConsumePossessionMeter(float amount)
 		{
 			CurrentPossessionMeter = Mathf.Max(0f, CurrentPossessionMeter - amount);
+		}
+
+		public void Respawn()
+		{
+			SpawnOriginalBody();
 		}
 
 		/* PRIVATE METHODS */
@@ -196,6 +208,8 @@ namespace Game.Player
 			ConsumePossessionMeter(character.PossessionMeterConsumption);
 			PossessingNewTarget = true;
 			StartCoroutine(PossessSequence(character, skip));
+
+			_possessingOriginal = false;
 		}
 
 		private void Unpossess(Character character)
@@ -203,7 +217,7 @@ namespace Game.Player
 			HideSelfIndicator();
 
 			character.UnPossess();
-			character.GetComponent<Health>()?.Kill();
+			character.GetComponent<Health>().Kill();
 
 			OnCharacterUnpossessed?.Invoke(character);
 		}
@@ -304,6 +318,8 @@ namespace Game.Player
 			health.FullHeal();
 			health.OnPossessed();
 
+			health.OnDeath += OnDeath;
+
 			if (InPossessionMode)
 			{
 				ShowSelfIndicator();
@@ -318,6 +334,33 @@ namespace Game.Player
 		private void OnEnemyDamaged(DamageInfo info)
 		{
 			ReplenishPossessionMeter(info.Damage * PossessionMeterMultiplier);
+		}
+
+		private void OnDeath(DamageType type)
+		{
+			if (_possessingOriginal)
+			{
+				HUD.Instance.InitiateGameOver();
+			}
+			else
+			{
+				Destroy(PossessedCharacter.gameObject);
+				SpawnOriginalBody();
+			}
+		}
+
+		private void SpawnOriginalBody()
+		{
+			Vector2 pos = transform.position;
+			if (PossessedCharacter != null)
+			{
+				pos = PossessedCharacter.transform.position;
+			}
+
+			var instance = Instantiate(DefaultCharacter, pos, Quaternion.identity);
+			Possess(instance.GetComponent<Character>(), skip: true);
+
+			_possessingOriginal = true;
 		}
 	}
 }

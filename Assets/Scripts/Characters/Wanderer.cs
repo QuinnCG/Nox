@@ -37,7 +37,7 @@ namespace Game.Characters
 			}
 		}
 
-		public override void Attack(Vector2 target)
+		protected override void OnAttack(Vector2 target)
 		{
 			Vector2 origin = ProjectileSpawn.position;
 			Vector2 pos = CrosshairManager.Instance.CurrentPosition;
@@ -45,9 +45,9 @@ namespace Game.Characters
 			Projectile.Spawn(ProjectilePrefab, origin, pos, gameObject);
 		}
 
-		public override void Dash()
+		protected override void OnDash()
 		{
-			base.Dash();
+			base.OnDash();
 			Animator.Play(DashAnim);
 		}
 	}

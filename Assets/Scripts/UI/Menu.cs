@@ -32,7 +32,13 @@ namespace Game.UI
 
         void Pause()
         {
-            Menu.SetActive(true);
+			// Don't open menu if currently on game-over screen.
+			if (GameManager.Instance.InGameOver)
+			{
+				return;
+			}
+
+			Menu.SetActive(true);
             Time.timeScale = 0f;
             GameIsPaused = true;
         }

@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Game.Player;
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
@@ -57,11 +58,13 @@ namespace Game.RoomSystem
 
 		public void Reload()
 		{
+			PossessionManager.Instance.Respawn();
+
 			CurrentRoom--;
-			Next();
+			Next(true);
 		}
 
-		public void Next()
+		public void Next(bool skipFadeOut = false)
 		{
 			CurrentRoom++;
 
@@ -75,7 +78,7 @@ namespace Game.RoomSystem
 				return;
 			}
 
-			SceneManager.Instance.LoadRuntimeScene();
+			SceneManager.Instance.LoadRuntimeScene(skipFadeOut);
 		}
 	}
 }

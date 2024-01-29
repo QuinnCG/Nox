@@ -47,8 +47,12 @@ namespace Game.UI
 		[field: SerializeField, BoxGroup("References"), Required]
 		public Image Blackout { get; private set; }
 
+		[field: SerializeField, BoxGroup("References"), Required]
+		public GameObject GameOverRoot { get; private set; }
+
 		private Character _lastCharacter;
 		private Health _health;
+
 
 		private void Awake()
 		{
@@ -83,6 +87,38 @@ namespace Game.UI
 
 			var p = PossessionManager.Instance;
 			PossessionMeter.value = p.CurrentPossessionMeter / p.MaxPossessionMeter;
+
+			if (Room.Current != null && Room.Current.Boss != null)
+			{
+				var hp = Room.Current.Boss.Health;
+				BossHealth.value = hp.Current / hp.Max;
+			}
+		}
+
+		public void InitiateGameOver()
+		{
+			if (GameManager.Instance.InGameOver) return;
+
+			Time.timeScale = 0f;
+			GameManager.Instance.InGameOver = true;
+
+			CrosshairManager.Instance.enabled = false;
+			GameOverRoot.SetActive(true);
+
+			if (Room.Current != null)
+			{
+				Room.Current.StopBossMusic();
+			}
+		}
+
+		public void RetryButton()
+		{
+			GameManager.Instance.InGameOver = false;
+			GameOverRoot.SetActive(false);
+			Time.timeScale = 1f;
+
+			CrosshairManager.Instance.enabled = true;
+			RoomManager.Instance.Reload();
 		}
 
 		public void OnBossRoomStart(Room room)
@@ -104,6 +140,7 @@ namespace Game.UI
 				return;
 			}
 
+			// Clean up old character.
 			if (_lastCharacter != null)
 			{
 				var lastHealth = _lastCharacter.GetComponent<Health>();
@@ -114,8 +151,8 @@ namespace Game.UI
 				}
 			}
 
-			character.TryGetComponent(out _health);
-			if (_health != null)
+			// Update new character.
+			if (character.TryGetComponent(out _health))
 			{
 				_health.OnDamaged += OnDamaged;
 				_health.OnReachMaxHealth += FadeOutPlayerHealth;
@@ -124,8 +161,13 @@ namespace Game.UI
 				{
 					FadeInPlayerHealth();
 				}
+				else
+				{
+					FadeOutPlayerHealth();
+				}
 			}
 
+			// Update _lastCharacter for use in next possession.
 			_lastCharacter = character;
 		}
 
