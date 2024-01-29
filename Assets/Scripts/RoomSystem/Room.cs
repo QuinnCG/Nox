@@ -74,6 +74,14 @@ namespace Game.RoomSystem
 			}
 		}
 
+		public void StopBossMusic()
+		{
+			if (_bossMusic.isValid())
+			{
+				_bossMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			}
+		}
+
 		private void SpawnBoss()
 		{
 			var instance = Instantiate(BossPrefab, BossSpawnPoint.position, Quaternion.identity, transform);
@@ -86,11 +94,7 @@ namespace Game.RoomSystem
 
 		private void BossDeath()
 		{
-			if (_bossMusic.isValid())
-			{
-				_bossMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-			}
-
+			StopBossMusic();
 			ExitDoor.Open();
 			OnBossDeath?.Invoke();
 		}

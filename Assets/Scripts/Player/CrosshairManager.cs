@@ -10,7 +10,7 @@ namespace Game.Player
 		[SerializeField, Required]
 		private GameObject CrosshairPrefab;
 
-		public Vector2 CurrentPosition => _crosshair.position;
+		public Vector2 CurrentPosition => _crosshair != null ? _crosshair.position : Vector2.zero;
 
 		private Camera _cam;
 		private Transform _crosshair;
@@ -24,6 +24,7 @@ namespace Game.Player
 		private void OnEnable()
 		{
 			_crosshair = Instantiate(CrosshairPrefab).transform;
+			Cursor.visible = false;
 		}
 
 		private void OnDisable()
@@ -33,6 +34,8 @@ namespace Game.Player
 				Destroy(_crosshair.gameObject);
 				_crosshair = null;
 			}
+
+			Cursor.visible = true;
 		}
 
 		private void Update()

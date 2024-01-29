@@ -71,6 +71,11 @@ namespace Game.AI
 
 		protected virtual void Update()
 		{
+			if (PossessionManager.Instance.PossessedCharacter == null)
+			{
+				return;
+			}
+
 			if (!_treeStarted)
 			{
 				_treeStarted = true;

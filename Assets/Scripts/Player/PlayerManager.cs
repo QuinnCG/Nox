@@ -76,6 +76,11 @@ namespace Game.Player
 
 		private void Update()
 		{
+			if (PossessionManager.Instance.PossessedCharacter == null)
+			{
+				return;
+			}
+
 			// Position camera target.
 			Vector2 start = _possession.PossessedCharacter.transform.position;
 			Vector2 end = CrosshairManager.Instance.CurrentPosition;

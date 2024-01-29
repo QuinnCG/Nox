@@ -1,6 +1,7 @@
 ﻿using Game.AnimationSystem;
 using Game.DamageSystem;
 using Game.MovementSystem;
+using Game.Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -13,6 +14,7 @@ namespace Game
 	/// AI controllers will tell this class what to do.
 	/// </summary>
 	[RequireComponent(typeof(Movement))]
+	[RequireComponent(typeof(Health))]
 	public class Character : MonoBehaviour
 	{
 		[SerializeField, BoxGroup("Dash")]
@@ -75,9 +77,25 @@ namespace Game
 			}
 		}
 
-		public virtual void Attack(Vector2 target) { }
+		public void Attack(Vector2 target)
+		{
+			if (PossessionManager.Instance.PossessedCharacter != null)
+			{
+				OnAttack(target);
+			}
+		}
 
-		public virtual void Dash()
+		public void Dash()
+		{
+			if (PossessionManager.Instance.PossessedCharacter != null)
+			{
+				OnDash();
+			}
+		}
+
+		protected virtual void OnAttack(Vector2 target) { }
+
+		protected virtual void OnDash()
 		{
 			if (Time.time > _nextDashTime)
 			{

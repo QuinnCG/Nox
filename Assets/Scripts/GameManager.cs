@@ -9,6 +9,8 @@ namespace Game
 	{
 		public static GameManager Instance { get; private set; }
 
+		public bool InGameOver { get; set; }
+
 		// Unity will call this method before the very first scene of the game is loaded.
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		private static void Bootstrap()
