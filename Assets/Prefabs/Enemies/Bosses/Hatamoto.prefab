@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098cd2ee827d7f1449c1182877434b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugMode: 0
   <Title>k__BackingField: Disgraced Hatamoto
-  SecondPhaseHP: 0.5
-  DistanceBeforeFlee: 6
-  FleeDistance: 12
+  FleeThrowInterval: 3
+  PlayerDistanceBeforeTeleport: 4
   ShurikenPrefab: {fileID: 8550588314174644299, guid: 2130487ead2c8c44abf9813d06a3833e, type: 3}

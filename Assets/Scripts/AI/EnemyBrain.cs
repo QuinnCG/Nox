@@ -5,6 +5,7 @@ using Game.Player;
 using Game.ProjectileSystem;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -103,6 +104,10 @@ namespace Game.AI
 		{
 			return _stateMachine.CreateState(callback, name);
 		}
+		protected State CreateState(Func<IEnumerator> coroutineCallback, string name = "No Name")
+		{
+			return _stateMachine.CreateState(coroutineCallback, name);
+		}
 
 		protected void TransitionTo(State state)
 		{
@@ -158,6 +163,47 @@ namespace Game.AI
 		{
 			const string layer = "Obstacle";
 			return !Physics2D.Linecast(origin, target, LayerMask.GetMask(layer));
+		}
+
+		protected void TeleportTo(Vector2 target)
+		{
+			transform.position = target;
+		}
+
+		protected Vector2 GetPointClosestTo(Vector2 to, params Transform[] points)
+		{
+			float cloestDst = float.PositiveInfinity;
+			Transform closestTransform = null;
+
+			foreach (var transform in points)
+			{
+				float dst = Vector2.Distance(to, transform.position);
+				if (dst < cloestDst)
+				{
+					cloestDst = dst;
+					closestTransform = transform;
+				}
+			}
+
+			return closestTransform.position;
+		}
+
+		protected Vector2 GetPointFarthestFrom(Vector2 from, params Transform[] points)
+		{
+			float farthestDst = 0f;
+			Transform farthestTransform = null;
+
+			foreach (var transform in points)
+			{
+				float dst = Vector2.Distance(from, transform.position);
+				if (dst > farthestDst)
+				{
+					farthestDst = dst;
+					farthestTransform = transform;
+				}
+			}
+
+			return farthestTransform.position;
 		}
 	}
 }

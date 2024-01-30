@@ -488,8 +488,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.0042129}
-  m_Size: {x: 0.6945214, y: 1.9530602}
+  m_Offset: {x: 0, y: 0.6754787}
+  m_Size: {x: 0.6945214, y: 1.2955918}
   m_Direction: 0
 --- !u!114 &8568196138999638762
 MonoBehaviour:
@@ -506,7 +506,9 @@ MonoBehaviour:
   DashSpeed: 18
   DashDuration: 0.25
   DashCooldown: 0.2
+  IsDashControllable: 0
   DashTrail: {fileID: 6513513715175669271}
+  <PossessionMeterConsumption>k__BackingField: 60
   IdleAnim: {fileID: 7400000, guid: dbb6473fe079e2b429e8a8978d6caff9, type: 2}
   MoveAnim: {fileID: 7400000, guid: e512f5e9ebb512b4eb6887e1549d87aa, type: 2}
   DashAnim: {fileID: -8863155357993509816, guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c, type: 3}

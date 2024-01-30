@@ -18,20 +18,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2539884451687759693, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Name
-      value: LightingSamurai
+      value: LightningSamurai
       objectReference: {fileID: 0}
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Size.x
-      value: 1.4375
+      value: 1.375
       objectReference: {fileID: 0}
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Size.y
-      value: 2.1875
+      value: 2.125
       objectReference: {fileID: 0}
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2675833639758970470, guid: c1d64e924607f584686704c347f61069, type: 3}
+      objectReference: {fileID: -253452372222615127, guid: c1d64e924607f584686704c347f61069, type: 3}
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -136,7 +136,11 @@ MonoBehaviour:
   DashSpeed: 18
   DashDuration: 0.2
   DashCooldown: 0.2
+  IsDashControllable: 0
   DashTrail: {fileID: 0}
+  <PossessionMeterConsumption>k__BackingField: 60
   IdleAnim: {fileID: 7400000, guid: dbb6473fe079e2b429e8a8978d6caff9, type: 2}
   MoveAnim: {fileID: 7400000, guid: e512f5e9ebb512b4eb6887e1549d87aa, type: 2}
   DashAnim: {fileID: -8863155357993509816, guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c, type: 3}
+  ProjectilePrefab: {fileID: 0}
+  ProjectileSpawn: {fileID: 0}

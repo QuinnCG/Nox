@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
 
 namespace Game.AI.BossSystem.BossBrains
@@ -13,6 +14,9 @@ namespace Game.AI.BossSystem.BossBrains
 
 		[SerializeField, Required, BoxGroup("References")]
 		private GameObject ShurikenPrefab;
+
+		[SerializeField, BoxGroup("References")]
+		private Transform[] TeleportPoints;
 
 		private State _flee, _teleport, _teleport2;
 		private Timer _fleeThrowTimer;
@@ -47,8 +51,8 @@ namespace Game.AI.BossSystem.BossBrains
 
 			if (_fleeThrowTimer.IsDone)
 			{
-				_fleeThrowTimer.Reset();
 				ThrowShuriken();
+				_fleeThrowTimer.Reset();
 			}
 
 			// Transitions.
@@ -60,14 +64,17 @@ namespace Game.AI.BossSystem.BossBrains
 
 			if (IsNearWall())
 			{
-				OnTeleport();
+				TransitionTo(_teleport);
 				return;
 			}
 		}
 
-		private void OnTeleport()
+		private IEnumerator OnTeleport()
 		{
-			ThrowShuriken();
+			Vector2 point = GetPointFarthestFrom(PlayerPosition, TeleportPoints);
+			TeleportTo(point);
+
+			yield return new YieldSeconds(1f);
 			TransitionTo(_flee);
 		}
 

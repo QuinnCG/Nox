@@ -18,10 +18,7 @@ namespace Game.RoomSystem
 		private Door ExitDoor;
 
 		[SerializeField, Required]
-		private GameObject BossPrefab;
-
-		[SerializeField, Required]
-		private Transform BossSpawnPoint;
+		private GameObject BossInstance;
 
 		[field: SerializeField, Required]
 		public Transform PlayerSpawnPoint { get; private set; }
@@ -52,7 +49,7 @@ namespace Game.RoomSystem
 				_bossMusic.start();
 			}
 
-			SpawnBoss();
+			InitializeBoss();
 		}
 
 		private void FixedUpdate()
@@ -82,10 +79,9 @@ namespace Game.RoomSystem
 			}
 		}
 
-		private void SpawnBoss()
+		private void InitializeBoss()
 		{
-			var instance = Instantiate(BossPrefab, BossSpawnPoint.position, Quaternion.identity, transform);
-			Boss = instance.GetComponent<BossBrain>();
+			Boss = BossInstance.GetComponent<BossBrain>();
 			Boss.GetComponent<Health>().OnDeath += _ => BossDeath();
 			Boss.Room = this;
 

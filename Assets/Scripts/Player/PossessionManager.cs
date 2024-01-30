@@ -184,6 +184,8 @@ namespace Game.Player
 
 		private bool IsPossessable(Character character)
 		{
+			if (character == null) return false;
+
 			if (CurrentPossessionMeter < character.PossessionMeterConsumption)
 				return false;
 

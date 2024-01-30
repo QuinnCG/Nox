@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 1112932587
+    locked: 0
   - name: Footsteps
     uniqueID: 1109642217
     locked: 0
