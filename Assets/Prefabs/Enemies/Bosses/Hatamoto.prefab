@@ -10,31 +10,47 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Size.x
-      value: 1.8737963
+      value: 2.9118629
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Size.y
-      value: 3.2036445
+      value: 2.7571642
+      objectReference: {fileID: 0}
+    - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.039067507
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Offset.y
-      value: 1.7670738
+      value: 1.5438336
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_EdgeRadius
       value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5272727
+      objectReference: {fileID: 0}
+    - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0
+      value: -0.34285715
+      objectReference: {fileID: 0}
+    - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 3.4375
+      objectReference: {fileID: 0}
+    - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.3125
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2
+      value: 3.4375
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 3.4375
+      value: 2.1875
       objectReference: {fileID: 0}
     - target: {fileID: 1215566544104443256, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_LocalPosition.x
@@ -91,10 +107,18 @@ PrefabInstance:
     - target: {fileID: 4969659154595712352, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: DefaultAnimation
       value: 
-      objectReference: {fileID: 3333042675578787808, guid: a832cc39dea46ac4aac223ce1016e2d4, type: 3}
+      objectReference: {fileID: -195735551640775830, guid: a832cc39dea46ac4aac223ce1016e2d4, type: 3}
     - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: <Max>k__BackingField
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_Size.x
+      value: 3.4375
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_Size.y
+      value: 2.3125
       objectReference: {fileID: 0}
     - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Sprite
@@ -128,5 +152,7 @@ MonoBehaviour:
   DebugMode: 0
   <Title>k__BackingField: Disgraced Hatamoto
   FleeThrowInterval: 3
-  PlayerDistanceBeforeTeleport: 4
+  PlayerDistanceBeforeTeleport: 3
+  DurationToWall: 0.3
   ShurikenPrefab: {fileID: 8550588314174644299, guid: 2130487ead2c8c44abf9813d06a3833e, type: 3}
+  TeleportPoints: []

@@ -6,11 +6,14 @@ namespace Game.AI.BossSystem.BossBrains
 {
 	public class Hatamoto : BossBrain
 	{
-		[SerializeField, BoxGroup("Settings")]
+		[SerializeField, BoxGroup("Settings"), Unit(Units.Second)]
 		private float FleeThrowInterval = 3f;
 
-		[SerializeField, BoxGroup("Settings")]
+		[SerializeField, BoxGroup("Settings"), Unit(Units.Meter)]
 		private float PlayerDistanceBeforeTeleport = 4f;
+
+		[SerializeField, BoxGroup("Settings"), Unit(Units.Second)]
+		private float DurationToWall = 0.3f;
 
 		[SerializeField, Required, BoxGroup("References")]
 		private GameObject ShurikenPrefab;
@@ -20,6 +23,8 @@ namespace Game.AI.BossSystem.BossBrains
 
 		private State _flee, _teleport, _teleport2;
 		private Timer _fleeThrowTimer;
+
+		private float _fleeDir = -1f;
 
 		protected override void Start()
 		{
@@ -38,8 +43,8 @@ namespace Game.AI.BossSystem.BossBrains
 		// Will collide with wall in 1 second, given current trajectory.
 		private bool IsNearWall()
 		{
-			Vector2 start = transform.position;
-			Vector2 end = start + Movement.Velocity;
+			Vector2 start = Bounds.center;
+			Vector2 end = start + (Movement.Velocity * DurationToWall);
 
 			return !LineOfSight(start, end);
 		}
@@ -47,7 +52,7 @@ namespace Game.AI.BossSystem.BossBrains
 		/* STATES */
 		private void OnFlee()
 		{
-			Move(-DirectionToPlayer);
+			Move(Vector2.right * _fleeDir);
 
 			if (_fleeThrowTimer.IsDone)
 			{
@@ -65,6 +70,7 @@ namespace Game.AI.BossSystem.BossBrains
 			if (IsNearWall())
 			{
 				TransitionTo(_teleport);
+				_fleeDir *= -1f;
 				return;
 			}
 		}
