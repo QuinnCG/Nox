@@ -640,8 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExitDoor: {fileID: 4681763500289665275}
-  BossPrefab: {fileID: 0}
-  BossSpawnPoint: {fileID: 0}
+  BossInstance: {fileID: 0}
   <PlayerSpawnPoint>k__BackingField: {fileID: 7532373280028523163}
   _collider: {fileID: 6142119626028068184}
   BossMusic:
