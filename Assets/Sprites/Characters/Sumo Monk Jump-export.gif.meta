@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sumo Monk Jump-export_0: -1329216474887054616
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sumo Monk Idle-export_0: 7677070133651503888
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
