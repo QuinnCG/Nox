@@ -1,6 +1,8 @@
 ﻿using Game.Player;
 using Sirenix.OdinInspector;
 using System;
+using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 
 namespace Game.RoomSystem
@@ -15,17 +17,31 @@ namespace Game.RoomSystem
 		[field: SerializeField, ReadOnly]
 		public int CurrentRoom { get; private set; }
 
-		[Button("Load Room"), BoxGroup("Tools")]
-		public void LoadRoom(int index)
+		[MenuItem("Tools/Rooms/Disgraced Hatamoto")]
+		public static void LoadHatamoto()
+		{
+			LoadRoom(0);
+		}
+
+		[MenuItem("Tools/Rooms/Shugo The Drunkard")]
+		public static void LoadShugo()
+		{
+			LoadRoom(1);
+		}
+
+		public static void LoadRoom(int index)
 		{
 			if (!Application.isPlaying)
 			{
-				Debug.LogWarning("How do you expect me to load a level when the game isn't running?! Load your own damn level.");
-				return;
+				EditorApplication.EnterPlaymode();
 			}
 
-			CurrentRoom = index - 1;
-			Next();
+			Task.Run(() =>
+			{
+				while (!Application.isPlaying) ;
+				Instance.CurrentRoom = index - 1;
+				Instance.Next();
+			});
 		}
 
 		public event Action<Room> OnBossRoomStart;
