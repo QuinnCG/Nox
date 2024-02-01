@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{e7f2e808-d6ac-44bd-8e7e-90a8b030918b}">
+		<property name="assetPath">
+			<value>Music/Shugo The Drunkard/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{199058eb-45a1-46fb-bd35-0d8ea40a3f2d}</destination>
+		</relationship>
+	</object>
+</objects>

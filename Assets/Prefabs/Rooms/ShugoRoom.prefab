@@ -439,6 +439,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Shadow
       objectReference: {fileID: 0}
+    - target: {fileID: 6068143130265781743, guid: 13795fd47e69c5e40a3271496e3a5f5f, type: 3}
+      propertyPath: <Max>k__BackingField
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068143130265781743, guid: 13795fd47e69c5e40a3271496e3a5f5f, type: 3}
+      propertyPath: <Current>k__BackingField
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -471,16 +479,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DebugMode: 0
   <Title>k__BackingField: Shugo The Drunkard
-  FirePrefab: {fileID: 1899552154381879362, guid: 984bd5bf54213f4489c417797cd83976, type: 3}
+  FirePrefab: {fileID: 1899552154381879362, guid: 33dfb41b16729ab4ca484de27ee28b46, type: 3}
   MinionPrefab: {fileID: 4850610673639980936, guid: 01ed844deb3072047853c6f4efee15ac, type: 3}
   ShadowPrefab: {fileID: 5122463036962878032, guid: 6504721e60e198549b1688eb72e47a0a, type: 3}
-  ReinforcementPoints:
-  - {fileID: 8423627117028409725}
-  - {fileID: 3944036659554064572}
-  - {fileID: 3945887479228253092}
-  - {fileID: 3486125542536777533}
-  JumpHeight: 20
-  JumpDuration: 5
+  ReinforcementPoints: []
+  jumpHeight: 30
+  jumpDuration: 5
 --- !u!1001 &8121865559732244529
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ namespace Game.AI.BossSystem
 
 		public Room Room { get; set; }
 
+
 		/// <summary>
 		/// Counts from 1 (e.g. 0 is invalid).
 		/// </summary>
