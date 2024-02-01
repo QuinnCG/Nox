@@ -108,39 +108,9 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6594416687102187604, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2539884451687759693, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8568196138999638762}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
---- !u!1 &4850610673639980936 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2539884451687759693, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
-  m_PrefabInstance: {fileID: 6948966019077865669}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8568196138999638762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4850610673639980936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a57ecd436657614f8797138ed0fc11d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DashSpeed: 18
-  DashDuration: 0.2
-  DashCooldown: 0.2
-  IsDashControllable: 0
-  DashTrail: {fileID: 0}
-  <PossessionMeterConsumption>k__BackingField: 60
-  IdleAnim: {fileID: 7400000, guid: dbb6473fe079e2b429e8a8978d6caff9, type: 2}
-  MoveAnim: {fileID: 7400000, guid: e512f5e9ebb512b4eb6887e1549d87aa, type: 2}
-  DashAnim: {fileID: -8863155357993509816, guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c, type: 3}
-  ProjectilePrefab: {fileID: 0}
-  ProjectileSpawn: {fileID: 0}
