@@ -19009,7 +19009,7 @@ PrefabInstance:
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossInstance
       value: 
-      objectReference: {fileID: 549997748927306544}
+      objectReference: {fileID: 4422621820637405008}
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossMusic.Path
       value: event:/Music/Sumo
@@ -19069,11 +19069,6 @@ PrefabInstance:
       addedObject: {fileID: 1966018267411176955}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63e1427757863924ea0852761c3ee622, type: 3}
---- !u!1 &549997748927306544 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8581421864096779009, guid: 63e1427757863924ea0852761c3ee622, type: 3}
-  m_PrefabInstance: {fileID: 8121865559732244529}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6353294672475812735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2926713474704515918, guid: 63e1427757863924ea0852761c3ee622, type: 3}

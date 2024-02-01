@@ -93,6 +93,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rooms:
   - {fileID: 549997748927306544, guid: 18ffea8cf51c04d439d82fc716b867dd, type: 3}
-  - {fileID: 549997748927306544, guid: 18ffea8cf51c04d439d82fc716b867dd, type: 3}
-  - {fileID: 549997748927306544, guid: 18ffea8cf51c04d439d82fc716b867dd, type: 3}
+  - {fileID: 549997748927306544, guid: 3b74d9bf413218843b4b342c01f2245b, type: 3}
   <CurrentRoom>k__BackingField: 1
