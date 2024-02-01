@@ -14,9 +14,20 @@ namespace Game.AI.BossSystem.BossBrains
 		[SerializeField, Required, BoxGroup("References")]
 		private GameObject ShadowPrefab;
 
+		[SerializeField, Required, BoxGroup("References")]
+		private Transform[] ReinforcementPoints;
+
+		[SerializeField, BoxGroup("Jump Settings")]
+		private float JumpHeight = 5f;
+
+		[SerializeField, BoxGroup("Jump Settings")]
+		private float JumpDuration = 1f;
+
 		private State _idle, _sakeChug, _jump, _callReinforcements;
 		private Timer _abilityCooldown;
 		private bool isJumping;
+
+		private Collider2D bossCollider;
 
 		protected override void Start()
 		{
@@ -28,6 +39,8 @@ namespace Game.AI.BossSystem.BossBrains
 			_callReinforcements = CreateState(OnCallReinforcements, "Call Reinforcements");
 
 			_abilityCooldown = new Timer(5f);
+
+			bossCollider = GetComponent<Collider2D>();
 
 			TransitionTo(_idle);
 		}
@@ -69,35 +82,18 @@ namespace Game.AI.BossSystem.BossBrains
 			}
 		}
 
-		private void JumpAttack()
-		{
-			// Instantiate the shadow at Shugo's current position
-			GameObject shadow = Instantiate(ShadowPrefab, transform.position, Quaternion.identity);
-
-			// Uses the shadow GameObject to track the player's movement
-			ShadowController shadowController = shadow.GetComponent<ShadowController>();
-			if (shadowController != null)
-			{
-				shadowController.SetTarget(PlayerPosition);
-			}
-
-			// Use animations or other mechanisms for the jump attack
-			// After the jump animation is complete, call JumpCompleted()
-			// Example: StartCoroutine(PerformJumpAnimation());
-		}
-
-		private void JumpCompleted()
-		{
-			// Perform logic when the jump attack is completed
-			isJumping = false;
-			Destroy(GameObject.FindGameObjectWithTag("Shadow")); // Assuming the tag is set appropriately
-			TransitionTo(_idle);
-		}
-
 		private void OnCallReinforcements()
 		{
-			CallReinforcements();
+			SummonReinforcements();
 			TransitionTo(_idle);
+		}
+
+		private void SummonReinforcements()
+		{
+			foreach (Transform spawnPoint in ReinforcementPoints)
+			{
+				Instantiate(MinionPrefab, spawnPoint.position, Quaternion.identity);
+			}
 		}
 
 		private void ChugSakeAndBlowFire()
@@ -105,11 +101,63 @@ namespace Game.AI.BossSystem.BossBrains
 			Instantiate(FirePrefab, transform.position, Quaternion.identity);
 		}
 
-		private void CallReinforcements()
+		private void JumpAttack()
 		{
-			Instantiate(MinionPrefab, transform.position, Quaternion.identity);
+			bossCollider.enabled = false; // Disable the collider during the jump
+			GameObject shadow = Instantiate(ShadowPrefab, transform.position, Quaternion.identity);
+			ShadowController shadowController = shadow.GetComponent<ShadowController>();
+
+			if (shadowController != null)
+			{
+				shadowController.SetTarget(PlayerPosition);
+			}
+
+			StartCoroutine(PerformJumpAnimation(shadow));
+		}
+
+		private System.Collections.IEnumerator PerformJumpAnimation(GameObject shadow)
+		{
+			Vector3 startPosition = transform.position;
+			Vector3 jumpTarget = shadow.transform.position; // Jump to the shadow's position
+
+			float elapsedTime = 0f;
+
+			while (elapsedTime < JumpDuration)
+			{
+				transform.position = Vector3.Lerp(startPosition, jumpTarget, elapsedTime / JumpDuration);
+				elapsedTime += Time.deltaTime;
+				yield return null;
+			}
+
+			transform.position = jumpTarget;
+
+			yield return new WaitForSeconds(1f);
+
+			JumpCompleted();
+
+			elapsedTime = 0f;
+
+			while (elapsedTime < JumpDuration)
+			{
+				transform.position = Vector3.Lerp(jumpTarget, startPosition, elapsedTime / JumpDuration);
+				elapsedTime += Time.deltaTime;
+				yield return null;
+			}
+
+			transform.position = startPosition;
+
+			bossCollider.enabled = true; // Re-enable the collider after the jump
+			Destroy(shadow);
+		}
+
+		private void JumpCompleted()
+		{
+			isJumping = false;
+			TransitionTo(_idle);
 		}
 	}
 }
+
+
 
 
