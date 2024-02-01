@@ -74,7 +74,7 @@ namespace Game.AI.BossSystem.BossBrains
 			// Instantiate the shadow at Shugo's current position
 			GameObject shadow = Instantiate(ShadowPrefab, transform.position, Quaternion.identity);
 
-			// Use the shadow GameObject to track the player's movement
+			// Uses the shadow GameObject to track the player's movement
 			ShadowController shadowController = shadow.GetComponent<ShadowController>();
 			if (shadowController != null)
 			{

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8e0151f2fa6acd04f9c530a1666a64cf
+guid: cb948302b08e9d6488046bc8d6abe742
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1559343949029202406
-    second: Sumo Monk Idle_0
+      213: -886085103508976610
+    second: Sumo Monk Saki Chug-export_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sumo Monk Idle_0
+      name: Sumo Monk Saki Chug-export_0
       rect:
         serializedVersion: 2
-        x: 119
-        y: 39
-        width: 322
+        x: 849
+        y: 759
+        width: 362
         height: 502
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a16a57ba0f81c5ae0800000000000000
-      internalID: -1559343949029202406
+      spriteID: e1c05940b4ef3b3f0800000000000000
+      internalID: -886085103508976610
       vertices: []
       indices: 
       edges: []
