@@ -6,8 +6,10 @@ using Game.ProjectileSystem;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Game.AI
 {
@@ -204,6 +206,31 @@ namespace Game.AI
 			}
 
 			return farthestTransform.position;
+		}
+
+		protected YieldUntil SpawnVFXOneShot(GameObject prefab, Vector2 position, bool destroyWhenFinished = true)
+		{
+			GameObject instance = Instantiate(prefab, position, Quaternion.identity);
+			if (destroyWhenFinished)
+			{
+				VisualEffect vfx = instance.GetComponent<VisualEffect>();
+
+				Task.Run(() =>
+				{
+					bool isValid = instance != null;
+					while (vfx.aliveParticleCount > 0 && isValid) Debug.Log(vfx.aliveParticleCount);
+
+					if (isValid)
+					{
+						Debug.Log("Destroyed!");
+						Destroy(instance);
+					}
+				});
+
+				return new YieldUntil(() => vfx.aliveParticleCount == 0);
+			}
+
+			return new YieldUntil(() => true);
 		}
 	}
 }

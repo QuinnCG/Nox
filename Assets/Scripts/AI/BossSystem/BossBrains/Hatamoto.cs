@@ -19,6 +19,9 @@ namespace Game.AI.BossSystem.BossBrains
 		private GameObject ShurikenPrefab;
 
 		[SerializeField, BoxGroup("References")]
+		private GameObject TeleportVFX;
+
+		[SerializeField, BoxGroup("References")]
 		private Transform[] TeleportPoints;
 
 		private State _flee, _teleport, _teleport2;
@@ -61,26 +64,22 @@ namespace Game.AI.BossSystem.BossBrains
 			}
 
 			// Transitions.
-			if (DistanceToPlayer < PlayerDistanceBeforeTeleport)
-			{
-				TransitionTo(_teleport);
-				return;
-			}
 
 			if (IsNearWall())
 			{
-				TransitionTo(_teleport);
 				_fleeDir *= -1f;
+				TransitionTo(_teleport);
 				return;
 			}
 		}
 
 		private IEnumerator OnTeleport()
 		{
+			yield return SpawnVFXOneShot(TeleportVFX, Bounds.center);
+
 			Vector2 point = GetPointFarthestFrom(PlayerPosition, TeleportPoints);
 			TeleportTo(point);
 
-			yield return new YieldSeconds(1f);
 			TransitionTo(_flee);
 		}
 
