@@ -105,9 +105,8 @@ namespace Game.AI.BossSystem.BossBrains
 			SpawnShadow();
 
 			_jumpStart = transform.position;
-			_jumpEnd = PlayerPosition;
-
-			var tween = Jump(_jumpEnd, 15f, 2f);
+			_jumpEnd = target;
+			var tween = Jump(_jumpEnd, height, duration);
 
 			while (!tween.IsComplete())
 			{
