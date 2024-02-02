@@ -305,6 +305,9 @@ namespace Game.AI.BossSystem.BossBrains
 			sequence.Append(SuperJump(target, height, duration, ShadowPrefab));
 			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpEnd)));
 
+			float dir = target.x - transform.position.x;
+			sequence.onUpdate += () => { if (IsJumping) { Movement.FaceDirection(dir); } };
+
 			return sequence;
 		}
 

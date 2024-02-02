@@ -71,11 +71,16 @@ namespace Game.MovementSystem
 			AddVelocity(MoveSpeed * inputDir);
 
 			// Flip sprite.
-			if (direction.x > 0f)
+			FaceDirection(direction.x);
+		}
+
+		public void FaceDirection(float x)
+		{
+			if (x > 0f)
 			{
 				transform.localScale = new Vector3(1f, 1f, 1f);
 			}
-			else if (direction.x < 0f)
+			else if (x < 0f)
 			{
 				transform.localScale = new Vector3(-1f, 1f, 1f);
 			}
