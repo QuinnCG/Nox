@@ -121,15 +121,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Hatamoto
     originalName: 
-    pivot: {x: 0.5272727, y: -0.34285715}
+    pivot: {x: 0.5263158, y: -0.2972973}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 63
+      x: 182
       y: 4
-      width: 55
-      height: 35
+      width: 57
+      height: 37
     spriteID: 3925675539c48ce4298f4eed30be9b03
     spriteBone: []
     spriteOutline: []
@@ -138,18 +138,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 4}
+    uvTransform: {x: 182, y: 4}
   - name: Hatamoto_Frame_1
     originalName: 
-    pivot: {x: 0.5272727, y: -0.31428573}
+    pivot: {x: 0.5263158, y: -0.2702703}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 63
-      y: 47
-      width: 55
-      height: 35
+      x: 182
+      y: 49
+      width: 57
+      height: 37
     spriteID: 27d656099a237bd4bb8a5b3c00aff903
     spriteBone: []
     spriteOutline: []
@@ -158,18 +158,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 47}
+    uvTransform: {x: 182, y: 49}
   - name: Hatamoto_Frame_2
     originalName: 
-    pivot: {x: 0.4901961, y: 0}
+    pivot: {x: 0.49056605, y: 0.022727273}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 106
-      width: 51
-      height: 42
+      x: 121
+      y: 110
+      width: 53
+      height: 44
     spriteID: 97f63f774e60f034dbc54aa0702fb2a8
     spriteBone: []
     spriteOutline: []
@@ -178,18 +178,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 106}
+    uvTransform: {x: 121, y: 110}
   - name: Hatamoto_Frame_3
     originalName: 
-    pivot: {x: 0.4901961, y: 0}
+    pivot: {x: 0.49056605, y: 0.023255814}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 206
-      width: 51
-      height: 41
+      x: 121
+      y: 279
+      width: 53
+      height: 43
     spriteID: a5b33fdd04040ad4a97111f2b01467c3
     spriteBone: []
     spriteOutline: []
@@ -198,18 +198,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 206}
+    uvTransform: {x: 121, y: 279}
   - name: Hatamoto_Frame_4
     originalName: 
-    pivot: {x: 0.4901961, y: 0}
+    pivot: {x: 0.49056605, y: 0.022222223}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
+      x: 121
       y: 4
-      width: 51
-      height: 43
+      width: 53
+      height: 45
     spriteID: 624d51e03c04a314fb50880a9bd11413
     spriteBone: []
     spriteOutline: []
@@ -218,18 +218,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 121, y: 4}
   - name: Hatamoto_Frame_5
     originalName: 
-    pivot: {x: 0.4901961, y: 0}
+    pivot: {x: 0.49056605, y: 0.022727273}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 156
-      width: 51
-      height: 42
+      x: 121
+      y: 162
+      width: 53
+      height: 44
     spriteID: b9d8382dd6abfd84bbd16fe4765552c4
     spriteBone: []
     spriteOutline: []
@@ -238,18 +238,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 156}
+    uvTransform: {x: 121, y: 162}
   - name: Hatamoto_Frame_6
     originalName: 
-    pivot: {x: 0.4901961, y: 0}
+    pivot: {x: 0.49056605, y: 0.022222223}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 55
-      width: 51
-      height: 43
+      x: 121
+      y: 57
+      width: 53
+      height: 45
     spriteID: f4df5af41d4194c4fa87d6244fb09a37
     spriteBone: []
     spriteOutline: []
@@ -258,18 +258,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 55}
+    uvTransform: {x: 121, y: 57}
   - name: Hatamoto_Frame_7
     originalName: 
-    pivot: {x: 0.46875, y: 0}
+    pivot: {x: 0.375, y: 0.01754386}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 63
-      y: 90
-      width: 32
-      height: 55
+      x: 121
+      y: 214
+      width: 40
+      height: 57
     spriteID: 7d40d532faef31745b000e70ff011143
     spriteBone: []
     spriteOutline: []
@@ -278,18 +278,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 90}
+    uvTransform: {x: 121, y: 214}
   - name: Hatamoto_Frame_8
     originalName: 
-    pivot: {x: 0.46875, y: 0}
+    pivot: {x: 0.33333334, y: 0.01724138}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 63
-      y: 153
-      width: 32
-      height: 55
+      x: 71
+      y: 4
+      width: 42
+      height: 58
     spriteID: a78dd1aad38dd69449875c03eb38b058
     spriteBone: []
     spriteOutline: []
@@ -298,7 +298,207 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 153}
+    uvTransform: {x: 71, y: 4}
+  - name: Hatamoto_Frame_9
+    originalName: 
+    pivot: {x: 0.4, y: 0.01724138}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 283
+      width: 45
+      height: 58
+    spriteID: abe73823e4e3ba04589f44a00fd383a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 283}
+  - name: Hatamoto_Frame_10
+    originalName: 
+    pivot: {x: 0.4883721, y: 0.01754386}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 443
+      width: 43
+      height: 57
+    spriteID: b2c08a1fd8a22744a89a7d1a50d02e57
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 443}
+  - name: Hatamoto_Frame_11
+    originalName: 
+    pivot: {x: 0.5625, y: 0.01754386}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 218
+      width: 48
+      height: 57
+    spriteID: 1231fb8fab023394a8d5ff33ecd54cfc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 218}
+  - name: Hatamoto_Frame_12
+    originalName: 
+    pivot: {x: 0.5272727, y: 0.01724138}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 75
+      width: 55
+      height: 58
+    spriteID: 12adf0ad69e9d164499dcb30523322b1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 75}
+  - name: Hatamoto_Frame_13
+    originalName: 
+    pivot: {x: 0.5254237, y: 0.031746034}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 59
+      height: 63
+    spriteID: 6f2044f2a13ad604387b5338a3957bf9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Hatamoto_Frame_13
+    originalName: 
+    pivot: {x: 0.4888889, y: 0.10144928}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 141
+      width: 45
+      height: 69
+    spriteID: 789ccb14033ad6540806e220191446fb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 141}
+  - name: Hatamoto_Frame_14
+    originalName: 
+    pivot: {x: 0.47058824, y: 0.01754386}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 121
+      y: 330
+      width: 34
+      height: 57
+    spriteID: 8977f4fe22f860b4cb4f3d0711138e22
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 121, y: 330}
+  - name: Hatamoto_Frame_15
+    originalName: 
+    pivot: {x: 0.4666667, y: 0.1627907}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 349
+      width: 30
+      height: 86
+    spriteID: 4cce82c05fc665b47a553b86160378dd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 349}
+  - name: Hatamoto_Frame_16
+    originalName: 
+    pivot: {x: 0.45000002, y: 0.17948718}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 349
+      width: 20
+      height: 78
+    spriteID: c844f87b255fa744b82340b065099750
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 349}
+  - name: Hatamoto_Frame_17
+    originalName: 
+    pivot: {x: 0.22222222, y: 0.23655914}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 121
+      y: 395
+      width: 9
+      height: 93
+    spriteID: 996c7dbe98b0dc743af5ba4b111a72c4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 121, y: 395}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -311,75 +511,155 @@ ScriptedImporter:
     - name: Hatamoto_Frame_0
       frameIndex: 0
       cellRect:
-        x: 35
-        y: 44
-        width: 53
-        height: 33
+        x: 34
+        y: 43
+        width: 55
+        height: 35
       spriteId: 3925675539c48ce4298f4eed30be9b03
     - name: Hatamoto_Frame_1
       frameIndex: 1
       cellRect:
-        x: 35
-        y: 43
-        width: 53
-        height: 33
+        x: 34
+        y: 42
+        width: 55
+        height: 35
       spriteId: 27d656099a237bd4bb8a5b3c00aff903
     - name: Hatamoto_Frame_2
       frameIndex: 2
       cellRect:
-        x: 39
-        y: 32
-        width: 49
-        height: 40
+        x: 38
+        y: 31
+        width: 51
+        height: 42
       spriteId: 97f63f774e60f034dbc54aa0702fb2a8
     - name: Hatamoto_Frame_3
       frameIndex: 3
       cellRect:
-        x: 39
-        y: 32
-        width: 49
-        height: 39
+        x: 38
+        y: 31
+        width: 51
+        height: 41
       spriteId: a5b33fdd04040ad4a97111f2b01467c3
     - name: Hatamoto_Frame_4
       frameIndex: 4
       cellRect:
-        x: 39
-        y: 32
-        width: 49
-        height: 41
+        x: 38
+        y: 31
+        width: 51
+        height: 43
       spriteId: 624d51e03c04a314fb50880a9bd11413
     - name: Hatamoto_Frame_5
       frameIndex: 5
       cellRect:
-        x: 39
-        y: 32
-        width: 49
-        height: 40
+        x: 38
+        y: 31
+        width: 51
+        height: 42
       spriteId: b9d8382dd6abfd84bbd16fe4765552c4
     - name: Hatamoto_Frame_6
       frameIndex: 6
       cellRect:
-        x: 39
-        y: 32
-        width: 49
-        height: 41
+        x: 38
+        y: 31
+        width: 51
+        height: 43
       spriteId: f4df5af41d4194c4fa87d6244fb09a37
     - name: Hatamoto_Frame_7
       frameIndex: 7
       cellRect:
         x: 49
-        y: 32
-        width: 30
-        height: 53
+        y: 31
+        width: 38
+        height: 55
       spriteId: 7d40d532faef31745b000e70ff011143
     - name: Hatamoto_Frame_8
       frameIndex: 8
       cellRect:
-        x: 49
-        y: 32
-        width: 30
-        height: 53
+        x: 50
+        y: 31
+        width: 40
+        height: 56
       spriteId: a78dd1aad38dd69449875c03eb38b058
+    - name: Hatamoto_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 46
+        y: 31
+        width: 43
+        height: 56
+      spriteId: abe73823e4e3ba04589f44a00fd383a4
+    - name: Hatamoto_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 43
+        y: 31
+        width: 41
+        height: 55
+      spriteId: b2c08a1fd8a22744a89a7d1a50d02e57
+    - name: Hatamoto_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 37
+        y: 31
+        width: 46
+        height: 55
+      spriteId: 1231fb8fab023394a8d5ff33ecd54cfc
+    - name: Hatamoto_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 35
+        y: 31
+        width: 53
+        height: 56
+      spriteId: 12adf0ad69e9d164499dcb30523322b1
+    - name: Hatamoto_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 33
+        y: 30
+        width: 57
+        height: 61
+      spriteId: 6f2044f2a13ad604387b5338a3957bf9
+    - name: Hatamoto_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 42
+        y: 25
+        width: 43
+        height: 67
+      spriteId: 789ccb14033ad6540806e220191446fb
+    - name: Hatamoto_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 48
+        y: 31
+        width: 32
+        height: 55
+      spriteId: 8977f4fe22f860b4cb4f3d0711138e22
+    - name: Hatamoto_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 50
+        y: 18
+        width: 28
+        height: 84
+      spriteId: 4cce82c05fc665b47a553b86160378dd
+    - name: Hatamoto_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 55
+        y: 18
+        width: 18
+        height: 76
+      spriteId: c844f87b255fa744b82340b065099750
+    - name: Hatamoto_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 62
+        y: 10
+        width: 7
+        height: 91
+      spriteId: 996c7dbe98b0dc743af5ba4b111a72c4
     linkedCells: []
     parentIndex: -1
   platformSettings:

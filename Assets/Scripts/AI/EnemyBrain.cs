@@ -86,6 +86,8 @@ namespace Game.AI
 		private readonly StateMachine _stateMachine = new();
 		private Tween _jumpTween;
 
+		private Transform _lastPosition;
+
 		protected virtual void Awake()
 		{
 			Movement = GetComponent<Movement>();
@@ -213,7 +215,7 @@ namespace Game.AI
 			transform.position = target;
 		}
 
-		protected Vector2 GetPointClosestTo(Vector2 to, params Transform[] points)
+		protected Vector2 GetPointClosestTo(Vector2 to, Transform[] points, bool avoidRepeat = false)
 		{
 			float cloestDst = float.PositiveInfinity;
 			Transform closestTransform = null;
@@ -225,6 +227,18 @@ namespace Game.AI
 				{
 					cloestDst = dst;
 					closestTransform = transform;
+				}
+			}
+
+			if (avoidRepeat)
+			{
+				if (_lastPosition = closestTransform)
+				{
+					return GetPointClosestTo(to, points, avoidRepeat);
+				}
+				else
+				{
+					_lastPosition = closestTransform;
 				}
 			}
 

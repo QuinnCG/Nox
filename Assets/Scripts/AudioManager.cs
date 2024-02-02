@@ -37,6 +37,16 @@ namespace Game.GeneralManagers
 			}
 		}
 
+		/// <summary>
+		/// Returns true if the event reference was valid and false if it was null.
+		/// </summary>
+		public static bool PlayOneShot(EventReference reference, Vector2 position = default)
+		{
+			if (reference.IsNull) return false;
+			RuntimeManager.PlayOneShot(reference, position);
+			return true;
+		}
+
 		// Initialization method to be called by the Options Menu script
 		public void Initialize()
 		{

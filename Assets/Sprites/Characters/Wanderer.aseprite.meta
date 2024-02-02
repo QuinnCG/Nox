@@ -151,15 +151,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Wanderer_Frame_0
     originalName: 
-    pivot: {x: 0.4763078, y: 0}
+    pivot: {x: 0.4230589, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 210
-      width: 15
-      height: 33
+      x: 38
+      y: 93
+      width: 17
+      height: 34
     spriteID: 74b1974a4257cf846aec304500b959d5
     spriteBone: []
     spriteOutline: []
@@ -168,18 +168,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 210}
+    uvTransform: {x: 38, y: 93}
   - name: Wanderer_Frame_1
     originalName: 
-    pivot: {x: 0.4763078, y: 0}
+    pivot: {x: 0.4230589, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 36
-      y: 87
-      width: 15
-      height: 32
+      x: 4
+      y: 219
+      width: 17
+      height: 33
     spriteID: e71c49ebbf9ff824dbb55bf9e9335f86
     spriteBone: []
     spriteOutline: []
@@ -188,18 +188,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 36, y: 87}
+    uvTransform: {x: 4, y: 219}
   - name: Wanderer_Frame_2
     originalName: 
-    pivot: {x: 0.4763078, y: 0}
+    pivot: {x: 0.4230589, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 36
-      y: 167
-      width: 15
-      height: 31
+      x: 38
+      y: 202
+      width: 17
+      height: 32
     spriteID: 65b9983eb5dfebe4ba829875751edc91
     spriteBone: []
     spriteOutline: []
@@ -208,18 +208,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 36, y: 167}
+    uvTransform: {x: 38, y: 202}
   - name: Wanderer_Frame_3
     originalName: 
-    pivot: {x: 0.4763078, y: 0}
+    pivot: {x: 0.4230589, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 36
-      y: 127
-      width: 15
-      height: 32
+      x: 38
+      y: 135
+      width: 17
+      height: 33
     spriteID: 7c96e817787c9774c982dff373d52be1
     spriteBone: []
     spriteOutline: []
@@ -228,18 +228,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 36, y: 127}
+    uvTransform: {x: 38, y: 135}
   - name: Wanderer_Frame_4
     originalName: 
-    pivot: {x: 0.48768005, y: 0}
+    pivot: {x: 0.50738466, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 24
-      height: 28
+      width: 26
+      height: 29
     spriteID: 84cfb09c0605ef84ea965713ec68a11f
     spriteBone: []
     spriteOutline: []
@@ -251,15 +251,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Wanderer_Frame_5
     originalName: 
-    pivot: {x: 0.48768005, y: 0}
+    pivot: {x: 0.50738466, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 40
-      width: 24
-      height: 26
+      y: 77
+      width: 26
+      height: 27
     spriteID: 526ff3b7c5bc7e144b9bf68a360cbf40
     spriteBone: []
     spriteOutline: []
@@ -268,18 +268,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 40}
+    uvTransform: {x: 4, y: 77}
   - name: Wanderer_Frame_6
     originalName: 
-    pivot: {x: 0.48768005, y: 0}
+    pivot: {x: 0.50738466, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 74
-      width: 24
-      height: 26
+      y: 112
+      width: 26
+      height: 27
     spriteID: 822532a78a66fa34791cc5a6fce35875
     spriteBone: []
     spriteOutline: []
@@ -288,18 +288,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 74}
+    uvTransform: {x: 4, y: 112}
   - name: Wanderer_Frame_7
     originalName: 
-    pivot: {x: 0.4663334, y: -0.11111111}
+    pivot: {x: 0.48768005, y: -0.071428575}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 142
-      width: 23
-      height: 26
+      y: 147
+      width: 25
+      height: 28
     spriteID: 4f35d4fc46cf9104aa1acf37821470ee
     spriteBone: []
     spriteOutline: []
@@ -308,18 +308,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 142}
+    uvTransform: {x: 4, y: 147}
   - name: Wanderer_Frame_8
     originalName: 
-    pivot: {x: 0.5329524, y: -0.25}
+    pivot: {x: 0.48768005, y: -0.17857143}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 176
-      width: 23
-      height: 26
+      y: 183
+      width: 25
+      height: 28
     spriteID: 4267b1b055a39cb428034b351c635615
     spriteBone: []
     spriteOutline: []
@@ -328,18 +328,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 176}
+    uvTransform: {x: 4, y: 183}
   - name: Wanderer_Frame_9
     originalName: 
-    pivot: {x: 0.48768005, y: -0.14814815}
+    pivot: {x: 0.50738466, y: -0.107142866}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 108
-      width: 24
-      height: 26
+      y: 41
+      width: 26
+      height: 28
     spriteID: 76662c74908deca4186a79d171dd8c98
     spriteBone: []
     spriteOutline: []
@@ -348,18 +348,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 108}
+    uvTransform: {x: 4, y: 41}
   - name: Wanderer_Frame_10
     originalName: 
-    pivot: {x: 0.48937935, y: -0.18181819}
+    pivot: {x: 0.49006453, y: -0.125}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 36
+      x: 38
       y: 4
-      width: 29
-      height: 22
+      width: 31
+      height: 24
     spriteID: 19fe9fe004a8a444a8f809048011efd3
     spriteBone: []
     spriteOutline: []
@@ -368,18 +368,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 36, y: 4}
+    uvTransform: {x: 38, y: 4}
   - name: Wanderer_Frame_11
     originalName: 
-    pivot: {x: 0.48937935, y: -0.625}
+    pivot: {x: 0.49006453, y: -0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 36
-      y: 206
-      width: 29
-      height: 16
+      x: 38
+      y: 176
+      width: 31
+      height: 18
     spriteID: 6f424031c4d1a3b43b56b8869afa42e1
     spriteBone: []
     spriteOutline: []
@@ -388,18 +388,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 36, y: 206}
+    uvTransform: {x: 38, y: 176}
   - name: Wanderer_Frame_12
     originalName: 
-    pivot: {x: 0.48937935, y: -0.5294118}
+    pivot: {x: 0.49006453, y: -0.42105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 36
-      y: 62
-      width: 29
-      height: 17
+      x: 38
+      y: 66
+      width: 31
+      height: 19
     spriteID: 1c181294ce9aa3f47a7580129da75997
     spriteBone: []
     spriteOutline: []
@@ -408,18 +408,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 36, y: 62}
+    uvTransform: {x: 38, y: 66}
   - name: Wanderer_Frame_13
     originalName: 
-    pivot: {x: 0.48937935, y: -0.3}
+    pivot: {x: 0.49006453, y: -0.22727273}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 36
-      y: 34
-      width: 29
-      height: 20
+      x: 38
+      y: 36
+      width: 31
+      height: 22
     spriteID: e1b5ea06276fbf44e9c2e72e596b4795
     spriteBone: []
     spriteOutline: []
@@ -428,7 +428,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 36, y: 34}
+    uvTransform: {x: 38, y: 36}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -441,114 +441,114 @@ ScriptedImporter:
     - name: Wanderer_Frame_0
       frameIndex: 0
       cellRect:
-        x: 26
+        x: 25
         y: 16
-        width: 13
-        height: 31
+        width: 15
+        height: 32
       spriteId: 74b1974a4257cf846aec304500b959d5
     - name: Wanderer_Frame_1
       frameIndex: 1
       cellRect:
-        x: 26
+        x: 25
         y: 16
-        width: 13
-        height: 30
+        width: 15
+        height: 31
       spriteId: e71c49ebbf9ff824dbb55bf9e9335f86
     - name: Wanderer_Frame_2
       frameIndex: 2
       cellRect:
-        x: 26
+        x: 25
         y: 16
-        width: 13
-        height: 29
+        width: 15
+        height: 30
       spriteId: 65b9983eb5dfebe4ba829875751edc91
     - name: Wanderer_Frame_3
       frameIndex: 3
       cellRect:
-        x: 26
+        x: 25
         y: 16
-        width: 13
-        height: 30
+        width: 15
+        height: 31
       spriteId: 7c96e817787c9774c982dff373d52be1
     - name: Wanderer_Frame_4
       frameIndex: 4
       cellRect:
-        x: 20
+        x: 19
         y: 16
-        width: 22
-        height: 26
+        width: 24
+        height: 27
       spriteId: 84cfb09c0605ef84ea965713ec68a11f
     - name: Wanderer_Frame_5
       frameIndex: 5
       cellRect:
-        x: 20
+        x: 19
         y: 16
-        width: 22
-        height: 24
+        width: 24
+        height: 25
       spriteId: 526ff3b7c5bc7e144b9bf68a360cbf40
     - name: Wanderer_Frame_6
       frameIndex: 6
       cellRect:
-        x: 20
+        x: 19
         y: 16
-        width: 22
-        height: 24
+        width: 24
+        height: 25
       spriteId: 822532a78a66fa34791cc5a6fce35875
     - name: Wanderer_Frame_7
       frameIndex: 7
       cellRect:
-        x: 21
-        y: 19
-        width: 21
-        height: 24
+        x: 20
+        y: 18
+        width: 23
+        height: 26
       spriteId: 4f35d4fc46cf9104aa1acf37821470ee
     - name: Wanderer_Frame_8
       frameIndex: 8
       cellRect:
-        x: 21
-        y: 22
-        width: 21
-        height: 24
+        x: 20
+        y: 21
+        width: 23
+        height: 26
       spriteId: 4267b1b055a39cb428034b351c635615
     - name: Wanderer_Frame_9
       frameIndex: 9
       cellRect:
-        x: 20
-        y: 20
-        width: 22
-        height: 24
+        x: 19
+        y: 19
+        width: 24
+        height: 26
       spriteId: 76662c74908deca4186a79d171dd8c98
     - name: Wanderer_Frame_10
       frameIndex: 10
       cellRect:
-        x: 18
-        y: 20
-        width: 27
-        height: 20
+        x: 17
+        y: 19
+        width: 29
+        height: 22
       spriteId: 19fe9fe004a8a444a8f809048011efd3
     - name: Wanderer_Frame_11
       frameIndex: 11
       cellRect:
-        x: 18
-        y: 26
-        width: 27
-        height: 14
+        x: 17
+        y: 25
+        width: 29
+        height: 16
       spriteId: 6f424031c4d1a3b43b56b8869afa42e1
     - name: Wanderer_Frame_12
       frameIndex: 12
       cellRect:
-        x: 18
-        y: 25
-        width: 27
-        height: 15
+        x: 17
+        y: 24
+        width: 29
+        height: 17
       spriteId: 1c181294ce9aa3f47a7580129da75997
     - name: Wanderer_Frame_13
       frameIndex: 13
       cellRect:
-        x: 18
-        y: 22
-        width: 27
-        height: 18
+        x: 17
+        y: 21
+        width: 29
+        height: 20
       spriteId: e1b5ea06276fbf44e9c2e72e596b4795
     linkedCells: []
     parentIndex: -1

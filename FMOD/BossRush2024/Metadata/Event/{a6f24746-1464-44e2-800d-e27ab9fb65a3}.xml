@@ -97,6 +97,7 @@
 		<relationship name="effects">
 			<destination>{b6dfc45e-f4af-405d-ae1f-6ce05d6b7d3c}</destination>
 			<destination>{ae3df08f-16e8-41f1-b351-3791567f33a3}</destination>
+			<destination>{f917ecce-fe1e-408f-a999-a239b248f1be}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9678958c-38ef-4f96-b6de-8be55dde787c}" />
@@ -110,6 +111,7 @@
 	<object class="MixerBusFader" id="{471c3f2a-f5f6-45f0-898d-fc7d06e7252e}" />
 	<object class="MixerBusFader" id="{b6dfc45e-f4af-405d-ae1f-6ce05d6b7d3c}" />
 	<object class="SpatialiserEffect" id="{ae3df08f-16e8-41f1-b351-3791567f33a3}" />
+	<object class="SFXReverbEffect" id="{f917ecce-fe1e-408f-a999-a239b248f1be}" />
 	<object class="SingleSound" id="{448560ca-797b-4888-8b56-9b4c9d6056cd}">
 		<relationship name="audioFile">
 			<destination>{2d73d294-3bac-45b4-9acf-9c07adfae9a6}</destination>

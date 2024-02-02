@@ -53,7 +53,6 @@ namespace Game.UI
 		private Character _lastCharacter;
 		private Health _health;
 
-
 		private void Awake()
 		{
 			Instance = this;
@@ -215,15 +214,17 @@ namespace Game.UI
 
 		private void HidePlayerHealth()
 		{
-			var renderers = PlayerHealth.GetComponentsInChildren<Image>();
+			// This is not really needed as you never wander around and pretty much always need to see your heatlh bar.
+			return;
+			//var renderers = PlayerHealth.GetComponentsInChildren<Image>();
 
-			var color = renderers[0].color;
-			color.a = 0f;
-			renderers[0].color = color;
+			//var color = renderers[0].color;
+			//color.a = 0f;
+			//renderers[0].color = color;
 
-			color = renderers[1].color;
-			color.a = 0f;
-			renderers[1].color = color;
+			//color = renderers[1].color;
+			//color.a = 0f;
+			//renderers[1].color = color;
 		}
 
 		private void ShowBoss()

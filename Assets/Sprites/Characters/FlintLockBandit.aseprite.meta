@@ -121,15 +121,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: FlintLockBandit
     originalName: 
-    pivot: {x: 0.40000004, y: 0}
+    pivot: {x: 0.4117647, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 15
-      height: 20
+      y: 193
+      width: 17
+      height: 21
     spriteID: 6e34212adeb6e6d4e8eb7686073d9eab
     spriteBone: []
     spriteOutline: []
@@ -138,17 +138,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 4, y: 193}
   - name: FlintLockBandit_Frame_1
     originalName: 
-    pivot: {x: 0.40000004, y: 0}
+    pivot: {x: 0.4117647, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 27
+      x: 39
       y: 4
-      width: 15
+      width: 17
       height: 20
     spriteID: dc71d4ff4a9a26a4a956c4142b717eb2
     spriteBone: []
@@ -158,18 +158,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 4}
+    uvTransform: {x: 39, y: 4}
   - name: FlintLockBandit_Frame_2
     originalName: 
-    pivot: {x: 0.40000004, y: 0}
+    pivot: {x: 0.4117647, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 32
-      width: 15
-      height: 20
+      x: 39
+      y: 61
+      width: 17
+      height: 19
     spriteID: f768aa7f8ac206547b83bf4fe561ebe4
     spriteBone: []
     spriteOutline: []
@@ -178,18 +178,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 32}
+    uvTransform: {x: 39, y: 61}
   - name: FlintLockBandit_Frame_3
     originalName: 
-    pivot: {x: 0.40000004, y: 0}
+    pivot: {x: 0.4117647, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 27
-      y: 32
-      width: 15
-      height: 20
+      x: 39
+      y: 88
+      width: 17
+      height: 19
     spriteID: 82b211459fdc7af4299552cc06b8de7b
     spriteBone: []
     spriteOutline: []
@@ -198,7 +198,407 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 32}
+    uvTransform: {x: 39, y: 88}
+  - name: FlintLockBandit_Frame_4
+    originalName: 
+    pivot: {x: 0.4117647, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 222
+      width: 17
+      height: 21
+    spriteID: 11a122c85ea2fd9419737f8e3ac0516f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 222}
+  - name: FlintLockBandit_Frame_5
+    originalName: 
+    pivot: {x: 0.375, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 39
+      y: 144
+      width: 16
+      height: 19
+    spriteID: 4f8dada4b351f7f40b14073cae4c6daf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 39, y: 144}
+  - name: FlintLockBandit_Frame_6
+    originalName: 
+    pivot: {x: 0.27272728, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 69
+      width: 11
+      height: 20
+    spriteID: 65fc1f3707daffc42b9069f7bc504aa3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 64, y: 69}
+  - name: FlintLockBandit_Frame_7
+    originalName: 
+    pivot: {x: 0.33333334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 39
+      y: 115
+      width: 15
+      height: 21
+    spriteID: ceb1c3c2af2f4e045a85e7e8a2f35287
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 39, y: 115}
+  - name: FlintLockBandit_Frame_8
+    originalName: 
+    pivot: {x: 0.35, y: -0.22222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 167
+      width: 20
+      height: 18
+    spriteID: 48e6e93a3d5e9ba44a3060f71609754a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 167}
+  - name: FlintLockBandit_Frame_9
+    originalName: 
+    pivot: {x: 0.4, y: -0.1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 111
+      width: 20
+      height: 20
+    spriteID: af22ee07e71a5424ca681a794c1ae315
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 111}
+  - name: FlintLockBandit_Frame_10
+    originalName: 
+    pivot: {x: 0.33333334, y: -0.23529412}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 27
+      height: 17
+    spriteID: ac92fad16d998db41aa569fb6a582c92
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: FlintLockBandit_Frame_11
+    originalName: 
+    pivot: {x: 0.33333334, y: -0.29411766}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 29
+      width: 27
+      height: 17
+    spriteID: 81a8af2af0780f34293ff06f052330e6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 29}
+  - name: FlintLockBandit_Frame_12
+    originalName: 
+    pivot: {x: 0.33333334, y: -0.11111111}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 85
+      width: 24
+      height: 18
+    spriteID: 5afc03bff86313c49a827f21f82db519
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 85}
+  - name: FlintLockBandit_Frame_13
+    originalName: 
+    pivot: {x: 0.2631579, y: 0.1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 139
+      width: 19
+      height: 20
+    spriteID: fa03e024ad8fbca49a33f14c774112eb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 139}
+  - name: FlintLockBandit_Frame_14
+    originalName: 
+    pivot: {x: 0.31578946, y: 0.26086956}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 54
+      width: 19
+      height: 23
+    spriteID: f2958b19cb5a6e3488e4e5b1319a4f47
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 54}
+  - name: FlintLockBandit_Frame_15
+    originalName: 
+    pivot: {x: 0.375, y: 0.21428573}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 4
+      width: 24
+      height: 14
+    spriteID: d35db1071cf8be543b8eea5a995ab786
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 64, y: 4}
+  - name: FlintLockBandit_Frame_16
+    originalName: 
+    pivot: {x: 0.25, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 39
+      y: 32
+      width: 16
+      height: 21
+    spriteID: 3d1d3c924fae9144784c7ee8e3d3aea9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 39, y: 32}
+  - name: FlintLockBandit_Frame_17
+    originalName: 
+    pivot: {x: 0.21428573, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 39
+      y: 171
+      width: 14
+      height: 20
+    spriteID: 98cd6caaccb546647aca6cbd7c359bcb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 39, y: 171}
+  - name: FlintLockBandit_Frame_18
+    originalName: 
+    pivot: {x: 0.33333334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 39
+      y: 199
+      width: 15
+      height: 18
+    spriteID: 6da37af0a53804447b38c507e1bd056e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 39, y: 199}
+  - name: FlintLockBandit_Frame_19
+    originalName: 
+    pivot: {x: 0.35, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 26
+      width: 20
+      height: 14
+    spriteID: 96ce308390d71724581340b531ba1b41
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 64, y: 26}
+  - name: FlintLockBandit_Frame_20
+    originalName: 
+    pivot: {x: 0.3125, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 117
+      width: 16
+      height: 11
+    spriteID: af5e005708fc3d44790adc70884aa024
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 64, y: 117}
+  - name: FlintLockBandit_Frame_21
+    originalName: 
+    pivot: {x: 0.23529412, y: 0.3846154}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 39
+      y: 225
+      width: 17
+      height: 13
+    spriteID: 5f179f846faa96547b92c1fe46ca1355
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 39, y: 225}
+  - name: FlintLockBandit_Frame_22
+    originalName: 
+    pivot: {x: 0.23529412, y: 0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 97
+      width: 17
+      height: 12
+    spriteID: 89c8b76dd1981a24a86a8097d8e23d6f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 64, y: 97}
+  - name: FlintLockBandit_Frame_23
+    originalName: 
+    pivot: {x: 0.23529412, y: 0.3846154}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 48
+      width: 17
+      height: 13
+    spriteID: e388fa6eb07c68a4db592f3759da47d6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 64, y: 48}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -211,35 +611,195 @@ ScriptedImporter:
     - name: FlintLockBandit_Frame_0
       frameIndex: 0
       cellRect:
-        x: 26
+        x: 25
         y: 24
-        width: 13
-        height: 18
+        width: 15
+        height: 19
       spriteId: 6e34212adeb6e6d4e8eb7686073d9eab
     - name: FlintLockBandit_Frame_1
       frameIndex: 1
       cellRect:
-        x: 26
+        x: 25
         y: 24
-        width: 13
+        width: 15
         height: 18
       spriteId: dc71d4ff4a9a26a4a956c4142b717eb2
     - name: FlintLockBandit_Frame_2
       frameIndex: 2
       cellRect:
-        x: 26
+        x: 25
         y: 24
-        width: 13
-        height: 18
+        width: 15
+        height: 17
       spriteId: f768aa7f8ac206547b83bf4fe561ebe4
     - name: FlintLockBandit_Frame_3
       frameIndex: 3
       cellRect:
+        x: 25
+        y: 24
+        width: 15
+        height: 17
+      spriteId: 82b211459fdc7af4299552cc06b8de7b
+    - name: FlintLockBandit_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 25
+        y: 24
+        width: 15
+        height: 19
+      spriteId: 11a122c85ea2fd9419737f8e3ac0516f
+    - name: FlintLockBandit_Frame_5
+      frameIndex: 5
+      cellRect:
         x: 26
         y: 24
-        width: 13
+        width: 14
+        height: 17
+      spriteId: 4f8dada4b351f7f40b14073cae4c6daf
+    - name: FlintLockBandit_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 29
+        y: 24
+        width: 9
         height: 18
-      spriteId: 82b211459fdc7af4299552cc06b8de7b
+      spriteId: 65fc1f3707daffc42b9069f7bc504aa3
+    - name: FlintLockBandit_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 27
+        y: 24
+        width: 13
+        height: 19
+      spriteId: ceb1c3c2af2f4e045a85e7e8a2f35287
+    - name: FlintLockBandit_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 25
+        y: 28
+        width: 18
+        height: 16
+      spriteId: 48e6e93a3d5e9ba44a3060f71609754a
+    - name: FlintLockBandit_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 24
+        y: 26
+        width: 18
+        height: 18
+      spriteId: af22ee07e71a5424ca681a794c1ae315
+    - name: FlintLockBandit_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 23
+        y: 28
+        width: 25
+        height: 15
+      spriteId: ac92fad16d998db41aa569fb6a582c92
+    - name: FlintLockBandit_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 23
+        y: 29
+        width: 25
+        height: 15
+      spriteId: 81a8af2af0780f34293ff06f052330e6
+    - name: FlintLockBandit_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 24
+        y: 26
+        width: 22
+        height: 16
+      spriteId: 5afc03bff86313c49a827f21f82db519
+    - name: FlintLockBandit_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 27
+        y: 22
+        width: 17
+        height: 18
+      spriteId: fa03e024ad8fbca49a33f14c774112eb
+    - name: FlintLockBandit_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 26
+        y: 18
+        width: 17
+        height: 21
+      spriteId: f2958b19cb5a6e3488e4e5b1319a4f47
+    - name: FlintLockBandit_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 23
+        y: 21
+        width: 22
+        height: 12
+      spriteId: d35db1071cf8be543b8eea5a995ab786
+    - name: FlintLockBandit_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 28
+        y: 24
+        width: 14
+        height: 19
+      spriteId: 3d1d3c924fae9144784c7ee8e3d3aea9
+    - name: FlintLockBandit_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 29
+        y: 24
+        width: 12
+        height: 18
+      spriteId: 98cd6caaccb546647aca6cbd7c359bcb
+    - name: FlintLockBandit_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 27
+        y: 24
+        width: 13
+        height: 16
+      spriteId: 6da37af0a53804447b38c507e1bd056e
+    - name: FlintLockBandit_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 25
+        y: 24
+        width: 18
+        height: 12
+      spriteId: 96ce308390d71724581340b531ba1b41
+    - name: FlintLockBandit_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 27
+        y: 24
+        width: 14
+        height: 9
+      spriteId: af5e005708fc3d44790adc70884aa024
+    - name: FlintLockBandit_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 28
+        y: 19
+        width: 15
+        height: 11
+      spriteId: 5f179f846faa96547b92c1fe46ca1355
+    - name: FlintLockBandit_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 28
+        y: 20
+        width: 15
+        height: 10
+      spriteId: 89c8b76dd1981a24a86a8097d8e23d6f
+    - name: FlintLockBandit_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 28
+        y: 19
+        width: 15
+        height: 11
+      spriteId: e388fa6eb07c68a4db592f3759da47d6
     linkedCells: []
     parentIndex: -1
   platformSettings:

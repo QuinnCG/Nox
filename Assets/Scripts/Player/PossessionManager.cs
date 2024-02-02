@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using FMODUnity;
 using Game.AI.BossSystem;
 using Game.AnimationSystem;
 using Game.DamageSystem;
@@ -41,6 +42,9 @@ namespace Game.Player
 
 		[SerializeField]
 		private float PossessionMeterMultiplier = 0.3f;
+
+		[SerializeField, Required]
+		private Transform AttenuationObject;
 
 		public static PossessionManager Instance { get; private set; }
 
@@ -223,6 +227,7 @@ namespace Game.Player
 			character.UnPossess();
 			character.GetComponent<Health>().Kill();
 
+			AttenuationObject.parent = transform.root;
 			OnCharacterUnpossessed?.Invoke(character);
 		}
 
@@ -317,6 +322,8 @@ namespace Game.Player
 
 			PossessedCharacter = character;
 			PossessedCharacter.Possess();
+
+			AttenuationObject.parent = character.transform;
 
 			var health = PossessedCharacter.GetComponent<Health>();
 			health.FullHeal();

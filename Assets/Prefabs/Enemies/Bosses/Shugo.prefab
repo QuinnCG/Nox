@@ -61,27 +61,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.42424244
+      value: 0.42857143
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0
+      value: 0.018518519
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 2.25
-      objectReference: {fileID: 0}
-    - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2.0625
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
+      propertyPath: m_SpriteTilingProperty.newSize.y
       value: 3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.1875
+      objectReference: {fileID: 0}
+    - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.375
       objectReference: {fileID: 0}
     - target: {fileID: 1215566544104443256, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_LocalPosition.x
@@ -137,11 +137,11 @@ PrefabInstance:
       objectReference: {fileID: -3100369314251171874, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
     - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Size.x
-      value: 2.25
+      value: 2.0625
       objectReference: {fileID: 0}
     - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Size.y
-      value: 3
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Sprite
@@ -196,6 +196,7 @@ MonoBehaviour:
   IdleDuration: {x: 0.5, y: 2}
   SuperJumpFireballCount: 36
   FireSpewCount: 12
+  FireSpewWaveCount: 2
   FireSpewAngle: 90
   PhaseTwoHealthPercentThreshold: 0.5
   JumpDurationFactor: 0.7
@@ -220,3 +221,38 @@ MonoBehaviour:
   JumpStart: {fileID: -8871335058320618911, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
   JumpLoop: {fileID: -8959787610358282491, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
   JumpEnd: {fileID: 2343348472794615916, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
+  JumpSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  LandSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  FireSpewStartSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  FireSpewSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  FireStompSound:
+    Guid:
+      Data1: 15447917
+      Data2: 1302492132
+      Data3: -1569506421
+      Data4: -966343092
+    Path: event:/SFX/ShugoFireStomp

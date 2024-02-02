@@ -1,4 +1,6 @@
 using DG.Tweening;
+using FMODUnity;
+using Game.GeneralManagers;
 using Game.ProjectileSystem;
 using Sirenix.OdinInspector;
 using System.Collections;
@@ -29,6 +31,9 @@ namespace Game.AI.BossSystem.BossBrains
 
 		[SerializeField, BoxGroup("Phase 1")]
 		private int FireSpewCount = 12;
+
+		[SerializeField, BoxGroup("Phase 1")]
+		private int FireSpewWaveCount = 2;
 
 		[SerializeField, BoxGroup("Phase 1")]
 		private float FireSpewAngle = 90f;
@@ -90,6 +95,15 @@ namespace Game.AI.BossSystem.BossBrains
 		[SerializeField, BoxGroup("Animations"), Required]
 		private AnimationClip JumpStart, JumpLoop, JumpEnd;
 
+		[SerializeField, BoxGroup("SFX"), Required]
+		private EventReference JumpSound, LandSound;
+
+		[SerializeField, BoxGroup("SFX"), Required]
+		private EventReference FireSpewStartSound, FireSpewSound;
+
+		[SerializeField, BoxGroup("SFX"), Required]
+		private EventReference FireStompSound;
+
 		private bool IsSecondPhase => Phase > 1;
 		private float RealJumpDuration => IsSecondPhase ? JumpDuration : (JumpDuration * JumpDurationFactor);
 
@@ -113,8 +127,7 @@ namespace Game.AI.BossSystem.BossBrains
 			_idleTimer = new Timer();
 			_specialTimer = new Timer();
 
-			//TransitionTo(_delayedStart);
-			Idle();
+			TransitionTo(_delayedStart);
 		}
 
 		private void OnDamage(float health)
@@ -175,14 +188,19 @@ namespace Game.AI.BossSystem.BossBrains
 		}
 
 		/* STATES */
-		private void OnDelayedStart()
+		private IEnumerator OnDelayedStart()
 		{
-			// Wait for player to enter room.
+			yield return new YieldSeconds(2f);
+			Idle();
+			// TODO: YieldUntil(player is inside).
 		}
 
 		private void OnWander()
 		{
-			Animator.Play(IdleAnim);
+			if (!IsJumping)
+			{
+				Animator.Play(IdleAnim);
+			}
 
 			if (_specialTimer.IsDone && !IsJumping)
 			{
@@ -199,7 +217,7 @@ namespace Game.AI.BossSystem.BossBrains
 				// Jump to random point.
 				else
 				{
-					Vector2 target = GetPointClosestTo(PlayerPosition, FireSpewPoints);
+					Vector2 target = GetPointClosestTo(PlayerPosition, FireSpewPoints, true);
 
 					Tween jump = ShugoJump(target, JumpHeight, RealJumpDuration);
 					jump.onComplete += () => Idle();
@@ -213,6 +231,8 @@ namespace Game.AI.BossSystem.BossBrains
 			float duration = SuperJumpDuration * (IsSecondPhase ? SuperJumpDurationFactor : 1f);
 			Tween jump = ShugoJump(PlayerPosition, SuperJumpHeight, duration);
 			yield return jump.Yield();
+
+			AudioManager.PlayOneShot(FireStompSound);
 
 			// Spawn ring of fire.
 			if (IsSecondPhase)
@@ -230,7 +250,7 @@ namespace Game.AI.BossSystem.BossBrains
 			}
 			else
 			{
-				Shoot(FireballPrefab, FireballSpawnPoint.position, Vector2.up, new ShootSpawnInfo()
+				Shoot(FireballPrefab, transform.position, Vector2.up, new ShootSpawnInfo()
 				{
 					Count = SuperJumpFireballCount,
 					Method = ShootMethod.EvenCircle
@@ -244,17 +264,26 @@ namespace Game.AI.BossSystem.BossBrains
 		private IEnumerator OnFireSpew()
 		{
 			// Jump to corner.
-			Vector2 target = GetPointClosestTo(PlayerPosition, FireSpewPoints);
+			Vector2 target = GetPointClosestTo(PlayerPosition, FireSpewPoints, true);
 			Tween jump = ShugoJump(target, JumpHeight, JumpDuration);
 			yield return jump.Yield();
 
-			// Spew fire.
-			Shoot(FireballPrefab, FireballSpawnPoint.position, PlayerPosition, new ShootSpawnInfo()
+			AudioManager.PlayOneShot(FireSpewStartSound);
+			Animator.Play(FireSpewStart).Yield();
+
+			for (int i = 0; i < FireSpewWaveCount; i++)
 			{
-				Count = IsSecondPhase ? FireSpewCount2 : FireSpewCount,
-				SpreadAngle = IsSecondPhase ? FireSpewAngle2 : FireSpewAngle,
-				Method = ShootMethod.RandomSpread
-			});
+				// Spew fire.
+				Shoot(FireballPrefab, FireballSpawnPoint.position, PlayerPosition, new ShootSpawnInfo()
+				{
+					Count = IsSecondPhase ? FireSpewCount2 : FireSpewCount,
+					SpreadAngle = IsSecondPhase ? FireSpewAngle2 : FireSpewAngle,
+					Method = ShootMethod.RandomSpread
+				});
+
+				AudioManager.PlayOneShot(FireSpewSound);
+				Animator.Play(FireSpew).Yield();
+			}
 
 			// Transition to idle.
 			Idle();

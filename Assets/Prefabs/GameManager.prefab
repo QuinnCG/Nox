@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701361b5a7bcbb04da6a4cbfe9a1a267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultMasterVolume: 1
+  DefaultMasterVolume: 0.6
   DefaultSFXVolume: 0.7
-  DefaultMusicVolume: 0.5
+  DefaultMusicVolume: 0.7
   DefaultAmbienceVolume: 0.7
 --- !u!114 &-486718709300677696
 MonoBehaviour:

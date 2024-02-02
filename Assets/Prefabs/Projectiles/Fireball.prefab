@@ -212,6 +212,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1899552154381879362, guid: 33dfb41b16729ab4ca484de27ee28b46, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5949806296718583421}
+    - targetCorrespondingSourceObject: {fileID: 1899552154381879362, guid: 33dfb41b16729ab4ca484de27ee28b46, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4829115217420098571}
   m_SourcePrefab: {fileID: 100100000, guid: 33dfb41b16729ab4ca484de27ee28b46, type: 3}
 --- !u!4 &7985529707734455566 stripped
 Transform:
@@ -258,3 +261,34 @@ MonoBehaviour:
   SpawnOnHit: {fileID: 1096003994207118451, guid: 30b34700827fae542a9d172d214aeb0d, type: 3}
   Trail: {fileID: 2583910108203651523}
   LifespanAfterHit: 0.6
+--- !u!114 &4829115217420098571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550588314174644299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 12897838
+      Data2: 1201425074
+      Data3: -2053040203
+      Data4: 1325652355
+    Path: event:/SFX/FireballLoop
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
