@@ -9,6 +9,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.VFX;
 
 namespace Game.AI
@@ -151,6 +152,29 @@ namespace Game.AI
 			_jumpTween = transform.DOJump(target, height, 1, duration).SetEase(Ease.Linear);
 
 			return _jumpTween;
+		}
+
+		protected Tween JumpWithShadow(Vector2 target, float height, float duration, GameObject shadowPrefab)
+		{
+			Collider.enabled = false;
+			GameObject shadow = Instantiate(shadowPrefab, transform.position, Quaternion.identity);
+
+			Vector2 jumpStart = transform.position;
+			Vector2 jumpEnd = target;
+
+			var tween = Jump(jumpEnd, height, duration);
+			tween.onUpdate += () =>
+			{
+				float progress = tween.Elapsed() / tween.Duration();
+				shadow.transform.position = Vector2.Lerp(jumpStart, jumpEnd, progress);
+			};
+			tween.onComplete += () =>
+			{
+				Collider.enabled = true;
+				Destroy(shadow);
+			};
+
+			return tween;
 		}
 
 		protected void Delay(float delay, TweenCallback callback)

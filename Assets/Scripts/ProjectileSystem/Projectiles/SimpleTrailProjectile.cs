@@ -7,10 +7,10 @@ namespace Game.ProjectileSystem
 {
 	public class SimpleTrailProjectile : SimpleProjectile
 	{
-		[SerializeField, Required, Tooltip("Must be a child.")]
+		[SerializeField, Required, Tooltip("Must be a child."), BoxGroup("On Hit")]
 		private Transform Trail;
 
-		[SerializeField]
+		[SerializeField, BoxGroup("On Hit")]
 		private float LifespanAfterHit = 2f;
 
 		protected override void OnHitDamageable(Health health)

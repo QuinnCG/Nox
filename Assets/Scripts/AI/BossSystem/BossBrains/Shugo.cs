@@ -8,6 +8,24 @@ namespace Game.AI.BossSystem.BossBrains
 {
 	public class Shugo : BossBrain
 	{
+		[SerializeField, Required, BoxGroup("Phase 1")]
+		private float JumpHeight = 5f;
+
+		[SerializeField, Required, BoxGroup("Phase 1")]
+		private float JumpDuration = 2f;
+
+		[SerializeField, Required, BoxGroup("Phase 1")]
+		private float SuperJumpHeight = 5f;
+
+		[SerializeField, Required, BoxGroup("Phase 1")]
+		private float SuperJumpDuration = 2f;
+
+		[SerializeField, Required, BoxGroup("Phase 2")]
+		private float JumpDurationFactor = 0.7f;
+
+		[SerializeField, Required, BoxGroup("Phase 2")]
+		private float SuperJumpDurationFactor = 0.7f;
+
 		[SerializeField, Required, BoxGroup("References")]
 		private GameObject FirePrefab;
 
@@ -18,15 +36,9 @@ namespace Game.AI.BossSystem.BossBrains
 		private GameObject ShadowPrefab;
 
 		[SerializeField, Required, BoxGroup("References")]
-		private Transform[] ReinforcementPoints; // Add this field to store reinforcement spawn points
+		private Transform[] ReinforcementPoints;
 
-		[SerializeField, Required, BoxGroup("Jump Settings")]
-		private float jumpHeight = 5f;
-
-		[SerializeField, Required, BoxGroup("Jump Settings")]
-		private float jumpDuration = 1f;
-
-		private State _idle, _sakeChug, _jump, _callReinforcements;
+		private State _wander, _superJump, _fireSpew, _summon;
 		private Timer _abilityCooldown;
 
 		private Vector2 _jumpStart, _jumpEnd;
@@ -36,95 +48,56 @@ namespace Game.AI.BossSystem.BossBrains
 		{
 			base.Start();
 
-			_idle = CreateState(OnIdle, "Idle");
-			_sakeChug = CreateState(OnSakeChug, "Sake Chug");
-			_jump = CreateState(OnJump, "Jump");
-			_callReinforcements = CreateState(OnCallReinforcements, "Call Reinforcements");
+			_wander = CreateState(OnWander, "Wander");
+			_superJump = CreateState(OnSuperJump, "Super Jump");
+			_fireSpew = CreateState(OnFireSpew, "Fire Spew");
+			_summon = CreateState(OnSummon, "Summon");
 
-			_abilityCooldown = new Timer(0.5f);
-
-			TransitionTo(_idle);
+			Idle();
 		}
 
-		private void OnIdle()
+		private void Idle()
 		{
-			if (_abilityCooldown.IsDone)
-			{
-				float randomValue = Random.value;
-				if (randomValue < 0.33f)
-				{
-					TransitionTo(_sakeChug);
-				}
-				else if (randomValue < 0.66f)
-				{
-					TransitionTo(_jump);
-				}
-				else
-				{
-					TransitionTo(_callReinforcements);
-				}
-
-				_abilityCooldown.Reset();
-			}
+			TransitionTo(_wander);
 		}
 
-		private void OnSakeChug()
+		private void ExecuteRandomSpecial()
 		{
-			ChugSakeAndBlowFire();
-			TransitionTo(_idle);
+			// Random decide on special
 		}
 
-		private IEnumerator OnJump()
+		private void OnWander()
 		{
-			yield return new YieldEnumerator(OnJumpSequence(PlayerPosition, 5f, 2f));
-			TransitionTo(_idle);
+			/*
+			 * Idle
+			 * 
+			 * 50/50:
+			 * Jump on player
+			 * Jump to random pos
+			 * 
+			 * If special timer is done:
+			 * ExecuteRandomSpecial
+			 */
 		}
 
-		private void OnCallReinforcements()
+		private void OnSuperJump()
 		{
-			SummonReinforcements();
-			TransitionTo(_idle);
+			// Jump high up and land near player
+			// On land: spawn circle of fireballs
+			// Idle
 		}
 
-		private void SummonReinforcements()
+		private void OnFireSpew()
 		{
-			foreach (Transform spawnPoint in ReinforcementPoints)
-			{
-				Instantiate(MinionPrefab, spawnPoint.position, Quaternion.identity);
-			}
+			// Jump to corner of room
+			// Shoot shotgun spread of fireballs
+			// Idle
 		}
 
-		private void ChugSakeAndBlowFire()
+		private void OnSummon()
 		{
-			Instantiate(FirePrefab, transform.position, Quaternion.identity);
-		}
-
-		private IEnumerator OnJumpSequence(Vector2 target, float height, float duration)
-		{
-			Collider.enabled = false;
-			SpawnShadow();
-
-			_jumpStart = transform.position;
-			_jumpEnd = PlayerPosition;
-
-			var tween = Jump(_jumpEnd, 15f, 2f);
-
-			while (!tween.IsComplete())
-			{
-				float progress = tween.Elapsed() / tween.Duration();
-				_shadow.position = Vector2.Lerp(_jumpStart, _jumpEnd, progress);
-
-				yield return new YieldNextFrame();
-			}
-
-			Collider.enabled = true;
-			Destroy(_shadow.gameObject);
-		}
-
-		private void SpawnShadow()
-		{
-			_shadow = Instantiate(ShadowPrefab, transform.position, Quaternion.identity).transform;
-			_shadow.GetComponent<ShadowController>().enabled = false;
+			// Roar!
+			// Simultaneously, spawn minions in poof of black smoke
 		}
 	}
 }

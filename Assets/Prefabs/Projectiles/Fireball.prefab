@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 10
   RotationRate: 0
-  RotateToFace: 1
+  RotateToFace: 0
   RotationalOffset: 0
   Damage: 25
   Lifespan: 2.5
