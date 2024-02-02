@@ -7,6 +7,7 @@ using Game.ProjectileSystem;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -232,9 +233,11 @@ namespace Game.AI
 
 			if (avoidRepeat)
 			{
-				if (_lastPosition = closestTransform)
+				if (_lastPosition == closestTransform)
 				{
-					return GetPointClosestTo(to, points, avoidRepeat);
+					var newPoints = new List<Transform>(points);
+					newPoints.Remove(_lastPosition);
+					return GetPointClosestTo(to, newPoints.ToArray(), avoidRepeat);
 				}
 				else
 				{

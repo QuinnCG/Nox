@@ -50,7 +50,7 @@ namespace Game.RoomSystem
 
 		public void Close(bool supressFX = false)
 		{
-			if (!IsOpen)
+			if (IsOpen)
 			{
 				IsOpen = false;
 				_renderer.sprite = ClosedSprite;

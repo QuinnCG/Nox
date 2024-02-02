@@ -1,5 +1,6 @@
 using DG.Tweening;
 using FMODUnity;
+using Game.Common;
 using Game.GeneralManagers;
 using Game.ProjectileSystem;
 using Sirenix.OdinInspector;
@@ -78,6 +79,9 @@ namespace Game.AI.BossSystem.BossBrains
 		private GameObject ShadowPrefab;
 
 		[SerializeField, Required, BoxGroup("References")]
+		private Trigger EnterTrigger;
+
+		[SerializeField, Required, BoxGroup("References")]
 		private Transform[] FireSpewPoints;
 
 		[SerializeField, Required, BoxGroup("References")]
@@ -107,17 +111,16 @@ namespace Game.AI.BossSystem.BossBrains
 		private bool IsSecondPhase => Phase > 1;
 		private float RealJumpDuration => IsSecondPhase ? JumpDuration : (JumpDuration * JumpDurationFactor);
 
-		private State _delayedStart, _wander, _superJump, _fireSpew, _summon;
+		private State _stationary, _wander, _superJump, _fireSpew, _summon;
 		private Timer _idleTimer, _specialTimer;
 
 		protected override void Start()
 		{
 			base.Start();
-
 			Health.OnDamaged += OnDamage;
 
 			// States.
-			_delayedStart = CreateState(OnDelayedStart, "Delayed Start");
+			_stationary = CreateState(() => { }, "Stationary");
 			_wander = CreateState(OnWander, "Wander");
 			_superJump = CreateState(OnSuperJump, "Super Jump");
 			_fireSpew = CreateState(OnFireSpew, "Fire Spew");
@@ -127,7 +130,12 @@ namespace Game.AI.BossSystem.BossBrains
 			_idleTimer = new Timer();
 			_specialTimer = new Timer();
 
-			TransitionTo(_delayedStart);
+			TransitionTo(_stationary);
+		}
+
+		public override void OnPlayerEnter()
+		{
+			Idle();
 		}
 
 		private void OnDamage(float health)
@@ -168,33 +176,21 @@ namespace Game.AI.BossSystem.BossBrains
 			foreach (var (weight, state) in specials)
 			{
 				float chance = weight / sum;
-                if (Random.value <= chance)
-                {
+				if (Random.value <= chance)
+				{
 					TransitionTo(state);
 					return;
-                }
-            }
+				}
+			}
 
 			// Due to floating-point imprecision, there's a chance no state will be selected above.
 			var fallback = specials[Random.Range(0, specials.Length - 1)];
 			TransitionTo(fallback.state);
 
 			// Reset timer.
-			float interval = Random.Range(SpecialAttackInterval.x, SpecialAttackInterval.y);
-			interval *= IsSecondPhase ? SpecialAttackIntervalFactor : 1f;
-			_specialTimer.Duration = interval;
-
-			_specialTimer.Reset();
 		}
 
 		/* STATES */
-		private IEnumerator OnDelayedStart()
-		{
-			yield return new YieldSeconds(2f);
-			Idle();
-			// TODO: YieldUntil(player is inside).
-		}
-
 		private void OnWander()
 		{
 			if (!IsJumping)
@@ -206,7 +202,7 @@ namespace Game.AI.BossSystem.BossBrains
 			{
 				ExecuteRandomSpecial();
 			}
-			else if (_idleTimer.IsDone && !IsJumping)
+			if (_idleTimer.IsDone && !IsJumping)
 			{
 				// Jump onto player.
 				if (Random.value < 0.5f)
@@ -259,6 +255,8 @@ namespace Game.AI.BossSystem.BossBrains
 
 			// Transition to idle.
 			Idle();
+
+			ResetSpecialtimer();
 		}
 
 		private IEnumerator OnFireSpew()
@@ -285,6 +283,8 @@ namespace Game.AI.BossSystem.BossBrains
 				Animator.Play(FireSpew).Yield();
 			}
 
+			ResetSpecialtimer();
+
 			// Transition to idle.
 			Idle();
 		}
@@ -306,6 +306,15 @@ namespace Game.AI.BossSystem.BossBrains
 			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpEnd)));
 
 			return sequence;
+		}
+
+		private void ResetSpecialtimer()
+		{
+			float interval = Random.Range(SpecialAttackInterval.x, SpecialAttackInterval.y);
+			interval *= IsSecondPhase ? SpecialAttackIntervalFactor : 1f;
+			_specialTimer.Duration = interval;
+
+			_specialTimer.Reset();
 		}
 	}
 }

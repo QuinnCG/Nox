@@ -1,4 +1,4 @@
-﻿namespace Game.AI
+﻿namespace Game.AI.Brains
 {
 	public class FlintLockBanditBrain : EnemyBrain
 	{

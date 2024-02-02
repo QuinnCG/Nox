@@ -14,5 +14,7 @@ namespace Game.AI.BossSystem
 		/// Counts from 1 (e.g. 0 is invalid).
 		/// </summary>
 		public int Phase { get; protected set; } = 1;
+
+		public virtual void OnPlayerEnter() { }
 	}
 }

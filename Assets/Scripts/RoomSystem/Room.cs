@@ -15,6 +15,9 @@ namespace Game.RoomSystem
 		public static Room Current { get; private set; }
 
 		[SerializeField, Required]
+		private Door EntranceDoor;
+
+		[SerializeField, Required]
 		private Door ExitDoor;
 
 		[SerializeField, Required]
@@ -24,7 +27,7 @@ namespace Game.RoomSystem
 		public Transform PlayerSpawnPoint { get; private set; }
 
 		[SerializeField, Required]
-		private Collider2D _collider;
+		private Collider2D ExitTrigger;
 
 		[SerializeField]
 		private EventReference BossMusic;
@@ -32,6 +35,7 @@ namespace Game.RoomSystem
 		public event Action OnBossDeath;
 
 		public BossBrain Boss { get; private set; }
+		public bool HasStarted { get; private set; }
 
 		private EventInstance _bossMusic;
 		private bool _exiting;
@@ -57,7 +61,7 @@ namespace Game.RoomSystem
 			if (_exiting) return;
 
 			var collisions = new List<Collider2D>();
-			_collider.Overlap(collisions);
+			ExitTrigger.Overlap(collisions);
 
 			foreach (var collision in collisions)
 			{
@@ -68,6 +72,17 @@ namespace Game.RoomSystem
 
 					break;
 				}
+			}
+		}
+
+		public void PlayerEnterRoom()
+		{
+			if (!HasStarted)
+			{
+				HasStarted = true;
+
+				EntranceDoor.Close(true);
+				Boss.OnPlayerEnter();
 			}
 		}
 
@@ -85,7 +100,7 @@ namespace Game.RoomSystem
 			Boss.GetComponent<Health>().OnDeath += _ => BossDeath();
 			Boss.Room = this;
 
-			ExitDoor.Close();
+			ExitDoor.Close(true);
 		}
 
 		private void BossDeath()

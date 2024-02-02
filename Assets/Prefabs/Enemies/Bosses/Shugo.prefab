@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.42857143
+      value: 0.39583334
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
@@ -69,15 +69,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 2.0625
+      value: 2.8235295
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 3.25
+      value: 3.1764705
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.1875
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
@@ -137,11 +137,11 @@ PrefabInstance:
       objectReference: {fileID: -3100369314251171874, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
     - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Size.x
-      value: 2.0625
+      value: 2.8235295
       objectReference: {fileID: 0}
     - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Size.y
-      value: 3.25
+      value: 3.1764705
       objectReference: {fileID: 0}
     - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Sprite
@@ -192,7 +192,7 @@ MonoBehaviour:
   SuperJumpDuration: 2
   SuperJumpWeight: 1
   FireSpewWeight: 1
-  SpecialAttackInterval: {x: 2, y: 5}
+  SpecialAttackInterval: {x: 4, y: 7}
   IdleDuration: {x: 0.5, y: 2}
   SuperJumpFireballCount: 36
   FireSpewCount: 12
@@ -212,6 +212,7 @@ MonoBehaviour:
   FireballSpawnPoint: {fileID: 8939678584060395846}
   MinionPrefab: {fileID: 0}
   ShadowPrefab: {fileID: 5122463036962878032, guid: 6504721e60e198549b1688eb72e47a0a, type: 3}
+  EnterTrigger: {fileID: 0}
   FireSpewPoints: []
   JumpPoints: []
   SummonPoints: []
