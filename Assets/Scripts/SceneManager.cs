@@ -12,6 +12,7 @@ using System.Linq;
 using System;
 using Cinemachine;
 using Game.MovementSystem;
+using Game.ProjectileSystem;
 
 namespace Game
 {
@@ -62,6 +63,11 @@ namespace Game
 				{
 					yield return StartCoroutine(FadeOut());
 				}
+			}
+
+			foreach (var proj in Projectile.Spawned)
+			{
+				Destroy(proj.gameObject);
 			}
 
 			// Enable loading screen.

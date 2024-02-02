@@ -21,7 +21,7 @@ namespace Game.ProjectileSystem
 		private float RotationalOffset = -45f;
 
 		[SerializeField, BoxGroup("Core")]
-		private float Damage = 25f;
+		protected float Damage = 25f;
 
 		[SerializeField, BoxGroup("Core"), Tooltip("Values left than 0 will be treated as infinite.")]
 		private float Lifespan = 5f;
@@ -66,15 +66,8 @@ namespace Game.ProjectileSystem
 
 		protected override void OnHitDamageable(Health health)
 		{
-			if (SpawnOnHit)
-			{
-				Instantiate(SpawnOnHit);
-			}
-
-			if (!HitSound.IsNull)
-			{
-				RuntimeManager.PlayOneShot(HitSound, transform.position);
-			}
+			TrySpawnHitPrefab();
+			TryPlayHitSound();
 
 			var dmgInfo = new DamageInfo()
 			{
@@ -90,9 +83,33 @@ namespace Game.ProjectileSystem
 			Destroy(gameObject);
 		}
 
+		protected override void OnHitObstacle(Collider2D collider)
+		{
+			TrySpawnHitPrefab();
+			TryPlayHitSound();
+
+			Destroy(gameObject);
+		}
+
 		protected override bool CanCollide(Collider2D collider)
 		{
-			return base.CanCollide(collider) || collider.gameObject.layer == LayerMask.NameToLayer("Obstacle");
+			return base.CanCollide(collider) && collider.gameObject.layer == LayerMask.NameToLayer("Obstacle");
+		}
+
+		protected void TrySpawnHitPrefab()
+		{
+			if (SpawnOnHit)
+			{
+				Instantiate(SpawnOnHit, transform.position, Quaternion.identity);
+			}
+		}
+
+		protected void TryPlayHitSound()
+		{
+			if (!HitSound.IsNull)
+			{
+				RuntimeManager.PlayOneShot(HitSound, transform.position);
+			}
 		}
 	}
 }

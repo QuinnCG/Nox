@@ -1,5 +1,6 @@
 using Game.DamageSystem;
 using Game.Player;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.ProjectileSystem
@@ -8,9 +9,12 @@ namespace Game.ProjectileSystem
 	[RequireComponent(typeof(Collider2D))]
 	public abstract class Projectile : MonoBehaviour
 	{
+		public static List<Projectile> Spawned { get; } = new();
+
 		public Vector2 CrosshairPos => CrosshairManager.Instance.CurrentPosition;
 
 		public System.Action<DamageInfo> OnDamage { get; set; }
+		public System.Action OnHit { get; set; }
 
 		protected GameObject Owner { get; private set; }
 		protected Vector2 Velocity => _rb.velocity;
@@ -25,6 +29,9 @@ namespace Game.ProjectileSystem
 			var proj = instance.GetComponent<Projectile>();
 			proj.Owner = owner;
 			proj.OnSpawn(target);
+
+			Spawned.Add(proj);
+			proj.OnHit += () => Spawned.Remove(proj);
 
 			return proj;
 		}
@@ -106,10 +113,12 @@ namespace Game.ProjectileSystem
 			if (CanCollide(collider) && collider.TryGetComponent(out Health health))
 			{
 				OnHitDamageable(health);
+				OnHit?.Invoke();
 			}
 			else if (collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
 			{
 				OnHitObstacle(collider);
+				OnHit?.Invoke();
 			}
 		}
 
