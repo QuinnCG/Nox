@@ -104,7 +104,7 @@ namespace Game.AI.BossSystem.BossBrains
 			Collider.enabled = false; // Disable the collider during the jump
 			GameObject shadow = Instantiate(ShadowPrefab, transform.position, Quaternion.identity);
 
-			// Pass the player's transform as the target for the shadow
+			// Pass the player's position as the target for the shadow
 			ShadowController shadowController = shadow.GetComponent<ShadowController>();
 			if (shadowController != null)
 			{
@@ -114,15 +114,15 @@ namespace Game.AI.BossSystem.BossBrains
 				}
 				else
 				{
-					// Handle the case where PlayerTransform is not available
-					Debug.LogError("PlayerTransform not available.");
+					// Handle the case where PlayerPosition is not available
+					Debug.LogError("PlayerPosition not available.");
 				}
 			}
 
 			StartCoroutine(PerformJumpAnimation(shadow, PlayerPosition != null ? PlayerPosition : (Vector2)transform.position));
 		}
 
-		private IEnumerator PerformJumpAnimation(GameObject shadow, Vector3 targetPosition)
+		private IEnumerator PerformJumpAnimation(GameObject shadow, Vector2 targetPosition)
 		{
 			float elapsedTime = 0f;
 
@@ -131,8 +131,8 @@ namespace Game.AI.BossSystem.BossBrains
 				float jumpProgress = Mathf.Clamp01(elapsedTime / jumpDuration);
 				float jumpHeightOffset = Mathf.Sin(jumpProgress * Mathf.PI) * jumpHeight;
 
-				transform.position = Vector3.Lerp(transform.position, targetPosition, jumpProgress);
-				shadow.transform.position = new Vector3(targetPosition.x, targetPosition.y + jumpHeightOffset, targetPosition.z);
+				transform.position = Vector3.Lerp(transform.position, new Vector3(targetPosition.x, transform.position.y, targetPosition.y), jumpProgress);
+				shadow.transform.position = new Vector3(targetPosition.x, targetPosition.y + jumpHeightOffset, targetPosition.y);
 
 				elapsedTime += Time.deltaTime;
 				yield return null;
@@ -151,10 +151,3 @@ namespace Game.AI.BossSystem.BossBrains
 		}
 	}
 }
-
-
-
-
-
-
-
