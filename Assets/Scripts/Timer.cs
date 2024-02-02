@@ -8,7 +8,15 @@ namespace Game
 	{
 		public float Start { get; private set; }
 		public float End { get; private set; }
-		public float Duration { get; private set; }
+		public float Duration
+		{
+			get => _duration;
+			set
+			{
+				_duration = value;
+				End = Start + value;
+			}
+		}
 		public float Elapsed => Time.time - Start;
 		public float Remaining => End - Time.time;
 		public bool IsDone => Remaining <= 0f;
@@ -18,10 +26,16 @@ namespace Game
 		public event Action OnFinish;
 
 		private Tween _tween;
+		private float _duration;
 
+		public Timer()
+		{
+			Duration = 0f;
+			Reset();
+		}
 		public Timer(float duration, bool startFinished = false)
 		{
-			Duration = duration;
+			_duration = duration;
 			StartFinished = startFinished;
 			Reset();
 		}
