@@ -41,6 +41,8 @@ namespace Game.AI
 
 		public void TransitionTo(State state)
 		{
+			Debug.Log(state.Name);
+
 			if (state != Active)
 			{
 				Active = state;

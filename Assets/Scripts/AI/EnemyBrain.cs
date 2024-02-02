@@ -108,9 +108,11 @@ namespace Game.AI
 #if UNITY_EDITOR
 			if (DebugMode)
 			{
+				string state = ActiveState != null ? _stateMachine.Active.Name : "None";
+
 				Debug.Log(
 					"Active State: ".Color(StringColor.White)
-					+ _stateMachine.Active?.Name.Color(StringColor.Yellow).Bold()
+					+ state.Color(StringColor.Yellow).Bold()
 					+ ".".Color(StringColor.White));
 			}
 #endif

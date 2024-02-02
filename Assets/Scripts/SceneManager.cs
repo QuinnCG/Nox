@@ -65,9 +65,12 @@ namespace Game
 				}
 			}
 
-			foreach (var proj in Projectile.Spawned)
+			if (Projectile.Spawned != null)
 			{
-				Destroy(proj.gameObject);
+				foreach (var proj in Projectile.Spawned)
+				{
+					Destroy(proj.gameObject);
+				}
 			}
 
 			// Enable loading screen.

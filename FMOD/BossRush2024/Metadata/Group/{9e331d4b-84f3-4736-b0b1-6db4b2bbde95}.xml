@@ -4,9 +4,6 @@
 		<property name="color">
 			<value>Yellow</value>
 		</property>
-		<property name="volume">
-			<value>-14</value>
-		</property>
 		<property name="name">
 			<value>SFX</value>
 		</property>
