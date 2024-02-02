@@ -18,7 +18,7 @@ namespace Game.AI.BossSystem.BossBrains
 		private GameObject ShadowPrefab;
 
 		[SerializeField, Required, BoxGroup("References")]
-		private Transform[] ReinforcementPoints;
+		private Transform[] ReinforcementPoints; // Add this field to store reinforcement spawn points
 
 		[SerializeField, Required, BoxGroup("Jump Settings")]
 		private float jumpHeight = 5f;
@@ -68,9 +68,9 @@ namespace Game.AI.BossSystem.BossBrains
 			}
 		}
 
-		private IEnumerator OnSakeChug()
+		private void OnSakeChug()
 		{
-			yield return new YieldEnumerator(ChugSakeAndBlowFire(ReinforcementPoints[0].position, 5f, 2f));
+			ChugSakeAndBlowFire();
 			TransitionTo(_idle);
 		}
 
@@ -94,27 +94,9 @@ namespace Game.AI.BossSystem.BossBrains
 			}
 		}
 
-		private IEnumerator ChugSakeAndBlowFire(Vector2 target, float height, float duration)
+		private void ChugSakeAndBlowFire()
 		{
-			Collider.enabled = false;
-			SpawnShadow();
-
-			_jumpStart = transform.position;
-			_jumpEnd = ReinforcementPoints[0].position;
-
-			var tween = Jump(_jumpEnd, 7f, 2f);
-
-			while (!tween.IsComplete())
-			{
-				float progress = tween.Elapsed() / tween.Duration();
-				_shadow.position = Vector2.Lerp(_jumpStart, _jumpEnd, progress);
-
-				yield return new YieldNextFrame();
-			}
-
 			Instantiate(FirePrefab, transform.position, Quaternion.identity);
-			Collider.enabled = true;
-			Destroy(_shadow.gameObject);
 		}
 
 		private IEnumerator OnJumpSequence(Vector2 target, float height, float duration)
@@ -123,8 +105,9 @@ namespace Game.AI.BossSystem.BossBrains
 			SpawnShadow();
 
 			_jumpStart = transform.position;
-			_jumpEnd = target;
-			var tween = Jump(_jumpEnd, height, duration);
+			_jumpEnd = PlayerPosition;
+
+			var tween = Jump(_jumpEnd, 15f, 2f);
 
 			while (!tween.IsComplete())
 			{
