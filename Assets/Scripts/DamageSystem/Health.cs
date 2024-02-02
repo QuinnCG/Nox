@@ -46,10 +46,6 @@ namespace Game.DamageSystem
 
 		private GameObject _criticalIndicator;
 
-		private Material _healthyMat;
-		private Material _criticalMat;
-		private SpriteRenderer _characterRenderer;
-
 		private Tween _playCriticalSFXTween;
 
 		private bool isCriticalIndicatorVisible = false;
@@ -57,11 +53,6 @@ namespace Game.DamageSystem
 		private void Awake()
 		{
 			Current = Max;
-
-			_characterRenderer = GetComponentInChildren<SpriteRenderer>();
-
-			_healthyMat = Addressables.LoadAssetAsync<Material>("HealthyOutline.mat").WaitForCompletion();
-			_criticalMat = Addressables.LoadAssetAsync<Material>("CriticalOutline.mat").WaitForCompletion();
 
 			OnCritical += OnEnterCritical;
 			OnHealFromCritical += OnLeaveCritical;
@@ -206,8 +197,6 @@ namespace Game.DamageSystem
 						RuntimeManager.PlayOneShotAttached("event:/SFX/EnterCritical", _criticalIndicator);
 					}
 				}, ignoreTimeScale: false);
-
-				_characterRenderer.material = _criticalMat;
 			}
 		}
 
@@ -216,7 +205,6 @@ namespace Game.DamageSystem
 			if (_criticalIndicator)
 			{
 				HideCriticalIndicator();
-				_characterRenderer.material = _healthyMat;
 			}
 		}
 

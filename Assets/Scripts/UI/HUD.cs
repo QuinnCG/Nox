@@ -177,45 +177,49 @@ namespace Game.UI
 
 		private void FadeInPlayerHealth()
 		{
-			var renderers = PlayerHealth.GetComponentsInChildren<Image>();
+			// This is not really needed as you never wander around and pretty much always need to see your heatlh bar.
 
-			renderers[0].DOKill();
-			renderers[1].DOKill();
+			//var renderers = PlayerHealth.GetComponentsInChildren<Image>();
 
-			renderers[0].DOFade(1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
-			renderers[1].DOFade(1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
+			//renderers[0].DOKill();
+			//renderers[1].DOKill();
 
-			// Optional: Pulse animation for critical health
-			if (_health.IsCritical)
-			{
-				var handleRectTransform = PlayerHealth.GetComponentInChildren<RectTransform>();
+			//renderers[0].DOFade(1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
+			//renderers[1].DOFade(1f, PlayerHealthFadeIn).SetEase(Ease.Linear);
 
-				handleRectTransform.DOScale(PlayerHealthCriticalPulseScale, PlayerHealthCriticalPulseDuration / 2)
-						.SetEase(Ease.InOutSine)
-						.OnComplete(() =>
-						{
-							handleRectTransform.DOScale(1f, PlayerHealthCriticalPulseDuration / 2)
-							.SetEase(Ease.InOutSine);
-						});
-			}
+			//// Optional: Pulse animation for critical health
+			//if (_health.IsCritical)
+			//{
+			//	var handleRectTransform = PlayerHealth.GetComponentInChildren<RectTransform>();
+
+			//	handleRectTransform.DOScale(PlayerHealthCriticalPulseScale, PlayerHealthCriticalPulseDuration / 2)
+			//			.SetEase(Ease.InOutSine)
+			//			.OnComplete(() =>
+			//			{
+			//				handleRectTransform.DOScale(1f, PlayerHealthCriticalPulseDuration / 2)
+			//				.SetEase(Ease.InOutSine);
+			//			});
+			//}
 
 		}
 
 		private void FadeOutPlayerHealth()
 		{
-			var renderers = PlayerHealth.GetComponentsInChildren<Image>();
+			// This is not really needed as you never wander around and pretty much always need to see your heatlh bar.
 
-			renderers[0].DOKill();
-			renderers[1].DOKill();
+			//var renderers = PlayerHealth.GetComponentsInChildren<Image>();
 
-			renderers[0].DOFade(0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
-			renderers[1].DOFade(0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
+			//renderers[0].DOKill();
+			//renderers[1].DOKill();
+
+			//renderers[0].DOFade(0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
+			//renderers[1].DOFade(0f, PlayerHealthFadeOut).SetEase(Ease.Linear);
 		}
 
 		private void HidePlayerHealth()
 		{
 			// This is not really needed as you never wander around and pretty much always need to see your heatlh bar.
-			return;
+
 			//var renderers = PlayerHealth.GetComponentsInChildren<Image>();
 
 			//var color = renderers[0].color;
