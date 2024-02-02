@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1899552154381879362, guid: 33dfb41b16729ab4ca484de27ee28b46, type: 3}
       propertyPath: m_Name
-      value: Shuriken 1
+      value: Fireball
       objectReference: {fileID: 0}
     - target: {fileID: 2107233316846754975, guid: 33dfb41b16729ab4ca484de27ee28b46, type: 3}
       propertyPath: m_Size.x
@@ -127,19 +127,19 @@ MonoBehaviour:
   Lifespan: 5
   ThrowSound:
     Guid:
-      Data1: 1075035248
-      Data2: 1260950069
-      Data3: 2110849204
-      Data4: 2041636170
-    Path: event:/SFX/KunaiThrow
+      Data1: -839631229
+      Data2: 1276622805
+      Data3: 2133579396
+      Data4: -1629053065
+    Path: event:/SFX/FireballThrow
   HitSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  SpawnOnHit: {fileID: 8550588314174644299}
+      Data1: -1494071482
+      Data2: 1155667044
+      Data3: 2061634944
+      Data4: -1553597511
+    Path: event:/SFX/FireballImpact
+  SpawnOnHit: {fileID: 1096003994207118451, guid: 30b34700827fae542a9d172d214aeb0d, type: 3}
 --- !u!2083052967 &1065570407865633506
 VisualEffect:
   m_ObjectHideFlags: 0

@@ -512,5 +512,5 @@ MonoBehaviour:
   IdleAnim: {fileID: 7400000, guid: dbb6473fe079e2b429e8a8978d6caff9, type: 2}
   MoveAnim: {fileID: 7400000, guid: e512f5e9ebb512b4eb6887e1549d87aa, type: 2}
   DashAnim: {fileID: -8863155357993509816, guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c, type: 3}
-  ProjectilePrefab: {fileID: 8550588314174644299, guid: b652bd102e1e98649beba201e890d3de, type: 3}
+  ProjectilePrefab: {fileID: 8550588314174644299, guid: 753222b2323b18e429e4ce1244adbd89, type: 3}
   ProjectileSpawn: {fileID: 1145682899863993212}
