@@ -190,6 +190,6 @@ MonoBehaviour:
   FireballSpawnPoint: {fileID: 8939678584060395846}
   MinionPrefab: {fileID: 0}
   ShadowPrefab: {fileID: 5122463036962878032, guid: 6504721e60e198549b1688eb72e47a0a, type: 3}
-  ReinforcementPoints: []
-  JumpPoints: []
   FireSpewPoints: []
+  JumpPoints: []
+  SummonPoints: []

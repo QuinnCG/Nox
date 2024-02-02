@@ -9,19 +9,19 @@ namespace Game.AI.BossSystem.BossBrains
 {
 	public class Shugo : BossBrain
 	{
-		[SerializeField, Required, BoxGroup("Phase 1")]
+		[SerializeField, BoxGroup("Phase 1")]
 		private float JumpHeight = 5f, JumpDuration = 2f;
 
-		[SerializeField, Required, BoxGroup("Phase 1")]
+		[SerializeField, BoxGroup("Phase 1")]
 		private float SuperJumpHeight = 5f, SuperJumpDuration = 2f;
 
-		[SerializeField, Required, BoxGroup("Phase 1")]
+		[SerializeField, BoxGroup("Phase 1")]
 		private float SuperJumpWeight = 1f, FireSpewWeight = 1f;
 
-		[SerializeField, Required, BoxGroup("Phase 1"), MinMaxSlider(0f, 10f, ShowFields = true)]
+		[SerializeField, BoxGroup("Phase 1"), MinMaxSlider(0f, 10f, ShowFields = true)]
 		private Vector2 SpecialAttackInterval = new(3f, 7f);
 
-		[SerializeField, Required, BoxGroup("Phase 1"), MinMaxSlider(0f, 10f, ShowFields = true)]
+		[SerializeField, BoxGroup("Phase 1"), MinMaxSlider(0f, 10f, ShowFields = true)]
 		private Vector2 IdleDuration = new(0.5f, 2f);
 
 		[SerializeField, BoxGroup("Phase 1")]
@@ -33,13 +33,16 @@ namespace Game.AI.BossSystem.BossBrains
 		[SerializeField, BoxGroup("Phase 1")]
 		private float FireSpewAngle = 90f;
 
-		[SerializeField, Required, BoxGroup("Phase 2")]
+		[SerializeField, BoxGroup("Phase 2")]
+		private float PhaseTwoHealthPercentThreshold = 0.5f;
+
+		[SerializeField, BoxGroup("Phase 2")]
 		private float JumpDurationFactor = 0.7f, SuperJumpDurationFactor = 0.7f;
 
-		[SerializeField, Required, BoxGroup("Phase 2")]
+		[SerializeField, BoxGroup("Phase 2")]
 		private float SpecialAttackIntervalFactor = 0.7f;
 
-		[SerializeField, Required, BoxGroup("Phase 2")]
+		[SerializeField, BoxGroup("Phase 2")]
 		private float IdleDurationFactor = 0.5f;
 
 		[SerializeField, BoxGroup("Phase 2")]
@@ -88,6 +91,8 @@ namespace Game.AI.BossSystem.BossBrains
 		{
 			base.Start();
 
+			Health.OnDamaged += OnDamage;
+
 			// States.
 			_delayedStart = CreateState(OnDelayedStart, "Delayed Start");
 			_wander = CreateState(OnWander, "Wander");
@@ -95,12 +100,21 @@ namespace Game.AI.BossSystem.BossBrains
 			_fireSpew = CreateState(OnFireSpew, "Fire Spew");
 			_summon = CreateState(OnSummon, "Summon");
 
-			//TransitionTo(_delayedStart);
-			Idle();
-
 			// Timers.
 			_idleTimer = new Timer();
 			_specialTimer = new Timer();
+
+			//TransitionTo(_delayedStart);
+			Idle();
+		}
+
+		private void OnDamage(float health)
+		{
+			// Switch to second phase.
+			if (Health.Percent <= PhaseTwoHealthPercentThreshold)
+			{
+				Phase = 2;
+			}
 		}
 
 		/* SUPER STATES */
@@ -163,9 +177,9 @@ namespace Game.AI.BossSystem.BossBrains
 			{
 				ExecuteRandomSpecial();
 			}
-			else if (_idleTimer.IsDone)
+			else if (_idleTimer.IsDone && !IsJumping)
 			{
-				// Jump to player.
+				// Jump onto player.
 				if (Random.value < 0.5f)
 				{
 					Tween jump = ShugoJump(PlayerPosition, JumpHeight, RealJumpDuration);
@@ -219,7 +233,7 @@ namespace Game.AI.BossSystem.BossBrains
 		private IEnumerator OnFireSpew()
 		{
 			// Jump to corner.
-			Vector2 target = GetPointFarthestFrom(PlayerPosition, FireSpewPoints);
+			Vector2 target = GetRandomFromTransforms(FireSpewPoints);
 			Tween jump = ShugoJump(target, JumpHeight, JumpDuration);
 			yield return jump.YieldTween();
 

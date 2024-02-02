@@ -248,7 +248,7 @@ namespace Game.AI
 			return farthestTransform.position;
 		}
 
-		protected Vector2 GetPointFromTransforms(params Transform[] transforms)
+		protected Vector2 GetRandomFromTransforms(params Transform[] transforms)
 		{
 			return transforms[UnityEngine.Random.Range(0, transforms.Length - 1)].position;
 		}

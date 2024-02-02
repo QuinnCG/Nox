@@ -1254,10 +1254,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 6353294672475812735}
     m_Modifications:
     - target: {fileID: 1472634031952377233, guid: 20a0d931152bf8040bfc0b0e27820aa3, type: 3}
-      propertyPath: DebugMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1472634031952377233, guid: 20a0d931152bf8040bfc0b0e27820aa3, type: 3}
       propertyPath: JumpPoints.Array.size
       value: 16
       objectReference: {fileID: 0}

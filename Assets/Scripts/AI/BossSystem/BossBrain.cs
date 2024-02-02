@@ -8,8 +8,7 @@ namespace Game.AI.BossSystem
 		[field: SerializeField]
 		public string Title { get; private set; } = "Boss Title";
 
-		public Room Room { get; set; }
-
+		public Room Room { protected get; set; }
 
 		/// <summary>
 		/// Counts from 1 (e.g. 0 is invalid).

@@ -69,7 +69,10 @@ namespace Game
 			{
 				foreach (var proj in Projectile.Spawned)
 				{
-					Destroy(proj.gameObject);
+					if (proj != null)
+					{
+						Destroy(proj.gameObject);
+					}
 				}
 			}
 
