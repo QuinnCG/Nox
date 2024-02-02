@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Game.AnimationSystem;
 using Game.DamageSystem;
 using Game.MovementSystem;
 using Game.Player;
@@ -7,9 +8,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.VFX;
 
 namespace Game.AI
@@ -43,6 +42,7 @@ namespace Game.AI
 		/// The bounds of the hitbox for this enemy.
 		/// </summary>
 		public Bounds Bounds => Collider.bounds;
+		public PlayableAnimator Animator { get; private set; }
 
 		public Vector2 PlayerPosition
 		{
@@ -91,6 +91,7 @@ namespace Game.AI
 			Movement = GetComponent<Movement>();
 			Health = GetComponent<Health>();
 			Collider = GetComponent<Collider2D>();
+			Animator = GetComponentInChildren<PlayableAnimator>();
 		}
 
 		protected virtual void Start()

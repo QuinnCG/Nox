@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 944767491064658490}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34, y: 2.42, z: 0}
+  m_LocalPosition: {x: 0.34, y: 2.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61,15 +61,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.44117638
+      value: 0.42424244
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: -0.01923075
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.125
+      value: 2.0625
       objectReference: {fileID: 0}
     - target: {fileID: -5494346094126448702, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
@@ -128,9 +136,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -3100369314251171874, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
     - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_Size.x
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8059862316734810304, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
+      objectReference: {fileID: 3971719654275762113, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
+    - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -177,6 +197,7 @@ MonoBehaviour:
   SuperJumpFireballCount: 36
   FireSpewCount: 12
   FireSpewAngle: 90
+  PhaseTwoHealthPercentThreshold: 0.5
   JumpDurationFactor: 0.7
   SuperJumpDurationFactor: 0.7
   SpecialAttackIntervalFactor: 0.7
@@ -186,10 +207,16 @@ MonoBehaviour:
   SuperJumpFireballWaveInterval: 0.35
   FireSpewCount2: 24
   FireSpewAngle2: 120
-  FireballPrefab: {fileID: 8550588314174644299, guid: 753222b2323b18e429e4ce1244adbd89, type: 3}
+  FireballPrefab: {fileID: 8550588314174644299, guid: b9417493d510a09418d4a053e28d9ea8, type: 3}
   FireballSpawnPoint: {fileID: 8939678584060395846}
   MinionPrefab: {fileID: 0}
   ShadowPrefab: {fileID: 5122463036962878032, guid: 6504721e60e198549b1688eb72e47a0a, type: 3}
   FireSpewPoints: []
   JumpPoints: []
   SummonPoints: []
+  IdleAnim: {fileID: -7001147228997674120, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
+  FireSpewStart: {fileID: 5631674185561918433, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
+  FireSpew: {fileID: 641787954886380190, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
+  JumpStart: {fileID: -8871335058320618911, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
+  JumpLoop: {fileID: -8959787610358282491, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
+  JumpEnd: {fileID: 2343348472794615916, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}

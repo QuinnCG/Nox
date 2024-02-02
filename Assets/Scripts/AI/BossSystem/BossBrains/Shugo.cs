@@ -81,6 +81,15 @@ namespace Game.AI.BossSystem.BossBrains
 		[SerializeField, Required, BoxGroup("References")]
 		private Transform[] SummonPoints;
 
+		[SerializeField, BoxGroup("Animations"), Required]
+		private AnimationClip IdleAnim;
+
+		[SerializeField, BoxGroup("Animations"), Required]
+		private AnimationClip FireSpewStart, FireSpew;
+
+		[SerializeField, BoxGroup("Animations"), Required]
+		private AnimationClip JumpStart, JumpLoop, JumpEnd;
+
 		private bool IsSecondPhase => Phase > 1;
 		private float RealJumpDuration => IsSecondPhase ? JumpDuration : (JumpDuration * JumpDurationFactor);
 
@@ -173,6 +182,8 @@ namespace Game.AI.BossSystem.BossBrains
 
 		private void OnWander()
 		{
+			Animator.Play(IdleAnim);
+
 			if (_specialTimer.IsDone && !IsJumping)
 			{
 				ExecuteRandomSpecial();
@@ -188,7 +199,7 @@ namespace Game.AI.BossSystem.BossBrains
 				// Jump to random point.
 				else
 				{
-					Vector2 target = GetPointFarthestFrom(transform.position, JumpPoints);
+					Vector2 target = GetPointClosestTo(PlayerPosition, FireSpewPoints);
 
 					Tween jump = ShugoJump(target, JumpHeight, RealJumpDuration);
 					jump.onComplete += () => Idle();
@@ -233,7 +244,7 @@ namespace Game.AI.BossSystem.BossBrains
 		private IEnumerator OnFireSpew()
 		{
 			// Jump to corner.
-			Vector2 target = GetRandomFromTransforms(FireSpewPoints);
+			Vector2 target = GetPointClosestTo(PlayerPosition, FireSpewPoints);
 			Tween jump = ShugoJump(target, JumpHeight, JumpDuration);
 			yield return jump.Yield();
 
@@ -258,7 +269,14 @@ namespace Game.AI.BossSystem.BossBrains
 		/* UTILITIES */
 		private Tween ShugoJump(Vector2 target, float height, float duration)
 		{
-			return SuperJump(target, height, duration, ShadowPrefab);
+			var sequence = DOTween.Sequence();
+			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpStart)));
+			sequence.AppendInterval(JumpStart.length - 0.01f);
+			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpLoop)));
+			sequence.Append(SuperJump(target, height, duration, ShadowPrefab));
+			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpEnd)));
+
+			return sequence;
 		}
 	}
 }
