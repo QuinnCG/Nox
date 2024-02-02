@@ -482,17 +482,12 @@ MonoBehaviour:
   FirePrefab: {fileID: 1899552154381879362, guid: 33dfb41b16729ab4ca484de27ee28b46, type: 3}
   MinionPrefab: {fileID: 4850610673639980936, guid: 01ed844deb3072047853c6f4efee15ac, type: 3}
   ShadowPrefab: {fileID: 5122463036962878032, guid: 6504721e60e198549b1688eb72e47a0a, type: 3}
-  jumpHeight: 30
-  jumpDuration: 5
-  jumpTargets:
-  - {fileID: 6872902649008442580}
-  - {fileID: 8862984619144601861}
-  - {fileID: 1891478821662470358}
-  reinforcementSpawnPoints:
+  ReinforcementPoints:
   - {fileID: 3944036659554064572}
   - {fileID: 8423627117028409725}
-  - {fileID: 3486125542536777533}
-  - {fileID: 929340864535607463}
+  - {fileID: 3945887479228253092}
+  jumpHeight: 30
+  jumpDuration: 5
 --- !u!1001 &8121865559732244529
 PrefabInstance:
   m_ObjectHideFlags: 0

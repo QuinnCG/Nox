@@ -16,19 +16,16 @@ namespace Game.AI.BossSystem.BossBrains
 		[SerializeField, Required, BoxGroup("References")]
 		private GameObject ShadowPrefab;
 
+		[SerializeField, Required, BoxGroup("References")]
+		private Transform[] ReinforcementPoints; // Add this field to store reinforcement spawn points
+
 		[SerializeField, Required, BoxGroup("Jump Settings")]
 		private float jumpHeight = 5f;
 
 		[SerializeField, Required, BoxGroup("Jump Settings")]
 		private float jumpDuration = 1f;
 
-		[SerializeField, Required, BoxGroup("Jump Settings")]
-		private Transform[] jumpTargets;
-
-		[SerializeField, Required, BoxGroup("Reinforcement Settings")]
-		private Transform[] reinforcementSpawnPoints;
-
-		private State _idle, _sakeChug, _lowJumpAndSakeChug, _callReinforcements, _jump;
+		private State _idle, _sakeChug, _jump, _callReinforcements;
 		private Timer _abilityCooldown;
 		private bool isJumping;
 
@@ -38,9 +35,8 @@ namespace Game.AI.BossSystem.BossBrains
 
 			_idle = CreateState(OnIdle, "Idle");
 			_sakeChug = CreateState(OnSakeChug, "Sake Chug");
-			_lowJumpAndSakeChug = CreateState(OnLowJumpAndSakeChug, "Low Jump and Sake Chug");
-			_callReinforcements = CreateState(OnCallReinforcements, "Call Reinforcements");
 			_jump = CreateState(OnJump, "Jump");
+			_callReinforcements = CreateState(OnCallReinforcements, "Call Reinforcements");
 
 			_abilityCooldown = new Timer(5f);
 
@@ -52,21 +48,17 @@ namespace Game.AI.BossSystem.BossBrains
 			if (_abilityCooldown.IsDone)
 			{
 				float randomValue = UnityEngine.Random.value;
-				if (randomValue < 0.25f)
+				if (randomValue < 0.33f)
 				{
 					TransitionTo(_sakeChug);
 				}
-				else if (randomValue < 0.5f)
+				else if (randomValue < 0.66f)
 				{
-					TransitionTo(_lowJumpAndSakeChug);
-				}
-				else if (randomValue < 0.75f)
-				{
-					TransitionTo(_callReinforcements);
+					TransitionTo(_jump);
 				}
 				else
 				{
-					TransitionTo(_jump);
+					TransitionTo(_callReinforcements);
 				}
 
 				_abilityCooldown.Reset();
@@ -79,24 +71,13 @@ namespace Game.AI.BossSystem.BossBrains
 			TransitionTo(_idle);
 		}
 
-		private void OnLowJumpAndSakeChug()
+		private void OnJump()
 		{
-			// Choose a jump target
-			Transform jumpTarget = ChooseRandomTarget(jumpTargets);
-
-			// Choose a reinforcement spawn point
-			Transform spawnPoint = ChooseRandomTarget(reinforcementSpawnPoints);
-
-			Jump(jumpTarget.position, jumpHeight, jumpDuration).OnComplete(() =>
+			if (!isJumping)
 			{
-				// Spawn reinforcements at the chosen spawn point
-				Instantiate(MinionPrefab, spawnPoint.position, Quaternion.identity);
-
-				// Perform Sake Chug
-				ChugSakeAndBlowFire();
-
-				TransitionTo(_idle);
-			});
+				isJumping = true;
+				JumpAttack();
+			}
 		}
 
 		private void OnCallReinforcements()
@@ -105,14 +86,9 @@ namespace Game.AI.BossSystem.BossBrains
 			TransitionTo(_idle);
 		}
 
-		private void OnJump()
-		{
-			// Logic for jumping state
-		}
-
 		private void SummonReinforcements()
 		{
-			foreach (Transform spawnPoint in reinforcementSpawnPoints)
+			foreach (Transform spawnPoint in ReinforcementPoints)
 			{
 				Instantiate(MinionPrefab, spawnPoint.position, Quaternion.identity);
 			}
@@ -123,16 +99,7 @@ namespace Game.AI.BossSystem.BossBrains
 			Instantiate(FirePrefab, transform.position, Quaternion.identity);
 		}
 
-		private Sequence Jump(Vector2 target, float height, float duration)
-		{
-			isJumping = true;
-			return JumpAttack(target, height, duration).OnComplete(() =>
-			{
-				isJumping = false;
-			});
-		}
-
-		private Sequence JumpAttack(Vector2 target, float height, float duration)
+		private void JumpAttack()
 		{
 			Collider.enabled = false; // Disable the collider during the jump
 			GameObject shadow = Instantiate(ShadowPrefab, transform.position, Quaternion.identity);
@@ -141,15 +108,18 @@ namespace Game.AI.BossSystem.BossBrains
 			ShadowController shadowController = shadow.GetComponent<ShadowController>();
 			if (shadowController != null)
 			{
-				shadowController.SetTarget(target);
+				if (PlayerPosition != null)
+				{
+					shadowController.SetTarget(PlayerPosition);
+				}
+				else
+				{
+					// Handle the case where PlayerTransform is not available
+					Debug.LogError("PlayerTransform not available.");
+				}
 			}
 
-			return DOTween.Sequence()
-					.Append(transform.DOJump(target, height, 1, duration).SetEase(Ease.Linear))
-					.OnComplete(() =>
-					{
-						JumpCompleted(shadow);
-					});
+			StartCoroutine(PerformJumpAnimation(shadow, PlayerPosition != null ? PlayerPosition : (Vector2)transform.position));
 		}
 
 		private IEnumerator PerformJumpAnimation(GameObject shadow, Vector3 targetPosition)
@@ -174,20 +144,17 @@ namespace Game.AI.BossSystem.BossBrains
 		private void JumpCompleted(GameObject shadow)
 		{
 			// Perform logic when the jump attack is completed
+			isJumping = false;
 			Destroy(shadow);
 			Collider.enabled = true; // Re-enable the collider
-		}
-
-		private Transform ChooseRandomTarget(Transform[] targets)
-		{
-			if (targets.Length == 0)
-			{
-				Debug.LogError("No targets available.");
-				return null;
-			}
-
-			int randomIndex = UnityEngine.Random.Range(0, targets.Length);
-			return targets[randomIndex];
+			TransitionTo(_idle);
 		}
 	}
 }
+
+
+
+
+
+
+
