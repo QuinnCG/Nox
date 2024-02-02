@@ -2,6 +2,7 @@
 using Game.AI.BossSystem;
 using Game.DamageSystem;
 using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
 
 namespace Game.ProjectileSystem
@@ -23,7 +24,7 @@ namespace Game.ProjectileSystem
 		[SerializeField, BoxGroup("Core")]
 		protected float Damage = 25f;
 
-		[SerializeField, BoxGroup("Core"), Tooltip("Values left than 0 will be treated as infinite.")]
+		[SerializeField, BoxGroup("Core"), Tooltip("Values less than 0 will be treated as infinite.")]
 		private float Lifespan = 5f;
 
 		[SerializeField, BoxGroup("On Hit")]
@@ -60,7 +61,7 @@ namespace Game.ProjectileSystem
 
 			if (Lifespan > 0f)
 			{
-				Destroy(gameObject, Lifespan);
+				StartCoroutine(LifespanSequence());
 			}
 		}
 
@@ -110,6 +111,16 @@ namespace Game.ProjectileSystem
 			{
 				RuntimeManager.PlayOneShot(HitSound, transform.position);
 			}
+		}
+
+		protected virtual void OnLifespanEnd() { }
+
+		private IEnumerator LifespanSequence()
+		{
+			yield return new WaitForSeconds(Lifespan);
+
+			OnLifespanEnd();
+			Destroy(gameObject);
 		}
 	}
 }

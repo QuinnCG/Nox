@@ -1,6 +1,8 @@
-﻿using Game.AI.BossSystem;
+﻿using FMODUnity;
+using Game.AI.BossSystem;
 using Game.DamageSystem;
 using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 
 namespace Game.ProjectileSystem
@@ -40,6 +42,11 @@ namespace Game.ProjectileSystem
 
 			DetachChild();
 			Destroy(gameObject);
+		}
+
+		protected override void OnLifespanEnd()
+		{
+			DetachChild();
 		}
 
 		private void DetachChild()
