@@ -36,11 +36,12 @@ namespace Game.RoomSystem
 				EditorApplication.EnterPlaymode();
 			}
 
+			// TODO: Task.Run won't execute in-editor...
 			Task.Run(() =>
 			{
-				while (!Application.isPlaying) ;
+				Task.Delay(3000);
 				Instance.CurrentRoom = index - 1;
-				Instance.Next();
+				Instance.Next(true);
 			});
 		}
 

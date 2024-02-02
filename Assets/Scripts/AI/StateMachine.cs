@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Game.AI
 {
@@ -18,38 +20,16 @@ namespace Game.AI
 				if (Active.IsCoroutine)
 				{
 					var current = Active.Coroutine.Current;
+					bool moveNext = ShouldMoveNext(current);
 
-					if (current is YieldSeconds yieldSeconds)
+					if (moveNext)
 					{
-						if (Time.time < yieldSeconds.End)
+						// Reached end. Time to reset.
+						if (!Active.Coroutine.MoveNext())
 						{
-							return;
+							Active.Coroutine = _coroutineCallback();
+							Active.Coroutine.MoveNext();
 						}
-					}
-					else if (current is YieldNextFrame)
-					{
-						return;
-					}
-					else if (current is YieldUntil yieldUntil)
-					{
-						if (!yieldUntil.Predicate())
-						{
-							return;
-						}
-					}
-#if UNITY_EDITOR
-					else if (current is not null)
-					{
-						Debug.LogError("StateMachine has been given an invalid yield!\n" +
-							$"Yield given: '{current.GetType().Name}'.");
-					}
-#endif
-
-					// Reached end. Time to reset.
-					if (!Active.Coroutine.MoveNext())
-					{
-						Active.Coroutine = _coroutineCallback();
-						Active.Coroutine.MoveNext();
 					}
 				}
 				else
@@ -82,6 +62,62 @@ namespace Game.AI
 		public State CreateState(Func<IEnumerator> coroutineCallback, string name = "No Name")
 		{
 			return new State(coroutineCallback, name);
+		}
+
+		private bool ShouldMoveNext(object current)
+		{
+			if (current is YieldSeconds yieldSeconds)
+			{
+				if (Time.time < yieldSeconds.End)
+				{
+					return false;
+				}
+			}
+			else if (current is YieldNextFrame)
+			{
+				return true;
+			}
+			else if (current is YieldUntil yieldUntil)
+			{
+				if (!yieldUntil.Predicate())
+				{
+					return false;
+				}
+			}
+			else if (current is YieldTween yieldTween)
+			{
+				if (!yieldTween.Tween.IsActive())
+				{
+					if (!yieldTween.Tween.IsComplete())
+					{
+						return false;
+					}
+				}
+			}
+			else if (current is YieldEnumerator yieldEnumerator)
+			{
+				if (!yieldEnumerator.Enumerator.MoveNext())
+				{
+					bool value = ShouldMoveNext(yieldEnumerator.Enumerator.Current);
+                    if (value)
+					{
+						yieldEnumerator.Enumerator.MoveNext();
+					}
+
+                    return value;
+				}
+			}
+
+#if UNITY_EDITOR
+			else if (current is not null)
+			{
+				Debug.LogError("StateMachine has been given an invalid yield!\n" +
+					$"Yield given: '{current.GetType().Name}'.");
+				return false;
+			}
+#endif
+
+			return true;
 		}
 	}
 }

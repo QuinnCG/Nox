@@ -145,12 +145,12 @@ namespace Game.AI
 			Projectile.Spawn(prefab, origin, target, gameObject, info);
 		}
 
-		protected TweenCallback Jump(Vector2 target, float height, float duration)
+		protected Tween Jump(Vector2 target, float height, float duration)
 		{
 			_jumpTween?.Kill();
 			_jumpTween = transform.DOJump(target, height, 1, duration).SetEase(Ease.Linear);
 
-			return _jumpTween.onComplete;
+			return _jumpTween;
 		}
 
 		protected void Delay(float delay, TweenCallback callback)

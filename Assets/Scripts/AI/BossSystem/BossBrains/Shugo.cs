@@ -1,6 +1,7 @@
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using System.Collections;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace Game.AI.BossSystem.BossBrains
@@ -27,7 +28,9 @@ namespace Game.AI.BossSystem.BossBrains
 
 		private State _idle, _sakeChug, _jump, _callReinforcements;
 		private Timer _abilityCooldown;
-		private bool isJumping;
+
+		private Vector2 _jumpStart, _jumpEnd;
+		private Transform _shadow;
 
 		protected override void Start()
 		{
@@ -38,7 +41,7 @@ namespace Game.AI.BossSystem.BossBrains
 			_jump = CreateState(OnJump, "Jump");
 			_callReinforcements = CreateState(OnCallReinforcements, "Call Reinforcements");
 
-			_abilityCooldown = new Timer(5f);
+			_abilityCooldown = new Timer(0.5f);
 
 			TransitionTo(_idle);
 		}
@@ -47,7 +50,7 @@ namespace Game.AI.BossSystem.BossBrains
 		{
 			if (_abilityCooldown.IsDone)
 			{
-				float randomValue = UnityEngine.Random.value;
+				float randomValue = Random.value;
 				if (randomValue < 0.33f)
 				{
 					TransitionTo(_sakeChug);
@@ -71,13 +74,10 @@ namespace Game.AI.BossSystem.BossBrains
 			TransitionTo(_idle);
 		}
 
-		private void OnJump()
+		private IEnumerator OnJump()
 		{
-			if (!isJumping)
-			{
-				isJumping = true;
-				JumpAttack();
-			}
+			yield return new YieldEnumerator(OnJumpSequence(PlayerPosition, 5f, 2f));
+			TransitionTo(_idle);
 		}
 
 		private void OnCallReinforcements()
@@ -99,55 +99,32 @@ namespace Game.AI.BossSystem.BossBrains
 			Instantiate(FirePrefab, transform.position, Quaternion.identity);
 		}
 
-		private void JumpAttack()
+		private IEnumerator OnJumpSequence(Vector2 target, float height, float duration)
 		{
-			Collider.enabled = false; // Disable the collider during the jump
-			GameObject shadow = Instantiate(ShadowPrefab, transform.position, Quaternion.identity);
+			Collider.enabled = false;
+			SpawnShadow();
 
-			// Pass the player's position as the target for the shadow
-			ShadowController shadowController = shadow.GetComponent<ShadowController>();
-			if (shadowController != null)
+			_jumpStart = transform.position;
+			_jumpEnd = PlayerPosition;
+
+			var tween = Jump(_jumpEnd, 15f, 2f);
+
+			while (!tween.IsComplete())
 			{
-				if (PlayerPosition != null)
-				{
-					shadowController.SetTarget(PlayerPosition);
-				}
-				else
-				{
-					// Handle the case where PlayerPosition is not available
-					Debug.LogError("PlayerPosition not available.");
-				}
+				float progress = tween.Elapsed() / tween.Duration();
+				_shadow.position = Vector2.Lerp(_jumpStart, _jumpEnd, progress);
+				
+				yield return new YieldNextFrame();
 			}
-
-			StartCoroutine(PerformJumpAnimation(shadow, PlayerPosition != null ? PlayerPosition : (Vector2)transform.position));
+			
+			Collider.enabled = true;
+			Destroy(_shadow.gameObject);
 		}
 
-		private IEnumerator PerformJumpAnimation(GameObject shadow, Vector2 targetPosition)
+		private void SpawnShadow()
 		{
-			float elapsedTime = 0f;
-
-			while (elapsedTime < jumpDuration)
-			{
-				float jumpProgress = Mathf.Clamp01(elapsedTime / jumpDuration);
-				float jumpHeightOffset = Mathf.Sin(jumpProgress * Mathf.PI) * jumpHeight;
-
-				transform.position = Vector3.Lerp(transform.position, new Vector3(targetPosition.x, transform.position.y, targetPosition.y), jumpProgress);
-				shadow.transform.position = new Vector3(targetPosition.x, targetPosition.y + jumpHeightOffset, targetPosition.y);
-
-				elapsedTime += Time.deltaTime;
-				yield return null;
-			}
-
-			JumpCompleted(shadow);
-		}
-
-		private void JumpCompleted(GameObject shadow)
-		{
-			// Perform logic when the jump attack is completed
-			isJumping = false;
-			Destroy(shadow);
-			Collider.enabled = true; // Re-enable the collider
-			TransitionTo(_idle);
+			_shadow = Instantiate(ShadowPrefab, transform.position, Quaternion.identity).transform;
+			_shadow.GetComponent<ShadowController>().enabled = false;
 		}
 	}
 }
