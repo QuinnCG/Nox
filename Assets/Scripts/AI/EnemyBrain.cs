@@ -69,6 +69,20 @@ namespace Game.AI
 		public Vector2 DirectionToPlayer => (PlayerPosition - (Vector2)transform.position).normalized;
 		public float DistanceToPlayer => Vector2.Distance(transform.position, PlayerPosition);
 
+		public State ActiveState => _stateMachine.Active;
+
+		/// <summary>
+		/// True if any of the EnemyBrain jump methods are used to make the character jump.
+		/// </summary>
+		protected bool IsJumping
+		{
+			get
+			{
+				if (_jumpTween == null) return false;
+				return _jumpTween.IsActive();
+			}
+		}
+
 		private readonly StateMachine _stateMachine = new();
 		private Tween _jumpTween;
 
@@ -96,7 +110,7 @@ namespace Game.AI
 			{
 				Debug.Log(
 					"Active State: ".Color(StringColor.White)
-					+ _stateMachine.Active.Name.Color(StringColor.Yellow).Bold()
+					+ _stateMachine.Active?.Name.Color(StringColor.Yellow).Bold()
 					+ ".".Color(StringColor.White));
 			}
 #endif
@@ -154,7 +168,7 @@ namespace Game.AI
 			return _jumpTween;
 		}
 
-		protected Tween JumpWithShadow(Vector2 target, float height, float duration, GameObject shadowPrefab)
+		protected Tween SuperJump(Vector2 target, float height, float duration, GameObject shadowPrefab)
 		{
 			Collider.enabled = false;
 			GameObject shadow = Instantiate(shadowPrefab, transform.position, Quaternion.identity);
@@ -230,6 +244,11 @@ namespace Game.AI
 			}
 
 			return farthestTransform.position;
+		}
+
+		protected Vector2 GetPointFromTransforms(params Transform[] transforms)
+		{
+			return transforms[UnityEngine.Random.Range(0, transforms.Length - 1)].position;
 		}
 
 		protected YieldUntil SpawnVFXOneShot(GameObject prefab, Vector2 position, bool destroyWhenFinished = true)

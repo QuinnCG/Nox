@@ -46,6 +46,8 @@ namespace Game
 			return timer.OnFinish;
 		}
 
+		public static implicit operator Timer(float f) => new(f);
+
 		public void Reset()
 		{
 			Start = Time.time;
