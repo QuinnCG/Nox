@@ -201,7 +201,7 @@ namespace Game.AI.BossSystem.BossBrains
 			// Jump to player.
 			float duration = SuperJumpDuration * (IsSecondPhase ? SuperJumpDurationFactor : 1f);
 			Tween jump = ShugoJump(PlayerPosition, SuperJumpHeight, duration);
-			yield return jump.YieldTween();
+			yield return jump.Yield();
 
 			// Spawn ring of fire.
 			if (IsSecondPhase)
@@ -235,7 +235,7 @@ namespace Game.AI.BossSystem.BossBrains
 			// Jump to corner.
 			Vector2 target = GetRandomFromTransforms(FireSpewPoints);
 			Tween jump = ShugoJump(target, JumpHeight, JumpDuration);
-			yield return jump.YieldTween();
+			yield return jump.Yield();
 
 			// Spew fire.
 			Shoot(FireballPrefab, FireballSpawnPoint.position, PlayerPosition, new ShootSpawnInfo()

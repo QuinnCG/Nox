@@ -107,6 +107,13 @@ namespace Game.AI
                     return value;
 				}
 			}
+			else if (current is YieldAnimation yieldAnim)
+			{
+				if (Time.time < yieldAnim.EndTime)
+				{
+					return false;
+				}
+			}
 
 #if UNITY_EDITOR
 			else if (current is not null)
