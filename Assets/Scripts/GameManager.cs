@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Unity.Services.Analytics;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 using USceneManager = UnityEngine.SceneManagement.SceneManager;
@@ -19,6 +22,13 @@ namespace Game
 				.WaitForCompletion();
 
 			DontDestroyOnLoad(instance);
+		}
+
+		private async void Awake()
+		{
+			await UnityServices.InitializeAsync();
+			await AuthenticationService.Instance.SignInAnonymouslyAsync();
+			AnalyticsService.Instance.StartDataCollection();
 		}
 
 		private async void Start()
