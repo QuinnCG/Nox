@@ -271,6 +271,8 @@ namespace Game.AI.BossSystem.BossBrains
 
 			for (int i = 0; i < FireSpewWaveCount; i++)
 			{
+				Movement.FaceDirection(DirectionToPlayer.x);
+
 				// Spew fire.
 				Shoot(FireballPrefab, FireballSpawnPoint.position, PlayerPosition, new ShootSpawnInfo()
 				{

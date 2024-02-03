@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598384052632136171, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: <Max>k__BackingField
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2539884451687759693, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Name
@@ -228,6 +228,7 @@ MonoBehaviour:
   GunOffset: 0.4
   GunPivot: {fileID: 9064840900613830469}
   GunPrefab: {fileID: 6098607508932657732, guid: 824e555e58c55bf42b85e5ae86123842, type: 3}
+  <ProjectilePrefab>k__BackingField: {fileID: 8370981501113466163, guid: de07316648efadc4a8385cad02a465e2, type: 3}
   IdleAnim: {fileID: 1983387492863107041, guid: 2cb0b369463e2b741811cb88b5c413ae, type: 3}
   MoveAnim: {fileID: -1209505365081791630, guid: 2cb0b369463e2b741811cb88b5c413ae, type: 3}
   RollAnim: {fileID: -7893804176353145618, guid: 2cb0b369463e2b741811cb88b5c413ae, type: 3}
@@ -245,6 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugMode: 0
+  PlayerDstToFlee: 4
 --- !u!2083052967 &6513513715175669271 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 4182447606209429202, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
