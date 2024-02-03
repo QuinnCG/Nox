@@ -37,6 +37,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: a5041649e53452444a616036917184db, type: 2}
     - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509365289708009949, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Size.y
       value: 2.125
       objectReference: {fileID: 0}
@@ -190,6 +194,7 @@ MonoBehaviour:
   DashAnim: {fileID: -8863155357993509816, guid: 3ad9a9ba8a0a0f94ea47bed8cfe6cf4c, type: 3}
   ProjectilePrefab: {fileID: 8550588314174644299, guid: b652bd102e1e98649beba201e890d3de, type: 3}
   ProjectileSpawn: {fileID: 1145682899863993212}
+  ThrowInterval: 0.2
 --- !u!2083052967 &6513513715175669271 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 4182447606209429202, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}

@@ -277,7 +277,6 @@ MonoBehaviour:
   DebugMode: 0
   <Title>k__BackingField: Disgraced Hatamoto
   FleeThrowInterval: 3
-  PlayerDistanceBeforeTeleport: 3
   DurationToWall: 0.3
   ShurikenPrefab: {fileID: 8550588314174644299, guid: 2130487ead2c8c44abf9813d06a3833e, type: 3}
   TeleportVFX: {fileID: 5456948112444210341, guid: cab176477939e4347981ba5269acc04f, type: 3}
