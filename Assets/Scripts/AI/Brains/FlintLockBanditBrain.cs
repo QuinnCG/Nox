@@ -146,7 +146,7 @@ namespace Game.AI.Brains
 			rand *= 1f;
 			rand += PlayerPosition;
 
-			Character.Attack(rand);
+			//Character.Attack(rand);
 		}
 	}
 }

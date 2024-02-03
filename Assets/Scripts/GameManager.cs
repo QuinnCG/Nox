@@ -1,4 +1,5 @@
-﻿using Unity.Services.Analytics;
+﻿using DG.Tweening;
+using Unity.Services.Analytics;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
@@ -33,6 +34,8 @@ namespace Game
 
 		private async void Start()
 		{
+			DOTween.SetTweensCapacity(1000, 50);
+
 			Instance = this;
 			await USceneManager.LoadSceneAsync(SceneManager.Instance.MainMenuSceneName, LoadSceneMode.Additive);
 
