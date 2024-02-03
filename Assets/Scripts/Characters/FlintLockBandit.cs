@@ -1,4 +1,5 @@
-﻿using Game.Player;
+﻿using DG.Tweening;
+using Game.Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -15,11 +16,19 @@ namespace Game.Characters
 		[SerializeField, Required, BoxGroup("References")]
 		private GameObject GunPrefab;
 
+		[SerializeField, Required, BoxGroup("Animations")]
+		private AnimationClip IdleAnim, MoveAnim, RollAnim, DeathAnim;
+
 		private Transform _gun;
 
 		protected override void Update()
 		{
 			base.Update();
+
+			if (!Movement.IsDashing)
+			{
+				Animator.Play(Movement.IsMoving ? MoveAnim : IdleAnim);
+			}
 
 			if (_gun != null)
 			{
@@ -40,6 +49,24 @@ namespace Game.Characters
 				Destroy(_gun.gameObject);
 				_gun = null;
 			}
+		}
+
+		protected override void OnDash()
+		{
+			Animator.Play(RollAnim);
+			base.OnDash();
+		}
+
+		protected override void OnAttack(Vector2 target)
+		{
+			
+		}
+
+		protected override void OnDeath()
+		{
+			GetComponent<Collider2D>().enabled = false;
+			Animator.Play(DeathAnim);
+			DOVirtual.DelayedCall(DeathAnim.length - 0.01f, () => Destroy(gameObject));
 		}
 
 		private void UpdateGunPosition()

@@ -43,9 +43,7 @@ namespace Game.Player
 		{
 			Vector2 dir = _input.PlayerMap.Move.ReadValue<Vector2>();
 
-			// Required to normalize to avoid diagonal movement from being faster (see https://unitycodemonkey.com/video.php?v=YMwwYO1naCg).
 			dir.Normalize();
-			// Unlike the other events, OnMove is executed every frame which even when you aren't moving (input dir of (0, 0) * speed = zero).
 			OnMove?.Invoke(dir);
 
 			IsPossessionModeActive = _input.PlayerMap.PossessionMode.ReadValue<float>() > 0f;

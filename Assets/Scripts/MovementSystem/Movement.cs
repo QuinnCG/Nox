@@ -58,6 +58,11 @@ namespace Game.MovementSystem
 
 		public void Move(Vector2 direction)
 		{
+			if (IsDashing && _isDashControllable)
+			{
+				if (direction != Vector2.zero) _dashDirection = direction.normalized;
+			}
+
 			if (IsDashing) return;
 
 			IsMoving = direction != Vector2.zero;
