@@ -232,6 +232,12 @@ namespace Game.Player
 
 			AttenuationObject.parent = transform.root;
 			OnCharacterUnpossessed?.Invoke(character);
+
+			if (_possessingOriginal)
+			{
+				// TODO: particles?
+				Destroy(character.gameObject);
+			}
 		}
 
 		private Vector2 GetIndicatorPosition(Character character)
