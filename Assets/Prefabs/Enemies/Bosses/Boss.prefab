@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6068143130265781743}
   - component: {fileID: 4720538500512549382}
   - component: {fileID: 4969659154595712352}
+  - component: {fileID: 6118290238241960926}
   m_Layer: 6
   m_Name: Boss
   m_TagString: Untagged
@@ -223,3 +224,16 @@ MonoBehaviour:
   AnimatorType: 0
   DefaultAnimation: {fileID: 0}
   AnimationSequence: []
+--- !u!114 &6118290238241960926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960479896017489875}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461744cbafc364e4c8ef5c7325698f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ContactDamage: 10
