@@ -4,6 +4,7 @@ using Game.GeneralManagers;
 using Game.Player;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.TextCore.Text;
@@ -31,7 +32,7 @@ namespace Game.DamageSystem
 		private EventReference HurtSound;
 
 		public bool DisplayCriticalIndicator { get; private set; } = true;
-		public bool DisableDamage { get; set; } = false;
+		public bool IsImmune => _damageSuppressors.Count > 0;
 
 		public bool IsCritical => Current / Max <= CriticalPercent;
 		public bool IsDead => Current == 0f;
@@ -53,6 +54,7 @@ namespace Game.DamageSystem
 		private Tween _playCriticalSFXTween;
 
 		private bool isCriticalIndicatorVisible = false;
+		private readonly HashSet<DamageSupressorHandle> _damageSuppressors = new();
 
 		private void Awake()
 		{
@@ -109,7 +111,7 @@ namespace Game.DamageSystem
 
 		public void TakeDamage(DamageInfo info)
 		{
-			if (IsDead || DisableDamage) return;
+			if (IsDead || _damageSuppressors.Count > 0) return;
 
 			// The actual amount removed (capped at 0).
 			float delta = Mathf.Min(Current, info.Damage);
@@ -171,6 +173,16 @@ namespace Game.DamageSystem
 		public void Kill(DamageType source = DamageType.Misc)
 		{
 			TakeDamage(Current, source);
+		}
+
+		public void RegisterDamageSupressor(DamageSupressorHandle handle)
+		{
+			_damageSuppressors.Add(handle);
+		}
+
+		public void UnRegisterDamageSupressor(DamageSupressorHandle handle)
+		{
+			_damageSuppressors.Remove(handle);
 		}
 
 		public void SetDisplayCriticalIndiactor(bool display)

@@ -44,6 +44,9 @@ namespace Game.Player
 		private Movement _movement;
 		private Health _health;
 
+		private bool _dashImmunityEnabled;
+		private readonly DamageSupressorHandle _dashHandle = new();
+
 		private void Awake()
 		{
 			Instance = this;
@@ -96,6 +99,17 @@ namespace Game.Player
 			{
 				_possession.ExitPossessionMode();
 			}
+
+			if (_movement.IsDashing && !_dashImmunityEnabled)
+			{
+				_dashImmunityEnabled = true;
+				_health.RegisterDamageSupressor(_dashHandle);
+			}
+			else if (!_movement.IsDashing && _dashImmunityEnabled)
+			{
+				_dashImmunityEnabled = false;
+				_health.UnRegisterDamageSupressor(_dashHandle);
+			}
 		}
 
 		public void OnSpawnProjectile(Projectile projectile)
@@ -135,12 +149,13 @@ namespace Game.Player
 				RuntimeManager.PlayOneShotAttached(DamagedSound, Camera.main.gameObject);
 			}
 
-			_health.DisableDamage = true;
+			var handle = new DamageSupressorHandle();
+			_health.RegisterDamageSupressor(handle);
 			OnImmunityStart();
 
 			DOVirtual.DelayedCall(DamageImmunityDuration, () =>
 			{
-				_health.DisableDamage = false;
+				_health.UnRegisterDamageSupressor(handle);
 				OnImmunityEnd();
 			});
 		}
