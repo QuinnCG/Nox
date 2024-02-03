@@ -109,9 +109,18 @@ namespace Game.DamageSystem
 			}
 		}
 
-		public void TakeDamage(DamageInfo info)
+		/// <summary>
+		/// Returns true if the damage was applied, false if it was ignored.
+		/// </summary>
+		public bool TakeDamage(DamageInfo info)
 		{
-			if (IsDead || _damageSuppressors.Count > 0) return;
+			if (IsDead || _damageSuppressors.Count > 0) return false;
+
+			// Prevent player from hurting player and enemy from hurting enemy.
+			if (PossessionManager.Instance == null) return false;
+			var possessed = PossessionManager.Instance.PossessedCharacter;
+			if (gameObject == possessed.gameObject && info.Source == possessed) return false;
+			if (gameObject != possessed.gameObject && info.Source != possessed) return false;
 
 			// The actual amount removed (capped at 0).
 			float delta = Mathf.Min(Current, info.Damage);
@@ -139,6 +148,8 @@ namespace Game.DamageSystem
 			{
 				OnDeath?.Invoke(info.Type);
 			}
+
+			return true;
 		}
 		public void TakeDamage(float damage)
 		{

@@ -79,9 +79,12 @@ namespace Game.ProjectileSystem
 			};
 
 			OnDamage?.Invoke(dmgInfo);
-			health.TakeDamage(dmgInfo);
+			bool success = health.TakeDamage(dmgInfo);
 
-			Destroy(gameObject);
+			if (success)
+			{
+				Destroy(gameObject);
+			}
 		}
 
 		protected override void OnHitObstacle(Collider2D collider)

@@ -108,5 +108,9 @@ namespace Game
 		{
 			Destroy(gameObject);
 		}
+
+		protected virtual void OnPossess() { }
+
+		protected virtual void OnUnpossess() { }
 	}
 }
