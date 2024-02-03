@@ -269,6 +269,8 @@ namespace Game.AI.BossSystem.BossBrains
 
 			for (int i = 0; i < FireSpewWaveCount; i++)
 			{
+				Movement.FaceDirection(DirectionToPlayer.x);
+
 				// Spew fire.
 				Shoot(FireballPrefab, FireballSpawnPoint.position, PlayerPosition, new ShootSpawnInfo()
 				{
@@ -276,8 +278,6 @@ namespace Game.AI.BossSystem.BossBrains
 					SpreadAngle = IsSecondPhase ? FireSpewAngle2 : FireSpewAngle,
 					Method = ShootMethod.RandomSpread
 				});
-
-				Movement.FaceDirection(DirectionToPlayer.x);
 
 				AudioManager.PlayOneShot(FireSpewSound);
 				yield return Animator.Play(FireSpew).Yield();
