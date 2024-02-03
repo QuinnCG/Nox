@@ -94,7 +94,7 @@ namespace Game.ProjectileSystem
 
 		protected override bool CanCollide(Collider2D collider)
 		{
-			return base.CanCollide(collider) && collider.gameObject.layer == LayerMask.NameToLayer("Obstacle");
+			return base.CanCollide(collider) || collider.gameObject.layer == LayerMask.NameToLayer("Obstacle");
 		}
 
 		protected void TrySpawnHitPrefab()
