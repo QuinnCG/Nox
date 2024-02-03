@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001BC3BF1A4F8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000143A4DD3B28 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -19,70 +19,3 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] SoundI::release                          : AmbientWinter_02 (000001BC59718598)
-[LOG] SoundI::release                          :     AmbientWinter_02 (000001BBD1632CD8)
-[LOG] SoundI::release                          :     AmbientWinter_02 (000001BC264A93C8)
-[LOG] SoundI::release                          : AmbientWind (000001BAAB514AD8)
-[LOG] SoundI::release                          :     AmbientWind (000001BBD16353D8)
-[LOG] SoundI::release                          :     AmbientWind (000001BC264A98D8)
-[LOG] SoundI::release                          : Shugo - Second Phase (000001B8A973C9C8)
-[LOG] SoundI::release                          :     Shugo - Second Phase (000001BBD1633018)
-[LOG] SoundI::release                          :     Shugo - Second Phase (000001BC264A9218)
-[LOG] SoundI::release                          : Shugo - Base (000001B8A973C818)
-[LOG] SoundI::release                          :     Shugo - Base (000001BBD1633D18)
-[LOG] SoundI::release                          :     Shugo - Base (000001BC264A9068)
-[LOG] SoundI::release                          :  (000001BBF9FA8A78)
-[LOG] SoundI::release                          :     Dash_01 (000001BAE6077758)
-[LOG] SoundI::release                          :  (000001BBF9FA9318)
-[LOG] SoundI::release                          :     Dash_02 (000001BAAAF23778)
-[LOG] SoundI::release                          :  (000001BBF9FAA5C8)
-[LOG] SoundI::release                          :     Dash_03 (000001BAAAF25318)
-[LOG] SoundI::release                          :  (000001BBF9FAA8A8)
-[LOG] SoundI::release                          :     Dash_04 (000001BAE60775B8)
-[LOG] SoundI::release                          :  (000001BBF9FACE08)
-[LOG] SoundI::release                          :     Footstep_01 (000001BAE6074D18)
-[LOG] SoundI::release                          :  (000001BBF9FAD258)
-[LOG] SoundI::release                          :     Footstep_02 (000001BAE6074358)
-[LOG] SoundI::release                          :  (000001BBF9FAA178)
-[LOG] SoundI::release                          :     Footstep_03 (000001BAE6075398)
-[LOG] SoundI::release                          :  (000001BBF9FAACF8)
-[LOG] SoundI::release                          :     Footstep_04 (000001BAE6074B78)
-[LOG] SoundI::release                          :  (000001BBF9FA8D58)
-[LOG] SoundI::release                          :     Footstep_05 (000001BAE6074018)
-[LOG] SoundI::release                          :  (000001BBF9FABE38)
-[LOG] SoundI::release                          :     Footstep_06 (000001BAE6076BF8)
-[LOG] SoundI::release                          :  (000001BBF9FAA458)
-[LOG] SoundI::release                          :     FireballHit_01 (000001BAE60741B8)
-[LOG] SoundI::release                          :  (000001BBF9FAD988)
-[LOG] SoundI::release                          :     FireballHit_02 (000001BAE60744F8)
-[LOG] SoundI::release                          :  (000001BBF9FA9E98)
-[LOG] SoundI::release                          :     FireballHit_03 (000001BAE6077418)
-[LOG] SoundI::release                          :  (000001BBF9FA8908)
-[LOG] SoundI::release                          :     FireballThrow_01 (000001BAE6075058)
-[LOG] SoundI::release                          :  (000001BBF9FAD538)
-[LOG] SoundI::release                          :     FireballThrow_02 (000001BAE6075BB8)
-[LOG] SoundI::release                          :  (000001BBF9FA91A8)
-[LOG] SoundI::release                          :     FireballThrow_03 (000001BAE6075878)
-[LOG] SoundI::release                          :  (000001BBF9FAD3C8)
-[LOG] SoundI::release                          :     FireballThrow_04 (000001BAE6074EB8)
-[LOG] SoundI::release                          :  (000001BBF9FAC6D8)
-[LOG] SoundI::release                          :     FireballLoop (000001BAE6076A58)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] SystemI::close                           : Closed.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] SystemI::close                           : Closed.
-[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
-[LOG] Thread::callback                         : FMOD file thread finished.
