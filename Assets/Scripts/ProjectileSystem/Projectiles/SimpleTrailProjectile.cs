@@ -1,8 +1,6 @@
-﻿using FMODUnity;
-using Game.AI.BossSystem;
+﻿using Game.AI.BossSystem;
 using Game.DamageSystem;
 using Sirenix.OdinInspector;
-using System;
 using UnityEngine;
 
 namespace Game.ProjectileSystem
@@ -29,10 +27,13 @@ namespace Game.ProjectileSystem
 			};
 
 			OnDamage?.Invoke(dmgInfo);
-			health.TakeDamage(dmgInfo);
+			bool success = health.TakeDamage(dmgInfo);
 
-			DetachChild();
-			Destroy(gameObject);
+			if (success)
+			{
+				DetachChild();
+				Destroy(gameObject);
+			}
 		}
 
 		protected override void OnHitObstacle(Collider2D collider)
