@@ -157,6 +157,7 @@ namespace Game.Player
 		public void Respawn()
 		{
 			SpawnOriginalBody();
+			_input.enabled = true;
 		}
 
 		/* PRIVATE METHODS */
@@ -361,6 +362,7 @@ namespace Game.Player
 		{
 			if (_possessingOriginal)
 			{
+				_input.enabled = false;
 				HUD.Instance.InitiateGameOver();
 			}
 			else
