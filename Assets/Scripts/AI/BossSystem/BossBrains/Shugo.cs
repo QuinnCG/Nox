@@ -299,10 +299,12 @@ namespace Game.AI.BossSystem.BossBrains
 		private Tween ShugoJump(Vector2 target, float height, float duration)
 		{
 			var sequence = DOTween.Sequence();
+			sequence.Append(DOVirtual.DelayedCall(0f, () => AudioManager.PlayOneShot(JumpSound)));
 			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpStart)));
 			sequence.AppendInterval(JumpStart.length - 0.01f);
 			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpLoop)));
 			sequence.Append(SuperJump(target, height, duration, ShadowPrefab));
+			sequence.Append(DOVirtual.DelayedCall(0f, () => AudioManager.PlayOneShot(LandSound)));
 			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpEnd)));
 
 			float dir = target.x - transform.position.x;

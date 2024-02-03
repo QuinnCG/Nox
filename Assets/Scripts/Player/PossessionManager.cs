@@ -46,6 +46,9 @@ namespace Game.Player
 		[SerializeField, Required]
 		private Transform AttenuationObject;
 
+		[field: SerializeField]
+		public EventReference PlayerHurtSound { get; private set; }
+
 		public static PossessionManager Instance { get; private set; }
 
 		public float CurrentPossessionMeter { get; private set; }

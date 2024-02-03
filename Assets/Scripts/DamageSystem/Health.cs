@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using FMODUnity;
+using Game.GeneralManagers;
 using Game.Player;
 using Sirenix.OdinInspector;
 using System;
@@ -25,6 +26,9 @@ namespace Game.DamageSystem
 
 		[Space, SerializeField, BoxGroup("Tools")]
 		private bool StartCritical;
+
+		[SerializeField]
+		private EventReference HurtSound;
 
 		public bool DisplayCriticalIndicator { get; private set; } = true;
 		public bool DisableDamage { get; set; } = false;
@@ -114,6 +118,15 @@ namespace Game.DamageSystem
 			Current = Mathf.Max(0f, Current - info.Damage);
 
 			OnDamaged?.Invoke(delta);
+
+			if (PossessionManager.Instance.PossessedCharacter.gameObject == gameObject)
+			{
+				AudioManager.PlayOneShot(PossessionManager.Instance.PlayerHurtSound);
+			}
+			else
+			{
+				AudioManager.PlayOneShot(HurtSound);
+			}
 
 			if (Current < Max * CriticalPercent)
 			{

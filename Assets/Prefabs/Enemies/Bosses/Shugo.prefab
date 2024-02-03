@@ -224,18 +224,18 @@ MonoBehaviour:
   JumpEnd: {fileID: 2343348472794615916, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
   JumpSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1558254749
+      Data2: 1151177007
+      Data3: -942796871
+      Data4: -161616774
+    Path: event:/SFX/Jump
   LandSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 30063824
+      Data2: 1273915175
+      Data3: -1942495046
+      Data4: 247254764
+    Path: event:/SFX/Land
   FireSpewStartSound:
     Guid:
       Data1: 0

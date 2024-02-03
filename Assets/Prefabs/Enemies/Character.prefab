@@ -271,6 +271,13 @@ MonoBehaviour:
   CriticalIndicatorOffset: {x: 0.2, y: 0.5}
   CriticalPercent: 0.3
   StartCritical: 1
+  HurtSound:
+    Guid:
+      Data1: -533118520
+      Data2: 1099133436
+      Data3: 399420826
+      Data4: -1115606068
+    Path: event:/SFX/Hurt
 --- !u!114 &4281035935892752222
 MonoBehaviour:
   m_ObjectHideFlags: 0
