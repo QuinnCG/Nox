@@ -9,8 +9,8 @@ namespace Game.AI.BossSystem.BossBrains
 		[SerializeField, BoxGroup("Settings"), Unit(Units.Second)]
 		private float FleeThrowInterval = 3f;
 
-		[SerializeField, BoxGroup("Settings"), Unit(Units.Meter)]
-		private float PlayerDistanceBeforeTeleport = 4f;
+		//[SerializeField, BoxGroup("Settings"), Unit(Units.Meter)]
+		//private float PlayerDistanceBeforeTeleport = 4f;
 
 		[SerializeField, BoxGroup("Settings"), Unit(Units.Second)]
 		private float DurationToWall = 0.3f;

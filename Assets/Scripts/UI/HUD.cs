@@ -14,17 +14,17 @@ namespace Game.UI
 	{
 		public static HUD Instance { get; private set; }
 
-		[SerializeField, BoxGroup("Animation Settings")]
-		private float PlayerHealthFadeIn = 1f;
+		//[SerializeField, BoxGroup("Animation Settings")]
+		//private float PlayerHealthFadeIn = 1f;
 
-		[SerializeField, BoxGroup("Animation Settings")]
-		private float PlayerHealthFadeOut = 2f;
+		//[SerializeField, BoxGroup("Animation Settings")]
+		//private float PlayerHealthFadeOut = 2f;
 
-		[SerializeField, BoxGroup("Animation Settings")]
-		private float PlayerHealthCriticalPulseDuration = 0.5f;
+		//[SerializeField, BoxGroup("Animation Settings")]
+		//private float PlayerHealthCriticalPulseDuration = 0.5f;
 
-		[SerializeField, BoxGroup("Animation Settings")]
-		private float PlayerHealthCriticalPulseScale = 1.2f;
+		//[SerializeField, BoxGroup("Animation Settings")]
+		//private float PlayerHealthCriticalPulseScale = 1.2f;
 
 		[SerializeField, BoxGroup("References"), Required]
 		private Slider PlayerHealth;
