@@ -22,6 +22,17 @@ namespace Game.Characters
 		[SerializeField, BoxGroup("Attack"), Required]
 		private Transform ProjectileSpawn;
 
+		[SerializeField]
+		private float ThrowInterval = 0.2f;
+
+		private Timer _throwTimer;
+
+		protected override void Awake()
+		{
+			base.Awake();
+			_throwTimer = new Timer(ThrowInterval);
+		}
+
 		protected override void Update()
 		{
 			base.Update();
@@ -39,6 +50,9 @@ namespace Game.Characters
 
 		protected override void OnAttack(Vector2 target)
 		{
+			if (!_throwTimer.IsDone) return;
+			_throwTimer.Reset();
+
 			Vector2 origin = ProjectileSpawn.position;
 			Vector2 pos = CrosshairManager.Instance.CurrentPosition;
 
