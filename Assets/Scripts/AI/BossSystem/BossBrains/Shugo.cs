@@ -267,11 +267,11 @@ namespace Game.AI.BossSystem.BossBrains
 			yield return jump.Yield();
 
 			AudioManager.PlayOneShot(FireSpewStartSound);
-      Debug.Log("Before FireSpewStart Animation");
-      Animator.Play(FireSpewStart).Yield();
-      Debug.Log("After FireSpewStart Animation");
+			Debug.Log("Before FireSpewStart Animation");
+			Animator.Play(FireSpewStart).Yield();
+			Debug.Log("After FireSpewStart Animation");
 
-			
+
 
 			for (int i = 0; i < FireSpewWaveCount; i++)
 			{
