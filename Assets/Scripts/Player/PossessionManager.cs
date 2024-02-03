@@ -360,16 +360,13 @@ namespace Game.Player
 
 		private void OnDeath(DamageType type)
 		{
-			Debug.Log("Death!");
 			if (_possessingOriginal)
 			{
-				Debug.Log("Game Over!");
 				_input.enabled = false;
 				HUD.Instance.InitiateGameOver();
 			}
 			else
 			{
-				Debug.Log("Depossessing!");
 				Destroy(PossessedCharacter.gameObject);
 				SpawnOriginalBody();
 			}
