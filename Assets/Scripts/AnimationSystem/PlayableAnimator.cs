@@ -60,7 +60,7 @@ namespace Game.AnimationSystem
 		public AnimationClip Play(AnimationClip anim)
 		{
 			if (anim == _activeAnim)
-				return anim;
+				return _activeAnim;
 
 			if (_activeClip.IsValid())
 				_activeClip.Destroy();
@@ -76,7 +76,7 @@ namespace Game.AnimationSystem
 			_activeAnim = anim;
 			_activeClip = clip;
 
-			return anim;
+			return _activeAnim;
 		}
 
 		public void Stop()
