@@ -48,8 +48,10 @@ namespace Game
 
 		public static implicit operator Timer(float f) => new(f);
 
-		public void Reset()
+		public void Reset(float duration)
 		{
+			_duration = duration;
+
 			Start = Time.time;
 			End = StartFinished ? Start : Start + Duration;
 
@@ -58,6 +60,10 @@ namespace Game
 			{
 				OnFinish?.Invoke();
 			}, ignoreTimeScale: false);
+		}
+		public void Reset()
+		{
+			Reset(_duration);
 		}
 	}
 }

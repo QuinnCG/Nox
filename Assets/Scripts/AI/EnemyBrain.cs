@@ -27,6 +27,8 @@ namespace Game.AI
 		public float MaxHP => Health.Max;
 		public bool IsDead => Health.IsDead;
 
+		public Character Character { get; private set; }
+
 		/// <summary>
 		/// The movement component on this enemy.
 		/// </summary>
@@ -49,6 +51,7 @@ namespace Game.AI
 		{
 			get
 			{
+				if (PossessionManager.Instance == null) return transform.position;
 				var possessed = PossessionManager.Instance.PossessedCharacter;
 				if (possessed != null)
 					return possessed.transform.position;
@@ -95,6 +98,8 @@ namespace Game.AI
 			Health = GetComponent<Health>();
 			Collider = GetComponent<Collider2D>();
 			Animator = GetComponentInChildren<PlayableAnimator>();
+
+			Character = GetComponent<Character>();
 		}
 
 		protected virtual void Start()

@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Game.Player;
+using Game.ProjectileSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -16,8 +17,20 @@ namespace Game.Characters
 		[SerializeField, Required, BoxGroup("References")]
 		private GameObject GunPrefab;
 
-		[SerializeField, Required, BoxGroup("Animations")]
-		private AnimationClip IdleAnim, MoveAnim, RollAnim, DeathAnim;
+		[field: SerializeField, Required, BoxGroup("References")]
+		public GameObject ProjectilePrefab { get; private set; }
+
+		[field: SerializeField, Required, BoxGroup("Animations")]
+		public AnimationClip IdleAnim { get; private set; }
+
+		[field: SerializeField, Required, BoxGroup("Animations")]
+		public AnimationClip MoveAnim { get; private set; }
+
+		[field: SerializeField, Required, BoxGroup("Animations")]
+		public AnimationClip RollAnim { get; private set; }
+
+		[field: SerializeField, Required, BoxGroup("Animations")]
+		public AnimationClip DeathAnim { get; private set; }
 
 		private Transform _gun;
 
@@ -25,14 +38,17 @@ namespace Game.Characters
 		{
 			base.Update();
 
-			if (!Movement.IsDashing)
+			if (IsPossessed)
 			{
-				Animator.Play(Movement.IsMoving ? MoveAnim : IdleAnim);
-			}
+				if (!Movement.IsDashing)
+				{
+					Animator.Play(Movement.IsMoving ? MoveAnim : IdleAnim);
+				}
 
-			if (_gun != null)
-			{
-				UpdateGunPosition();
+				if (_gun != null)
+				{
+					UpdateGunPosition();
+				}
 			}
 		}
 
@@ -59,7 +75,7 @@ namespace Game.Characters
 
 		protected override void OnAttack(Vector2 target)
 		{
-			
+			Projectile.Spawn(ProjectilePrefab, _gun.position, target, gameObject);
 		}
 
 		protected override void OnDeath()
