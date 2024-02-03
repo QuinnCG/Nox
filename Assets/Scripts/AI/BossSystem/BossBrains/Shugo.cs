@@ -108,6 +108,7 @@ namespace Game.AI.BossSystem.BossBrains
 		[SerializeField, BoxGroup("SFX"), Required]
 		private EventReference FireStompSound;
 
+
 		private bool IsSecondPhase => Phase > 1;
 		private float RealJumpDuration => IsSecondPhase ? JumpDuration : (JumpDuration * JumpDurationFactor);
 
@@ -266,8 +267,11 @@ namespace Game.AI.BossSystem.BossBrains
 			Tween jump = ShugoJump(target, JumpHeight, JumpDuration);
 			yield return jump.Yield();
 
+
+			Debug.Log("fire spew sound here");
 			AudioManager.PlayOneShot(FireSpewStartSound);
-			Animator.Play(FireSpewStart).Yield();
+			Debug.Log("fire spew sound 2");
+			yield return Animator.Play(FireSpewStart).Yield();
 
 			for (int i = 0; i < FireSpewWaveCount; i++)
 			{
@@ -282,7 +286,7 @@ namespace Game.AI.BossSystem.BossBrains
 				});
 
 				AudioManager.PlayOneShot(FireSpewSound);
-				Animator.Play(FireSpew).Yield();
+				yield return Animator.Play(FireSpew).Yield();
 			}
 
 			ResetSpecialtimer();
