@@ -267,7 +267,7 @@ namespace Game.AI.BossSystem.BossBrains
 			yield return jump.Yield();
 
 			AudioManager.PlayOneShot(FireSpewStartSound);
-			Animator.Play(FireSpewStart).Yield();
+			yield return Animator.Play(FireSpewStart).Yield();
 
 			for (int i = 0; i < FireSpewWaveCount; i++)
 			{
@@ -282,7 +282,7 @@ namespace Game.AI.BossSystem.BossBrains
 				});
 
 				AudioManager.PlayOneShot(FireSpewSound);
-				Animator.Play(FireSpew).Yield();
+				yield return Animator.Play(FireSpew).Yield();
 			}
 
 			ResetSpecialtimer();
