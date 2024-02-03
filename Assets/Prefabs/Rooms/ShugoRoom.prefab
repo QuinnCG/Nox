@@ -1441,6 +1441,10 @@ PrefabInstance:
       propertyPath: 'ReinforcementPoints.Array.data[5]'
       value: 
       objectReference: {fileID: 8918936340330950494}
+    - target: {fileID: 2154065154984310984, guid: 20a0d931152bf8040bfc0b0e27820aa3, type: 3}
+      propertyPath: DefaultAnimation
+      value: 
+      objectReference: {fileID: -7001147228997674120, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
     - target: {fileID: 5318064136614131920, guid: 20a0d931152bf8040bfc0b0e27820aa3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.73

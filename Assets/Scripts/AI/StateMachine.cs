@@ -73,6 +73,10 @@ namespace Game.AI
 					return false;
 				}
 			}
+			else if (current is WaitForSeconds waitForSeconds)
+			{
+				return false;
+			}
 			else if (current is YieldNextFrame)
 			{
 				return true;
@@ -99,12 +103,12 @@ namespace Game.AI
 				if (!yieldEnumerator.Enumerator.MoveNext())
 				{
 					bool value = ShouldMoveNext(yieldEnumerator.Enumerator.Current);
-                    if (value)
+					if (value)
 					{
 						yieldEnumerator.Enumerator.MoveNext();
 					}
 
-                    return value;
+					return value;
 				}
 			}
 			else if (current is YieldAnimation yieldAnim)
@@ -119,7 +123,7 @@ namespace Game.AI
 			else if (current is not null)
 			{
 				Debug.LogError("StateMachine has been given an invalid yield!\n" +
-					$"Yield given: '{current.GetType().Name}'.");
+						$"Yield given: '{current.GetType().Name}'.");
 				return false;
 			}
 #endif

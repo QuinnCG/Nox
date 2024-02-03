@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Nox Icon_no back_0: -3309264583358249112
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
