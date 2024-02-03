@@ -186,8 +186,6 @@ namespace Game.AI.BossSystem.BossBrains
 			// Due to floating-point imprecision, there's a chance no state will be selected above.
 			var fallback = specials[Random.Range(0, specials.Length - 1)];
 			TransitionTo(fallback.state);
-
-			// Reset timer.
 		}
 
 		/* STATES */
@@ -267,11 +265,7 @@ namespace Game.AI.BossSystem.BossBrains
 			yield return jump.Yield();
 
 			AudioManager.PlayOneShot(FireSpewStartSound);
-			Debug.Log("Before FireSpewStart Animation");
-			Animator.Play(FireSpewStart).Yield();
-			Debug.Log("After FireSpewStart Animation");
-
-
+			yield return Animator.Play(FireSpewStart).Yield();
 
 			for (int i = 0; i < FireSpewWaveCount; i++)
 			{
@@ -283,8 +277,10 @@ namespace Game.AI.BossSystem.BossBrains
 					Method = ShootMethod.RandomSpread
 				});
 
+				Movement.FaceDirection(DirectionToPlayer.x);
+
 				AudioManager.PlayOneShot(FireSpewSound);
-				Animator.Play(FireSpew).Yield();
+				yield return Animator.Play(FireSpew).Yield();
 			}
 
 			ResetSpecialtimer();
@@ -310,6 +306,7 @@ namespace Game.AI.BossSystem.BossBrains
 			sequence.Append(SuperJump(target, height, duration, ShadowPrefab));
 			sequence.Append(DOVirtual.DelayedCall(0f, () => AudioManager.PlayOneShot(LandSound)));
 			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpEnd)));
+			sequence.Append(DOVirtual.DelayedCall(JumpEnd.length - 0.01f, () => { }));
 
 			float dir = target.x - transform.position.x;
 			sequence.onUpdate += () => { if (IsJumping) { Movement.FaceDirection(dir); } };
