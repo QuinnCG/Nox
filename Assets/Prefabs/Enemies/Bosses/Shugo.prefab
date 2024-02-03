@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: DefaultAnimation
       value: 
       objectReference: {fileID: -3100369314251171874, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
+    - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: CriticalPercent
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Size.x
       value: 2.8235295
@@ -193,7 +197,7 @@ MonoBehaviour:
   SuperJumpWeight: 1
   FireSpewWeight: 1
   SpecialAttackInterval: {x: 4, y: 7}
-  IdleDuration: {x: 0.5, y: 2}
+  IdleDuration: {x: 2, y: 4}
   SuperJumpFireballCount: 36
   FireSpewCount: 12
   FireSpewWaveCount: 2
