@@ -29,6 +29,9 @@ namespace Game.RoomSystem
 		[SerializeField, Required]
 		private Collider2D ExitTrigger;
 
+		[field: SerializeField, Required]
+		public PolygonCollider2D CameraBounds { get; private set; }
+
 		[SerializeField]
 		private EventReference BossMusic;
 

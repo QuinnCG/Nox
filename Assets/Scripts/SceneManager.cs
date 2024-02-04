@@ -122,8 +122,11 @@ namespace Game
 			// Update HUD.
 			HUD.Instance.OnBossRoomStart(Room.Current);
 
+			// Initialize camera.
 			var vcam = CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera as CinemachineVirtualCamera;
 			vcam.transform.position = possessed.position;
+
+			vcam.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = Room.Current.CameraBounds;
 
 			// Enable player input.
 			input = PlayerManager.Instance.GetComponent<InputReader>();
