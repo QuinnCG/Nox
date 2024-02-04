@@ -60,6 +60,7 @@ namespace Game.GeneralManagers
 			SetSFXVolume(DefaultSFXVolume);
 			SetMusicVolume(DefaultMusicVolume);
 			SetAmbienceVolume(DefaultAmbienceVolume);
+			Debug.Log("AudioManager initialized");
 		}
 
 		public void SetMasterVolume(float sliderValue)
