@@ -144,11 +144,7 @@ namespace Game.DamageSystem
 
 			OnDamaged?.Invoke(delta);
 
-			if (PossessionManager.Instance.PossessedCharacter.gameObject == gameObject)
-			{
-				AudioManager.PlayOneShot(PossessionManager.Instance.PlayerHurtSound);
-			}
-			else
+			if (PossessionManager.Instance.PossessedCharacter.gameObject != gameObject)
 			{
 				AudioManager.PlayOneShot(HurtSound);
 				
