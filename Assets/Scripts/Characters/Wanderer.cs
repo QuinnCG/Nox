@@ -56,7 +56,7 @@ namespace Game.Characters
 			Vector2 origin = ProjectileSpawn.position;
 			Vector2 pos = CrosshairManager.Instance.CurrentPosition;
 
-			Projectile.Spawn(ProjectilePrefab, origin, pos, gameObject);
+			Projectile.Spawn(ProjectilePrefab, origin, pos, this);
 		}
 
 		protected override void OnDash()

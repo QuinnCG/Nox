@@ -20,10 +20,11 @@ namespace Game.ProjectileSystem
 
 			var dmgInfo = new DamageInfo()
 			{
-				Type = Owner.TryGetComponent(out BossBrain _)
-				? DamageType.Boss : DamageType.Enemy,
+				//Type = Owner.TryGetComponent(out BossBrain _)
+				//? DamageType.Boss : DamageType.Enemy,
 				Damage = Damage,
-				Direction = Direction
+				Direction = Direction,
+				Source = Owner
 			};
 
 			OnDamage?.Invoke(dmgInfo);

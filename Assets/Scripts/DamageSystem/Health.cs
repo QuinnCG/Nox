@@ -79,7 +79,7 @@ namespace Game.DamageSystem
 				MakeCritical();
 			}
 
-			_renderer = GetComponent<SpriteRenderer>();
+			_renderer = GetComponentInChildren<SpriteRenderer>();
 		}
 
 		private void OnDestroy()
@@ -133,8 +133,9 @@ namespace Game.DamageSystem
 			// Prevent player from hurting player and enemy from hurting enemy.
 			if (PossessionManager.Instance == null) return false;
 			var possessed = PossessionManager.Instance.PossessedCharacter;
-			if (gameObject == possessed.gameObject && info.Source == possessed) return false;
-			if (gameObject != possessed.gameObject && info.Source != possessed) return false;
+			bool isThisPlayer = possessed.gameObject == gameObject;
+			if (isThisPlayer && info.Source == possessed) return false;
+			if (!isThisPlayer && info.Source != possessed) return false;
 
 			// The actual amount removed (capped at 0).
 			float delta = Mathf.Min(Current, info.Damage);
@@ -147,7 +148,7 @@ namespace Game.DamageSystem
 			if (PossessionManager.Instance.PossessedCharacter.gameObject != gameObject)
 			{
 				AudioManager.PlayOneShot(HurtSound);
-				
+
 				if (_hurtSequence != null)
 				{
 					StopCoroutine(_hurtSequence);
@@ -169,19 +170,7 @@ namespace Game.DamageSystem
 
 			return true;
 		}
-		public void TakeDamage(float damage)
-		{
-			TakeDamage(new DamageInfo(damage));
-		}
-		public void TakeDamage(float damage, Vector2 direction)
-		{
-			TakeDamage(new DamageInfo(damage, direction));
-		}
-		public void TakeDamage(float damage, Vector2 direction, DamageType source)
-		{
-			TakeDamage(new DamageInfo(damage, direction, source));
-		}
-		public void TakeDamage(float damage, DamageType source)
+		public void TakeDamage(float damage, Character source)
 		{
 			TakeDamage(new DamageInfo(damage, source));
 		}
@@ -190,7 +179,7 @@ namespace Game.DamageSystem
 		public void MakeCritical()
 		{
 			Current = (Max * CriticalPercent) - 0.1f;
-			TakeDamage(1f);
+			TakeDamage(1f, null);
 		}
 
 		[Button, BoxGroup("Tools")]
@@ -199,9 +188,9 @@ namespace Game.DamageSystem
 			AddHealth(Max - Current + 1f);
 		}
 
-		public void Kill(DamageType source = DamageType.Misc)
+		public void Kill(DamageType type = DamageType.Misc)
 		{
-			TakeDamage(Current, source);
+			TakeDamage(new DamageInfo() { Damage = Current, Type = type });
 		}
 
 		public void RegisterDamageSupressor(DamageSupressorHandle handle)
@@ -277,14 +266,14 @@ namespace Game.DamageSystem
 			float a = 0f;
 			while (a < 1f)
 			{
-				a += Time.deltaTime * 2f;
+				a += Time.deltaTime * 10f;
 				mat.SetFloat("_Flash", a);
 				yield return null;
 			}
 
 			while (a > 0f)
 			{
-				a -= Time.deltaTime * 2f;
+				a -= Time.deltaTime * 10f;
 				mat.SetFloat("_Flash", a);
 				yield return null;
 			}

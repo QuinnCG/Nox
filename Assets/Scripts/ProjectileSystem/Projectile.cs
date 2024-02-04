@@ -16,14 +16,14 @@ namespace Game.ProjectileSystem
 		public System.Action<DamageInfo> OnDamage { get; set; }
 		public System.Action OnHit { get; set; }
 
-		protected GameObject Owner { get; private set; }
+		protected Character Owner { get; private set; }
 		protected Vector2 Velocity => _rb.velocity;
 		protected Vector2 Direction => _rb.velocity.normalized;
 
 		private Rigidbody2D _rb;
 		private Vector2 _vel;
 
-		public static Projectile Spawn(GameObject prefab, Vector2 origin, Vector2 target, GameObject owner)
+		public static Projectile Spawn(GameObject prefab, Vector2 origin, Vector2 target, Character owner)
 		{
 			var instance = Instantiate(prefab, origin, Quaternion.identity);
 			var proj = instance.GetComponent<Projectile>();
@@ -35,7 +35,7 @@ namespace Game.ProjectileSystem
 
 			return proj;
 		}
-		public static void Spawn(GameObject prefab, Vector2 origin, Vector2 target, GameObject owner, ShootSpawnInfo spawnInfo = default)
+		public static void Spawn(GameObject prefab, Vector2 origin, Vector2 target, Character owner, ShootSpawnInfo spawnInfo = default)
 		{
 			Projectile Shoot(Vector2 tar) => Spawn(prefab, origin, tar, owner);
 			Vector2 RotateTarget(float angle, float maxAngle)

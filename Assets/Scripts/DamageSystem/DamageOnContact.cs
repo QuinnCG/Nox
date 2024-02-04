@@ -31,13 +31,13 @@ namespace Game.DamageSystem
 				if (collider.gameObject == gameObject)
 					continue;
 
-				if (!collider.TryGetComponent(out Character _))
+				if (!collider.TryGetComponent(out Character character))
 					continue;
 
 				var player = PossessionManager.Instance.PossessedCharacter.gameObject;
 				if (gameObject == player && collider.gameObject != player)
 				{
-					_health.TakeDamage(ContactDamage);
+					_health.TakeDamage(ContactDamage, character);
 				}
 			}
 		}

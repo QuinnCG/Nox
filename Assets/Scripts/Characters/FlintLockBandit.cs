@@ -75,7 +75,7 @@ namespace Game.Characters
 
 		protected override void OnAttack(Vector2 target)
 		{
-			Projectile.Spawn(ProjectilePrefab, _gun.position, target, gameObject);
+			Projectile.Spawn(ProjectilePrefab, _gun.position, target, this);
 		}
 
 		protected override void OnDeath()

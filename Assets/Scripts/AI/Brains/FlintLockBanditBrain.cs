@@ -1,4 +1,6 @@
-﻿using Game.Characters;
+﻿using DG.Tweening;
+using Game.Characters;
+using Game.DamageSystem;
 using System.Collections;
 using UnityEngine;
 
@@ -9,7 +11,7 @@ namespace Game.AI.Brains
 		[SerializeField]
 		private float PlayerDstToFlee = 4f;
 
-		private State _idle, _engage, _barrage, _flee;
+		private State _idle, _engage, _barrage, _flee, _dead;
 		private Timer _engageTimer, _engageEndTimer, _engageShootIntervalTimer;
 
 		private FlintLockBandit _bandit;
@@ -19,17 +21,27 @@ namespace Game.AI.Brains
 			base.Start();
 
 			_bandit = Character as FlintLockBandit;
+			Health.OnDeath += OnDeath;
 
 			_idle = CreateState(OnIdle, "Idle");
 			_engage = CreateState(OnEngage, "Engage");
 			_barrage = CreateState(OnBarrage, "Barrage");
 			_flee = CreateState(OnFlee, "Flee");
+			_dead = CreateState(() => { }, "Dead");
 
 			ResetEngageTimer();
 			_engageEndTimer = new Timer();
 			_engageShootIntervalTimer = new Timer(1.5f);
 
 			Idle();
+		}
+
+		/* EVENTS */
+		private void OnDeath(DamageType type)
+		{
+			TransitionTo(_dead);
+			Animator.Play(_bandit.DeathAnim);
+			DOVirtual.DelayedCall(_bandit.DeathAnim.length - 0.01f, () => Destroy(gameObject));
 		}
 
 		/* TRANSITIONS */

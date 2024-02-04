@@ -75,7 +75,8 @@ namespace Game.ProjectileSystem
 				Type = Owner.TryGetComponent(out BossBrain _)
 				? DamageType.Boss : DamageType.Enemy,
 				Damage = Damage,
-				Direction = Direction
+				Direction = Direction,
+				Source = Owner
 			};
 
 			OnDamage?.Invoke(dmgInfo);
