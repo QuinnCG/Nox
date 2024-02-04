@@ -1318,7 +1318,7 @@ PrefabInstance:
     - target: {fileID: 164962053735179561, guid: 20a0d931152bf8040bfc0b0e27820aa3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 5914000828057719653, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
+      objectReference: {fileID: -6760997455796070445, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
     - target: {fileID: 1007549562102351478, guid: 20a0d931152bf8040bfc0b0e27820aa3, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -27909,23 +27909,23 @@ PrefabInstance:
       objectReference: {fileID: 6740994523812256864}
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossMusic.Path
-      value: event:/Music/DisgracedHatamoto
+      value: event:/Music/ShugoTheDrunkard
       objectReference: {fileID: 0}
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossMusic.Guid.Data1
-      value: 1047568949
+      value: 1556373062
       objectReference: {fileID: 0}
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossMusic.Guid.Data2
-      value: 1152608133
+      value: 1308543364
       objectReference: {fileID: 0}
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossMusic.Guid.Data3
-      value: -2114752103
+      value: -1367349594
       objectReference: {fileID: 0}
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossMusic.Guid.Data4
-      value: 748456729
+      value: 1487753060
       objectReference: {fileID: 0}
     - target: {fileID: 7205716507883102904, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: m_LocalPosition.x

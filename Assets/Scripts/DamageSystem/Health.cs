@@ -1,14 +1,13 @@
 ﻿using DG.Tweening;
-using FMOD.Studio;
 using FMODUnity;
 using Game.GeneralManagers;
 using Game.Player;
 using Sirenix.OdinInspector;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.TextCore.Text;
 
 namespace Game.DamageSystem
 {
