@@ -127,7 +127,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 321
+      y: 376
       width: 36
       height: 52
     spriteID: f57a361b21919564d94033c8a008632c
@@ -138,7 +138,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 321}
+    uvTransform: {x: 4, y: 376}
   - name: Shugo_Frame_7
     originalName: 
     pivot: {x: 0.36842105, y: 0.02}
@@ -167,7 +167,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 188
-      y: 321
+      y: 376
       width: 47
       height: 38
     spriteID: a8e909483aadb9a489be312dc980a7c3
@@ -178,7 +178,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 188, y: 321}
+    uvTransform: {x: 188, y: 376}
   - name: Shugo_Frame_9
     originalName: 
     pivot: {x: 0.15217392, y: 0.09375}
@@ -187,7 +187,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 135
-      y: 381
+      y: 436
       width: 46
       height: 32
     spriteID: 18de357e95f0c0947990115e99c6697e
@@ -198,7 +198,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 135, y: 381}
+    uvTransform: {x: 135, y: 436}
   - name: Shugo_Frame_12
     originalName: 
     pivot: {x: 0.0625, y: 0.03448276}
@@ -207,7 +207,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 189
-      y: 381
+      y: 436
       width: 48
       height: 29
     spriteID: f002a5da2385a2a4ab195d256c1677a1
@@ -218,7 +218,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 189, y: 381}
+    uvTransform: {x: 189, y: 436}
   - name: Shugo_Frame_13
     originalName: 
     pivot: {x: 0.43243244, y: 0.020833334}
@@ -227,7 +227,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 286
-      y: 321
+      y: 376
       width: 37
       height: 48
     spriteID: e5b41560e23957342a606d47b617d038
@@ -238,7 +238,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 286, y: 321}
+    uvTransform: {x: 286, y: 376}
   - name: Shugo_Frame_14
     originalName: 
     pivot: {x: 0.44444445, y: 0.021276595}
@@ -247,7 +247,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 421
-      y: 321
+      y: 376
       width: 36
       height: 47
     spriteID: ecaf32ed8c38039449c662cd6c663253
@@ -258,7 +258,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 421, y: 321}
+    uvTransform: {x: 421, y: 376}
   - name: Shugo_Frame_15
     originalName: 
     pivot: {x: 0.43243244, y: 0.020833334}
@@ -267,7 +267,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 331
-      y: 321
+      y: 376
       width: 37
       height: 48
     spriteID: 8d6800272bb7c0246a78d0ac41cd6eeb
@@ -278,7 +278,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 331, y: 321}
+    uvTransform: {x: 331, y: 376}
   - name: Shugo_Frame_16
     originalName: 
     pivot: {x: 0.44444445, y: 0.021276595}
@@ -287,7 +287,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 465
-      y: 321
+      y: 376
       width: 36
       height: 47
     spriteID: e4181c51aef4fa740be16c7a12878bf9
@@ -298,7 +298,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 465, y: 321}
+    uvTransform: {x: 465, y: 376}
   - name: Shugo_Frame_17
     originalName: 
     pivot: {x: 0.42857143, y: 0.018518519}
@@ -387,7 +387,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 381
+      y: 436
       width: 35
       height: 53
     spriteID: 79169c875b326894295321764e08f806
@@ -398,7 +398,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 381}
+    uvTransform: {x: 4, y: 436}
   - name: Shugo_Frame_22
     originalName: 
     pivot: {x: 0.42857143, y: 0.018518519}
@@ -901,15 +901,15 @@ ScriptedImporter:
     uvTransform: {x: 94, y: 254}
   - name: Shugo_Frame_10
     originalName: 
-    pivot: {x: 0.45000002, y: 0.02173913}
+    pivot: {x: 0.45000002, y: 0.021276595}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 93
+      x: 4
       y: 321
       width: 40
-      height: 46
+      height: 47
     spriteID: 57d4824c8f0b4c74bae8c138f98ad9b3
     spriteBone: []
     spriteOutline: []
@@ -918,8 +918,28 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 93, y: 321}
+    uvTransform: {x: 4, y: 321}
   - name: Shugo_Frame_11
+    originalName: 
+    pivot: {x: 0.45000002, y: 0.02173913}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 93
+      y: 376
+      width: 40
+      height: 46
+    spriteID: 0636128c7ce9077448ff91b84e46e04c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 93, y: 376}
+  - name: Shugo_Frame_41
     originalName: 
     pivot: {x: 0.42857143, y: 0.018518519}
     alignment: 9
@@ -930,7 +950,7 @@ ScriptedImporter:
       y: 254
       width: 35
       height: 54
-    spriteID: 0636128c7ce9077448ff91b84e46e04c
+    spriteID: 286d3f7a5b8aaf541a8e2a3cb618968c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -939,7 +959,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 457, y: 254}
-  - name: Shugo_Frame_41
+  - name: Shugo_Frame_42
     originalName: 
     pivot: {x: 0.44444445, y: 0.018867925}
     alignment: 9
@@ -950,26 +970,6 @@ ScriptedImporter:
       y: 4
       width: 45
       height: 53
-    spriteID: 286d3f7a5b8aaf541a8e2a3cb618968c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 345, y: 4}
-  - name: Shugo_Frame_42
-    originalName: 
-    pivot: {x: 0.50980395, y: 0.036363635}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 66
-      width: 51
-      height: 55
     spriteID: 5cfb075783e598f438c4356ed6cecf9e
     spriteBone: []
     spriteOutline: []
@@ -978,7 +978,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 66}
+    uvTransform: {x: 345, y: 4}
   - name: Shugo_Frame_43
     originalName: 
     pivot: {x: 0.50980395, y: 0.036363635}
@@ -986,7 +986,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 63
+      x: 4
       y: 66
       width: 51
       height: 55
@@ -998,7 +998,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 66}
+    uvTransform: {x: 4, y: 66}
   - name: Shugo_Frame_44
     originalName: 
     pivot: {x: 0.50980395, y: 0.036363635}
@@ -1006,7 +1006,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 122
+      x: 63
       y: 66
       width: 51
       height: 55
@@ -1018,8 +1018,28 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 122, y: 66}
+    uvTransform: {x: 63, y: 66}
   - name: Shugo_Frame_45
+    originalName: 
+    pivot: {x: 0.50980395, y: 0.036363635}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 122
+      y: 66
+      width: 51
+      height: 55
+    spriteID: 4f7817a22077c134686fe78eeb4eda91
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 122, y: 66}
+  - name: Shugo_Frame_46
     originalName: 
     pivot: {x: 0.45454547, y: 0.018867925}
     alignment: 9
@@ -1030,7 +1050,7 @@ ScriptedImporter:
       y: 129
       width: 44
       height: 53
-    spriteID: 4f7817a22077c134686fe78eeb4eda91
+    spriteID: d69efd98acf3da0449ddf78ae8c4e19f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1039,7 +1059,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 320, y: 129}
-  - name: Shugo_Frame_46
+  - name: Shugo_Frame_47
     originalName: 
     pivot: {x: 0.44444445, y: 0.018867925}
     alignment: 9
@@ -1050,26 +1070,6 @@ ScriptedImporter:
       y: 4
       width: 45
       height: 53
-    spriteID: d69efd98acf3da0449ddf78ae8c4e19f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 398, y: 4}
-  - name: Shugo_Frame_47
-    originalName: 
-    pivot: {x: 0.54545456, y: 0.018181818}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 129
-      width: 44
-      height: 55
     spriteID: 81a1e3a4cdc41df419c1854f95052950
     spriteBone: []
     spriteOutline: []
@@ -1078,7 +1078,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 129}
+    uvTransform: {x: 398, y: 4}
   - name: Shugo_Frame_48
     originalName: 
     pivot: {x: 0.54545456, y: 0.018181818}
@@ -1086,7 +1086,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 56
+      x: 4
       y: 129
       width: 44
       height: 55
@@ -1098,7 +1098,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 56, y: 129}
+    uvTransform: {x: 4, y: 129}
   - name: Shugo_Frame_49
     originalName: 
     pivot: {x: 0.54545456, y: 0.018181818}
@@ -1106,7 +1106,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 108
+      x: 56
       y: 129
       width: 44
       height: 55
@@ -1118,8 +1118,28 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 108, y: 129}
+    uvTransform: {x: 56, y: 129}
   - name: Shugo_Frame_50
+    originalName: 
+    pivot: {x: 0.54545456, y: 0.018181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 108
+      y: 129
+      width: 44
+      height: 55
+    spriteID: 99b5d63a0f3de1243941aa8c70fa129f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 108, y: 129}
+  - name: Shugo_Frame_51
     originalName: 
     pivot: {x: 0.47727275, y: 0}
     alignment: 9
@@ -1130,7 +1150,7 @@ ScriptedImporter:
       y: 129
       width: 44
       height: 52
-    spriteID: 99b5d63a0f3de1243941aa8c70fa129f
+    spriteID: c90da211297498645bf3cdd4d7e6371f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1139,7 +1159,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 423, y: 129}
-  - name: Shugo_Frame_51
+  - name: Shugo_Frame_52
     originalName: 
     pivot: {x: 0.4883721, y: 0}
     alignment: 9
@@ -1150,7 +1170,7 @@ ScriptedImporter:
       y: 192
       width: 43
       height: 51
-    spriteID: c90da211297498645bf3cdd4d7e6371f
+    spriteID: b2088573e0900694580672e50be87a76
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1159,7 +1179,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 103, y: 192}
-  - name: Shugo_Frame_52
+  - name: Shugo_Frame_53
     originalName: 
     pivot: {x: 0.44444445, y: 0.018867925}
     alignment: 9
@@ -1170,7 +1190,7 @@ ScriptedImporter:
       y: 4
       width: 45
       height: 53
-    spriteID: b2088573e0900694580672e50be87a76
+    spriteID: 32020877419846841a09f37e8fb2dc64
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1179,7 +1199,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 451, y: 4}
-  - name: Shugo_Frame_53
+  - name: Shugo_Frame_54
     originalName: 
     pivot: {x: 0.45833334, y: 0.020408163}
     alignment: 9
@@ -1190,7 +1210,7 @@ ScriptedImporter:
       y: 129
       width: 48
       height: 49
-    spriteID: 32020877419846841a09f37e8fb2dc64
+    spriteID: c3a928e5457dc1349af1d78bcdd508ab
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1199,7 +1219,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 264, y: 129}
-  - name: Shugo_Frame_54
+  - name: Shugo_Frame_55
     originalName: 
     pivot: {x: 0.45833334, y: 0.045454547}
     alignment: 9
@@ -1210,7 +1230,7 @@ ScriptedImporter:
       y: 192
       width: 48
       height: 44
-    spriteID: c3a928e5457dc1349af1d78bcdd508ab
+    spriteID: 376e8d66a4634d143bb0c3a0afd390de
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1219,7 +1239,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 202, y: 192}
-  - name: Shugo_Frame_55
+  - name: Shugo_Frame_56
     originalName: 
     pivot: {x: 0.43243244, y: 0.018181818}
     alignment: 9
@@ -1230,7 +1250,7 @@ ScriptedImporter:
       y: 254
       width: 37
       height: 55
-    spriteID: 376e8d66a4634d143bb0c3a0afd390de
+    spriteID: f5a5bc7a5b98e3043ae9ed8ad6b11ed0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1239,7 +1259,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 49, y: 254}
-  - name: Shugo_Frame_56
+  - name: Shugo_Frame_57
     originalName: 
     pivot: {x: 0.43243244, y: 0.016949153}
     alignment: 9
@@ -1250,7 +1270,7 @@ ScriptedImporter:
       y: 254
       width: 37
       height: 59
-    spriteID: f5a5bc7a5b98e3043ae9ed8ad6b11ed0
+    spriteID: 450faa492cbafea40b2db22872061b05
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1259,7 +1279,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 254}
-  - name: Shugo_Frame_57
+  - name: Shugo_Frame_58
     originalName: 
     pivot: {x: 0.425, y: 0}
     alignment: 9
@@ -1270,26 +1290,6 @@ ScriptedImporter:
       y: 254
       width: 40
       height: 50
-    spriteID: 450faa492cbafea40b2db22872061b05
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 142, y: 254}
-  - name: Shugo_Frame_58
-    originalName: 
-    pivot: {x: 0.4054054, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 48
-      y: 321
-      width: 37
-      height: 50
     spriteID: d05a29a0575b41243ae5081014d7748a
     spriteBone: []
     spriteOutline: []
@@ -1298,18 +1298,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 48, y: 321}
+    uvTransform: {x: 142, y: 254}
   - name: Shugo_Frame_52
     originalName: 
-    pivot: {x: 0.45945948, y: 0.020833334}
+    pivot: {x: 0.4054054, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 376
-      y: 321
+      x: 48
+      y: 376
       width: 37
-      height: 48
+      height: 50
     spriteID: 791060c2adc6d2e4cb8a689920eac41c
     spriteBone: []
     spriteOutline: []
@@ -1318,18 +1318,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 376, y: 321}
+    uvTransform: {x: 48, y: 376}
   - name: Shugo_Frame_53
     originalName: 
-    pivot: {x: 0.46153846, y: 0.02173913}
+    pivot: {x: 0.45945948, y: 0.020833334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 141
-      y: 321
-      width: 39
-      height: 46
+      x: 376
+      y: 376
+      width: 37
+      height: 48
     spriteID: aaa1a037dd6832646bde8dbf4f59f653
     spriteBone: []
     spriteOutline: []
@@ -1338,18 +1338,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 141, y: 321}
+    uvTransform: {x: 376, y: 376}
   - name: Shugo_Frame_54
     originalName: 
-    pivot: {x: 0.45945948, y: 0.022222223}
+    pivot: {x: 0.46153846, y: 0.02173913}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 90
-      y: 381
-      width: 37
-      height: 45
+      x: 141
+      y: 376
+      width: 39
+      height: 46
     spriteID: 0dae87e8d63877b4aac5036e5dbb3719
     spriteBone: []
     spriteOutline: []
@@ -1358,18 +1358,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 90, y: 381}
+    uvTransform: {x: 141, y: 376}
   - name: Shugo_Frame_55
     originalName: 
-    pivot: {x: 0.42857143, y: 0.020833334}
+    pivot: {x: 0.45945948, y: 0.022222223}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 47
-      y: 381
-      width: 35
-      height: 48
+      x: 90
+      y: 436
+      width: 37
+      height: 45
     spriteID: 6f5b9b252e405e741b55853063597c65
     spriteBone: []
     spriteOutline: []
@@ -1378,18 +1378,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 47, y: 381}
+    uvTransform: {x: 90, y: 436}
   - name: Shugo_Frame_56
     originalName: 
-    pivot: {x: 0.42857143, y: 0.019607844}
+    pivot: {x: 0.42857143, y: 0.020833334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 243
-      y: 321
+      x: 47
+      y: 436
       width: 35
-      height: 51
+      height: 48
     spriteID: 3f48e4a68afb6b041b6ea3b1194de022
     spriteBone: []
     spriteOutline: []
@@ -1398,7 +1398,27 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 243, y: 321}
+    uvTransform: {x: 47, y: 436}
+  - name: Shugo_Frame_64
+    originalName: 
+    pivot: {x: 0.42857143, y: 0.019607844}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 243
+      y: 376
+      width: 35
+      height: 51
+    spriteID: fffc74a857c093548ad2c1f653cbaaef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 243, y: 376}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -1726,31 +1746,31 @@ ScriptedImporter:
         x: 46
         y: 31
         width: 38
-        height: 44
+        height: 45
       spriteId: 57d4824c8f0b4c74bae8c138f98ad9b3
     - name: Shugo_Frame_40
       frameIndex: 40
+      cellRect:
+        x: 46
+        y: 31
+        width: 38
+        height: 44
+      spriteId: 0636128c7ce9077448ff91b84e46e04c
+    - name: Shugo_Frame_41
+      frameIndex: 41
       cellRect:
         x: 49
         y: 31
         width: 33
         height: 52
-      spriteId: 0636128c7ce9077448ff91b84e46e04c
-    - name: Shugo_Frame_41
-      frameIndex: 41
+      spriteId: 286d3f7a5b8aaf541a8e2a3cb618968c
+    - name: Shugo_Frame_42
+      frameIndex: 42
       cellRect:
         x: 44
         y: 31
         width: 43
         height: 51
-      spriteId: 286d3f7a5b8aaf541a8e2a3cb618968c
-    - name: Shugo_Frame_42
-      frameIndex: 42
-      cellRect:
-        x: 38
-        y: 30
-        width: 49
-        height: 53
       spriteId: 5cfb075783e598f438c4356ed6cecf9e
     - name: Shugo_Frame_43
       frameIndex: 43
@@ -1771,26 +1791,26 @@ ScriptedImporter:
     - name: Shugo_Frame_45
       frameIndex: 45
       cellRect:
-        x: 44
-        y: 31
-        width: 42
-        height: 51
+        x: 38
+        y: 30
+        width: 49
+        height: 53
       spriteId: 4f7817a22077c134686fe78eeb4eda91
     - name: Shugo_Frame_46
       frameIndex: 46
       cellRect:
         x: 44
         y: 31
-        width: 43
+        width: 42
         height: 51
       spriteId: d69efd98acf3da0449ddf78ae8c4e19f
     - name: Shugo_Frame_47
       frameIndex: 47
       cellRect:
-        x: 40
+        x: 44
         y: 31
-        width: 42
-        height: 53
+        width: 43
+        height: 51
       spriteId: 81a1e3a4cdc41df419c1854f95052950
     - name: Shugo_Frame_48
       frameIndex: 48
@@ -1811,50 +1831,50 @@ ScriptedImporter:
     - name: Shugo_Frame_50
       frameIndex: 50
       cellRect:
-        x: 43
-        y: 32
+        x: 40
+        y: 31
         width: 42
-        height: 50
+        height: 53
       spriteId: 99b5d63a0f3de1243941aa8c70fa129f
     - name: Shugo_Frame_51
       frameIndex: 51
       cellRect:
         x: 43
         y: 32
-        width: 41
-        height: 49
+        width: 42
+        height: 50
       spriteId: c90da211297498645bf3cdd4d7e6371f
     - name: Shugo_Frame_52
       frameIndex: 52
+      cellRect:
+        x: 43
+        y: 32
+        width: 41
+        height: 49
+      spriteId: b2088573e0900694580672e50be87a76
+    - name: Shugo_Frame_53
+      frameIndex: 53
       cellRect:
         x: 44
         y: 31
         width: 43
         height: 51
-      spriteId: b2088573e0900694580672e50be87a76
-    - name: Shugo_Frame_53
-      frameIndex: 53
-      cellRect:
-        x: 42
-        y: 31
-        width: 46
-        height: 47
       spriteId: 32020877419846841a09f37e8fb2dc64
     - name: Shugo_Frame_54
       frameIndex: 54
       cellRect:
         x: 42
-        y: 30
+        y: 31
         width: 46
-        height: 42
+        height: 47
       spriteId: c3a928e5457dc1349af1d78bcdd508ab
     - name: Shugo_Frame_55
       frameIndex: 55
       cellRect:
-        x: 48
-        y: 31
-        width: 35
-        height: 53
+        x: 42
+        y: 30
+        width: 46
+        height: 42
       spriteId: 376e8d66a4634d143bb0c3a0afd390de
     - name: Shugo_Frame_56
       frameIndex: 56
@@ -1862,55 +1882,55 @@ ScriptedImporter:
         x: 48
         y: 31
         width: 35
-        height: 57
+        height: 53
       spriteId: f5a5bc7a5b98e3043ae9ed8ad6b11ed0
     - name: Shugo_Frame_57
       frameIndex: 57
+      cellRect:
+        x: 48
+        y: 31
+        width: 35
+        height: 57
+      spriteId: 450faa492cbafea40b2db22872061b05
+    - name: Shugo_Frame_58
+      frameIndex: 58
       cellRect:
         x: 47
         y: 32
         width: 38
         height: 48
-      spriteId: 450faa492cbafea40b2db22872061b05
-    - name: Shugo_Frame_58
-      frameIndex: 58
+      spriteId: d05a29a0575b41243ae5081014d7748a
+    - name: Shugo_Frame_59
+      frameIndex: 59
       cellRect:
         x: 49
         y: 32
         width: 35
         height: 48
-      spriteId: d05a29a0575b41243ae5081014d7748a
-    - name: Shugo_Frame_59
-      frameIndex: 59
+      spriteId: 791060c2adc6d2e4cb8a689920eac41c
+    - name: Shugo_Frame_60
+      frameIndex: 60
       cellRect:
         x: 47
         y: 31
         width: 35
         height: 46
-      spriteId: 791060c2adc6d2e4cb8a689920eac41c
-    - name: Shugo_Frame_60
-      frameIndex: 60
+      spriteId: aaa1a037dd6832646bde8dbf4f59f653
+    - name: Shugo_Frame_61
+      frameIndex: 61
       cellRect:
         x: 46
         y: 31
         width: 37
         height: 44
-      spriteId: aaa1a037dd6832646bde8dbf4f59f653
-    - name: Shugo_Frame_61
-      frameIndex: 61
+      spriteId: 0dae87e8d63877b4aac5036e5dbb3719
+    - name: Shugo_Frame_62
+      frameIndex: 62
       cellRect:
         x: 47
         y: 31
         width: 35
         height: 43
-      spriteId: 0dae87e8d63877b4aac5036e5dbb3719
-    - name: Shugo_Frame_62
-      frameIndex: 62
-      cellRect:
-        x: 49
-        y: 31
-        width: 33
-        height: 46
       spriteId: 6f5b9b252e405e741b55853063597c65
     - name: Shugo_Frame_63
       frameIndex: 63
@@ -1918,8 +1938,16 @@ ScriptedImporter:
         x: 49
         y: 31
         width: 33
-        height: 49
+        height: 46
       spriteId: 3f48e4a68afb6b041b6ea3b1194de022
+    - name: Shugo_Frame_64
+      frameIndex: 64
+      cellRect:
+        x: 49
+        y: 31
+        width: 33
+        height: 49
+      spriteId: fffc74a857c093548ad2c1f653cbaaef
     linkedCells: []
     parentIndex: -1
   platformSettings:

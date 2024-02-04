@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{d22be261-f939-4079-b534-b5d3956f58e7}">
+	<object class="AudioFile" id="{158fbdfd-ba53-4bf5-b656-2dc797c6798c}">
 		<property name="assetPath">
-			<value>FireSpewStart.mp3</value>
+			<value>Shugo Fire Spew/ShugoFireSpew_01.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>3.1869387755102041</value>
+			<value>0.3341950113378685</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{199058eb-45a1-46fb-bd35-0d8ea40a3f2d}</destination>
