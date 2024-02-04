@@ -2,7 +2,27 @@ fileFormatVersion: 2
 guid: 2cb0b369463e2b741811cb88b5c413ae
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: FlintLockBandit_Death
+    second: {fileID: 7400000, guid: 376f9fd160687f94c8d14f419bc75291, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: FlintLockBandit_Idle
+    second: {fileID: 7400000, guid: bc5a649d4b771714f9608010f5b81756, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: FlintLockBandit_Move
+    second: {fileID: 7400000, guid: 29fb3d3f7a8b59a4ca60180d2e24103f, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: FlintLockBandit_Roll
+    second: {fileID: 7400000, guid: 07cae87f3f3b7444d93ac0df6744b790, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -95,7 +115,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638424365648724544
+  platformSettingsDirtyTick: 638425899778917569
   textureAssetName: 
   singleSpriteImportData:
   - name: 

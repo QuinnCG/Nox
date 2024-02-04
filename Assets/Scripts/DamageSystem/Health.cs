@@ -60,6 +60,8 @@ namespace Game.DamageSystem
 		private IEnumerator _hurtSequence;
 		private EventInstance _hurtSnapshot;
 
+		private SpriteRenderer _renderer;
+
 		private void Awake()
 		{
 			Current = Max;
@@ -75,6 +77,8 @@ namespace Game.DamageSystem
 			{
 				MakeCritical();
 			}
+
+			_renderer = GetComponent<SpriteRenderer>();
 		}
 
 		private void OnDestroy()
@@ -141,6 +145,14 @@ namespace Game.DamageSystem
 			else
 			{
 				AudioManager.PlayOneShot(HurtSound);
+				
+				if (_hurtSequence != null)
+				{
+					StopCoroutine(_hurtSequence);
+				}
+
+				_hurtSequence = HurtSequence();
+				StartCoroutine(_hurtSequence);
 			}
 
 			if (Current < Max * CriticalPercent)
@@ -235,11 +247,11 @@ namespace Game.DamageSystem
 				_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			}
 
-			_hurtSequence = HurtSequence();
+			_hurtSequence = PlayerHurtSequence();
 			StartCoroutine(_hurtSequence);
 		}
 
-		private IEnumerator HurtSequence()
+		private IEnumerator PlayerHurtSequence()
 		{
 			var renderer = GetComponentInChildren<SpriteRenderer>();
 			_hurtSnapshot = RuntimeManager.CreateInstance("snapshot:/Hurt");
@@ -254,6 +266,26 @@ namespace Game.DamageSystem
 			}
 
 			_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+		}
+
+		private IEnumerator HurtSequence()
+		{
+			Material mat = _renderer.material;
+
+			float a = 0f;
+			while (a < 1f)
+			{
+				a += Time.deltaTime * 2f;
+				mat.SetFloat("_Flash", a);
+				yield return null;
+			}
+
+			while (a > 0f)
+			{
+				a -= Time.deltaTime * 2f;
+				mat.SetFloat("_Flash", a);
+				yield return null;
+			}
 		}
 
 		private void OnEnterCritical()
