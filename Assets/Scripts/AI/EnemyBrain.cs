@@ -181,7 +181,7 @@ namespace Game.AI
 
 		protected Tween SuperJump(Vector2 target, float height, float duration, GameObject shadowPrefab)
 		{
-			Collider.enabled = false;
+			//Collider.enabled = false;
 			GameObject shadow = Instantiate(shadowPrefab, transform.position, Quaternion.identity);
 
 			Vector2 jumpStart = transform.position;
@@ -195,8 +195,16 @@ namespace Game.AI
 			};
 			tween.onComplete += () =>
 			{
-				Collider.enabled = true;
+				//Collider.enabled = true;
 				Destroy(shadow);
+			};
+			tween.onKill += () =>
+			{
+				//Collider.enabled = true;
+				if (shadow != null)
+				{
+					Destroy(shadow);
+				}
 			};
 
 			return tween;
