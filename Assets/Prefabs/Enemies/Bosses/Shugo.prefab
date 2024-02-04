@@ -236,20 +236,20 @@ MonoBehaviour:
       Data3: -1942495046
       Data4: 247254764
     Path: event:/SFX/Land
-  FireSpewStartSound:
+  FireSpewSakeChugSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -154815369
+      Data2: 1302564708
+      Data3: -493198943
+      Data4: 1002517000
+    Path: event:/SFX/ShugoSakeChug
   FireSpewSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1805290468
+      Data2: 1213996766
+      Data3: -1585692239
+      Data4: -758624647
+    Path: event:/SFX/ShugoFireSpew
   FireStompSound:
     Guid:
       Data1: 15447917

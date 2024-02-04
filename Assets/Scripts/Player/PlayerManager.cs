@@ -151,23 +151,12 @@ namespace Game.Player
 
 			var handle = new DamageSupressorHandle();
 			_health.RegisterDamageSupressor(handle);
-			OnImmunityStart();
+			_health.StartHurt();
 
 			DOVirtual.DelayedCall(DamageImmunityDuration, () =>
 			{
 				_health.UnRegisterDamageSupressor(handle);
-				OnImmunityEnd();
 			});
-		}
-
-		private void OnImmunityStart()
-		{
-
-		}
-
-		private void OnImmunityEnd()
-		{
-
 		}
 	}
 }

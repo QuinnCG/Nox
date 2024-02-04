@@ -1,13 +1,14 @@
 ﻿using DG.Tweening;
+using FMOD.Studio;
 using FMODUnity;
 using Game.GeneralManagers;
 using Game.Player;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.TextCore.Text;
 
 namespace Game.DamageSystem
 {
@@ -55,6 +56,9 @@ namespace Game.DamageSystem
 
 		private bool isCriticalIndicatorVisible = false;
 		private readonly HashSet<DamageSupressorHandle> _damageSuppressors = new();
+
+		private IEnumerator _hurtSequence;
+		private EventInstance _hurtSnapshot;
 
 		private void Awake()
 		{
@@ -217,6 +221,39 @@ namespace Game.DamageSystem
 		public void OnPossessed()
 		{
 			_playCriticalSFXTween?.Kill();
+		}
+
+		public void StartHurt()
+		{
+			if (_hurtSequence != null)
+			{
+				StopCoroutine(_hurtSequence);
+			}
+
+			if (_hurtSnapshot.isValid())
+			{
+				_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			}
+
+			_hurtSequence = HurtSequence();
+			StartCoroutine(_hurtSequence);
+		}
+
+		private IEnumerator HurtSequence()
+		{
+			var renderer = GetComponentInChildren<SpriteRenderer>();
+			_hurtSnapshot = RuntimeManager.CreateInstance("snapshot:/Hurt");
+			_hurtSnapshot.start();
+
+			for (int i = 0; i < 7; i++)
+			{
+				renderer.enabled = false;
+				yield return new WaitForSeconds(0.2f);
+				renderer.enabled = true;
+				yield return new WaitForSeconds(0.2f);
+			}
+
+			_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 		}
 
 		private void OnEnterCritical()

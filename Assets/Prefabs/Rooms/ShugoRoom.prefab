@@ -27847,23 +27847,23 @@ PrefabInstance:
       objectReference: {fileID: 6740994523812256864}
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossMusic.Path
-      value: event:/Music/ShugoTheDrunkard
+      value: event:/Music/DisgracedHatamoto
       objectReference: {fileID: 0}
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossMusic.Guid.Data1
-      value: 1556373062
+      value: 1047568949
       objectReference: {fileID: 0}
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossMusic.Guid.Data2
-      value: 1308543364
+      value: 1152608133
       objectReference: {fileID: 0}
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossMusic.Guid.Data3
-      value: -1367349594
+      value: -2114752103
       objectReference: {fileID: 0}
     - target: {fileID: 6785620383205610589, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: BossMusic.Guid.Data4
-      value: 1487753060
+      value: 748456729
       objectReference: {fileID: 0}
     - target: {fileID: 7205716507883102904, guid: 63e1427757863924ea0852761c3ee622, type: 3}
       propertyPath: m_LocalPosition.x
