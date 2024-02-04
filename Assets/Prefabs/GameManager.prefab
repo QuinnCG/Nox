@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701361b5a7bcbb04da6a4cbfe9a1a267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultMasterVolume: 0.6
-  DefaultSFXVolume: 0.45
+  DefaultMasterVolume: 0.8
+  DefaultSFXVolume: 0.6
   DefaultMusicVolume: 0.7
   DefaultAmbienceVolume: 0.7
 --- !u!114 &-486718709300677696
@@ -93,5 +93,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rooms:
   - {fileID: 549997748927306544, guid: 3b74d9bf413218843b4b342c01f2245b, type: 3}
-  - {fileID: 549997748927306544, guid: 18ffea8cf51c04d439d82fc716b867dd, type: 3}
+  - {fileID: 549997748927306544, guid: 3b74d9bf413218843b4b342c01f2245b, type: 3}
+  - {fileID: 549997748927306544, guid: 3b74d9bf413218843b4b342c01f2245b, type: 3}
+  - {fileID: 549997748927306544, guid: 3b74d9bf413218843b4b342c01f2245b, type: 3}
+  - {fileID: 549997748927306544, guid: 3b74d9bf413218843b4b342c01f2245b, type: 3}
   <CurrentRoom>k__BackingField: 1

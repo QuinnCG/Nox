@@ -72,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{1d3280a5-d3ba-4ded-ab69-9ac063d198f9}">
+		<property name="volume">
+			<value>2</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{dafffd89-290f-4d54-87e3-deca746e017e}</destination>
 		</relationship>
@@ -123,8 +126,17 @@
 	<object class="MixerBusFader" id="{fdc57c8a-d5eb-47e7-9ef0-8c3813ad9331}" />
 	<object class="MixerBusFader" id="{1f4ff56c-601d-4af8-9019-d0b43c720eeb}" />
 	<object class="SpatialiserEffect" id="{60b5160b-de5e-4a3d-884d-ab8a57f3b81b}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="maximumDistance">
+			<value>35</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
 		<property name="panBlend">
-			<value>0.819999993</value>
+			<value>0.669999957</value>
 		</property>
 	</object>
 	<object class="SFXReverbEffect" id="{50f4f00a-f4ac-45ed-8bb1-484ae3520a6f}">
@@ -134,7 +146,7 @@
 	</object>
 	<object class="PitchShifterEffect" id="{dc2a55e9-be24-4e5c-acc7-ed69020c5b6e}">
 		<property name="pitch">
-			<value>0.859999955</value>
+			<value>0.839999974</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{4ef9b1ec-c54e-451a-8e49-91e06d3bbff4}</destination>
@@ -146,6 +158,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{fbdea2aa-dc20-4edc-86e8-138015bbe394}">
+		<property name="pitch">
+			<value>-6.5</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{6438fa3e-c44a-4ad1-9974-9b9d3872a256}</destination>
 		</relationship>
@@ -160,7 +175,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>6.5</value>
+			<value>8.5</value>
 		</property>
 	</object>
 </objects>

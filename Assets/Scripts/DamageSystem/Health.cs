@@ -86,6 +86,11 @@ namespace Game.DamageSystem
 		{
 			// This Ensures that the critical indicator is destroyed when the Health component is destroyed.
 			HideCriticalIndicator();
+
+			if (_hurtSnapshot.isValid())
+			{
+				_hurtSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			}
 		}
 
 		public void SetMax(float max)

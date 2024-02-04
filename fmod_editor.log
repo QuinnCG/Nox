@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000299723C6768 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000002A4FDE9BD08 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,7 +18,142 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] SoundI::release                          : Disgraced Hatamoto_SecondPhase (000002A3465484B8)
+[LOG] SoundI::release                          :     Disgraced Hatamoto_SecondPhase (000002A4DA5518C8)
+[LOG] SoundI::release                          :     Disgraced Hatamoto_SecondPhase (000002A42D9F8598)
+[LOG] SoundI::release                          : Disgraced Hatamoto (000002A34828ADC8)
+[LOG] SoundI::release                          :     Disgraced Hatamoto (000002A4DA551C08)
+[LOG] SoundI::release                          :     Disgraced Hatamoto (000002A42D9F83E8)
+[LOG] SystemI::createSound                     : filename = FMOD/BossRush2024/Build/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000002A4ED8B3078, queue head = 000002A59E32E1E8, queue count = 0
+[LOG] SystemI::createSound                     : filename = FMOD/BossRush2024/Build/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000002A4ED8B33D8, queue head = 000002A59E32E1E8, queue count = 1
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002A4ED8B3078
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/BossRush2024/Build/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 8932384
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 6048
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000002A4EA90F5A0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Disgraced Hatamoto', format=5, channels=2, frequency=48000, lengthbytes=1734528, lengthpcm=5924592, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.550293.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002A4ED8B3078
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002A4ED8B33D8
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/BossRush2024/Build/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 8932384
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 6048
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000002A4EA910220
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Disgraced Hatamoto_SecondPhase', format=5, channels=2, frequency=48000, lengthbytes=1585440, lengthpcm=5924592, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.192535.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002A4ED8B33D8
+[LOG] SoundI::release                          : AmbientWinter_02 (000002A346548668)
+[LOG] SoundI::release                          :     AmbientWinter_02 (000002A4DA5513E8)
+[LOG] SoundI::release                          :     AmbientWinter_02 (000002A42D9F88F8)
+[LOG] SoundI::release                          : AmbientWind (000002A346547DF8)
+[LOG] SoundI::release                          :     AmbientWind (000002A4DA550BC8)
+[LOG] SoundI::release                          :     AmbientWind (000002A42D9F8748)
+[LOG] SoundI::release                          : Disgraced Hatamoto_SecondPhase (000002A4ED8B33D8)
+[LOG] SoundI::release                          :     Disgraced Hatamoto_SecondPhase (000002A4FA515148)
+[LOG] SoundI::release                          :     Disgraced Hatamoto_SecondPhase (000002A49F7493C8)
+[LOG] SoundI::release                          : Disgraced Hatamoto (000002A4ED8B3078)
+[LOG] SoundI::release                          :     Disgraced Hatamoto (000002A4FA514108)
+[LOG] SoundI::release                          :     Disgraced Hatamoto (000002A49F749A88)
+[LOG] SoundI::release                          :  (000002A565789988)
+[LOG] SoundI::release                          :     ButtonHover_01 (000002A52076C318)
+[LOG] SoundI::release                          :  (000002A565788848)
+[LOG] SoundI::release                          :     Dash_01 (000002A353B63DE8)
+[LOG] SoundI::release                          :  (000002A565785E98)
+[LOG] SoundI::release                          :     Dash_02 (000002A353B647A8)
+[LOG] SoundI::release                          :  (000002A565784908)
+[LOG] SoundI::release                          :     Dash_03 (000002A353B61F08)
+[LOG] SoundI::release                          :  (000002A565787148)
+[LOG] SoundI::release                          :     Dash_04 (000002A353B61A28)
+[LOG] SoundI::release                          :  (000002A56578B7B8)
+[LOG] SoundI::release                          :     ShugoSakeChug (000002A4ED531BE8)
+[LOG] SoundI::release                          :  (000002A565784A78)
+[LOG] SoundI::release                          :     GateClose_01 (000002A353B62248)
+[LOG] SoundI::release                          :  (000002A565788C98)
+[LOG] SoundI::release                          :     GateClose_02 (000002A353B64608)
+[LOG] SoundI::release                          :  (000002A35D246EE8)
+[LOG] SoundI::release                          :     ShugoFireSpew_01 (000002A4ED531708)
+[LOG] SoundI::release                          :  (000002A56578B928)
+[LOG] SoundI::release                          :     ShugoFireSpew_02 (000002A4ED531088)
+[LOG] SoundI::release                          :  (000002A35D246088)
+[LOG] SoundI::release                          :     ShugoFireSpew_03 (000002A4ED5318A8)
+[LOG] SoundI::release                          :  (000002A35D2478F8)
+[LOG] SoundI::release                          :     land_01 (000002A521D74DB8)
+[LOG] SoundI::release                          :  (000002A49F0351E8)
+[LOG] SoundI::release                          :     land_02 (000002A521D743F8)
+[LOG] SoundI::release                          :  (000002A35D247338)
+[LOG] SoundI::release                          :     land_03 (000002A521D74C18)
+[LOG] SoundI::release                          :  (000002A49F038CD8)
+[LOG] SoundI::release                          :     land_04 (000002A521D74598)
+[LOG] SoundI::release                          :  (000002A56578B368)
+[LOG] SoundI::release                          :     jump_01 (000002A353B63F88)
+[LOG] SoundI::release                          :  (000002A5657862E8)
+[LOG] SoundI::release                          :     jump_02 (000002A353B62728)
+[LOG] SoundI::release                          :  (000002A565786008)
+[LOG] SoundI::release                          :     jump_03 (000002A353B63288)
+[LOG] SoundI::release                          :  (000002A565786A18)
+[LOG] SoundI::release                          :     jump_04 (000002A353B64948)
+[LOG] SoundI::release                          :  (000002A49F035D68)
+[LOG] SoundI::release                          :     FireballThrow_01 (000002A59E1715C8)
+[LOG] SoundI::release                          :  (000002A49F038888)
+[LOG] SoundI::release                          :     FireballThrow_02 (000002A59E171C48)
+[LOG] SoundI::release                          :  (000002A49F038B68)
+[LOG] SoundI::release                          :     FireballThrow_03 (000002A59E171768)
+[LOG] SoundI::release                          :  (000002A49F038718)
+[LOG] SoundI::release                          :     FireballThrow_04 (000002A59E171428)
+[LOG] SoundI::release                          :  (000002A35D247788)
+[LOG] SoundI::release                          :     Hurt_01 (000002A58271BBC8)
+[LOG] SoundI::release                          :  (000002A35D247618)
+[LOG] SoundI::release                          :     Hurt_02 (000002A58271B068)
+[LOG] SoundI::release                          :  (000002A35D246D78)
+[LOG] SoundI::release                          :     Hurt_03 (000002A58271B888)
+[LOG] SoundI::release                          :  (000002A35D247058)
+[LOG] SoundI::release                          :     Hurt_04 (000002A58271B208)
+[LOG] SoundI::release                          :  (000002A35D2471C8)
+[LOG] SoundI::release                          :     Hurt_05 (000002A58271B6E8)
+[LOG] SoundI::release                          :  (000002A35D246648)
+[LOG] SoundI::release                          :     Hurt_06 (000002A56581DBF8)
+[LOG] SoundI::release                          :  (000002A565788288)
+[LOG] SoundI::release                          :     Footstep_01 (000002A353B613A8)
+[LOG] SoundI::release                          :  (000002A5657883F8)
+[LOG] SoundI::release                          :     Footstep_02 (000002A353B62588)
+[LOG] SoundI::release                          :  (000002A5657844B8)
+[LOG] SoundI::release                          :     Footstep_03 (000002A353B64AE8)
+[LOG] SoundI::release                          :  (000002A565788B28)
+[LOG] SoundI::release                          :     Footstep_04 (000002A353B61548)
+[LOG] SoundI::release                          :  (000002A5657858D8)
+[LOG] SoundI::release                          :     Footstep_05 (000002A353B642C8)
+[LOG] SoundI::release                          :  (000002A5657855F8)
+[LOG] SoundI::release                          :     Footstep_06 (000002A353B61208)
+[LOG] SoundI::release                          :  (000002A35D2461F8)
+[LOG] SoundI::release                          :     FireballHit_01 (000002A56581D8B8)
+[LOG] SoundI::release                          :  (000002A35D2464D8)
+[LOG] SoundI::release                          :     FireballHit_02 (000002A56581D578)
+[LOG] SoundI::release                          :  (000002A35D2474A8)
+[LOG] SoundI::release                          :     FireballHit_03 (000002A56581D238)
+[LOG] SoundI::release                          :  (000002A35D246C08)
+[LOG] SoundI::release                          :     FireballLoop (000002A4ED531228)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -26,3 +161,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.

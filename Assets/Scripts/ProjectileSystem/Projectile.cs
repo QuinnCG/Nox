@@ -110,8 +110,6 @@ namespace Game.ProjectileSystem
 
 		protected virtual void OnTriggerEnter2D(Collider2D collider)
 		{
-			Debug.Log($"Trigger enter: {collider.gameObject.name}. CanCollide: {CanCollide(collider)}.");
-
 			if (CanCollide(collider) && collider.TryGetComponent(out Health health))
 			{
 				OnHitDamageable(health);

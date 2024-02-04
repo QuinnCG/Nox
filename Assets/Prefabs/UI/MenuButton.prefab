@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 7343911001589575414}
   - component: {fileID: 5980360188613350661}
   - component: {fileID: 5509970787640556955}
+  - component: {fileID: 2397659413565108327}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -224,5 +225,40 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2397659413565108327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4989712542510668447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ec054f4eb09674291a64c8434df1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoverSound:
+    Guid:
+      Data1: -1770396530
+      Data2: 1165488367
+      Data3: 958667170
+      Data4: -695604815
+    Path: event:/SFX/ButtonHover
+  PressSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  OnPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHovered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnhovered:
     m_PersistentCalls:
       m_Calls: []

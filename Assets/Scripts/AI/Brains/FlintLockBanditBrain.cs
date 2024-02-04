@@ -112,7 +112,6 @@ namespace Game.AI.Brains
 			var duration = new Timer(Random.Range(2f, 4f));
 			while (!duration.IsDone)
 			{
-				Debug.Log("!");
 				ShootAtPlayer();
 				yield return new YieldSeconds(0.2f);
 			}

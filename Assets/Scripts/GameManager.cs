@@ -22,6 +22,10 @@ namespace Game
 			var instance = Addressables.InstantiateAsync("GameManager.prefab")
 				.WaitForCompletion();
 
+#if UNITY_EDITOR
+			USceneManager.LoadSceneAsync(0);
+#endif
+
 			DontDestroyOnLoad(instance);
 		}
 

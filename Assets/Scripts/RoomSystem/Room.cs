@@ -81,7 +81,7 @@ namespace Game.RoomSystem
 			{
 				HasStarted = true;
 
-				EntranceDoor.Close(true);
+				EntranceDoor.Close();
 				Boss.OnPlayerEnter();
 			}
 		}

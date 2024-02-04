@@ -330,10 +330,10 @@ namespace Game.Player
 
 			// Actual possession.
 
+			AttenuationObject.parent = character.transform;
+
 			PossessedCharacter = character;
 			PossessedCharacter.Possess();
-
-			AttenuationObject.parent = character.transform;
 
 			var health = PossessedCharacter.GetComponent<Health>();
 			health.FullHeal();
@@ -347,8 +347,8 @@ namespace Game.Player
 				ShowSelfIndicator();
 			}
 
-			_input.enabled = true;
 			OnCharacterPossessed?.Invoke(PossessedCharacter);
+			_input.enabled = true;
 
 			PossessingNewTarget = false;
 		}

@@ -150,16 +150,16 @@ MonoBehaviour:
   ClosedSprite: {fileID: -1441132918473199805, guid: 5aa1adf6b952c584b89a4d448c94a762, type: 3}
   OpenSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1687173918
+      Data2: 1183813494
+      Data3: 32230048
+      Data4: 225046634
+    Path: event:/SFX/GateOpen
   CloseSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -2049882955
+      Data2: 1253006153
+      Data3: 369748905
+      Data4: -608572648
+    Path: event:/SFX/GateClose
   StartOpen: 0

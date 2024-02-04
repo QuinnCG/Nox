@@ -85,7 +85,7 @@ namespace Game.AI.BossSystem.BossBrains
 		private Transform[] FireSpewPoints;
 
 		[SerializeField, Required, BoxGroup("References")]
-		private Transform[] JumpPoints;
+		private BoxCollider2D JumpRegion;
 
 		[SerializeField, Required, BoxGroup("References")]
 		private Transform[] SummonPoints;
@@ -107,7 +107,6 @@ namespace Game.AI.BossSystem.BossBrains
 
 		[SerializeField, BoxGroup("SFX"), Required]
 		private EventReference FireStompSound;
-
 
 		private bool IsSecondPhase => Phase > 1;
 		private float RealJumpDuration => IsSecondPhase ? JumpDuration : (JumpDuration * JumpDurationFactor);
@@ -214,7 +213,16 @@ namespace Game.AI.BossSystem.BossBrains
 				// Jump to random point.
 				else
 				{
-					Vector2 target = GetPointClosestTo(PlayerPosition, FireSpewPoints, true);
+					Vector2 center = JumpRegion.bounds.center;
+					Vector2 half = JumpRegion.size / 2f;
+					Vector2 lower = center - half;
+					Vector2 upper = center + half;
+
+					var target = new Vector2()
+					{
+						x = Random.Range(lower.x, upper.x),
+						y = Random.Range(lower.y, upper.y)
+					};
 
 					Tween jump = ShugoJump(target, JumpHeight, RealJumpDuration);
 					jump.onComplete += () => Idle();
@@ -267,7 +275,7 @@ namespace Game.AI.BossSystem.BossBrains
 			Tween jump = ShugoJump(target, JumpHeight, JumpDuration);
 			yield return jump.Yield();
 
-			AudioManager.PlayOneShot(FireSpewStartSound);
+			DOVirtual.DelayedCall(0.85f, () => AudioManager.PlayOneShot(FireSpewStartSound));
 			yield return Animator.Play(FireSpewStart).Yield();
 
 			for (int i = 0; i < FireSpewWaveCount; i++)

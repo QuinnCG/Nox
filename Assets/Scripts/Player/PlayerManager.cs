@@ -41,7 +41,7 @@ namespace Game.Player
 		private PossessionManager _possession;
 
 		// Possessed components.
-		private Movement _movement;
+		private Movement Movement => PossessionManager.Instance.PossessedCharacter.GetComponent<Movement>();
 		private Health _health;
 
 		private bool _dashImmunityEnabled;
@@ -58,7 +58,6 @@ namespace Game.Player
 
 			_possession.OnCharacterPossessed += character =>
 			{
-				_movement = character.GetComponent<Movement>();
 				_health = character.GetComponent<Health>();
 				_health.SetDisplayCriticalIndiactor(false);
 
@@ -100,12 +99,12 @@ namespace Game.Player
 				_possession.ExitPossessionMode();
 			}
 
-			if (_movement.IsDashing && !_dashImmunityEnabled)
+			if (Movement.IsDashing && !_dashImmunityEnabled)
 			{
 				_dashImmunityEnabled = true;
 				_health.RegisterDamageSupressor(_dashHandle);
 			}
-			else if (!_movement.IsDashing && _dashImmunityEnabled)
+			else if (!Movement.IsDashing && _dashImmunityEnabled)
 			{
 				_dashImmunityEnabled = false;
 				_health.UnRegisterDamageSupressor(_dashHandle);
@@ -120,7 +119,7 @@ namespace Game.Player
 		/* INPUT */
 		private void OnMove(Vector2 dir)
 		{
-			_movement.Move(dir);
+			Movement.Move(dir);
 		}
 
 		private void OnDash()
@@ -151,23 +150,12 @@ namespace Game.Player
 
 			var handle = new DamageSupressorHandle();
 			_health.RegisterDamageSupressor(handle);
-			OnImmunityStart();
+			_health.StartHurt();
 
 			DOVirtual.DelayedCall(DamageImmunityDuration, () =>
 			{
 				_health.UnRegisterDamageSupressor(handle);
-				OnImmunityEnd();
 			});
-		}
-
-		private void OnImmunityStart()
-		{
-
-		}
-
-		private void OnImmunityEnd()
-		{
-
 		}
 	}
 }
