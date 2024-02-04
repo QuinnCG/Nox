@@ -1,8 +1,6 @@
 ﻿using Game.Player;
 using Sirenix.OdinInspector;
 using System;
-using System.Threading.Tasks;
-using UnityEditor;
 using UnityEngine;
 
 namespace Game.RoomSystem
@@ -17,33 +15,33 @@ namespace Game.RoomSystem
 		[field: SerializeField, ReadOnly]
 		public int CurrentRoom { get; private set; }
 
-		[MenuItem("Tools/Rooms/Disgraced Hatamoto")]
-		public static void LoadHatamoto()
-		{
-			LoadRoom(0);
-		}
+		//[MenuItem("Tools/Rooms/Disgraced Hatamoto")]
+		//public static void LoadHatamoto()
+		//{
+		//	LoadRoom(0);
+		//}
 
-		[MenuItem("Tools/Rooms/Shugo The Drunkard")]
-		public static void LoadShugo()
-		{
-			LoadRoom(1);
-		}
+		//[MenuItem("Tools/Rooms/Shugo The Drunkard")]
+		//public static void LoadShugo()
+		//{
+		//	LoadRoom(1);
+		//}
 
-		public static void LoadRoom(int index)
-		{
-			if (!Application.isPlaying)
-			{
-				EditorApplication.EnterPlaymode();
-			}
+		//public static void LoadRoom(int index)
+		//{
+		//	if (!Application.isPlaying)
+		//	{
+		//		EditorApplication.EnterPlaymode();
+		//	}
 
-			// TODO: Task.Run won't execute in-editor...
-			Task.Run(() =>
-			{
-				Task.Delay(3000);
-				Instance.CurrentRoom = index - 1;
-				Instance.Next(true);
-			});
-		}
+		//	// TODO: Task.Run won't execute in-editor...
+		//	Task.Run(() =>
+		//	{
+		//		Task.Delay(3000);
+		//		Instance.CurrentRoom = index - 1;
+		//		Instance.Next(true);
+		//	});
+		//}
 
 		public event Action<Room> OnBossRoomStart;
 
