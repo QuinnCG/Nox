@@ -18,6 +18,7 @@ namespace Game.ProjectileSystem
 		protected override bool OnHitDamageable(Health health)
 		{
 			if (_hit) return false;
+			if (Owner == null) return false;
 
 			var dmgInfo = new DamageInfo()
 			{

@@ -103,4 +103,4 @@ MonoBehaviour:
   IndicatorYOffset: 0.4
   <MaxPossessionMeter>k__BackingField: 100
   DefaultPossessionMeter: 65
-  PossessionMeterMultiplier: 2
+  PossessionMeterMultiplier: 0.7

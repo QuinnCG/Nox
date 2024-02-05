@@ -9271,11 +9271,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fe793b195fba9468fb904001e78332, type: 3}
---- !u!1 &60640498977730130 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4850610673639980936, guid: 53fe793b195fba9468fb904001e78332, type: 3}
-  m_PrefabInstance: {fileID: 4866038805659292122}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7220675446562925523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2860729749885565449, guid: 53fe793b195fba9468fb904001e78332, type: 3}
@@ -9308,7 +9303,7 @@ PrefabInstance:
     - target: {fileID: 1472634031952377233, guid: 20a0d931152bf8040bfc0b0e27820aa3, type: 3}
       propertyPath: MinionPrefab
       value: 
-      objectReference: {fileID: 60640498977730130}
+      objectReference: {fileID: 4850610673639980936, guid: 53fe793b195fba9468fb904001e78332, type: 3}
     - target: {fileID: 1472634031952377233, guid: 20a0d931152bf8040bfc0b0e27820aa3, type: 3}
       propertyPath: FireSpewSound.Path
       value: event:/SFX/ShugoFireSpew
