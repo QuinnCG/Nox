@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4969659154595712352, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: AnimatorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4969659154595712352, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: DefaultAnimation
