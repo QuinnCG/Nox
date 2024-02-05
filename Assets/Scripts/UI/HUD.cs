@@ -30,9 +30,6 @@ namespace Game.UI
 		private TextMeshProUGUI BossTitle;
 
 		[SerializeField, BoxGroup("References"), Required]
-		private GameObject HelpText;
-
-		[SerializeField, BoxGroup("References"), Required]
 		private CriticalHealthOverlay criticalHealthOverlay;
 
 		[field: SerializeField, BoxGroup("References"), Required]
@@ -75,8 +72,6 @@ namespace Game.UI
 
 			var p = PossessionManager.Instance;
 			PossessionMeter.value = p.CurrentPossessionMeter / p.MaxPossessionMeter;
-
-			HelpText.SetActive(PossessionMeter.value > 0.5);
 
 			if (Room.Current != null && Room.Current.Boss != null)
 			{
@@ -129,8 +124,6 @@ namespace Game.UI
 				// Handle the case when the character is null.
 				return;
 			}
-
-			_health = character.GetComponent<Health>();
 		}
 
 		private void ShowBoss()

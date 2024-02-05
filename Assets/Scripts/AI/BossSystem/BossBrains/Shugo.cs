@@ -348,35 +348,29 @@ namespace Game.AI.BossSystem.BossBrains
 
 		private IEnumerator OnSummon()
 		{
-			if (_aliveMinions.Count <= 5)
+			int summonCount = 5;
+			summonCount = Mathf.Min(summonCount, SummonPoints.Length);
+
+			for (int i = 0; i < summonCount; i++)
 			{
-				int summonCount = 5;
-				summonCount = Mathf.Min(summonCount, SummonPoints.Length);
+				Transform point = SummonPoints[Random.Range(0, SummonPoints.Length - 1)];
+				var instance = Instantiate(MinionPrefab, point.position, Quaternion.identity, transform.root);
 
-				for (int i = 0; i < summonCount; i++)
-				{
-					if (_aliveMinions.Count >= 5)
-						break;
+				var character = instance.GetComponent<Character>();
+				_aliveMinions.Add(character);
+				instance.GetComponent<Health>().OnDeath += _ => _aliveMinions.Remove(character);
+				character.OnPossessed += () => _aliveMinions.Remove(character);
 
-					Transform point = SummonPoints[Random.Range(0, SummonPoints.Length - 1)];
-					var instance = Instantiate(MinionPrefab, point.position, Quaternion.identity, transform.root);
+				var smoke = Instantiate(BanditSpawnSmoke, character.transform.position, Quaternion.identity);
+				Destroy(smoke, 3f);
 
-					var character = instance.GetComponent<Character>();
-					_aliveMinions.Add(character);
-					instance.GetComponent<Health>().OnDeath += _ => _aliveMinions.Remove(character);
-					character.OnPossessed += () => _aliveMinions.Remove(character);
-
-					var smoke = Instantiate(BanditSpawnSmoke, character.transform.position, Quaternion.identity);
-					Destroy(smoke, 3f);
-
-					AudioManager.PlayOneShot(MinionSpawnSound, character.transform.position);
-				}
-
-				yield return new YieldSeconds(1.4f);
-
-				Animator.Play(Roar);
-				AudioManager.PlayOneShot(RoarSound, transform.position);
+				AudioManager.PlayOneShot(MinionSpawnSound, character.transform.position);
 			}
+
+			yield return new YieldSeconds(1.4f);
+
+			Animator.Play(Roar);
+			AudioManager.PlayOneShot(RoarSound, transform.position);
 
 			_summonTimer.Duration = Random.Range(7f, 15f);
 			Idle();
