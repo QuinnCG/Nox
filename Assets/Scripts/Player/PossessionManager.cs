@@ -259,8 +259,9 @@ namespace Game.Player
 			// Prevent consumption when returning to old body.
 			if (skip)
 			{
-				ConsumePossessionMeter(character.PossessionMeterConsumption);
+				
 			}
+			ConsumePossessionMeter(character.PossessionMeterConsumption);
 
 			PossessingNewTarget = true;
 			StartCoroutine(PossessSequence(character, skip));
