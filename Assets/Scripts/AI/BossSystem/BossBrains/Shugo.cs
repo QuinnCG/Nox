@@ -8,7 +8,6 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.AI.BossSystem.BossBrains
@@ -140,6 +139,7 @@ namespace Game.AI.BossSystem.BossBrains
 		protected override void Start()
 		{
 			base.Start();
+
 			Health.OnDamaged += OnDamage;
 			Health.OnDeath += _ => Dead();
 

@@ -169,10 +169,7 @@ namespace Game.AI
 
 		protected void Shoot(GameObject prefab, Vector2 origin, Vector2 target, ShootSpawnInfo info = default)
 		{
-			if (prefab != null)
-			{
-				Projectile.Spawn(prefab, origin, target, Character, info);
-			}
+			Projectile.Spawn(prefab, origin, target, Character, info);
 		}
 
 		protected Tween Jump(Vector2 target, float height, float duration)

@@ -13,11 +13,8 @@ namespace Game.ProjectileSystem
 		[SerializeField, BoxGroup("On Hit")]
 		private float LifespanAfterHit = 2f;
 
-		private bool _hit;
-
 		protected override bool OnHitDamageable(Health health)
 		{
-			if (_hit) return false;
 			if (Owner == null) return false;
 
 			var dmgInfo = new DamageInfo()
@@ -35,7 +32,6 @@ namespace Game.ProjectileSystem
 				TryPlayHitSound();
 
 				OnDamage?.Invoke(dmgInfo);
-				_hit = true;
 				DetachChild();
 				Destroy(gameObject);
 			}

@@ -189,6 +189,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3960479896017489875, guid: c535efe424edda644b63d171ca07c493, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1472634031952377233}
+    - targetCorrespondingSourceObject: {fileID: 3960479896017489875, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8934587021023120544}
   m_SourcePrefab: {fileID: 100100000, guid: c535efe424edda644b63d171ca07c493, type: 3}
 --- !u!4 &5318064136614131920 stripped
 Transform:
@@ -310,3 +313,21 @@ MonoBehaviour:
       Data3: -621155673
       Data4: -1356555065
     Path: event:/SFX/BanditSpawn
+--- !u!114 &8934587021023120544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062977187879467643}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efafc07ec366bc4b998c9e9308d411b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DashSpeed: 18
+  <DashDuration>k__BackingField: 0.2
+  DashCooldown: 0.2
+  IsDashControllable: 0
+  DashTrail: {fileID: 0}
+  <PossessionMeterConsumption>k__BackingField: 60
