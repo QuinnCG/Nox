@@ -43,12 +43,14 @@ namespace Game.Characters
 		private EventReference ShootSound;
 
 		private Transform _gun;
-		private Timer _shootTimer = new();
+		private Timer _shootTimer;
 
 		private void Start()
 		{
 			var instance = Instantiate(GunPrefab, GunPivot.position, Quaternion.identity).transform;
 			_gun = instance.transform;
+
+			_shootTimer = new Timer();
 		}
 
 		protected override void Update()
