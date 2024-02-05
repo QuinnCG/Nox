@@ -97,3 +97,5 @@ fmod_editor.log
 *.log
 *.log
 fmod_editor.log
+Assets/AddressableAssetsData/link.xml
+Assets/AddressableAssetsData/link.xml.meta
