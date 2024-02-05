@@ -418,7 +418,7 @@ namespace Game.Player
 
 				if (previousBody != null)
 				{
-					Debug.Log($"Destroying: {previousBody.name}!");
+					//Debug.Log($"Destroying: {previousBody.name}!");
 					Destroy(PossessedCharacter.gameObject);
 				}
 			}
@@ -426,13 +426,13 @@ namespace Game.Player
 
 		private void SpawnOriginalBody(Vector2 pos)
 		{
-			Debug.Log("Spawning original body!");
+			//Debug.Log("Spawning original body!");
 
 			GameObject instance = Instantiate(DefaultCharacter, pos, Quaternion.identity);
 			Possess(instance.GetComponent<Character>(), skip: true);
 
-			Debug.Log("Spawned body!");
-			Debug.Log(instance.name);
+			//Debug.Log("Spawned body!");
+			//Debug.Log(instance.name);
 
 			_possessingOriginal = true;
 		}

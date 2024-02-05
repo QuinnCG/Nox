@@ -68,12 +68,12 @@ namespace Game.Characters
 		protected override void OnDeath()
 		{
 			base.OnDeath();
-			Debug.Log("Wanderer died!");
+			//Debug.Log("Wanderer died!");
 		}
 
 		private void OnDestroy()
 		{
-			Debug.Log("Wanderer destroyed!");
+			//Debug.Log("Wanderer destroyed!");
 		}
 	}
 }

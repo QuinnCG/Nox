@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using FMODUnity;
+using Game.DamageSystem;
 using Game.GeneralManagers;
 using Game.Player;
 using Game.ProjectileSystem;
@@ -41,10 +42,13 @@ namespace Game.Characters
 		private EventReference ShootSound;
 
 		private Transform _gun;
+		private Health _health;
 		private Timer _shootTimer;
 
 		private void Start()
 		{
+			_health = GetComponent<Health>();
+
 			var instance = Instantiate(GunPrefab, GunPivot.position, Quaternion.identity).transform;
 			_gun = instance.transform;
 
@@ -54,6 +58,7 @@ namespace Game.Characters
 		protected override void Update()
 		{
 			base.Update();
+			_gun.gameObject.SetActive(!_health.IsDead && !Movement.IsDashing);
 
 			if (IsPossessed)
 			{
@@ -67,6 +72,11 @@ namespace Game.Characters
 			{
 				UpdateGunPosition();
 			}
+		}
+
+		private void OnDestroy()
+		{
+			Destroy(_gun.gameObject);
 		}
 
 		protected override void OnDash()

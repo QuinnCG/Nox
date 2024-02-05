@@ -1,6 +1,8 @@
 ﻿using DG.Tweening;
 using Game.Characters;
 using Game.DamageSystem;
+using Game.MovementSystem;
+using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 
@@ -14,14 +16,23 @@ namespace Game.AI.Brains
 		[SerializeField]
 		private float BarrageChange = 0.25f;
 
+		[SerializeField, HorizontalGroup]
+		private float MinBarrageInterval = 0.2f, MaxBarrageInterval = 1.5f;
+
+		[SerializeField]
+		private float FleeSpeed = 10f;
+
 		private State _idle, _engage, _barrage, _flee, _dead;
 		private Timer _engageTimer, _engageEndTimer, _engageShootIntervalTimer;
 
 		private FlintLockBandit _bandit;
+		private float _defaultSpeed;
 
 		protected override void Start()
 		{
 			base.Start();
+
+			_defaultSpeed = Movement.MoveSpeed;
 
 			_bandit = Character as FlintLockBandit;
 			Health.OnDeath += OnDeath;
@@ -129,17 +140,20 @@ namespace Game.AI.Brains
 			while (!duration.IsDone)
 			{
 				ShootAtPlayer();
-				yield return new YieldSeconds(0.2f);
+				yield return new YieldSeconds(Random.Range(MinBarrageInterval, MaxBarrageInterval));
 			}
 		}
 
 		private void OnFlee()
 		{
 			Animator.Play(_bandit.MoveAnim);
+
+			Movement.MoveSpeed = FleeSpeed;
 			Move(-DirectionToPlayer);
 
 			if (DistanceToPlayer > 10f)
 			{
+				Movement.MoveSpeed = _defaultSpeed;
 				Barrage();
 			}
 		}
