@@ -258,7 +258,7 @@ MonoBehaviour:
       Data3: 2061634944
       Data4: -1553597511
     Path: event:/SFX/FireballHit
-  SpawnOnHit: {fileID: 1096003994207118451, guid: 30b34700827fae542a9d172d214aeb0d, type: 3}
+  SpawnOnHit: {fileID: 0}
   Trail: {fileID: 2583910108203651523}
   LifespanAfterHit: 0.6
 --- !u!114 &7926586604792393782
