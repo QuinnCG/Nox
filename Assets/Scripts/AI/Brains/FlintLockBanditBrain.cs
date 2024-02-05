@@ -11,6 +11,9 @@ namespace Game.AI.Brains
 		[SerializeField]
 		private float PlayerDstToFlee = 4f;
 
+		[SerializeField]
+		private float BarrageChange = 0.25f;
+
 		private State _idle, _engage, _barrage, _flee, _dead;
 		private Timer _engageTimer, _engageEndTimer, _engageShootIntervalTimer;
 
@@ -48,7 +51,7 @@ namespace Game.AI.Brains
 		/* TRANSITIONS */
 		private void Idle()
 		{
-			if (Random.value <= 0.5f)
+			if (Random.value <= BarrageChange)
 			{
 				Barrage();
 				return;
@@ -158,7 +161,7 @@ namespace Game.AI.Brains
 			rand *= 1f;
 			rand += PlayerPosition;
 
-			//Character.Attack(rand);
+			Character.Attack(rand);
 		}
 	}
 }
