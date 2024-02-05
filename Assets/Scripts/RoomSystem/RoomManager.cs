@@ -1,6 +1,7 @@
 ﻿using Game.Player;
 using Sirenix.OdinInspector;
 using System;
+using Unity.Services.Analytics;
 using UnityEngine;
 
 namespace Game.RoomSystem
@@ -69,6 +70,8 @@ namespace Game.RoomSystem
 					PossessionManager.Instance.Respawn();
 				}
 
+				RecordRoomAnalytic();
+
 				if (CurrentRoom < Rooms.Length)
 				{
 					var room = Instantiate(Rooms[CurrentRoom]);
@@ -102,6 +105,15 @@ namespace Game.RoomSystem
 			}
 
 			SceneManager.Instance.LoadRuntimeScene(skipFadeOut);
+		}
+
+		private void RecordRoomAnalytic()
+		{
+			AnalyticsService.Instance.RecordEvent(new CustomEvent("enterRoom")
+			{
+				{ "roomID", CurrentRoom }
+			});
+			Debug.Log($"Recording analytic: 'enterRoom' with property 'roomID': {CurrentRoom}!");
 		}
 	}
 }

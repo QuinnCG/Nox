@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: <Max>k__BackingField
-      value: 750
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: HurtSound.Guid.Data1
