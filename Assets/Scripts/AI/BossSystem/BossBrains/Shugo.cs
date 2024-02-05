@@ -314,16 +314,6 @@ namespace Game.AI.BossSystem.BossBrains
 			ResetSpecialtimer();
 		}
 
-		// Add a null check before using the destroyed GameObject
-		private void Shoot(GameObject prefab, Vector2 spawnPoint, Vector2 direction, ShootSpawnInfo spawnInfo)
-		{
-			if (prefab == null)
-			{
-				Debug.LogError("Prefab is null in Shoot method.");
-				return;
-			}
-		}
-
 		private IEnumerator OnFireSpew()
 		{
 			// Jump to corner.
