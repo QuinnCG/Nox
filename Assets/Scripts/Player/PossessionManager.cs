@@ -405,6 +405,7 @@ namespace Game.Player
 
 		private void OnDeath(DamageType type)
 		{
+			_possessingOriginal = true;
 			if (_possessingOriginal)
 			{
 				_input.enabled = false;
