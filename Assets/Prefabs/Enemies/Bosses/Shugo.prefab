@@ -238,7 +238,7 @@ MonoBehaviour:
   FireSpewAngle2: 120
   FireballPrefab: {fileID: 8550588314174644299, guid: b9417493d510a09418d4a053e28d9ea8, type: 3}
   FireballSpawnPoint: {fileID: 8939678584060395846}
-  MinionPrefab: {fileID: 0}
+  MinionPrefab: {fileID: 4850610673639980936, guid: 53fe793b195fba9468fb904001e78332, type: 3}
   ShadowPrefab: {fileID: 5122463036962878032, guid: 6504721e60e198549b1688eb72e47a0a, type: 3}
   EnterTrigger: {fileID: 0}
   FireSpewPoints: []

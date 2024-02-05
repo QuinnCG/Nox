@@ -136,9 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_NoiseProfile: {fileID: 11400000, guid: e9ce97b7a206dc64d90931ea044e0c72, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 5
+  m_AmplitudeGain: 0
   m_FrequencyGain: 1
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &85829144548092381
@@ -256,6 +256,14 @@ PrefabInstance:
     - target: {fileID: 7533126679478987188, guid: c528dd69f8d826b4888911011197fe32, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581973941707695927, guid: c528dd69f8d826b4888911011197fe32, type: 3}
+      propertyPath: shakeTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581973941707695927, guid: c528dd69f8d826b4888911011197fe32, type: 3}
+      propertyPath: shakeIntensity
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7871331944188113404, guid: c528dd69f8d826b4888911011197fe32, type: 3}
       propertyPath: m_AnchorMax.x
