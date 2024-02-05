@@ -1,23 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
 public class CameraShakeManager : MonoBehaviour
 {
-  public static CameraShakeManager instance;
+	public static CameraShakeManager Instance { get; private set; }
 
-  [SerializeField] private float globalShakeForce = 1f;
-  private void Awake()
-  {
-    if (instance == null)
-    {
-      instance = this;
-    }
-  }
+	[SerializeField] private float globalShakeForce = 1f;
 
-  public void CameraShake(CinemachineImpulseSource impulseSource)
-  {
-    impulseSource.GenerateImpulseWithForce(globalShakeForce);
-  }
+	private void Awake()
+	{
+		Instance = this;
+	}
+
+	public void CameraShake(CinemachineImpulseSource impulseSource)
+	{
+		impulseSource.GenerateImpulseWithForce(globalShakeForce);
+	}
 }

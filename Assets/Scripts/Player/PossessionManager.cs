@@ -2,13 +2,11 @@
 using FMODUnity;
 using Game.AI;
 using Game.AI.BossSystem;
-using Game.AnimationSystem;
 using Game.DamageSystem;
 using Game.UI;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
-using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -91,7 +89,9 @@ namespace Game.Player
 			SpawnOriginalBody(Vector2.zero);
 			PlayerManager.Instance.OnDamageEnemy += OnEnemyDamaged;
 
-			impulseSource = GetComponent<CinemachineImpulseSource>();
+			var vcam = CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera as CinemachineVirtualCamera;
+			impulseSource = vcam.GetComponent<CinemachineImpulseSource>();
+
 			SceneManager.Instance.OnPreSceneLoad += () =>
 			{
 				if (PossessedCharacter != null)
@@ -160,7 +160,6 @@ namespace Game.Player
 		{
 			if (_selectedCharacter)
 			{
-				CameraShakeManager.instance.CameraShake(impulseSource);
 				Possess(_selectedCharacter);
 			}
 		}
@@ -260,11 +259,6 @@ namespace Game.Player
 				brain.enabled = false;
 			}
 
-			// Prevent consumption when returning to old body.
-			if (skip)
-			{
-
-			}
 			ConsumePossessionMeter(character.PossessionMeterConsumption);
 
 			PossessingNewTarget = true;
@@ -368,7 +362,7 @@ namespace Game.Player
 				Destroy(ghost);
 
 				pos = character.GetComponent<Collider2D>().bounds.center;
-				var vfx =
+				VisualEffect vfx =
 						Instantiate(PossessVFX, pos, Quaternion.identity)
 						.GetComponent<VisualEffect>();
 
@@ -384,6 +378,11 @@ namespace Game.Player
 			// Actual possession.
 			PossessedCharacter = character;
 			PossessedCharacter.Possess();
+
+			if (!skip)
+			{
+				CameraShakeManager.Instance.CameraShake(impulseSource);
+			}
 
 			// Move possessed character to persistant scene.
 			var persistantScene = UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(0);
