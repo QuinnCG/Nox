@@ -21,10 +21,15 @@ namespace Game.DamageSystem
 
 		private void FixedUpdate()
 		{
+			if (PossessionManager.Instance.PossessedCharacter == null)
+				return;
+
 			Collider2D[] colliders = Physics2D.OverlapCapsuleAll(
-				_collider.bounds.center, _collider.bounds.size, 
-				_collider.direction, 0f, 
+				_collider.bounds.center, _collider.bounds.size,
+				_collider.direction, 0f,
 				LayerMask.GetMask("Character"));
+
+			GameObject player = PossessionManager.Instance.PossessedCharacter.gameObject;
 
 			foreach (var collider in colliders)
 			{
@@ -34,7 +39,6 @@ namespace Game.DamageSystem
 				if (!collider.TryGetComponent(out Character character))
 					continue;
 
-				var player = PossessionManager.Instance.PossessedCharacter.gameObject;
 				if (gameObject == player && collider.gameObject != player)
 				{
 					_health.TakeDamage(ContactDamage, character);

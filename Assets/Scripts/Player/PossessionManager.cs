@@ -43,9 +43,6 @@ namespace Game.Player
 		[SerializeField]
 		private float PossessionMeterMultiplier = 0.3f;
 
-		[SerializeField, Required]
-		private Transform AttenuationObject;
-
 		public static PossessionManager Instance { get; private set; }
 
 		public float CurrentPossessionMeter { get; private set; }
@@ -74,11 +71,12 @@ namespace Game.Player
 			Instance = this;
 
 			_input = GetComponent<InputReader>();
-			CurrentPossessionMeter = DefaultPossessionMeter;
 		}
 
 		private void Start()
 		{
+			ReplenishPossessionMeter(DefaultPossessionMeter);
+
 			SpawnOriginalBody(Vector2.zero);
 			PlayerManager.Instance.OnDamageEnemy += OnEnemyDamaged;
 
@@ -256,7 +254,6 @@ namespace Game.Player
 			character.UnPossess();
 			character.GetComponent<Health>().Kill();
 
-			AttenuationObject.parent = transform.root;
 			OnCharacterUnpossessed?.Invoke(character);
 
 			if (_possessingOriginal)
@@ -357,15 +354,11 @@ namespace Game.Player
 			PossessedCharacter = character;
 			PossessedCharacter.Possess();
 
-			if (AttenuationObject != null)
-			{
-				AttenuationObject.parent = character.transform;
-				//Debug.LogWarning("The 'AttenuationObject' reference has been made null! This is not critical, but audio may sound strange.");
-			}
-			else
-			{
-				RuntimeManager.SetListenerLocation(character.gameObject);
-			}
+			// Move possessed character to persistant scene.
+			var persistantScene = UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(0);
+			UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(PossessedCharacter.gameObject, persistantScene);
+
+			RuntimeManager.SetListenerLocation(character.gameObject);
 
 			var health = PossessedCharacter.GetComponent<Health>();
 			health.FullHeal();

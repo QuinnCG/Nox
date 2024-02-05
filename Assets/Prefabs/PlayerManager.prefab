@@ -99,9 +99,8 @@ MonoBehaviour:
   PossessionGhost: {fileID: 7165127209510289491, guid: b976423054d6cd244919061fdbe11180, type: 3}
   PossessVFX: {fileID: 5418447348155154577, guid: c7910e5849c6a6e409d5fad43c62b385, type: 3}
   GhostSpeed: 60
-  PossessionModeTimeScale: 0.3
+  PossessionModeTimeScale: 0.4
   IndicatorYOffset: 0.4
   <MaxPossessionMeter>k__BackingField: 100
   DefaultPossessionMeter: 65
-  PossessionMeterMultiplier: 0.5
-  AttenuationObject: {fileID: 0}
+  PossessionMeterMultiplier: 2
