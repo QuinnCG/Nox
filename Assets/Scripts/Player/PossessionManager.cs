@@ -13,6 +13,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.VFX;
+using Cinemachine;
 
 namespace Game.Player
 {
@@ -55,7 +56,7 @@ namespace Game.Player
 			get
 			{
 				if (PossessedCharacter == null) return Vector2.zero;
-                return PossessedCharacter.transform.position;
+				return PossessedCharacter.transform.position;
 			}
 		}
 		public bool InPossessionMode { get; private set; }
@@ -75,13 +76,14 @@ namespace Game.Player
 		private InputReader _input;
 		private bool _possessingOriginal;
 
+		private CinemachineImpulseSource impulseSource;
+
 		private void Awake()
 		{
 			Instance = this;
 
 			_input = GetComponent<InputReader>();
 		}
-
 		private void Start()
 		{
 			ReplenishPossessionMeter(DefaultPossessionMeter);
@@ -90,6 +92,8 @@ namespace Game.Player
 			PlayerManager.Instance.OnDamageEnemy += OnEnemyDamaged;
 
 			SceneManager.Instance.OnPreSceneLoad += () =>
+
+			impulseSource = GetComponent<CinemachineImpulseSource>();
 			{
 				if (PossessedCharacter != null)
 				{
@@ -157,6 +161,7 @@ namespace Game.Player
 		{
 			if (_selectedCharacter)
 			{
+				CameraShakeManager.instance.CameraShake(impulseSource);
 				Possess(_selectedCharacter);
 			}
 		}
