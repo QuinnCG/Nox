@@ -64,5 +64,16 @@ namespace Game.Characters
 			base.OnDash();
 			Animator.Play(DashAnim);
 		}
+
+		protected override void OnDeath()
+		{
+			base.OnDeath();
+			Debug.Log("Wanderer died!");
+		}
+
+		private void OnDestroy()
+		{
+			Debug.Log("Wanderer destroyed!");
+		}
 	}
 }

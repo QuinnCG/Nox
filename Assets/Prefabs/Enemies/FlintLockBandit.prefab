@@ -245,7 +245,8 @@ MonoBehaviour:
   IsDashControllable: 1
   DashTrail: {fileID: 6513513715175669271}
   <PossessionMeterConsumption>k__BackingField: 35
-  GunOffset: 0.4
+  GunOffset: 0.8
+  FireRate: 0.8
   GunPivot: {fileID: 9064840900613830469}
   GunPrefab: {fileID: 6098607508932657732, guid: 824e555e58c55bf42b85e5ae86123842, type: 3}
   <ProjectilePrefab>k__BackingField: {fileID: 8370981501113466163, guid: de07316648efadc4a8385cad02a465e2, type: 3}
@@ -253,6 +254,13 @@ MonoBehaviour:
   <MoveAnim>k__BackingField: {fileID: -1209505365081791630, guid: 2cb0b369463e2b741811cb88b5c413ae, type: 3}
   <RollAnim>k__BackingField: {fileID: -7893804176353145618, guid: 2cb0b369463e2b741811cb88b5c413ae, type: 3}
   <DeathAnim>k__BackingField: {fileID: -2934032390062112902, guid: 2cb0b369463e2b741811cb88b5c413ae, type: 3}
+  ShootSound:
+    Guid:
+      Data1: -392184655
+      Data2: 1148876957
+      Data3: -1243637332
+      Data4: -453705559
+    Path: event:/SFX/BanditShoot
 --- !u!114 &220209787186213665
 MonoBehaviour:
   m_ObjectHideFlags: 0
