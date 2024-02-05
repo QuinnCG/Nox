@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using Game.GeneralManagers;
+using Game.GeneralManagers;  // Assuming AudioManager is in this namespace
 
 namespace Game.UI
 {
@@ -24,7 +23,6 @@ namespace Game.UI
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject); // Make the OptionsMenu persist across scenes
             }
             else
             {
@@ -42,7 +40,6 @@ namespace Game.UI
             if (audioManager != null)
             {
                 audioManager.Initialize(); // Initialize audio settings
-                LoadVolumeSettings(); // Load volume settings on scene start
             }
 
             // Add listeners to the sliders
@@ -65,7 +62,6 @@ namespace Game.UI
             {
                 ambienceVolumeSlider.onValueChanged.AddListener(OnAmbienceVolumeChanged);
             }
-
         }
 
         // Call this method when UI opens (e.g. Options Menu is activated)
@@ -94,7 +90,6 @@ namespace Game.UI
             if (audioManager != null)
             {
                 audioManager.SetMasterVolume(sliderValue);
-                SaveVolumeSetting("MasterVolume", sliderValue);
             }
         }
 
@@ -103,7 +98,6 @@ namespace Game.UI
             if (audioManager != null)
             {
                 audioManager.SetSFXVolume(sliderValue);
-                SaveVolumeSetting("SFXVolume", sliderValue);
             }
         }
 
@@ -112,7 +106,6 @@ namespace Game.UI
             if (audioManager != null)
             {
                 audioManager.SetMusicVolume(sliderValue);
-                SaveVolumeSetting("MusicVolume", sliderValue);
             }
         }
 
@@ -121,56 +114,7 @@ namespace Game.UI
             if (audioManager != null)
             {
                 audioManager.SetAmbienceVolume(sliderValue);
-                SaveVolumeSetting("AmbienceVolume", sliderValue);
             }
-        }
-
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            // Initialize AudioManager if reference is valid
-            if (audioManager != null)
-            {
-                audioManager.Initialize(); // Initialize audio settings
-                LoadVolumeSettings(); // Load volume settings on scene change
-            }
-        }
-
-        private void LoadVolumeSettings()
-        {
-            // Load volume settings from PlayerPrefs or your save system
-            // and set the sliders accordingly.
-            if (masterVolumeSlider != null)
-            {
-                masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
-                OnMasterVolumeChanged(masterVolumeSlider.value);
-            }
-
-            if (sfxVolumeSlider != null)
-            {
-                sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
-                OnSFXVolumeChanged(sfxVolumeSlider.value);
-            }
-
-            if (musicVolumeSlider != null)
-            {
-                musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
-                OnMusicVolumeChanged(musicVolumeSlider.value);
-            }
-
-            if (ambienceVolumeSlider != null)
-            {
-                ambienceVolumeSlider.value = PlayerPrefs.GetFloat("AmbienceVolume", 1.0f);
-                OnAmbienceVolumeChanged(ambienceVolumeSlider.value);
-            }
-        }
-
-        private void SaveVolumeSetting(string key, float value)
-        {
-            // Save volume settings to PlayerPrefs or your save system
-            PlayerPrefs.SetFloat(key, value);
-            PlayerPrefs.Save(); // Remember to save changes
         }
     }
 }
-
-
