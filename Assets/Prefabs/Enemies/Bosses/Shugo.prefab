@@ -140,8 +140,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -3100369314251171874, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
     - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: HurtSound.Path
+      value: event:/SFX/ShugoHurt
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: <Max>k__BackingField
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: HurtSound.Guid.Data1
+      value: -1527445789
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: HurtSound.Guid.Data2
+      value: 1235119637
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: HurtSound.Guid.Data3
+      value: -1346628469
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
+      propertyPath: HurtSound.Guid.Data4
+      value: -297650567
       objectReference: {fileID: 0}
     - target: {fileID: 6582310395344392321, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: m_Size.x
@@ -224,6 +244,7 @@ MonoBehaviour:
   FireSpewPoints: []
   JumpRegion: {fileID: 0}
   SummonPoints: []
+  CenterPoint: {fileID: 0}
   IdleAnim: {fileID: -7001147228997674120, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
   FireSpewStart: {fileID: 5631674185561918433, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
   FireSpew: {fileID: 641787954886380190, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
@@ -234,11 +255,11 @@ MonoBehaviour:
   Death: {fileID: 6722112226151536750, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
   JumpSound:
     Guid:
-      Data1: -1558254749
-      Data2: 1151177007
-      Data3: -942796871
-      Data4: -161616774
-    Path: event:/SFX/Jump
+      Data1: -1467445235
+      Data2: 1311312909
+      Data3: 242843304
+      Data4: -954487103
+    Path: event:/SFX/ShugoJump
   LandSound:
     Guid:
       Data1: 30063824

@@ -212,7 +212,7 @@ namespace Game.AI.BossSystem.BossBrains
 			yield return new YieldUntil(() => _isPlayerIn);
 
 			// Jump to center. Skip start-up.
-			ShugoJump(CenterPoint.position, 20f, 2f, true).Yield();
+			ShugoJump(CenterPoint.position, 20f, 2f, skipStart: true).Yield();
 			Idle();
 		}
 
@@ -266,6 +266,7 @@ namespace Game.AI.BossSystem.BossBrains
 			float duration = SuperJumpDuration * (IsSecondPhase ? SuperJumpDurationFactor : 1f);
 			Tween jump = ShugoJump(PlayerPosition, SuperJumpHeight, duration);
 			yield return jump.Yield();
+			//yield return new YieldSeconds(JumpEnd.length - 0.01f);
 
 			AudioManager.PlayOneShot(FireStompSound);
 
@@ -277,7 +278,7 @@ namespace Game.AI.BossSystem.BossBrains
 					Shoot(FireballPrefab, FireballSpawnPoint.position, Vector2.up, new ShootSpawnInfo()
 					{
 						Count = SuperJumpFireballCount2,
-						Method = ShootMethod.EvenCircle
+						Method = ShootMethod.RandomCircle
 					});
 
 					yield return new YieldSeconds(SuperJumpFireballWaveInterval);
@@ -294,7 +295,6 @@ namespace Game.AI.BossSystem.BossBrains
 
 			// Transition to idle.
 			Idle();
-
 			ResetSpecialtimer();
 		}
 
@@ -355,27 +355,35 @@ namespace Game.AI.BossSystem.BossBrains
 		}
 
 		/* UTILITIES */
-		private Tween ShugoJump(Vector2 target, float height, float duration, bool skipStart = false)
+		private Tween ShugoJump(Vector2 target, float height, float duration, bool skipStart = false, bool skipEnd = false)
 		{
 			var sequence = DOTween.Sequence();
 
 			if (!skipStart)
 			{
 				// Start.
-				sequence.Append(DOVirtual.DelayedCall(0f, () => GetComponentInChildren<SpriteRenderer>().sortingOrder = 100));
-				sequence.Append(DOVirtual.DelayedCall(0f, () => AudioManager.PlayOneShot(JumpSound)));
 				sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpStart)));
 				sequence.AppendInterval(JumpStart.length - 0.01f);
+
+				sequence.Append(DOVirtual.DelayedCall(0f, () => AudioManager.PlayOneShot(JumpSound)));
 			}
 
 			// Loop.
+			sequence.Append(DOVirtual.DelayedCall(0f, () => GetComponentInChildren<SpriteRenderer>().sortingOrder = 100));
+
 			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpLoop)));
 			sequence.Append(SuperJump(target, height, duration, ShadowPrefab));
 
 			// End.
 			sequence.Append(DOVirtual.DelayedCall(0f, () => GetComponentInChildren<SpriteRenderer>().sortingOrder = 0));
+
 			sequence.Append(DOVirtual.DelayedCall(0f, () => AudioManager.PlayOneShot(LandSound)));
-			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpEnd)));
+			//if (!skipEnd)
+			//{
+			//	sequence.Append(DOVirtual.DelayedCall(0f, () => AudioManager.PlayOneShot(LandSound)));
+			//	sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpEnd)));
+			//	sequence.AppendInterval(JumpEnd.length - 0.01f);
+			//}
 
 			float dir = target.x - transform.position.x;
 			sequence.onUpdate += () => { if (IsJumping) { Movement.FaceDirection(dir); } };

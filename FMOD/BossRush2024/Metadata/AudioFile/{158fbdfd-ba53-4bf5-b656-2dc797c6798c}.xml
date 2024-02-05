@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{158fbdfd-ba53-4bf5-b656-2dc797c6798c}">
 		<property name="assetPath">
-			<value>Shugo Fire Spew/ShugoFireSpew_01.ogg</value>
+			<value>Shugo/Shugo Fire Spew/ShugoFireSpew_01.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

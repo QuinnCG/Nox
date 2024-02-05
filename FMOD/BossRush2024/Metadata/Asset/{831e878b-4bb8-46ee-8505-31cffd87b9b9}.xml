@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="EncodableAsset" id="{831e878b-4bb8-46ee-8505-31cffd87b9b9}">
 		<property name="assetPath">
-			<value>Shugo Fire Spew/</value>
+			<value>Shugo/Shugo Fire Spew/</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{199058eb-45a1-46fb-bd35-0d8ea40a3f2d}</destination>
