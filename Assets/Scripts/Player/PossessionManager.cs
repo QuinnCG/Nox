@@ -17,6 +17,11 @@ namespace Game.Player
 {
 	public class PossessionManager : MonoBehaviour
 	{
+		[Header("Camera Shake Parameters")]
+		[SerializeField] private CameraShakeManager cameraShake;
+		[SerializeField] private float shakeIntensity = 5f;
+		[SerializeField] private float shakeTime = 0.5f;
+
 		[SerializeField, Required]
 		private GameObject DefaultCharacter;
 
@@ -74,8 +79,6 @@ namespace Game.Player
 		private InputReader _input;
 		private bool _possessingOriginal;
 
-		private CinemachineImpulseSource impulseSource;
-
 		private void Awake()
 		{
 			Instance = this;
@@ -88,9 +91,6 @@ namespace Game.Player
 
 			SpawnOriginalBody(Vector2.zero);
 			PlayerManager.Instance.OnDamageEnemy += OnEnemyDamaged;
-
-			var vcam = CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera as CinemachineVirtualCamera;
-			impulseSource = vcam.GetComponent<CinemachineImpulseSource>();
 
 			SceneManager.Instance.OnPreSceneLoad += () =>
 			{
@@ -378,11 +378,11 @@ namespace Game.Player
 			// Actual possession.
 			PossessedCharacter = character;
 			PossessedCharacter.Possess();
-
 			if (!skip)
 			{
-				CameraShakeManager.Instance.CameraShake(impulseSource);
+				cameraShake.ShakeCamera(shakeIntensity, shakeTime);
 			}
+
 
 			// Move possessed character to persistant scene.
 			var persistantScene = UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(0);

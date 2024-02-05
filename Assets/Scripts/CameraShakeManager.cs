@@ -1,19 +1,33 @@
 using UnityEngine;
 using Cinemachine;
+using System.Collections;
 
 public class CameraShakeManager : MonoBehaviour
 {
-	public static CameraShakeManager Instance { get; private set; }
-
-	[SerializeField] private float globalShakeForce = 1f;
+	private CinemachineVirtualCamera virtualCam;
+	private CinemachineBasicMultiChannelPerlin perlinNoise;
 
 	private void Awake()
 	{
-		Instance = this;
+		virtualCam = GetComponent<CinemachineVirtualCamera>();
+		perlinNoise = virtualCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+		ResetIntensity();
 	}
 
-	public void CameraShake(CinemachineImpulseSource impulseSource)
+	public void ShakeCamera(float intensity, float shakeTime)
 	{
-		impulseSource.GenerateImpulseWithForce(globalShakeForce);
+		perlinNoise.m_AmplitudeGain = intensity;
+		StartCoroutine(WaitTime(shakeTime));
+	}
+
+	IEnumerator WaitTime(float shakeTime)
+	{
+		yield return new WaitForSeconds(shakeTime);
+		ResetIntensity();
+	}
+
+	void ResetIntensity()
+	{
+		perlinNoise.m_AmplitudeGain = 0;
 	}
 }
