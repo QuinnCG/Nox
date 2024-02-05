@@ -84,8 +84,6 @@ namespace Game.Player
 		}
 		private void Start()
 		{
-			ReplenishPossessionMeter(DefaultPossessionMeter);
-
 			SpawnOriginalBody(Vector2.zero);
 			PlayerManager.Instance.OnDamageEnemy += OnEnemyDamaged;
 
@@ -94,6 +92,8 @@ namespace Game.Player
 
 			SceneManager.Instance.OnPreSceneLoad += () =>
 			{
+				CurrentPossessionMeter = DefaultPossessionMeter;
+
 				if (PossessedCharacter != null)
 				{
 					UnPossess(PossessedCharacter);
