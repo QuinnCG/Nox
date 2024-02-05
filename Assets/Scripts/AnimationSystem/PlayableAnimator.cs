@@ -62,6 +62,9 @@ namespace Game.AnimationSystem
 
 		public AnimationClip Play(AnimationClip anim)
 		{
+			if (!enabled)
+				return null;
+
 			if (anim == _activeAnim)
 				return _activeAnim;
 

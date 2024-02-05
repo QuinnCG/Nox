@@ -8,6 +8,7 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.AI.BossSystem.BossBrains
@@ -134,6 +135,8 @@ namespace Game.AI.BossSystem.BossBrains
 		private bool _isPlayerIn;
 		private readonly List<Character> _aliveMinions = new();
 
+		private Vector2 _deathPos;
+
 		protected override void Start()
 		{
 			base.Start();
@@ -156,6 +159,15 @@ namespace Game.AI.BossSystem.BossBrains
 			TransitionTo(_stationary);
 		}
 
+		private void LateUpdate()
+		{
+			if (IsDead)
+			{
+				transform.position = _deathPos;
+				transform.DOKill();
+			}
+		}
+
 		/* EVENTS */
 		public override void OnPlayerEnter()
 		{
@@ -174,6 +186,7 @@ namespace Game.AI.BossSystem.BossBrains
 
 		private void Dead()
 		{
+			_deathPos = transform.position;
 			TransitionTo(_dead);
 		}
 
@@ -256,7 +269,13 @@ namespace Game.AI.BossSystem.BossBrains
 				if (Random.value < 0.5f)
 				{
 					Tween jump = ShugoJump(PlayerPosition, JumpHeight, RealJumpDuration);
-					jump.onComplete += () => Idle();
+					jump.onComplete += () =>
+					{
+						if (ActiveState == _wander)
+						{
+							Idle();
+						}
+					};
 				}
 				// Jump to random point.
 				else
@@ -273,7 +292,13 @@ namespace Game.AI.BossSystem.BossBrains
 					};
 
 					Tween jump = ShugoJump(target, JumpHeight, RealJumpDuration);
-					jump.onComplete += () => Idle();
+					jump.onComplete += () =>
+					{
+						if (ActiveState == _wander)
+						{
+							Idle();
+						}
+					};
 				}
 			}
 		}
@@ -386,9 +411,6 @@ namespace Game.AI.BossSystem.BossBrains
 		{
 			transform.DOKill();
 
-			Animator.Play(Death);
-			AudioManager.PlayOneShot(DeathSound, transform.position);
-
 			// Kill minions.
 			foreach (var minion in _aliveMinions)
 			{
@@ -396,11 +418,14 @@ namespace Game.AI.BossSystem.BossBrains
 			}
 			_aliveMinions.Clear();
 
-			float animEndTime = Time.time + Death.length - 0.01f;
-
 			// Freeze on last frame.
-			yield return new YieldUntil(() => Time.time >= animEndTime);
+			Animator.Play(Death);
+			AudioManager.PlayOneShot(DeathSound, transform.position);
+
+			yield return Death.Yield();
+
 			Animator.Stop();
+			Animator.enabled = false;
 
 			// Never loop this state.
 			yield return new YieldUntil(() => false);
