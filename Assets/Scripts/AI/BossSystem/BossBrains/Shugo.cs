@@ -95,6 +95,9 @@ namespace Game.AI.BossSystem.BossBrains
 		[SerializeField, Required, BoxGroup("References")]
 		private Transform CenterPoint;
 
+		[SerializeField, Required, BoxGroup("References")]
+		private GameObject BanditSpawnSmoke;
+
 		[SerializeField, BoxGroup("Animations"), Required]
 		private AnimationClip IdleAnim;
 
@@ -118,6 +121,9 @@ namespace Game.AI.BossSystem.BossBrains
 
 		[SerializeField, BoxGroup("SFX"), Required]
 		private EventReference RoarSound, DeathSound;
+
+		[SerializeField, BoxGroup("SFX"), Required]
+		private EventReference MinionSpawnSound;
 
 		private bool IsSecondPhase => Phase > 1;
 		private float RealJumpDuration => IsSecondPhase ? JumpDuration : (JumpDuration * JumpDurationFactor);
@@ -359,6 +365,11 @@ namespace Game.AI.BossSystem.BossBrains
 				_aliveMinions.Add(character);
 				instance.GetComponent<Health>().OnDeath += _ => _aliveMinions.Remove(character);
 				character.OnPossessed += () => _aliveMinions.Remove(character);
+
+				var smoke = Instantiate(BanditSpawnSmoke, character.transform.position, Quaternion.identity);
+				Destroy(smoke, 3f);
+
+				AudioManager.PlayOneShot(MinionSpawnSound, character.transform.position);
 			}
 
 			yield return new YieldSeconds(1.4f);

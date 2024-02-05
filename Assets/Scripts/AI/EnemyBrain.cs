@@ -89,6 +89,7 @@ namespace Game.AI
 
 		private readonly StateMachine _stateMachine = new();
 		private Tween _jumpTween;
+		private GameObject _shadow;
 
 		private Transform _lastPosition;
 
@@ -175,39 +176,49 @@ namespace Game.AI
 		{
 			if (IsDead) return null;
 
-			var jump = transform.DOJump(target, height, 1, duration).SetEase(Ease.Linear);
-			_jumpTween = jump;
-			Health.OnDeath += _ =>
+			if (_jumpTween != null && _jumpTween.IsActive())
 			{
-				if (jump != null && jump.IsActive())
-				{
-					DOTween.Kill(jump);
-				}
-			};
-
-			return jump;
-		}
-
-		protected Tween SuperJump(Vector2 target, float height, float duration, GameObject shadowPrefab)
-		{
-			GameObject shadow = Instantiate(shadowPrefab, transform.position, Quaternion.identity);
+				_jumpTween.Kill();
+			}
 
 			Vector2 jumpStart = transform.position;
 			Vector2 jumpEnd = target;
 
-			var tween = Jump(jumpEnd, height, duration);
-			tween.onUpdate += () =>
+			_jumpTween = transform.DOJump(target, height, 1, duration).SetEase(Ease.Linear);
+			_jumpTween.onUpdate += () =>
 			{
-				float progress = tween.Elapsed() / tween.Duration();
-				shadow.transform.position = Vector2.Lerp(jumpStart, jumpEnd, progress);
+				float progress = _jumpTween.Elapsed() / _jumpTween.Duration();
+				_shadow.transform.position = Vector2.Lerp(jumpStart, jumpEnd, progress);
 			};
+			Health.OnDeath += _ =>
+			{
+				if (_jumpTween != null && _jumpTween.IsActive())
+				{
+					DOTween.Kill(_jumpTween);
+				}
+			};
+
+			return _jumpTween;
+		}
+
+		protected Tween SuperJump(Vector2 target, float height, float duration, GameObject shadowPrefab)
+		{
+			if (_shadow != null)
+			{
+				Destroy(_shadow);
+			}
+
+			_shadow = Instantiate(shadowPrefab, transform.position, Quaternion.identity);
+			var tween = Jump(target, height, duration);
 
 			void CleanUp()
 			{
-				if (shadow != null)
+				if (_shadow != null)
 				{
-					Destroy(shadow);
+					Destroy(_shadow);
 				}
+
+				_jumpTween = null;
 			}
 			tween.onComplete += CleanUp;
 			tween.onKill += CleanUp;

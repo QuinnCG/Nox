@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: <Max>k__BackingField
-      value: 100
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 6068143130265781743, guid: c535efe424edda644b63d171ca07c493, type: 3}
       propertyPath: HurtSound.Guid.Data1
@@ -221,7 +221,7 @@ MonoBehaviour:
   SuperJumpWeight: 1
   FireSpewWeight: 1
   SpecialAttackInterval: {x: 4, y: 7}
-  IdleDuration: {x: 0.5, y: 2}
+  IdleDuration: {x: 2, y: 6}
   SuperJumpFireballCount: 36
   FireSpewCount: 12
   FireSpewWaveCount: 2
@@ -245,6 +245,7 @@ MonoBehaviour:
   JumpRegion: {fileID: 0}
   SummonPoints: []
   CenterPoint: {fileID: 0}
+  BanditSpawnSmoke: {fileID: 1823326592826579118, guid: d4da0f3dbab422a4d9136d17f6f5de58, type: 3}
   IdleAnim: {fileID: -7001147228997674120, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
   FireSpewStart: {fileID: 5631674185561918433, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
   FireSpew: {fileID: 641787954886380190, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
@@ -302,3 +303,10 @@ MonoBehaviour:
       Data3: -395849539
       Data4: 303099245
     Path: event:/SFX/ShugoDeath
+  MinionSpawnSound:
+    Guid:
+      Data1: 421824872
+      Data2: 1282965179
+      Data3: -621155673
+      Data4: -1356555065
+    Path: event:/SFX/BanditSpawn

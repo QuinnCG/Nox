@@ -30,6 +30,7 @@ namespace Game.AI.Brains
 			_dead = CreateState(() => { }, "Dead");
 
 			ResetEngageTimer();
+			_engageTimer = new Timer(5f);
 			_engageEndTimer = new Timer();
 			_engageShootIntervalTimer = new Timer(1.5f);
 
