@@ -405,7 +405,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1958244519
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &2867435965625008973
 MonoBehaviour:
@@ -471,10 +471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba5b02d9582cd14f92153675e63532d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHealthFadeIn: 1
-  PlayerHealthFadeOut: 2
-  PlayerHealthCriticalPulseDuration: 0.5
-  PlayerHealthCriticalPulseScale: 1.2
   PlayerHealth: {fileID: 703909493866037787}
   PossessionMeter: {fileID: 0}
   BossContainer: {fileID: 253598497606085902}
@@ -1060,6 +1056,10 @@ PrefabInstance:
     - target: {fileID: 7278486263254785240, guid: c624ce462d529854a8c5a8136cc460be, type: 3}
       propertyPath: m_Name
       value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278486263254785240, guid: c624ce462d529854a8c5a8136cc460be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8471810190916166094, guid: c624ce462d529854a8c5a8136cc460be, type: 3}
       propertyPath: m_Pivot.x
