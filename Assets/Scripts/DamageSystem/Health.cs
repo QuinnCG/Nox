@@ -132,6 +132,7 @@ namespace Game.DamageSystem
 
 			// Prevent player from hurting player and enemy from hurting enemy.
 			if (PossessionManager.Instance == null) return false;
+			if (PossessionManager.Instance.PossessedCharacter == null) return false;
 			var possessed = PossessionManager.Instance.PossessedCharacter;
 			bool isThisPlayer = possessed.gameObject == gameObject;
 			if (isThisPlayer && info.Source == possessed) return false;

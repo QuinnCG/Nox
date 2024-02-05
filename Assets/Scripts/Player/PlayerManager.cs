@@ -20,7 +20,7 @@ namespace Game.Player
 	{
 		public static PlayerManager Instance { get; private set; }
 
-		[SerializeField, Required, AssetList(Path = "/Prefabs/Characters")]
+		[SerializeField, Required]
 		private GameObject DefaultCharacter;
 
 		[SerializeField, Required]
@@ -140,7 +140,6 @@ namespace Game.Player
 		}
 
 		/* OTHER */
-
 		private void OnDamaged(float amount)
 		{
 			if (!DamagedSound.IsNull)

@@ -81,6 +81,19 @@ namespace Game.Player
 		{
 			SpawnOriginalBody();
 			PlayerManager.Instance.OnDamageEnemy += OnEnemyDamaged;
+
+			SceneManager.Instance.OnPreSceneLoad += () =>
+			{
+				if (PossessedCharacter != null)
+				{
+					Unpossess(PossessedCharacter);
+
+					if (PossessedCharacter != null)
+					{
+						Destroy(PossessedCharacter.gameObject);
+					}
+				}
+			};
 		}
 
 		private void Update()

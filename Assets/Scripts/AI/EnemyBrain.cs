@@ -9,6 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -82,8 +83,7 @@ namespace Game.AI
 		{
 			get
 			{
-				if (_jumpTween == null) return false;
-				return _jumpTween.IsActive();
+				return _jumpTween != null && _jumpTween.IsActive();
 			}
 		}
 
@@ -173,15 +173,13 @@ namespace Game.AI
 
 		protected Tween Jump(Vector2 target, float height, float duration)
 		{
-			_jumpTween?.Kill();
-			_jumpTween = transform.DOJump(target, height, 1, duration).SetEase(Ease.Linear);
-
-			return _jumpTween;
+			var jump = transform.DOJump(target, height, 1, duration).SetEase(Ease.Linear);
+			_jumpTween = jump;
+			return jump;
 		}
 
 		protected Tween SuperJump(Vector2 target, float height, float duration, GameObject shadowPrefab)
 		{
-			//Collider.enabled = false;
 			GameObject shadow = Instantiate(shadowPrefab, transform.position, Quaternion.identity);
 
 			Vector2 jumpStart = transform.position;
@@ -193,19 +191,16 @@ namespace Game.AI
 				float progress = tween.Elapsed() / tween.Duration();
 				shadow.transform.position = Vector2.Lerp(jumpStart, jumpEnd, progress);
 			};
-			tween.onComplete += () =>
+
+			void CleanUp()
 			{
-				//Collider.enabled = true;
-				Destroy(shadow);
-			};
-			tween.onKill += () =>
-			{
-				//Collider.enabled = true;
 				if (shadow != null)
 				{
 					Destroy(shadow);
 				}
-			};
+			}
+			tween.onComplete += CleanUp;
+			tween.onKill += CleanUp;
 
 			return tween;
 		}

@@ -1,10 +1,12 @@
 using DG.Tweening;
 using FMODUnity;
 using Game.Common;
+using Game.DamageSystem;
 using Game.GeneralManagers;
 using Game.ProjectileSystem;
 using Sirenix.OdinInspector;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -90,6 +92,9 @@ namespace Game.AI.BossSystem.BossBrains
 		[SerializeField, Required, BoxGroup("References")]
 		private Transform[] SummonPoints;
 
+		[SerializeField, Required, BoxGroup("References")]
+		private Transform CenterPoint;
+
 		[SerializeField, BoxGroup("Animations"), Required]
 		private AnimationClip IdleAnim;
 
@@ -98,6 +103,9 @@ namespace Game.AI.BossSystem.BossBrains
 
 		[SerializeField, BoxGroup("Animations"), Required]
 		private AnimationClip JumpStart, JumpLoop, JumpEnd;
+
+		[SerializeField, BoxGroup("Animations"), Required]
+		private AnimationClip Roar, Death;
 
 		[SerializeField, BoxGroup("SFX"), Required]
 		private EventReference JumpSound, LandSound;
@@ -108,11 +116,17 @@ namespace Game.AI.BossSystem.BossBrains
 		[SerializeField, BoxGroup("SFX"), Required]
 		private EventReference FireStompSound;
 
+		[SerializeField, BoxGroup("SFX"), Required]
+		private EventReference RoarSound, DeathSound;
+
 		private bool IsSecondPhase => Phase > 1;
 		private float RealJumpDuration => IsSecondPhase ? JumpDuration : (JumpDuration * JumpDurationFactor);
 
 		private State _stationary, _wander, _superJump, _fireSpew, _summon;
-		private Timer _idleTimer, _specialTimer;
+		private Timer _idleTimer, _specialTimer, _summonTimer;
+
+		private bool _isPlayerIn;
+		private readonly List<Character> _aliveMinions = new();
 
 		protected override void Start()
 		{
@@ -120,7 +134,7 @@ namespace Game.AI.BossSystem.BossBrains
 			Health.OnDamaged += OnDamage;
 
 			// States.
-			_stationary = CreateState(() => { }, "Stationary");
+			_stationary = CreateState(OnStartState, "Stationary");
 			_wander = CreateState(OnWander, "Wander");
 			_superJump = CreateState(OnSuperJump, "Super Jump");
 			_fireSpew = CreateState(OnFireSpew, "Fire Spew");
@@ -129,21 +143,23 @@ namespace Game.AI.BossSystem.BossBrains
 			// Timers.
 			_idleTimer = new Timer();
 			_specialTimer = new Timer();
+			_summonTimer = new Timer(5f);
 
 			TransitionTo(_stationary);
 		}
 
 		public override void OnPlayerEnter()
 		{
-			Idle();
+			_isPlayerIn = true;
 		}
 
 		private void OnDamage(float health)
 		{
 			// Switch to second phase.
-			if (Health.Percent <= PhaseTwoHealthPercentThreshold)
+			if (Health.Percent <= PhaseTwoHealthPercentThreshold && Phase != 2)
 			{
 				Phase = 2;
+				TransitionTo(_summon);
 			}
 		}
 
@@ -191,6 +207,16 @@ namespace Game.AI.BossSystem.BossBrains
 		}
 
 		/* STATES */
+		private IEnumerator OnStartState()
+		{
+			yield return new YieldUntil(() => _isPlayerIn);
+
+			// Jump to center. Skip start-up.
+			ShugoJump(CenterPoint.position, 20f, 2f, true).Yield();
+			Idle();
+		}
+
+		// Idle/passive state.
 		private void OnWander()
 		{
 			if (!IsJumping)
@@ -202,7 +228,11 @@ namespace Game.AI.BossSystem.BossBrains
 			{
 				ExecuteRandomSpecial();
 			}
-			if (_idleTimer.IsDone && !IsJumping)
+			else if (_summonTimer.IsDone && !IsJumping && _aliveMinions.Count < 5)
+			{
+				TransitionTo(_summon);
+			}
+			else if (_idleTimer.IsDone && !IsJumping)
 			{
 				// Jump onto player.
 				if (Random.value < 0.5f)
@@ -300,22 +330,49 @@ namespace Game.AI.BossSystem.BossBrains
 			Idle();
 		}
 
-		private void OnSummon()
+		private IEnumerator OnSummon()
 		{
-			// Roar!
-			// Simultaneously, spawn minions in poof of black smoke
+			Animator.Play(Roar);
+			AudioManager.PlayOneShot(RoarSound, transform.position);
+
+			int summonCount = 15;
+			summonCount = Mathf.Min(summonCount, SummonPoints.Length);
+
+			for (int i = 0; i < summonCount; i++)
+			{
+				Transform point = SummonPoints[Random.Range(0, SummonPoints.Length - 1)];
+				var instance = Instantiate(MinionPrefab, point.position, Quaternion.identity, transform.root);
+
+				var character = instance.GetComponent<Character>();
+				_aliveMinions.Add(character);
+				instance.GetComponent<Health>().OnDeath += _ => _aliveMinions.Remove(character);
+			}
+
+			yield return new YieldSeconds(1.4f);
+
+			_summonTimer.Duration = Random.Range(10f, 15f);
+			Idle();
 		}
 
 		/* UTILITIES */
-		private Tween ShugoJump(Vector2 target, float height, float duration)
+		private Tween ShugoJump(Vector2 target, float height, float duration, bool skipStart = false)
 		{
 			var sequence = DOTween.Sequence();
-			sequence.Append(DOVirtual.DelayedCall(0f, () => GetComponentInChildren<SpriteRenderer>().sortingOrder = 100));
-			sequence.Append(DOVirtual.DelayedCall(0f, () => AudioManager.PlayOneShot(JumpSound)));
-			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpStart)));
-			sequence.AppendInterval(JumpStart.length - 0.01f);
+
+			if (!skipStart)
+			{
+				// Start.
+				sequence.Append(DOVirtual.DelayedCall(0f, () => GetComponentInChildren<SpriteRenderer>().sortingOrder = 100));
+				sequence.Append(DOVirtual.DelayedCall(0f, () => AudioManager.PlayOneShot(JumpSound)));
+				sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpStart)));
+				sequence.AppendInterval(JumpStart.length - 0.01f);
+			}
+
+			// Loop.
 			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpLoop)));
 			sequence.Append(SuperJump(target, height, duration, ShadowPrefab));
+
+			// End.
 			sequence.Append(DOVirtual.DelayedCall(0f, () => GetComponentInChildren<SpriteRenderer>().sortingOrder = 0));
 			sequence.Append(DOVirtual.DelayedCall(0f, () => AudioManager.PlayOneShot(LandSound)));
 			sequence.Append(DOVirtual.DelayedCall(0f, () => Animator.Play(JumpEnd)));

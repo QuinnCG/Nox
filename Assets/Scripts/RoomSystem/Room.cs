@@ -62,6 +62,7 @@ namespace Game.RoomSystem
 		private void FixedUpdate()
 		{
 			if (_exiting) return;
+			if (PossessionManager.Instance.PossessedCharacter == null) return;
 
 			var collisions = new List<Collider2D>();
 			ExitTrigger.Overlap(collisions);

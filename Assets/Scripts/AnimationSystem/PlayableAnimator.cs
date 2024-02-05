@@ -26,7 +26,10 @@ namespace Game.AnimationSystem
 
 		private void Awake()
 		{
-			var animator = gameObject.AddComponent<Animator>();
+			if (!TryGetComponent(out Animator animator))
+			{
+				animator = gameObject.AddComponent<Animator>();
+			}
 
 			_graph = PlayableGraph.Create("Animation Graph");
 			_graph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);

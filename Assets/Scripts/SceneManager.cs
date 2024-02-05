@@ -29,6 +29,7 @@ namespace Game
 		[SerializeField]
 		private float FadeOutDuration = 1.5f, FadeInDuration = 1f;
 
+		public event Action OnPreSceneLoad;
 		public event Action<Scene> OnSceneLoaded;
 
 		private Image _blackout;
@@ -45,6 +46,7 @@ namespace Game
 
 		private IEnumerator LoadSequence(bool skipFadeOut)
 		{
+			OnPreSceneLoad?.Invoke();
 			InputReader input = null;
 
 			if (PossessionManager.Instance != null
@@ -79,14 +81,17 @@ namespace Game
 			// Enable loading screen.
 			var scene = USceneManager.GetActiveScene();
 			var root = scene.GetRootGameObjects();
+			GameObject loadingScreen = null;
 			foreach (var go in root)
 			{
 				if (go.CompareTag("Loading"))
 				{
-					go.SetActive(true);
-					break;
+					loadingScreen = go;
 				}
 			}
+			if (loadingScreen == null) throw new Exception("SceneManager can't find loading screen!");
+
+			loadingScreen.SetActive(true);
 
 			// Unload additives scenes (excluding "PersistentScene").
 			yield return StartCoroutine(UnloadAllAdditiveScenes());
@@ -133,14 +138,7 @@ namespace Game
 			input.enabled = true;
 
 			// Disable loading screen.
-			foreach (var gameObject in gameObjects)
-			{
-				if (gameObject.CompareTag("Loading"))
-				{
-					gameObject.SetActive(false);
-					break;
-				}
-			}
+			loadingScreen.SetActive(false);
 
 			// Fade from black.
 			_blackout = HUD.Instance.Blackout;
