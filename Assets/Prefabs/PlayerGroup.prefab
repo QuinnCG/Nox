@@ -666,7 +666,7 @@ PrefabInstance:
     - target: {fileID: 7715051660200044692, guid: c555241f727a5494ab22aa759285b507, type: 3}
       propertyPath: cameraShake
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 659891767450605098}
     - target: {fileID: 7715051660200044692, guid: c555241f727a5494ab22aa759285b507, type: 3}
       propertyPath: AttenuationObject
       value: 
