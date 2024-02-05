@@ -30,7 +30,7 @@ namespace Game.AI.Brains
 			_dead = CreateState(() => { }, "Dead");
 
 			ResetEngageTimer();
-			_engageTimer = new Timer(5f);
+			_engageTimer = new Timer(1f);
 			_engageEndTimer = new Timer();
 			_engageShootIntervalTimer = new Timer(1.5f);
 
@@ -48,15 +48,15 @@ namespace Game.AI.Brains
 		/* TRANSITIONS */
 		private void Idle()
 		{
-            if (Random.value <= 0.25f)
-            {
+			if (Random.value <= 0.5f)
+			{
 				Barrage();
 				return;
-            }
+			}
 
-            TransitionTo(_idle);
+			TransitionTo(_idle);
 		}
-		
+
 		private void Flee()
 		{
 			TransitionTo(_flee);
@@ -64,7 +64,7 @@ namespace Game.AI.Brains
 
 		private void Engage()
 		{
-			_engageEndTimer.Duration = Random.Range(2f, 5f);
+			_engageEndTimer.Duration = Random.Range(1f, 3f);
 			TransitionTo(_engage);
 			ResetEngageTimer();
 		}
@@ -149,7 +149,7 @@ namespace Game.AI.Brains
 
 		private void ResetEngageTimer()
 		{
-			_engageTimer = new Timer(Random.Range(2f, 12f));
+			_engageTimer = new Timer(Random.Range(2f, 3f));
 		}
 
 		private void ShootAtPlayer()
