@@ -3,6 +3,7 @@ using Game.DamageSystem;
 using Game.MovementSystem;
 using Game.Player;
 using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -36,6 +37,7 @@ namespace Game
 		public float PossessionMeterConsumption { get; private set; } = 60f;
 
 		public bool IsPossessed { get; private set; }
+		public event Action OnPossessed;
 
 		protected Movement Movement { get; private set; }
 		protected PlayableAnimator Animator { get; private set; }
@@ -66,6 +68,7 @@ namespace Game
 			if (!IsPossessed)
 			{
 				IsPossessed = true;
+				OnPossessed?.Invoke();
 			}
 		}
 

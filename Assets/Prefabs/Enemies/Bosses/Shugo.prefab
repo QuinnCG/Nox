@@ -297,8 +297,8 @@ MonoBehaviour:
     Path: event:/SFX/ShugoRoar
   DeathSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1790247243
+      Data2: 1085601557
+      Data3: -395849539
+      Data4: 303099245
+    Path: event:/SFX/ShugoDeath

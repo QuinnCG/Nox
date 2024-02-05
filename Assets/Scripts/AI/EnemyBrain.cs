@@ -173,8 +173,18 @@ namespace Game.AI
 
 		protected Tween Jump(Vector2 target, float height, float duration)
 		{
+			if (IsDead) return null;
+
 			var jump = transform.DOJump(target, height, 1, duration).SetEase(Ease.Linear);
 			_jumpTween = jump;
+			Health.OnDeath += _ =>
+			{
+				if (jump != null && jump.IsActive())
+				{
+					DOTween.Kill(jump);
+				}
+			};
+
 			return jump;
 		}
 

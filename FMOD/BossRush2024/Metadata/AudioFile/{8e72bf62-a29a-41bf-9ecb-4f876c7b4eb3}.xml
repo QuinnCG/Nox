@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{8e72bf62-a29a-41bf-9ecb-4f876c7b4eb3}">
+		<property name="assetPath">
+			<value>Bandit/Bandit Death/BanditDeath_02.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.64911564625850338</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{199058eb-45a1-46fb-bd35-0d8ea40a3f2d}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -52,8 +52,28 @@ PrefabInstance:
       value: 0.624
       objectReference: {fileID: 0}
     - target: {fileID: 598384052632136171, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      propertyPath: DeathSound.Path
+      value: event:/SFX/BanditDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 598384052632136171, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: <Max>k__BackingField
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 598384052632136171, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      propertyPath: DeathSound.Guid.Data1
+      value: 771814132
+      objectReference: {fileID: 0}
+    - target: {fileID: 598384052632136171, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      propertyPath: DeathSound.Guid.Data2
+      value: 1098170012
+      objectReference: {fileID: 0}
+    - target: {fileID: 598384052632136171, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      propertyPath: DeathSound.Guid.Data3
+      value: -1581498998
+      objectReference: {fileID: 0}
+    - target: {fileID: 598384052632136171, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
+      propertyPath: DeathSound.Guid.Data4
+      value: -2057806149
       objectReference: {fileID: 0}
     - target: {fileID: 2539884451687759693, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: m_Name

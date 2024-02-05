@@ -122,7 +122,7 @@ namespace Game.AI.BossSystem.BossBrains
 		private bool IsSecondPhase => Phase > 1;
 		private float RealJumpDuration => IsSecondPhase ? JumpDuration : (JumpDuration * JumpDurationFactor);
 
-		private State _stationary, _wander, _superJump, _fireSpew, _summon;
+		private State _stationary, _wander, _superJump, _fireSpew, _summon, _dead;
 		private Timer _idleTimer, _specialTimer, _summonTimer;
 
 		private bool _isPlayerIn;
@@ -132,6 +132,7 @@ namespace Game.AI.BossSystem.BossBrains
 		{
 			base.Start();
 			Health.OnDamaged += OnDamage;
+			Health.OnDeath += _ => Dead();
 
 			// States.
 			_stationary = CreateState(OnStartState, "Stationary");
@@ -139,6 +140,7 @@ namespace Game.AI.BossSystem.BossBrains
 			_superJump = CreateState(OnSuperJump, "Super Jump");
 			_fireSpew = CreateState(OnFireSpew, "Fire Spew");
 			_summon = CreateState(OnSummon, "Summon");
+			_dead = CreateState(OnDeath, "Dead");
 
 			// Timers.
 			_idleTimer = new Timer();
@@ -148,6 +150,7 @@ namespace Game.AI.BossSystem.BossBrains
 			TransitionTo(_stationary);
 		}
 
+		/* EVENTS */
 		public override void OnPlayerEnter()
 		{
 			_isPlayerIn = true;
@@ -163,9 +166,16 @@ namespace Game.AI.BossSystem.BossBrains
 			}
 		}
 
+		private void Dead()
+		{
+			TransitionTo(_dead);
+		}
+
 		/* SUPER STATES */
 		private void Idle()
 		{
+			if (IsDead) return;
+
 			// Reset idle timer.
 			float duration = Random.Range(IdleDuration.x, IdleDuration.y);
 			duration *= IsSecondPhase ? IdleDurationFactor : 1f;
@@ -178,6 +188,8 @@ namespace Game.AI.BossSystem.BossBrains
 		// Execute weighted-random special attack.
 		private void ExecuteRandomSpecial()
 		{
+			if (IsDead) return;
+
 			// States and their weights (used for chance).
 			(float weight, State state)[] specials = new (float, State)[]
 			{
@@ -346,6 +358,7 @@ namespace Game.AI.BossSystem.BossBrains
 				var character = instance.GetComponent<Character>();
 				_aliveMinions.Add(character);
 				instance.GetComponent<Health>().OnDeath += _ => _aliveMinions.Remove(character);
+				character.OnPossessed += () => _aliveMinions.Remove(character);
 			}
 
 			yield return new YieldSeconds(1.4f);
@@ -354,10 +367,43 @@ namespace Game.AI.BossSystem.BossBrains
 			Idle();
 		}
 
+		private IEnumerator OnDeath()
+		{
+			transform.DOKill();
+
+			Animator.Play(Death);
+			AudioManager.PlayOneShot(DeathSound, transform.position);
+
+			// Kill minions.
+			foreach (var minion in _aliveMinions)
+			{
+				minion.GetComponent<Health>().Kill();
+			}
+			_aliveMinions.Clear();
+
+			float animEndTime = Time.time + Death.length - 0.01f;
+
+			// Freeze on last frame.
+			yield return new YieldUntil(() => Time.time >= animEndTime);
+			Animator.Stop();
+
+			// Never loop this state.
+			yield return new YieldUntil(() => false);
+		}
+
 		/* UTILITIES */
 		private Tween ShugoJump(Vector2 target, float height, float duration, bool skipStart = false, bool skipEnd = false)
 		{
+			if (IsDead) return null;
+
 			var sequence = DOTween.Sequence();
+			Health.OnDeath += _ =>
+			{
+				if (sequence != null && sequence.IsActive())
+				{
+					DOTween.Kill(sequence);
+				}
+			};
 
 			if (!skipStart)
 			{

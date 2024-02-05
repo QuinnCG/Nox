@@ -33,6 +33,9 @@ namespace Game.DamageSystem
 		[SerializeField]
 		private EventReference HurtSound;
 
+		[SerializeField]
+		private EventReference DeathSound;
+
 		public bool DisplayCriticalIndicator { get; private set; } = true;
 		public bool IsImmune => _damageSuppressors.Count > 0;
 
@@ -166,6 +169,11 @@ namespace Game.DamageSystem
 
 			if (Current == 0f)
 			{
+				if (!DeathSound.IsNull)
+				{
+					AudioManager.PlayOneShot(DeathSound, transform.position);
+				}
+
 				OnDeath?.Invoke(info.Type);
 			}
 
