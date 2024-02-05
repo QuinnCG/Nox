@@ -348,10 +348,7 @@ namespace Game.AI.BossSystem.BossBrains
 
 		private IEnumerator OnSummon()
 		{
-			Animator.Play(Roar);
-			AudioManager.PlayOneShot(RoarSound, transform.position);
-
-			int summonCount = 15;
+			int summonCount = 5;
 			summonCount = Mathf.Min(summonCount, SummonPoints.Length);
 
 			for (int i = 0; i < summonCount; i++)
@@ -372,7 +369,10 @@ namespace Game.AI.BossSystem.BossBrains
 
 			yield return new YieldSeconds(1.4f);
 
-			_summonTimer.Duration = Random.Range(10f, 15f);
+			Animator.Play(Roar);
+			AudioManager.PlayOneShot(RoarSound, transform.position);
+
+			_summonTimer.Duration = Random.Range(7f, 15f);
 			Idle();
 		}
 

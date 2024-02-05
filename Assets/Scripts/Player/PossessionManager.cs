@@ -50,7 +50,14 @@ namespace Game.Player
 		public float CurrentPossessionMeter { get; private set; }
 
 		public Character PossessedCharacter { get; private set; }
-		public Vector2 Position => PossessedCharacter.transform.position;
+		public Vector2 Position
+		{
+			get
+			{
+				if (PossessedCharacter == null) return Vector2.zero;
+                return PossessedCharacter.transform.position;
+			}
+		}
 		public bool InPossessionMode { get; private set; }
 		public bool PossessingNewTarget { get; private set; }
 

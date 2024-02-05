@@ -190,8 +190,8 @@ namespace Game.AI
 			_jumpTween = transform.DOJump(target, height, 1, duration).SetEase(Ease.Linear);
 			_jumpTween.onUpdate += () =>
 			{
-				float progress = _jumpTween.Elapsed() / _jumpTween.Duration();
-				_shadow.transform.position = Vector2.Lerp(jumpStart, jumpEnd, progress);
+				//float progress = _jumpTween.Elapsed() / _jumpTween.Duration();
+				//_shadow.transform.position = Vector2.Lerp(jumpStart, jumpEnd, progress);
 			};
 			Health.OnDeath += _ =>
 			{
@@ -211,7 +211,8 @@ namespace Game.AI
 				Destroy(_shadow);
 			}
 
-			_shadow = Instantiate(shadowPrefab, transform.position, Quaternion.identity);
+			// TODO: Fix shadow movement.
+			//_shadow = Instantiate(shadowPrefab, transform.position, Quaternion.identity);
 			var tween = Jump(target, height, duration);
 
 			void CleanUp()

@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using FMODUnity;
+using Game.AI;
 using Game.DamageSystem;
 using Game.GeneralManagers;
 using Game.Player;
@@ -76,7 +77,10 @@ namespace Game.Characters
 
 		private void OnDestroy()
 		{
-			Destroy(_gun.gameObject);
+			if (_gun != null)
+			{
+				Destroy(_gun.gameObject);
+			}
 		}
 
 		protected override void OnDash()
@@ -102,6 +106,7 @@ namespace Game.Characters
 		protected override void OnDeath()
 		{
 			GetComponent<Collider2D>().enabled = false;
+			GetComponent<EnemyBrain>().enabled = false;
 			Animator.Play(DeathAnim);
 			DOVirtual.DelayedCall(DeathAnim.length - 0.01f, () => Destroy(gameObject));
 		}

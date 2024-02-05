@@ -275,6 +275,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DebugMode: 0
   PlayerDstToFlee: 4
+  BarrageChange: 0.25
+  MinBarrageInterval: 0.2
+  MaxBarrageInterval: 3
+  FleeSpeed: 9
 --- !u!2083052967 &6513513715175669271 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 4182447606209429202, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}

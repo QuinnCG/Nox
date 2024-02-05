@@ -67,6 +67,8 @@ namespace Game.ProjectileSystem
 
 		protected override bool OnHitDamageable(Health health)
 		{
+			if (Owner == null) return false;
+
 			var dmgInfo = new DamageInfo()
 			{
 				Type = Owner.TryGetComponent(out BossBrain _)
