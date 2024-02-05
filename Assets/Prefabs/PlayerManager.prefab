@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 0}
-  shakeIntensity: 1
-  shakeTime: 0.5
+  shakeIntensity: 0.3
+  shakeTime: 0.1
   DefaultCharacter: {fileID: 4850610673639980936, guid: 01ed844deb3072047853c6f4efee15ac, type: 3}
   PossessionGhost: {fileID: 7165127209510289491, guid: b976423054d6cd244919061fdbe11180, type: 3}
   PossessVFX: {fileID: 5418447348155154577, guid: c7910e5849c6a6e409d5fad43c62b385, type: 3}

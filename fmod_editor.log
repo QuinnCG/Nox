@@ -7,13 +7,70 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000015DC23E6728 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000214D5485608 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[WRN] OutputWASAPI::mixerThread                : Starvation detected in WASAPI output buffer!
+[LOG] SoundI::release                          : AmbientWinter_02 (00000213E3ABE598)
+[LOG] SoundI::release                          :     AmbientWinter_02 (00000215137B81D8)
+[LOG] SoundI::release                          :     AmbientWinter_02 (00000214AD6C8138)
+[LOG] SoundI::release                          : AmbientWind (00000214ED59FB88)
+[LOG] SoundI::release                          :     AmbientWind (00000215137B8378)
+[LOG] SoundI::release                          :     AmbientWind (000002140986C3E8)
+[LOG] SoundI::release                          : Nox - Main Theme (00000215165ACA98)
+[LOG] SoundI::release                          :     Nox - Main Theme (000002112450B2F8)
+[LOG] SoundI::release                          :     Nox - Main Theme (0000021456A69578)
+[LOG] SoundI::release                          :  (00000213703B9318)
+[LOG] SoundI::release                          :     FireballHit_03 (000002136B06EC38)
+[LOG] SoundI::release                          :  (00000214ED7204A8)
+[LOG] SoundI::release                          :     ShugoFart (000002135BC09208)
+[LOG] SoundI::release                          :  (00000214ED71E398)
+[LOG] SoundI::release                          :     ShugoDeath (000002136B3BF7D8)
+[LOG] SoundI::release                          :  (00000214D5519598)
+[LOG] SoundI::release                          :     land_01 (0000021369B6F218)
+[LOG] SoundI::release                          :  (00000214D5518A18)
+[LOG] SoundI::release                          :     land_02 (0000021369B70DB8)
+[LOG] SoundI::release                          :  (0000021456C07B48)
+[LOG] SoundI::release                          :     land_03 (0000021369B70A78)
+[LOG] SoundI::release                          :  (00000214D5518458)
+[LOG] SoundI::release                          :     land_04 (0000021369B6F558)
+[LOG] SoundI::release                          :  (00000214ED723868)
+[LOG] SoundI::release                          :     BanditDeath_01 (000002135BC093A8)
+[LOG] SoundI::release                          :  (00000214ED7239D8)
+[LOG] SoundI::release                          :     BanditDeath_02 (00000214DB710418)
+[LOG] SoundI::release                          :  (00000212C7433DA8)
+[LOG] SoundI::release                          :     BanditDeath_03 (00000214DB70FD98)
+[LOG] SoundI::release                          :  (00000214ED71C568)
+[LOG] SoundI::release                          :     BanditDeath_04 (00000214DB710C38)
+[LOG] SoundI::release                          :  (00000213703B9E98)
+[LOG] SoundI::release                          :     BanditShoot_01 (000002151213A128)
+[LOG] SoundI::release                          :  (00000213703B9038)
+[LOG] SoundI::release                          :     FlintLockFire (000002151213A7A8)
+[LOG] SoundI::release                          :  (0000021409D105F8)
+[LOG] SoundI::release                          :     PlayerHurt_01 (0000021336148F58)
+[LOG] SoundI::release                          :  (0000021409D10768)
+[LOG] SoundI::release                          :     PlayerHurt_02 (0000021336149298)
+[LOG] SoundI::release                          :  (0000021409D54E68)
+[LOG] SoundI::release                          :     PlayerHurt_03 (0000021369B70598)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -21,3 +78,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.

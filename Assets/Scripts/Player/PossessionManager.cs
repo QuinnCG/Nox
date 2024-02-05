@@ -17,10 +17,14 @@ namespace Game.Player
 {
 	public class PossessionManager : MonoBehaviour
 	{
-		[Header("Camera Shake Parameters")]
-		[SerializeField] private CameraShakeManager cameraShake;
-		[SerializeField] private float shakeIntensity = 10f;
-		[SerializeField] private float shakeTime = 1f;
+		[SerializeField, BoxGroup("Camera Shake Settings")]
+		private CameraShakeManager cameraShake;
+
+		[SerializeField, BoxGroup("Camera Shake Settings")]
+		private float shakeIntensity = 10f;
+
+		[SerializeField, BoxGroup("Camera Shake Settings")]
+		private float shakeTime = 1f;
 
 		[SerializeField, Required]
 		private GameObject DefaultCharacter;

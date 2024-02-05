@@ -49,7 +49,7 @@ namespace Game.AI.Brains
 			_engageEndTimer = new Timer();
 			_engageShootIntervalTimer = new Timer(1.5f);
 
-			Idle();
+			TransitionTo(_start);
 		}
 
 		/* EVENTS */
@@ -97,8 +97,11 @@ namespace Game.AI.Brains
 			while (Time.time < endTime)
 			{
 				Move(DirectionToPlayer);
+				Animator.Play(_bandit.MoveAnim);
 				yield return new YieldNextFrame();
 			}
+
+			Idle();
 		}
 
 		private void OnIdle()
