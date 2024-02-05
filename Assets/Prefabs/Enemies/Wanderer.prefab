@@ -183,9 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a57ecd436657614f8797138ed0fc11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DashSpeed: 18
-  <DashDuration>k__BackingField: 0.2
-  DashCooldown: 0.2
+  DashSpeed: 17
+  <DashDuration>k__BackingField: 0.3
+  DashCooldown: 0.1
   IsDashControllable: 0
   DashTrail: {fileID: 6513513715175669271}
   <PossessionMeterConsumption>k__BackingField: 60

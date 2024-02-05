@@ -61,8 +61,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultCharacter: {fileID: 4850610673639980936, guid: 53fe793b195fba9468fb904001e78332, type: 3}
   CameraTarget: {fileID: 0}
-  CameraCrosshairBias: 0.15
-  DamageImmunityDuration: 2.5
+  CameraCrosshairBias: 0.2
+  DamageImmunityDuration: 2
   DamagedSound:
     Guid:
       Data1: 453333637
@@ -105,10 +105,3 @@ MonoBehaviour:
   DefaultPossessionMeter: 65
   PossessionMeterMultiplier: 0.5
   AttenuationObject: {fileID: 0}
-  <PlayerHurtSound>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
