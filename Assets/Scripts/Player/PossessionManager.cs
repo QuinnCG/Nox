@@ -19,8 +19,8 @@ namespace Game.Player
 	{
 		[Header("Camera Shake Parameters")]
 		[SerializeField] private CameraShakeManager cameraShake;
-		[SerializeField] private float shakeIntensity = 5f;
-		[SerializeField] private float shakeTime = 0.5f;
+		[SerializeField] private float shakeIntensity = 10f;
+		[SerializeField] private float shakeTime = 1f;
 
 		[SerializeField, Required]
 		private GameObject DefaultCharacter;
