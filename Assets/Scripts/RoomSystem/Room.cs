@@ -14,19 +14,22 @@ namespace Game.RoomSystem
 	{
 		public static Room Current { get; private set; }
 
+		[SerializeField]
+		private bool NotBossRoom;
+
 		[SerializeField, Required]
 		private Door EntranceDoor;
 
 		[SerializeField, Required]
 		private Door ExitDoor;
 
-		[SerializeField, Required]
+		[SerializeField, Required, HideIf(nameof(NotBossRoom))]
 		private GameObject BossInstance;
 
 		[field: SerializeField, Required]
 		public Transform PlayerSpawnPoint { get; private set; }
 
-		[SerializeField, Required]
+		[SerializeField, Required, HideIf(nameof(NotBossRoom))]
 		private Collider2D ExitTrigger;
 
 		[field: SerializeField, Required]
@@ -56,12 +59,17 @@ namespace Game.RoomSystem
 				_bossMusic.start();
 			}
 
-			InitializeBoss();
+			ExitDoor.Close(true);
+
+			if (!NotBossRoom)
+			{
+				InitializeBoss();
+			}
 		}
 
 		private void FixedUpdate()
 		{
-			if (_exiting) return;
+			if (_exiting || ExitTrigger == null) return;
 			if (PossessionManager.Instance.PossessedCharacter == null) return;
 
 			var collisions = new List<Collider2D>();
@@ -86,7 +94,11 @@ namespace Game.RoomSystem
 				HasStarted = true;
 
 				EntranceDoor.Close();
-				Boss.OnPlayerEnter();
+
+				if (!NotBossRoom)
+				{
+					Boss.OnPlayerEnter();
+				}
 			}
 		}
 
@@ -103,8 +115,6 @@ namespace Game.RoomSystem
 			Boss = BossInstance.GetComponent<BossBrain>();
 			Boss.GetComponent<Health>().OnDeath += _ => BossDeath();
 			Boss.Room = this;
-
-			ExitDoor.Close(true);
 		}
 
 		private void BossDeath()
