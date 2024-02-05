@@ -37,6 +37,11 @@ namespace Game.GeneralManagers
 			}
 		}
 
+		private void Start()
+		{
+			
+		}
+
 		/// <summary>
 		/// Returns true if the event reference was valid and false if it was null.
 		/// </summary>

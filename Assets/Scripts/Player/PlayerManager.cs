@@ -41,7 +41,15 @@ namespace Game.Player
 		private PossessionManager _possession;
 
 		// Possessed components.
-		private Movement Movement => PossessionManager.Instance.PossessedCharacter.GetComponent<Movement>();
+		private Movement Movement
+		{
+			get
+			{
+				var manager = _possession;
+				if (manager.PossessedCharacter == null) return null;
+				return manager.PossessedCharacter.GetComponent<Movement>();
+			}
+		}
 		private Health _health;
 
 		private bool _dashImmunityEnabled;
@@ -119,7 +127,10 @@ namespace Game.Player
 		/* INPUT */
 		private void OnMove(Vector2 dir)
 		{
-			Movement.Move(dir);
+			if (Movement != null)
+			{
+				Movement.Move(dir);
+			}
 		}
 
 		private void OnDash()

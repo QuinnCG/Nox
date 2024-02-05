@@ -109,7 +109,7 @@ MonoBehaviour:
   RotationRate: 0
   RotateToFace: 1
   RotationalOffset: -45
-  Damage: 12
+  Damage: 7
   Lifespan: 5
   ThrowSound:
     Guid:

@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598384052632136171, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: <Max>k__BackingField
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 598384052632136171, guid: e7ae629f723e8464ab820b257c9c36fa, type: 3}
       propertyPath: CriticalIndicatorOffset.x
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DashSpeed: 18
-  DashDuration: 0.25
+  <DashDuration>k__BackingField: 0.2
   DashCooldown: 0.2
   IsDashControllable: 0
   DashTrail: {fileID: 6513513715175669271}

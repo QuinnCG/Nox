@@ -65,7 +65,7 @@ namespace Game.ProjectileSystem
 			}
 		}
 
-		protected override void OnHitDamageable(Health health)
+		protected override bool OnHitDamageable(Health health)
 		{
 			TrySpawnHitPrefab();
 			TryPlayHitSound();
@@ -86,6 +86,8 @@ namespace Game.ProjectileSystem
 			{
 				Destroy(gameObject);
 			}
+
+			return success;
 		}
 
 		protected override void OnHitObstacle(Collider2D collider)

@@ -112,8 +112,10 @@ namespace Game.ProjectileSystem
 		{
 			if (CanCollide(collider) && collider.TryGetComponent(out Health health))
 			{
-				OnHitDamageable(health);
-				OnHit?.Invoke();
+				if (OnHitDamageable(health))
+				{
+					OnHit?.Invoke();
+				}
 			}
 			else if (collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
 			{
@@ -151,7 +153,7 @@ namespace Game.ProjectileSystem
 			}
 		}
 
-		protected virtual void OnHitDamageable(Health health) { }
+		protected virtual bool OnHitDamageable(Health health) => true;
 
 		protected virtual void OnHitObstacle(Collider2D collider)
 		{

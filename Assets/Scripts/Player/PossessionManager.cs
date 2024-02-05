@@ -16,7 +16,7 @@ namespace Game.Player
 {
 	public class PossessionManager : MonoBehaviour
 	{
-		[SerializeField, Required, AssetList(Path = "/Prefabs/Characters")]
+		[SerializeField, Required]
 		private GameObject DefaultCharacter;
 
 		[Space, SerializeField, Required]
@@ -79,7 +79,7 @@ namespace Game.Player
 
 		private void Start()
 		{
-			SpawnOriginalBody();
+			SpawnOriginalBody(Vector2.zero);
 			PlayerManager.Instance.OnDamageEnemy += OnEnemyDamaged;
 
 			SceneManager.Instance.OnPreSceneLoad += () =>
@@ -166,7 +166,22 @@ namespace Game.Player
 
 		public void Respawn()
 		{
-			SpawnOriginalBody();
+			Vector2 pos = Vector2.zero;
+
+			if (PossessedCharacter != null)
+			{
+				var character = PossessedCharacter;
+
+				pos = character.transform.position;
+				Unpossess(PossessedCharacter);
+
+				if (character != null)
+				{
+					Destroy(character);
+				}
+			}
+
+			SpawnOriginalBody(pos);
 			_input.enabled = true;
 		}
 
@@ -339,11 +354,18 @@ namespace Game.Player
 			}
 
 			// Actual possession.
-
-			AttenuationObject.parent = character.transform;
-
 			PossessedCharacter = character;
 			PossessedCharacter.Possess();
+
+			if (AttenuationObject != null)
+			{
+				AttenuationObject.parent = character.transform;
+				//Debug.LogWarning("The 'AttenuationObject' reference has been made null! This is not critical, but audio may sound strange.");
+			}
+			else
+			{
+				RuntimeManager.SetListenerLocation(character.gameObject);
+			}
 
 			var health = PossessedCharacter.GetComponent<Health>();
 			health.FullHeal();
@@ -377,14 +399,14 @@ namespace Game.Player
 			}
 			else
 			{
+				Vector2 pos = PossessedCharacter.transform.position;
 				Destroy(PossessedCharacter.gameObject);
-				SpawnOriginalBody();
+				SpawnOriginalBody(pos);
 			}
 		}
 
-		private void SpawnOriginalBody()
+		private void SpawnOriginalBody(Vector2 pos)
 		{
-			Vector2 pos = transform.position;
 			if (PossessedCharacter != null)
 			{
 				pos = PossessedCharacter.transform.position;

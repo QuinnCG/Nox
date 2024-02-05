@@ -189,6 +189,13 @@ MonoBehaviour:
       Data3: 399420826
       Data4: -1115606068
     Path: event:/SFX/Hurt
+  DeathSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &4720538500512549382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,9 +238,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3960479896017489875}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 461744cbafc364e4c8ef5c7325698f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ContactDamage: 10
+  ContactDamage: 34

@@ -45,6 +45,8 @@ namespace Game.RoomSystem
 
 		public event Action<Room> OnBossRoomStart;
 
+		private bool _spawn;
+
 		private void Awake()
 		{
 			Instance = this;
@@ -61,6 +63,12 @@ namespace Game.RoomSystem
 					return;
 				}
 
+				if (_spawn)
+				{
+					_spawn = false;
+					PossessionManager.Instance.Respawn();
+				}
+
 				if (CurrentRoom < Rooms.Length)
 				{
 					var room = Instantiate(Rooms[CurrentRoom]);
@@ -73,10 +81,10 @@ namespace Game.RoomSystem
 
 		public void Reload()
 		{
-			PossessionManager.Instance.Respawn();
-
 			CurrentRoom--;
 			Next(true);
+
+			_spawn = true;
 		}
 
 		public void Next(bool skipFadeOut = false)
