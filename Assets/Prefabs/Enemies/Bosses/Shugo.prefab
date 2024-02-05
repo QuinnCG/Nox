@@ -244,7 +244,7 @@ MonoBehaviour:
   FireSpewPoints: []
   JumpRegion: {fileID: 0}
   SummonPoints: []
-  CenterPoint: {fileID: 0}
+  CenterPoint: {fileID: 8939678584060395846}
   BanditSpawnSmoke: {fileID: 1823326592826579118, guid: d4da0f3dbab422a4d9136d17f6f5de58, type: 3}
   IdleAnim: {fileID: -7001147228997674120, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
   FireSpewStart: {fileID: 5631674185561918433, guid: b8fa0cb1136492c4e8b7aaab713b6383, type: 3}
