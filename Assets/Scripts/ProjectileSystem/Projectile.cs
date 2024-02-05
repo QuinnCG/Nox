@@ -147,7 +147,7 @@ namespace Game.ProjectileSystem
 		protected virtual void OnSpawn(Vector2 target)
 		{
 			// If the player shot this projectile, notify PossessionManager.
-			if (PossessionManager.Instance.PossessedCharacter.gameObject == Owner)
+			if (PossessionManager.Instance.PossessedCharacter == Owner)
 			{
 				PlayerManager.Instance.OnSpawnProjectile(this);
 			}

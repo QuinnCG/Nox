@@ -19,23 +19,21 @@ namespace Game.ProjectileSystem
 		{
 			if (_hit) return false;
 
-			TrySpawnHitPrefab();
-			TryPlayHitSound();
-
 			var dmgInfo = new DamageInfo()
 			{
-				//Type = Owner.TryGetComponent(out BossBrain _)
-				//? DamageType.Boss : DamageType.Enemy,
 				Damage = Damage,
 				Direction = Direction,
 				Source = Owner
 			};
 
-			OnDamage?.Invoke(dmgInfo);
 			bool success = health.TakeDamage(dmgInfo);
 
 			if (success)
 			{
+				TrySpawnHitPrefab();
+				TryPlayHitSound();
+
+				OnDamage?.Invoke(dmgInfo);
 				_hit = true;
 				DetachChild();
 				Destroy(gameObject);

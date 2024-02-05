@@ -67,9 +67,6 @@ namespace Game.ProjectileSystem
 
 		protected override bool OnHitDamageable(Health health)
 		{
-			TrySpawnHitPrefab();
-			TryPlayHitSound();
-
 			var dmgInfo = new DamageInfo()
 			{
 				Type = Owner.TryGetComponent(out BossBrain _)
@@ -79,11 +76,14 @@ namespace Game.ProjectileSystem
 				Source = Owner
 			};
 
-			OnDamage?.Invoke(dmgInfo);
 			bool success = health.TakeDamage(dmgInfo);
 
 			if (success)
 			{
+				TrySpawnHitPrefab();
+				TryPlayHitSound();
+
+				OnDamage?.Invoke(dmgInfo);
 				Destroy(gameObject);
 			}
 
