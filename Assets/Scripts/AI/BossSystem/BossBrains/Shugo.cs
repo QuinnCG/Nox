@@ -277,14 +277,12 @@ namespace Game.AI.BossSystem.BossBrains
 				}
 			}
 		}
-
 		private IEnumerator OnSuperJump()
 		{
 			// Jump to player.
 			float duration = SuperJumpDuration * (IsSecondPhase ? SuperJumpDurationFactor : 1f);
 			Tween jump = ShugoJump(PlayerPosition, SuperJumpHeight, duration);
 			yield return jump.Yield();
-			//yield return new YieldSeconds(JumpEnd.length - 0.01f);
 
 			AudioManager.PlayOneShot(FireStompSound);
 
@@ -314,6 +312,16 @@ namespace Game.AI.BossSystem.BossBrains
 			// Transition to idle.
 			Idle();
 			ResetSpecialtimer();
+		}
+
+		// Add a null check before using the destroyed GameObject
+		private void Shoot(GameObject prefab, Vector2 spawnPoint, Vector2 direction, ShootSpawnInfo spawnInfo)
+		{
+			if (prefab == null)
+			{
+				Debug.LogError("Prefab is null in Shoot method.");
+				return;
+			}
 		}
 
 		private IEnumerator OnFireSpew()
