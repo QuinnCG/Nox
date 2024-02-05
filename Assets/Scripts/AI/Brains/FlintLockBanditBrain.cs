@@ -22,7 +22,7 @@ namespace Game.AI.Brains
 		[SerializeField]
 		private float FleeSpeed = 10f;
 
-		private State _idle, _engage, _barrage, _flee, _dead;
+		private State _start, _idle, _engage, _barrage, _flee, _dead;
 		private Timer _engageTimer, _engageEndTimer, _engageShootIntervalTimer;
 
 		private FlintLockBandit _bandit;
@@ -37,6 +37,7 @@ namespace Game.AI.Brains
 			_bandit = Character as FlintLockBandit;
 			Health.OnDeath += OnDeath;
 
+			_start = CreateState(OnStart, "Start");
 			_idle = CreateState(OnIdle, "Idle");
 			_engage = CreateState(OnEngage, "Engage");
 			_barrage = CreateState(OnBarrage, "Barrage");
@@ -89,6 +90,17 @@ namespace Game.AI.Brains
 		}
 
 		/* STATES */
+		private IEnumerator OnStart()
+		{
+			float endTime = Time.time + Random.Range(0.5f, 3f);
+
+			while (Time.time < endTime)
+			{
+				Move(DirectionToPlayer);
+				yield return new YieldNextFrame();
+			}
+		}
+
 		private void OnIdle()
 		{
 			Animator.Play(_bandit.IdleAnim);
