@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using FMODUnity;
+using Game.AI;
 using Game.AI.BossSystem;
 using Game.AnimationSystem;
 using Game.DamageSystem;
@@ -8,6 +9,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.VFX;
@@ -84,7 +86,7 @@ namespace Game.Player
 			{
 				if (PossessedCharacter != null)
 				{
-					Unpossess(PossessedCharacter);
+					UnPossess(PossessedCharacter);
 
 					if (PossessedCharacter != null)
 					{
@@ -171,7 +173,7 @@ namespace Game.Player
 				var character = PossessedCharacter;
 
 				pos = character.transform.position;
-				Unpossess(PossessedCharacter);
+				UnPossess(PossessedCharacter);
 
 				if (character != null)
 				{
@@ -242,17 +244,34 @@ namespace Game.Player
 		{
 			_possessingOriginal = false;
 
-			ConsumePossessionMeter(character.PossessionMeterConsumption);
+			if (character.TryGetComponent(out EnemyBrain brain))
+			{
+				brain.enabled = false;
+			}
+
+			// Prevent consumption when returning to old body.
+			if (skip)
+			{
+				ConsumePossessionMeter(character.PossessionMeterConsumption);
+			}
+
 			PossessingNewTarget = true;
 			StartCoroutine(PossessSequence(character, skip));
 		}
 
-		private void Unpossess(Character character)
+		private void UnPossess(Character character)
 		{
 			HideSelfIndicator();
 
+			if (character.TryGetComponent(out EnemyBrain brain))
+			{
+				brain.enabled = true;
+			}
+
 			character.UnPossess();
-			character.GetComponent<Health>().Kill();
+			var health = character.GetComponent<Health>();
+			health.OnDeath -= OnDeath;
+			health.Kill();
 
 			OnCharacterUnpossessed?.Invoke(character);
 
@@ -347,7 +366,7 @@ namespace Game.Player
 
 			if (PossessedCharacter != null)
 			{
-				Unpossess(PossessedCharacter);
+				UnPossess(PossessedCharacter);
 			}
 
 			// Actual possession.
@@ -356,6 +375,7 @@ namespace Game.Player
 
 			// Move possessed character to persistant scene.
 			var persistantScene = UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(0);
+			PossessedCharacter.transform.parent = null;
 			UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(PossessedCharacter.gameObject, persistantScene);
 
 			RuntimeManager.SetListenerLocation(character.gameObject);
@@ -392,21 +412,26 @@ namespace Game.Player
 			}
 			else
 			{
-				Vector2 pos = PossessedCharacter.transform.position;
-				Destroy(PossessedCharacter.gameObject);
-				SpawnOriginalBody(pos);
+				GameObject previousBody = PossessedCharacter.gameObject;
+				SpawnOriginalBody(previousBody.transform.position);
+
+				if (previousBody != null)
+				{
+					Debug.Log($"Destroying: {previousBody.name}!");
+					Destroy(PossessedCharacter.gameObject);
+				}
 			}
 		}
 
 		private void SpawnOriginalBody(Vector2 pos)
 		{
-			if (PossessedCharacter != null)
-			{
-				pos = PossessedCharacter.transform.position;
-			}
+			Debug.Log("Spawning original body!");
 
-			var instance = Instantiate(DefaultCharacter, pos, Quaternion.identity);
+			GameObject instance = Instantiate(DefaultCharacter, pos, Quaternion.identity);
 			Possess(instance.GetComponent<Character>(), skip: true);
+
+			Debug.Log("Spawned body!");
+			Debug.Log(instance.name);
 
 			_possessingOriginal = true;
 		}

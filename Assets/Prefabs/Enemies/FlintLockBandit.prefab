@@ -245,7 +245,7 @@ MonoBehaviour:
   IsDashControllable: 1
   DashTrail: {fileID: 6513513715175669271}
   <PossessionMeterConsumption>k__BackingField: 35
-  GunOffset: 0.4
+  GunOffset: 0.8
   GunPivot: {fileID: 9064840900613830469}
   GunPrefab: {fileID: 6098607508932657732, guid: 824e555e58c55bf42b85e5ae86123842, type: 3}
   <ProjectilePrefab>k__BackingField: {fileID: 8370981501113466163, guid: de07316648efadc4a8385cad02a465e2, type: 3}

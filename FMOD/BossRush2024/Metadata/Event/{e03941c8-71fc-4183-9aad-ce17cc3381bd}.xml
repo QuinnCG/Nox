@@ -73,7 +73,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{3e7fe9ab-2fdb-49df-90bf-34727478789b}">
 		<property name="volume">
-			<value>-6.5</value>
+			<value>-24</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{8dc6e921-7c2a-43d2-9426-e8f198827d0f}</destination>
@@ -119,6 +119,9 @@
 	<object class="SpatialiserEffect" id="{a6986580-0eef-44f4-8619-9016311487b7}">
 		<property name="distanceRolloffType">
 			<value>1</value>
+		</property>
+		<property name="panBlend">
+			<value>0.930000007</value>
 		</property>
 	</object>
 	<object class="SFXReverbEffect" id="{04325195-e98f-4010-a582-8f0aa304f77a}">

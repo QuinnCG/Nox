@@ -1,7 +1,11 @@
 ﻿using DG.Tweening;
+using FMODUnity;
+using Game.GeneralManagers;
 using Game.Player;
 using Game.ProjectileSystem;
 using Sirenix.OdinInspector;
+using UnityEditor.Rendering.LookDev;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 namespace Game.Characters
@@ -10,6 +14,9 @@ namespace Game.Characters
 	{
 		[SerializeField]
 		private float GunOffset = 0.4f;
+
+		[SerializeField]
+		private float FireRate = 0.2f;
 
 		[SerializeField, Required, BoxGroup("References")]
 		private Transform GunPivot;
@@ -32,7 +39,17 @@ namespace Game.Characters
 		[field: SerializeField, Required, BoxGroup("Animations")]
 		public AnimationClip DeathAnim { get; private set; }
 
+		[SerializeField, BoxGroup("SFX")]
+		private EventReference ShootSound;
+
 		private Transform _gun;
+		private Timer _shootTimer = new();
+
+		private void Start()
+		{
+			var instance = Instantiate(GunPrefab, GunPivot.position, Quaternion.identity).transform;
+			_gun = instance.transform;
+		}
 
 		protected override void Update()
 		{
@@ -44,26 +61,11 @@ namespace Game.Characters
 				{
 					Animator.Play(Movement.IsMoving ? MoveAnim : IdleAnim);
 				}
-
-				if (_gun != null)
-				{
-					UpdateGunPosition();
-				}
 			}
-		}
 
-		protected override void OnPossess()
-		{
-			var instance = Instantiate(GunPrefab, transform.position, Quaternion.identity).transform;
-			_gun = instance.transform;
-		}
-
-		protected override void OnUnpossess()
-		{
-			if (_gun.gameObject != null)
+			if (_gun != null)
 			{
-				Destroy(_gun.gameObject);
-				_gun = null;
+				UpdateGunPosition();
 			}
 		}
 
@@ -75,7 +77,16 @@ namespace Game.Characters
 
 		protected override void OnAttack(Vector2 target)
 		{
-			Projectile.Spawn(ProjectilePrefab, _gun.position, target, this);
+			if (_shootTimer.IsDone)
+			{
+				_shootTimer.Reset(FireRate);
+
+				Projectile.Spawn(ProjectilePrefab, _gun.position, target, this);
+				if (!ShootSound.IsNull)
+				{
+					AudioManager.PlayOneShot(ShootSound, _gun.position);
+				}
+			}
 		}
 
 		protected override void OnDeath()
@@ -87,14 +98,32 @@ namespace Game.Characters
 
 		private void UpdateGunPosition()
 		{
-			Vector2 cursor = CrosshairManager.Instance.CurrentPosition;
+			Vector2 target;
+
+			if (IsPossessed)
+			{
+				target = CrosshairManager.Instance.CurrentPosition;
+			}
+			else
+			{
+				target = PossessionManager.Instance.Position;
+			}
+
 			Vector2 center = GunPivot.position;
 
-			Vector2 dir = cursor - center;
+			Vector2 dir = target - center;
 			dir.Normalize();
 
-			Vector2 final = center + (dir * GunOffset);
-			_gun.position = final;
+			// Position.
+			Vector2 finalPos = center + (dir * GunOffset);
+			_gun.position = finalPos;
+
+			// Rotation.
+			float angle = Mathf.Atan2(dir.y, dir.x);
+			_gun.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
+
+			// Scale.
+			_gun.localScale = new Vector3(1f, dir.x < 0f ? -1f : 1f, 1f);
 		}
 	}
 }
