@@ -39,7 +39,7 @@ namespace Game.DamageSystem
 		public bool DisplayCriticalIndicator { get; private set; } = true;
 		public bool IsImmune => _damageSuppressors.Count > 0;
 
-		public bool IsCritical => Current / Max <= CriticalPercent;
+		public bool IsCritical => DisplayCriticalIndicator && Current / Max <= CriticalPercent;
 		public bool IsDead => Current == 0f;
 		public float Percent => Current / Max;
 
@@ -66,16 +66,22 @@ namespace Game.DamageSystem
 
 		private SpriteRenderer _renderer;
 
+
 		private void Awake()
 		{
 			Current = Max;
 
-			OnCritical += OnEnterCritical;
-			OnHealFromCritical += OnLeaveCritical;
-			OnDeath += _ =>
+
+			if (DisplayCriticalIndicator)
 			{
-				SetDisplayCriticalIndiactor(false);
-			};
+				OnCritical += OnEnterCritical;
+				OnHealFromCritical += OnLeaveCritical;
+				OnDeath += _ =>
+				{
+					SetDisplayCriticalIndiactor(false);
+				};
+			}
+
 
 			if (StartCritical)
 			{
@@ -218,12 +224,30 @@ namespace Game.DamageSystem
 			{
 				DisplayCriticalIndicator = display;
 
+				if (display)
+				{
+					OnCritical += OnEnterCritical;
+					OnHealFromCritical += OnLeaveCritical;
+					OnDeath += _ =>
+					{
+						SetDisplayCriticalIndiactor(false);
+					};
+				}
+				else
+				{
+					OnCritical -= OnEnterCritical;
+					OnHealFromCritical -= OnLeaveCritical;
+					OnDeath -= _ =>
+					{
+						SetDisplayCriticalIndiactor(false);
+					};
+				}
+
 				if (display && IsCritical)
 				{
 					ShowCriticalIndicator();
 				}
-
-				if (!display && IsCritical)
+				else if (!display && IsCritical)
 				{
 					HideCriticalIndicator();
 				}
@@ -295,7 +319,7 @@ namespace Game.DamageSystem
 				ShowCriticalIndicator();
 
 				_playCriticalSFXTween.Kill();
-				_playCriticalSFXTween = DOVirtual.DelayedCall(0.38f, () =>
+				_playCriticalSFXTween = DOVirtual.DelayedCall(0.1f, () =>
 				{
 					if (_criticalIndicator != null)
 					{
