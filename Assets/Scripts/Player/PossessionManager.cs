@@ -91,9 +91,8 @@ namespace Game.Player
 			SpawnOriginalBody(Vector2.zero);
 			PlayerManager.Instance.OnDamageEnemy += OnEnemyDamaged;
 
-			SceneManager.Instance.OnPreSceneLoad += () =>
-
 			impulseSource = GetComponent<CinemachineImpulseSource>();
+			SceneManager.Instance.OnPreSceneLoad += () =>
 			{
 				if (PossessedCharacter != null)
 				{
@@ -264,7 +263,7 @@ namespace Game.Player
 			// Prevent consumption when returning to old body.
 			if (skip)
 			{
-				
+
 			}
 			ConsumePossessionMeter(character.PossessionMeterConsumption);
 
